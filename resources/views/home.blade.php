@@ -94,7 +94,7 @@
 				   			<div class="row">
 					   			<div class="col-md-8 col-md-offset-2 text-center js-fullheight slider-text">
 					   				<div class="slider-text-inner">
-					   					<h1>タイトルを入れる</h1>
+					   					<h1>タイトル（未定）を入れる</h1>
 					   					<h2>Slack Log in</h2>
 											<p>
 												<a class="btn btn-primary btn-demo popup-vimeo" href="#">ログイン</a>
