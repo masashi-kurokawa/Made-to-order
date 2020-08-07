@@ -70,7 +70,7 @@
 			<h1 id="fh5co-logo"><a href="{{ url('/home/') }}">タイトル</a></h1>
 			<nav id="fh5co-main-menu" role="navigation">
 				<ul>
-					<li class="fh5co-active"><a href="{{ url('/home/') }}">Home</a></li>
+					<li class="fh5co-active"><a href="{{ url('/home/') }}">Home（ホーム）</a></li>
 					<li><a href="{{ url('/testlist/') }}">テスト一覧</a></li>
 					<li><a href="{{ url('/surveylist/') }}">アンケート一覧</a></li>
 					<li><a href="{{ url('/student/') }}">生徒一覧</a></li>
