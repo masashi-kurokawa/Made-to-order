@@ -7,7 +7,7 @@
 	<head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>タイトル &mdash; テスト受講</title>
+	<title>タイトル &mdash; 詳細</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="description" content="Free HTML5 Website Template by FreeHTML5.co" />
 	<meta name="keywords" content="free html5, free template, free bootstrap, free website template, html5, css3, mobile first, responsive" />
@@ -216,7 +216,7 @@
 			</div>
 
 			<div class="test-btn">
-				<input type="submit" class="btn btn-primary btn-md" onclick="location.href='{{ url('/testend/') }}'" value="テスト終了">
+				<input type="submit" class="btn btn-primary btn-md" onclick="location.href='{{ url('/student-details/') }}'" value="戻る">
 			</div>
 
 		</div>

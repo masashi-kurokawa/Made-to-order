@@ -7,7 +7,7 @@
 	<head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>タイトル &mdash; テスト受講</title>
+	<title>タイトル &mdash; アンケート受講</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="description" content="Free HTML5 Website Template by FreeHTML5.co" />
 	<meta name="keywords" content="free html5, free template, free bootstrap, free website template, html5, css3, mobile first, responsive" />
@@ -88,13 +88,13 @@
 
 	<div id="fh5co-main">
 		<div class="fh5co-narrow-content">
-			<h2 class="fh5co-heading animate-box" data-animate-effect="fadeInLeft">テスト1</h2>
+			<h2 class="fh5co-heading animate-box" data-animate-effect="fadeInLeft">アンケート1</h2>
 
 				<div class="fh5co-narrow-content animate-box" data-animate-effect="fadeInLeft">
 					<div class="row">
 						<div class="col-md-4">
-							<h4>問題1</h4>
-							<p>問題テキスト</p>
+							<h4>Q1</h4>
+							<p>アンケートテキスト</p>
 						</div>
 					</div>
 					<div class="row">
@@ -130,8 +130,8 @@
 			<div class="fh5co-narrow-content animate-box" data-animate-effect="fadeInLeft">
 				<div class="row">
 					<div class="col-md-4">
-						<h4>問題2</h4>
-						<p>問題テキスト</p>
+						<h4>Q2</h4>
+						<p>アンケートテキスト</p>
 					</div>
 				</div>
 				<form action="">
@@ -152,8 +152,8 @@
 			<div class="fh5co-narrow-content animate-box" data-animate-effect="fadeInLeft">
 				<div class="row">
 					<div class="col-md-4">
-						<h4>問題3</h4>
-						<p>問題テキスト</p>
+						<h4>Q3</h4>
+						<p>アンケートテキスト</p>
 					</div>
 				</div>
 				<form action="">
@@ -174,8 +174,8 @@
 			<div class="fh5co-narrow-content animate-box" data-animate-effect="fadeInLeft">
 				<div class="row">
 					<div class="col-md-4">
-						<h4>問題4</h4>
-						<p>問題テキスト</p>
+						<h4>Q4</h4>
+						<p>アンケートテキスト</p>
 					</div>
 				</div>
 				<form action="">
@@ -196,8 +196,8 @@
 			<div class="fh5co-narrow-content animate-box" data-animate-effect="fadeInLeft">
 				<div class="row">
 					<div class="col-md-4">
-						<h4>問題5</h4>
-						<p>問題テキスト</p>
+						<h4>Q5</h4>
+						<p>アンケートテキスト</p>
 					</div>
 				</div>
 				<form action="">
@@ -216,7 +216,7 @@
 			</div>
 
 			<div class="test-btn">
-				<input type="submit" class="btn btn-primary btn-md" onclick="location.href='{{ url('/testend/') }}'" value="テスト終了">
+				<input type="submit" class="btn btn-primary btn-md" onclick="location.href='{{ url('/surveyend/') }}'" value="アンケート終了">
 			</div>
 
 		</div>

@@ -110,56 +110,56 @@
 				<div class="row row-bottom-padded-md">
 					<div class="col-md-student col-sm-6 col-padding animate-box" data-animate-effect="fadeInLeft">
 						<div class="blog-entry">
-							<a href="#" class="blog-img"><img src="images/img-1.jpg" class="img-responsive" alt="Free HTML5 Bootstrap Template by FreeHTML5.co"></a>
+							<a href="{{ url('/student-details/') }}" class="blog-img"><img src="images/img-1.jpg" class="img-responsive" alt="#"></a>
 							<div class="desc">
-								<h3><a href="#">生徒名</a></h3>
+								<h3><a href="{{ url('/student-details/') }}">生徒名</a></h3>
 								<span>カリキュラム</span>
 								<p>生徒番号001</p>
-								<a href="#" class="lead">生徒詳細<i class="icon-arrow-right3"></i></a>
+								<a href="{{ url('/student-details/') }}" class="lead">生徒詳細<i class="icon-arrow-right3"></i></a>
 							</div>
 						</div>
 					</div>
 					<div class="col-md-student col-sm-6 col-padding animate-box" data-animate-effect="fadeInLeft">
 						<div class="blog-entry">
-							<a href="#" class="blog-img"><img src="images/img-1.jpg" class="img-responsive" alt="Free HTML5 Bootstrap Template by FreeHTML5.co"></a>
+							<a href="{{ url('/student-details/') }}" class="blog-img"><img src="images/img-1.jpg" class="img-responsive" alt="#"></a>
 							<div class="desc">
-								<h3><a href="#">生徒名</a></h3>
+								<h3><a href="{{ url('/student-details/') }}">生徒名</a></h3>
 								<span>カリキュラム</span>
 								<p>生徒番号002</p>
-								<a href="#" class="lead">生徒詳細<i class="icon-arrow-right3"></i></a>
+								<a href="{{ url('/student-details/') }}" class="lead">生徒詳細<i class="icon-arrow-right3"></i></a>
 							</div>
 						</div>
 					</div>
 					<div class="col-md-student col-sm-6 col-padding animate-box" data-animate-effect="fadeInLeft">
 						<div class="blog-entry">
-							<a href="#" class="blog-img"><img src="images/img-1.jpg" class="img-responsive" alt="Free HTML5 Bootstrap Template by FreeHTML5.co"></a>
+							<a href="{{ url('/student-details/') }}" class="blog-img"><img src="images/img-1.jpg" class="img-responsive" alt="#"></a>
 							<div class="desc">
-								<h3><a href="#">生徒名</a></h3>
+								<h3><a href="{{ url('/student-details/') }}">生徒名</a></h3>
 								<span>カリキュラム</span>
 								<p>生徒番号003</p>
-								<a href="#" class="lead">生徒詳細<i class="icon-arrow-right3"></i></a>
+								<a href="{{ url('/student-details/') }}" class="lead">生徒詳細<i class="icon-arrow-right3"></i></a>
 							</div>
 						</div>
 					</div>
 					<div class="col-md-student col-sm-6 col-padding animate-box" data-animate-effect="fadeInLeft">
 						<div class="blog-entry">
-							<a href="#" class="blog-img"><img src="images/img-1.jpg" class="img-responsive" alt="Free HTML5 Bootstrap Template by FreeHTML5.co"></a>
+							<a href="{{ url('/student-details/') }}" class="blog-img"><img src="images/img-1.jpg" class="img-responsive" alt="#"></a>
 							<div class="desc">
-								<h3><a href="#">生徒名</a></h3>
+								<h3><a href="{{ url('/student-details/') }}">生徒名</a></h3>
 								<span>中止</span>
 								<p>生徒番号004</p>
-								<a href="#" class="lead">生徒詳細<i class="icon-arrow-right3"></i></a>
+								<a href="{{ url('/student-details/') }}" class="lead">生徒詳細<i class="icon-arrow-right3"></i></a>
 							</div>
 						</div>
 					</div>
 					<div class="col-md-student col-sm-6 col-padding animate-box" data-animate-effect="fadeInLeft">
 						<div class="blog-entry">
-							<a href="#" class="blog-img"><img src="images/img-1.jpg" class="img-responsive" alt="Free HTML5 Bootstrap Template by FreeHTML5.co"></a>
+							<a href="{{ url('/student-details/') }}" class="blog-img"><img src="images/img-1.jpg" class="img-responsive" alt="#"></a>
 							<div class="desc">
-								<h3><a href="#">生徒名</a></h3>
+								<h3><a href="{{ url('/student-details/') }}">生徒名</a></h3>
 								<span>中止</span>
 								<p>生徒番号005</p>
-								<a href="#" class="lead">生徒詳細<i class="icon-arrow-right3"></i></a>
+								<a href="{{ url('/student-details/') }}" class="lead">生徒詳細<i class="icon-arrow-right3"></i></a>
 							</div>
 						</div>
 					</div>

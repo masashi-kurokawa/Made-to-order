@@ -32,30 +32,42 @@ Route::get('/test/', function () {
     return view('test');
 });
 
+//テスト終了
+Route::get('/testend/', function () {
+    return view('testend');
+});
+
 //アンケート一覧
 Route::get('/surveylist/', function () {
     return view('surveylist');
 });
 
 //アンケート受講
-// Route::get('/home/surveylist/survey/', function(){
-//   return 'アンケート受講';
-// });
+Route::get('/survey/', function () {
+    return view('survey');
+});
+
+//アンケート終了
+Route::get('/surveyend/', function () {
+    return view('surveyend');
+});
 
 //生徒一覧
 Route::get('/student/', function () {
     return view('student');
 });
 
-//
-// Route::get('/home/student/details/', function(){
-//   return '生徒詳細';
-// });
-//
-// Route::get('/home/student/details/testanswer/', function(){
-//   return 'テスト回答内容';
-// });
-//
-// Route::get('/home/student/details/surveyanswer/', function(){
-//   return 'アンケート回答一覧';
-// });
+//生徒詳細
+Route::get('/student-details/', function () {
+    return view('student-details');
+});
+
+//詳細
+Route::get('/details/', function () {
+    return view('details');
+});
+
+//詳細
+Route::get('/score/', function () {
+    return view('score');
+});
