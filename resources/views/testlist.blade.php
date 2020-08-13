@@ -67,7 +67,7 @@
 		<a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle"><i></i></a>
 		<aside id="fh5co-aside" role="complementary" class="border js-fullheight">
 
-			<h1 id="fh5co-logo"><a href="index.html">タイトル</a></h1>
+			<h1 id="fh5co-logo"><a href="{{ url('/home/') }}">タイトル</a></h1>
 			<nav id="fh5co-main-menu" role="navigation">
 				<ul>
 					<li><a href="{{ url('/home/') }}">Home</a></li>
@@ -90,34 +90,34 @@
 				<div class="row row-bottom-padded-md">
 					<div class="col-md-3 col-sm-6 col-padding animate-box" data-animate-effect="fadeInLeft">
 						<div class="blog-entry">
-							<a href="#" class="blog-img"><img src="images/img-1.jpg" class="img-responsive" alt="Free HTML5 Bootstrap Template by FreeHTML5.co"></a>
+							<a href="{{ url('/test/') }}" class="blog-img"><img src="images/img-1.jpg" class="img-responsive" alt="#"></a>
 							<div class="desc">
-								<h3><a href="#">テスト1</a></h3>
+								<h3><a href="{{ url('/test/') }}">テスト1</a></h3>
 								<span><small> 2020 </small> / <small> 7 </small> / <small> 30 </small></span>
 								<p>ここにテキストを入れることができます。</p>
-								<a href="#" class="lead">テストを受講する <i class="icon-arrow-right3"></i></a>
+								<a href="{{ url('/test/') }}" class="lead">テストを受講する <i class="icon-arrow-right3"></i></a>
 							</div>
 						</div>
 					</div>
 					<div class="col-md-3 col-sm-6 col-padding animate-box" data-animate-effect="fadeInLeft">
 						<div class="blog-entry">
-							<a href="#" class="blog-img"><img src="images/img-1.jpg" class="img-responsive" alt="Free HTML5 Bootstrap Template by FreeHTML5.co"></a>
+							<a href="{{ url('/test/') }}" class="blog-img"><img src="images/img-1.jpg" class="img-responsive" alt="#"></a>
 							<div class="desc">
-								<h3><a href="#">テスト2</a></h3>
+								<h3><a href="{{ url('/test/') }}">テスト2</a></h3>
 								<span><small> 2020 </small> / <small> 7 </small> / <small> 29 </small></span>
 								<p>ここにテキストを入れることができます。</p>
-								<a href="#" class="lead">テストを受講する <i class="icon-arrow-right3"></i></a>
+								<a href="{{ url('/test/') }}" class="lead">テストを受講する <i class="icon-arrow-right3"></i></a>
 							</div>
 						</div>
 					</div>
 					<div class="col-md-3 col-sm-6 col-padding animate-box" data-animate-effect="fadeInLeft">
 						<div class="blog-entry">
-							<a href="#" class="blog-img"><img src="images/img-1.jpg" class="img-responsive" alt="Free HTML5 Bootstrap Template by FreeHTML5.co"></a>
+							<a href="{{ url('/test/') }}" class="blog-img"><img src="images/img-1.jpg" class="img-responsive" alt="#"></a>
 							<div class="desc">
-								<h3><a href="#">テスト3</a></h3>
+								<h3><a href="{{ url('/test/') }}">テスト3</a></h3>
 								<span><small> 2020 </small> / <small> 7 </small> / <small> 28 </small></span>
 								<p></p>
-								<a href="#" class="lead">テストを受講する <i class="icon-arrow-right3"></i></a>
+								<a href="{{ url('/test/') }}" class="lead">テストを受講する <i class="icon-arrow-right3"></i></a>
 							</div>
 						</div>
 					</div>

@@ -28,9 +28,9 @@ Route::get('/testlist/', function () {
 });
 
 //テスト受講
-// Route::get('/home/testlist/test/', function(){
-//   return 'テスト受講';
-// });
+Route::get('/test/', function () {
+    return view('test');
+});
 
 //アンケート一覧
 Route::get('/surveylist/', function () {

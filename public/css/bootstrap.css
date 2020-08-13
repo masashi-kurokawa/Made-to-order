@@ -1360,6 +1360,10 @@ pre code {
     width: 25%;
   }
 
+  .col-md-student {
+    width: 20%;
+  }
+
   .col-md-4 {
     width: 33.33333%;
   }
