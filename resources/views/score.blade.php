@@ -53,6 +53,8 @@
 	<link rel="stylesheet" href="css/flexslider.css">
 	<!-- Theme style  -->
 	<link rel="stylesheet" href="css/style.css">
+	<!-- score style  -->
+	<link rel="stylesheet" href="css/score.css">
 
 	<!-- Modernizr JS -->
 	<script src="js/modernizr-2.6.2.min.js"></script>
@@ -83,6 +85,67 @@
 			</div>
 
 		</aside>
+
+		<div id="fh5co-main">
+			<div class="fh5co-narrow-content">
+				<h2 class="fh5co-heading animate-box" data-animate-effect="fadeInLeft">点数早見表</h2>
+
+				<label>選択した期間で受講した生徒をソート：</label>
+				<input type="date" name="sort-start">
+				<label>〜</label>
+				<input type="date" name="sort-end">
+
+				<div class="row row-bottom-padded-md">
+					<table>
+					<tr>
+						<th>生徒</th>
+						<th>テスト1</th>
+						<th>
+							<select class="select-test" name="test" size="1">
+							<option value="">---テストを選択---</option>
+							<option value="選択肢2">テスト1</option>
+							<option value="選択肢3">テスト2</option>
+							<option value="選択肢4">テスト3</option>
+							<option value="選択肢5">テスト4</option>
+							<option value="選択肢6">テスト5</option>
+							<option value="選択肢7">テスト6</option>
+							</select>
+						</th>
+					</tr>
+					<tr>
+						<td>生徒A</td>
+						<td>10点</td>
+						<td>10点</td>
+					</tr>
+					<tr>
+						<td>生徒B</td>
+						<td>10点</td>
+						<td>10点</td>
+					</tr>
+					<tr>
+						<td>生徒C</td>
+						<td>10点</td>
+						<td>10点</td>
+					</tr>
+					</table>
+				</div>
+
+				<form action="">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<input type="submit" class="btn btn-primary btn-md" value="検索">
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</form>
+
+			</div>
+		</div>
 
 
 		</div>
