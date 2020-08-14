@@ -27,6 +27,11 @@ Route::get('/testlist/', function () {
     return view('testlist');
 });
 
+//テスト新規作成
+Route::get('/testcreate/', function () {
+    return view('testcreate');
+});
+
 //テスト受講
 Route::get('/test/', function () {
     return view('test');
@@ -40,6 +45,11 @@ Route::get('/testend/', function () {
 //アンケート一覧
 Route::get('/surveylist/', function () {
     return view('surveylist');
+});
+
+//アンケート新規作成
+Route::get('/surveycreate/', function () {
+    return view('surveycreate');
 });
 
 //アンケート受講

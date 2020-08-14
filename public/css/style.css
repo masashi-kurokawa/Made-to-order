@@ -523,6 +523,7 @@ body.offcanvas #fh5co-main, body.offcanvas .fh5co-nav-toggle {
   color: #e6e6e6;
 }
 .blog-entry .desc .lead {
+  display: block;
   font-size: 11px;
   text-transform: uppercase;
   letter-spacing: 2px;
