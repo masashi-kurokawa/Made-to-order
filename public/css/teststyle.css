@@ -310,7 +310,7 @@ figure figcaption {
   left: 0;
   right: 0;
   content: '';
-  background: rgba(0, 0, 0, 0.3);
+  background: whitesmoke;
 }
 #fh5co-hero .flexslider .slides li {
   background-repeat: no-repeat;
@@ -365,7 +365,7 @@ figure figcaption {
 #fh5co-hero .flexslider .slider-text > .slider-text-inner h1, #fh5co-hero .flexslider .slider-text > .slider-text-inner h2 {
   margin: 0;
   padding: 0;
-  color: white;
+  color: #000;
   font-family: "Roboto", Arial, sans-serif;
 }
 #fh5co-hero .flexslider .slider-text > .slider-text-inner h1 {
@@ -412,7 +412,7 @@ figure figcaption {
   text-transform: uppercase;
   letter-spacing: 2px;
   color: #fff;
-  padding: 22px 30px !important;
+
   border: none;
   font-weight: 500;
 }
@@ -523,7 +523,6 @@ body.offcanvas #fh5co-main, body.offcanvas .fh5co-nav-toggle {
   color: #e6e6e6;
 }
 .blog-entry .desc .lead {
-  display: block;
   font-size: 11px;
   text-transform: uppercase;
   letter-spacing: 2px;

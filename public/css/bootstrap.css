@@ -133,7 +133,6 @@ samp {
 button,
 input,
 optgroup,
-select,
 textarea {
   color: inherit;
   font: inherit;
@@ -1358,6 +1357,10 @@ pre code {
 
   .col-md-3 {
     width: 25%;
+  }
+
+  .col-md-student {
+    width: 20%;
   }
 
   .col-md-4 {

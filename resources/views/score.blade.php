@@ -7,7 +7,7 @@
 	<head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>タイトル &mdash; アンケート一覧</title>
+	<title>タイトル &mdash; HOME</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="description" content="Free HTML5 Website Template by FreeHTML5.co" />
 	<meta name="keywords" content="free html5, free template, free bootstrap, free website template, html5, css3, mobile first, responsive" />
@@ -53,6 +53,8 @@
 	<link rel="stylesheet" href="css/flexslider.css">
 	<!-- Theme style  -->
 	<link rel="stylesheet" href="css/style.css">
+	<!-- score style  -->
+	<link rel="stylesheet" href="css/score.css">
 
 	<!-- Modernizr JS -->
 	<script src="js/modernizr-2.6.2.min.js"></script>
@@ -72,9 +74,9 @@
 				<ul>
 					<li><a href="{{ url('/home/') }}">Home</a></li>
 					<li><a href="{{ url('/testlist/') }}">テスト一覧</a></li>
-					<li class="fh5co-active"><a href="{{ url('/surveylist/') }}">アンケート一覧</a></li>
+					<li><a href="{{ url('/surveylist/') }}">アンケート一覧</a></li>
 					<li><a href="{{ url('/student/') }}">生徒一覧</a></li>
-					<li><a href="{{ url('/score/') }}">点数早見表</a></li>
+					<li class="fh5co-active"><a href="{{ url('/score/') }}">点数早見表</a></li>
 				</ul>
 			</nav>
 
@@ -86,52 +88,67 @@
 
 		<div id="fh5co-main">
 			<div class="fh5co-narrow-content">
-				<h2 class="fh5co-heading animate-box" data-animate-effect="fadeInLeft">アンケート一覧</h2>
+				<h2 class="fh5co-heading animate-box" data-animate-effect="fadeInLeft">点数早見表</h2>
 
-				<input type="submit" class="btn btn-primary btn-md" onclick="location.href='{{ url('/surveycreate/') }}'" value="新規作成">
+				<label>選択した期間で受講した生徒をソート：</label>
+				<input type="date" name="sort-start">
+				<label>〜</label>
+				<input type="date" name="sort-end">
 
 				<div class="row row-bottom-padded-md">
-					<div class="col-md-3 col-sm-6 col-padding animate-box" data-animate-effect="fadeInLeft">
-						<div class="blog-entry">
-							<a href="{{ url('/survey/') }}" class="blog-img"><img src="images/img-1.jpg" class="img-responsive" alt="#"></a>
-							<div class="desc">
-								<h3><a href="{{ url('/survey/') }}">アンケート1</a></h3>
-								<span><small> 2020 </small> / <small> 7 </small> / <small> 30 </small></span>
-								<p>ここにテキストを入れることができます。</p>
-								<a href="{{ url('/survey/') }}" class="lead">アンケートを受講する <i class="icon-arrow-right3"></i></a>
-								<a href="{{ url('/survey/') }}" class="lead">詳細・編集</a>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-3 col-sm-6 col-padding animate-box" data-animate-effect="fadeInLeft">
-						<div class="blog-entry">
-							<a href="{{ url('/survey/') }}" class="blog-img"><img src="images/img-1.jpg" class="img-responsive" alt="#"></a>
-							<div class="desc">
-								<h3><a href="{{ url('/survey/') }}">アンケート2</a></h3>
-								<span><small> 2020 </small> / <small> 7 </small> / <small> 29 </small></span>
-								<p>ここにテキストを入れることができます。</p>
-								<a href="{{ url('/survey/') }}" class="lead">アンケートを受講する <i class="icon-arrow-right3"></i></a>
-								<a href="{{ url('/survey/') }}" class="lead">詳細・編集</a>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-3 col-sm-6 col-padding animate-box" data-animate-effect="fadeInLeft">
-						<div class="blog-entry">
-							<a href="{{ url('/survey/') }}" class="blog-img"><img src="images/img-1.jpg" class="img-responsive" alt="#"></a>
-							<div class="desc">
-								<h3><a href="{{ url('/survey/') }}">アンケート3</a></h3>
-								<span><small> 2020 </small> / <small> 7 </small> / <small> 28 </small></span>
-								<p></p>
-								<a href="{{ url('/survey/') }}" class="lead">アンケートを受講する <i class="icon-arrow-right3"></i></a>
-								<a href="{{ url('/survey/') }}" class="lead">詳細・編集</a>
-							</div>
-						</div>
-					</div>
+					<table>
+					<tr>
+						<th>生徒</th>
+						<th>テスト1</th>
+						<th>
+							<select class="select-test" name="test" size="1">
+							<option value="">---テストを選択---</option>
+							<option value="選択肢2">テスト1</option>
+							<option value="選択肢3">テスト2</option>
+							<option value="選択肢4">テスト3</option>
+							<option value="選択肢5">テスト4</option>
+							<option value="選択肢6">テスト5</option>
+							<option value="選択肢7">テスト6</option>
+							</select>
+						</th>
+					</tr>
+					<tr>
+						<td>生徒A</td>
+						<td>10点</td>
+						<td>10点</td>
+					</tr>
+					<tr>
+						<td>生徒B</td>
+						<td>10点</td>
+						<td>10点</td>
+					</tr>
+					<tr>
+						<td>生徒C</td>
+						<td>10点</td>
+						<td>10点</td>
+					</tr>
+					</table>
 				</div>
+
+				<form action="">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<input type="submit" class="btn btn-primary btn-md" value="検索">
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</form>
+
 			</div>
+		</div>
+
 
 		</div>
-	</div>
 
 	<!-- jQuery -->
 	<script src="js/jquery.min.js"></script>
