@@ -90,6 +90,12 @@
 
 				<input type="submit" class="btn btn-primary btn-md" onclick="location.href='{{ url('/testcreate/') }}'" value="新規作成">
 
+      <!-- ここにテスト一覧のfor文を書く 始まり-->
+
+
+			<!-- ここにテスト一覧のfor文を書く 終わり-->
+			<!-- ここからまとめる -->
+
 				<div class="row row-bottom-padded-md">
 					<div class="col-md-3 col-sm-6 col-padding animate-box" data-animate-effect="fadeInLeft">
 						<div class="blog-entry">
@@ -128,6 +134,9 @@
 						</div>
 					</div>
 				</div>
+
+				<!-- ここまでまとめる -->
+
 			</div>
 
 		</div>
