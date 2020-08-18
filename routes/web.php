@@ -23,9 +23,10 @@ Route::get('/home/', function () {
 });
 
 //テスト一覧
-Route::get('/testlist/', function () {
-    return view('testlist');
-});
+//app/http/testlist/testlistController中の@index関数
+Route::get('/testlist/', 'TestlistController@index');
+
+
 
 //テスト受講
 Route::get('/test/', function () {
