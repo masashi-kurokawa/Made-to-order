@@ -87,6 +87,9 @@
 		<div id="fh5co-main">
 			<div class="fh5co-narrow-content">
 				<h2 class="fh5co-heading animate-box" data-animate-effect="fadeInLeft">テスト一覧</h2>
+
+				<input type="submit" class="btn btn-primary btn-md" onclick="location.href='{{ url('/testcreate/') }}'" value="新規作成">
+
 				<div class="row row-bottom-padded-md">
 					<div class="col-md-3 col-sm-6 col-padding animate-box" data-animate-effect="fadeInLeft">
 						<div class="blog-entry">
@@ -96,6 +99,7 @@
 								<span><small> 2020 </small> / <small> 7 </small> / <small> 30 </small></span>
 								<p>ここにテキストを入れることができます。</p>
 								<a href="{{ url('/test/') }}" class="lead">テストを受講する <i class="icon-arrow-right3"></i></a>
+								<a href="{{ url('/test/') }}" class="lead">詳細・編集</a>
 							</div>
 						</div>
 					</div>
@@ -107,6 +111,7 @@
 								<span><small> 2020 </small> / <small> 7 </small> / <small> 29 </small></span>
 								<p>ここにテキストを入れることができます。</p>
 								<a href="{{ url('/test/') }}" class="lead">テストを受講する <i class="icon-arrow-right3"></i></a>
+								<a href="{{ url('/test/') }}" class="lead">詳細・編集</a>
 							</div>
 						</div>
 					</div>
@@ -118,6 +123,7 @@
 								<span><small> 2020 </small> / <small> 7 </small> / <small> 28 </small></span>
 								<p></p>
 								<a href="{{ url('/test/') }}" class="lead">テストを受講する <i class="icon-arrow-right3"></i></a>
+								<a href="{{ url('/test/') }}" class="lead">詳細・編集</a>
 							</div>
 						</div>
 					</div>
