@@ -81,3 +81,13 @@ Route::get('/details/', function () {
 Route::get('/score/', function () {
     return view('score');
 });
+
+
+Route::get('/login/', function () {
+    return view('login');
+});
+Route::get('/login2/', function () {
+    return view('login2');
+});
+Route::get('/redirect', 'OAuthController@redirectToProvider');
+Route::get('/callback', 'OAuthController@handleProviderCallback');
