@@ -1,4 +1,4 @@
-
+<!-- タイマー書く -->
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -110,7 +110,7 @@
 			<!-- ここからまとめる -->
 
 				<div class="row row-bottom-padded-md">
-	
+
 				@foreach ($dblist as $key => $tests)
 					<div class="col-md-3 col-sm-6 col-padding animate-box" data-animate-effect="fadeInLeft">
 						<div class="blog-entry">
