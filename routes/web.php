@@ -18,9 +18,7 @@ Route::get('/', function () {
 });
 
 //ホーム画面
-Route::get('/home/', function () {
-    return view('home');
-});
+Route::get('/home/', 'HomeController@index');
 
 //テスト一覧
 //app/http/testlist/testlistController中の@index関数

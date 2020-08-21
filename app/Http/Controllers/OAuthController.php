@@ -13,6 +13,7 @@ class OAuthController extends Controller
     public function handleProviderCallback()
     {
         $user = Socialite::driver('slack')->stateless()->user();
+        dump($user);
         return view('login2', ['user' => $user]);
     }
 }
