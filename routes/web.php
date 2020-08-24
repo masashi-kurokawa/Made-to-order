@@ -20,7 +20,7 @@ Route::get('/', function () {
 //ホーム画面
 Route::get('/home/', 'HomeController@index');
 
-//テスト一覧
+//////////////////////////////////テスト一覧
 //app/http/testlist/testlistController中の@index関数
 Route::get('/testlist/', 'TestlistController@index');
 
@@ -61,7 +61,7 @@ Route::get('/surveyend/', function () {
     return view('surveyend');
 });
 
-//生徒一覧
+////////////////////生徒一覧
 Route::get('/student/', 'StudentController@index');
 
 
