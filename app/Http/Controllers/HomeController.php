@@ -32,7 +32,7 @@ class HomeController extends Controller
       return view('home', [
             'slack_client_id' => env('SLACK_CLIENT_ID'),
             'slack_client_secret' => env('SLACK_CLIENT_SECRET'),
-            'user_info' => $user_info,
+            // 'user_info' => $user_info,
         ]);
     }
 }
