@@ -16,7 +16,9 @@ class TestlistController extends Controller
              $test = new test;
              $dblist = $test
              ->where('question_id',1)
-             ->where('user_id',$session_userid)
+             ->orwhere('question_id',2)
+             ->orwhere('question_id',3)
+            ->where('user_id',$session_userid)
              ->get();
             
 

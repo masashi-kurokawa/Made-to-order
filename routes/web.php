@@ -64,9 +64,8 @@ Route::get('/surveyend/', function () {
 });
 
 //生徒一覧
-Route::get('/student/', function () {
-    return view('student');
-});
+Route::get('/student/', 'StudentController@index');
+
 
 //生徒詳細
 Route::get('/student-details/', function () {
