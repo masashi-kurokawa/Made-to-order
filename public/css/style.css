@@ -1165,4 +1165,14 @@ body.offcanvas #fh5co-main, body.offcanvas .fh5co-nav-toggle {
   opacity: 0;
 }
 
+/* タイマー用のCSS */
+.box {
+     background-color: #F33;
+     font-weight: bold;
+     color: #FFF;
+     font-size: 72px;
+     border-radius: 20px;
+     padding: 20px;
+}
+
 /*# sourceMappingURL=style.css.map */
