@@ -87,6 +87,10 @@
 		</aside>
 
 	<div id="fh5co-main">
+		<div class="">
+			<h1 id="timer" class="hako box"></h1>
+			<!-- <p id="timer" class="hako box"></p> -->
+		</div>
 		<div class="fh5co-narrow-content">
 			<h2 class="fh5co-heading animate-box" data-animate-effect="fadeInLeft">テスト1</h2>
 
@@ -236,6 +240,55 @@
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCefOgb1ZWqYtj7raVSmN4PL2WkTrc-KyA&sensor=false"></script>
 	<script src="js/google_map.js"></script>
 
+	<!-- タイマー機能の処理（jquery） -->
+	<script>
+
+	var to_timeup = 10;
+			var max = 10;
+			var intervalid;
+			var start_flag = false;
+
+			function count_start(){
+					console.log("count_start");
+				 if(start_flag===false){
+					intervalid = setInterval(count_down,1000);
+					start_flag = true;
+				 }
+			}
+
+			function count_down(){
+				console.log("count_down");
+				var timer = document.getElementById("timer");
+				if(to_timeup===0){
+					// 次のページに行く様にするPHP使う
+					// 下に行きたいページ遷移をかく
+					// window.location.href = '{{ url('/home/') }}';
+					timer.innerHTML = 'Time up!'
+					timer.style.color="red";      　　　　　　　　
+					count_stop();
+				}   else {
+					to_timeup--;
+					padding();
+				}
+			}
+
+			function padding(){
+					var timer=document.getElementById("timer");
+					var min = 0;
+					var sec = 0;
+					min = Math.floor(to_timeup/60);
+					sec = (to_timeup%60);
+					min = ("0"+min).slice(-2);
+					sec = ("0"+sec).slice(-2);
+					timer.innerHTML = min +":"+ sec;
+			}
+
+			window.onload = function(){
+					padding();
+					count_start();
+			}
+
+　</script>
 
 	<!-- MAIN JS -->
 	<script src="js/main.js"></script>
