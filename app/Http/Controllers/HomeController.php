@@ -3,16 +3,36 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Services\SlackApi;
+
 
 class HomeController extends Controller
 {
     //
     public function index()
     {
-      $a = 'https://slack.com/oauth/authorize?client_id=1327615939521.1327617199249&scope=identify&redirect_uri=http://192.168.33.10/carecon/public/home/';
-      dump($a);
-      echo "ok";
 
-      return view('home');
+      if (isset($_GET['code'])) {
+
+          $slack_api = new Slackapi;
+
+          $accesstoken = $slack_api->getAcsesstoken($_GET['code']);
+
+          if (isset($accesstoken)) {
+
+              $token = $accesstoken['access_token'];
+              $user_id = $accesstoken['user_id'];
+
+              $user_info = $slack_api->seachUserInfo($token, $user_id);
+              dump($user_info);
+          }
+
+      }
+
+      return view('home', [
+            'slack_client_id' => env('SLACK_CLIENT_ID'),
+            'slack_client_secret' => env('SLACK_CLIENT_SECRET'),
+            'user_info' => $user_info,
+        ]);
     }
 }
