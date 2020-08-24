@@ -70,8 +70,8 @@
 			<h1 id="fh5co-logo"><a href="{{ url('/home/') }}">タイトル</a></h1>
 			<nav id="fh5co-main-menu" role="navigation">
 				<ul>
-					<li class="fh5co-active"><a href="{{ url('/home/') }}">Home（ホーム）</a></li>
-					<li><a href="{{ url('/testlist/') }}">テスト（Test）一覧</a></li>
+					<li class="fh5co-active"><a href="{{ url('/home/') }}">Home</a></li>
+					<li><a href="{{ url('/testlist/') }}">テスト一覧</a></li>
 					<li><a href="{{ url('/surveylist/') }}">アンケート一覧</a></li>
 					<li><a href="{{ url('/student/') }}">生徒一覧</a></li>
 					<li><a href="{{ url('/score/') }}">点数早見表</a></li>
@@ -97,7 +97,7 @@
 					   					<h1>タイトル（未定）を入れる</h1>
 					   					<h2>Slack Log in</h2>
 											<p>
-												<a class="btn btn-primary btn-demo popup-vimeo" href="#">ログイン</a>
+												<a class="btn btn-primary btn-demo popup-vimeo" href="https://slack.com/oauth/authorize?client_id={{$slack_client_id}}&scope=identify&redirect_uri={{ url('/home/') }}">ログイン</a>
 												<a class="btn btn-primary btn-learn">ログアウト</a>
 											</p>
 					   				</div>

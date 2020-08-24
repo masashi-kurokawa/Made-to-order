@@ -18,14 +18,13 @@ Route::get('/', function () {
 });
 
 //ホーム画面
-Route::get('/home/', function () {
-    return view('home');
-});
+Route::get('/home/', 'HomeController@index');
 
-//テスト一覧
-Route::get('/testlist/', function () {
-    return view('testlist');
-});
+//////////////////////////////////テスト一覧
+//app/http/testlist/testlistController中の@index関数
+Route::get('/testlist/', 'TestlistController@index');
+
+
 
 //テスト新規作成
 Route::get('/testcreate/', function () {
@@ -62,10 +61,9 @@ Route::get('/surveyend/', function () {
     return view('surveyend');
 });
 
-//生徒一覧
-Route::get('/student/', function () {
-    return view('student');
-});
+////////////////////生徒一覧
+Route::get('/student/', 'StudentController@index');
+
 
 //生徒詳細
 Route::get('/student-details/', function () {
@@ -81,3 +79,13 @@ Route::get('/details/', function () {
 Route::get('/score/', function () {
     return view('score');
 });
+
+
+Route::get('/login/', function () {
+    return view('login');
+});
+Route::get('/login2/', function () {
+    return view('login2');
+});
+Route::get('/redirect', 'OAuthController@redirectToProvider');
+Route::get('/callback', 'OAuthController@handleProviderCallback');

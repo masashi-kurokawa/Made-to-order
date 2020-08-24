@@ -63,6 +63,7 @@
 
 	</head>
 	<body>
+
 	<div id="fh5co-page">
 		<a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle"><i></i></a>
 		<aside id="fh5co-aside" role="complementary" class="border js-fullheight">
@@ -90,65 +91,27 @@
 
 				<input type="submit" class="btn btn-primary btn-md" onclick="location.href='{{ url('/testcreate/') }}'" value="新規作成">
 
-      <!-- ここにテスト一覧のfor文を書く 始まり-->
-			<div class="row row-bottom-padded-md">　<!-- 大枠始まり -->
-				<div class="col-md-3 col-sm-6 col-padding animate-box" data-animate-effect="fadeInLeft">　<!-- 各テストの囲い、ここを回す -->
-					<div class="blog-entry">
-						<a href="{{ url('/test/') }}" class="blog-img"><img src="images/img-1.jpg" class="img-responsive" alt="#"></a>
-						<div class="desc">
-							<h3><a href="{{ url('/test/') }}">テスト1</a></h3>
-							<span><small> 2020 </small> / <small> 7 </small> / <small> 30 </small></span>
-							<p>ここにテキストを入れることができます。</p>
-							<a href="{{ url('/test/') }}" class="lead">テストを受講する <i class="icon-arrow-right3"></i></a>
-							<a href="{{ url('/test/') }}" class="lead">詳細・編集</a>
-						</div>
-					</div>
-				</div>　<!-- 各テストの囲い終わり -->
-			</div>　<!-- 大枠終わり -->
-			<!-- ここにテスト一覧のfor文を書く 終わり-->
-			<!-- ここからまとめる -->
-
 				<div class="row row-bottom-padded-md">
+
+				@foreach ($dblist as $key => $tests)
 					<div class="col-md-3 col-sm-6 col-padding animate-box" data-animate-effect="fadeInLeft">
 						<div class="blog-entry">
-							<a href="{{ url('/test/') }}" class="blog-img"><img src="images/img-1.jpg" class="img-responsive" alt="#"></a>
+							<a href="{{ url('/test/') }}" class="blog-img"><img src="{{$tests->test_img}}" class="img-responsive" alt="#"></a>
 							<div class="desc">
-								<h3><a href="{{ url('/test/') }}">テスト1</a></h3>
-								<span><small> 2020 </small> / <small> 7 </small> / <small> 30 </small></span>
+								<h3><a href="{{ url('/test/') }}">{{$tests->test_title}}</a></h3>
+								<span><small>{{$tests->updated}} </small></span>
 								<p>ここにテキストを入れることができます。</p>
 								<a href="{{ url('/test/') }}" class="lead">テストを受講する <i class="icon-arrow-right3"></i></a>
 								<a href="{{ url('/test/') }}" class="lead">詳細・編集</a>
 							</div>
 						</div>
 					</div>
-					<div class="col-md-3 col-sm-6 col-padding animate-box" data-animate-effect="fadeInLeft">
-						<div class="blog-entry">
-							<a href="{{ url('/test/') }}" class="blog-img"><img src="images/img-1.jpg" class="img-responsive" alt="#"></a>
-							<div class="desc">
-								<h3><a href="{{ url('/test/') }}">テスト2</a></h3>
-								<span><small> 2020 </small> / <small> 7 </small> / <small> 29 </small></span>
-								<p>ここにテキストを入れることができます。</p>
-								<a href="{{ url('/test/') }}" class="lead">テストを受講する <i class="icon-arrow-right3"></i></a>
-								<a href="{{ url('/test/') }}" class="lead">詳細・編集</a>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-3 col-sm-6 col-padding animate-box" data-animate-effect="fadeInLeft">
-						<div class="blog-entry">
-							<a href="{{ url('/test/') }}" class="blog-img"><img src="images/img-1.jpg" class="img-responsive" alt="#"></a>
-							<div class="desc">
-								<h3><a href="{{ url('/test/') }}">テスト3</a></h3>
-								<span><small> 2020 </small> / <small> 7 </small> / <small> 28 </small></span>
-								<p></p>
-								<a href="{{ url('/test/') }}" class="lead">テストを受講する <i class="icon-arrow-right3"></i></a>
-								<a href="{{ url('/test/') }}" class="lead">詳細・編集</a>
-							</div>
-						</div>
-					</div>
+					@endforeach
+
+
+
+
 				</div>
-
-				<!-- ここまでまとめる -->
-
 			</div>
 
 		</div>
