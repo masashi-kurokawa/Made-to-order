@@ -1,127 +1,72 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="ja">
 <head>
-<meta charset="utf-8">
-<title>フォーム入力項目を動的に追加・削除【jquery】：サンプル</title>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script type="text/javascript">
-$(function() {
-	//追加
-	$('.addformbox').click(function() {
-		//クローンを変数に格納
-		var clonecode = $('.box:last').clone(true);
+    <meta charset="utf-8">
+    <title>テーブル追加</title>
+		<!-- スタイル読み込み -->
+		<link rel="stylesheet" href="css/home.css">
+		<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+</head>
+<body>
+<div class="container">
+    <table>
+        <tbody>
+            <tr>
+              <td><textarea name="kanso" rows="4" cols="50">ここに問題文を入力してください。</textarea></td>
+							<td>
+		 					<input type="radio" name="a"><input type="text" name="answer" value="回答を入力してください。">
+		 					<input type="radio" name="a"><input type="text" name="answer" value="回答を入力してください。">
+		 					<input type="radio" name="a"><input type="text" name="answer" value="回答を入力してください。">
+		 					<input type="radio" name="a"><input type="text" name="answer" value="回答を入力してください。">
+	 						</td>
+              <td><button class="remove">-</button></td>
+            </tr>
+        </tbody>
+    </table>
+    <button id="addRow">+ 問題追加</button>
+		<button id="add">+ 問題追加</button>
+    <button id="getValues">値を取得</button>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script>
+$(function(){
 
-		//数字を＋１し変数に格納
-		var cloneno = clonecode.attr('data-formno');
-		var cloneno2 = parseInt(cloneno) + 1;
-		var cloneno3 = parseInt(cloneno) + 2;
+		// 並び替え機能
+    $('tbody').sortable();
 
-		//data属性の数字を＋１
-		clonecode.attr('data-formno',cloneno2);
+		// Tr追加処理
+		//追加ボタンがクリックされたら、function(){…}の処理を実行する
+		$('#addRow').click(function(){
+        var html = '<tr><td><textarea name="kanso" rows="4" cols="50">ここに問題文を入力してください。</textarea></td><td><input type="text" name="text" value="回答を入力してください。"></td><td><button class="remove">-</button></td></tr>';
+				//append()を使ってtbody内の一番最後にhtmlを追加する
+				$('tbody').append(html);
+    });
 
-		//数値
-		clonecode.find('.no').html(cloneno3);
+		//追加ボタンがクリックされたら、function(){…}の処理を実行する
+		$('#add').click(function(){
+        var html = '<tr><td><textarea name="kanso" rows="4" cols="50">ここに問題文を入力してください。</textarea></td><td><input type="radio" name="radio"><input type="text" name="answer" value="回答を入力してください。"><input type="radio" name="radio"><input type="text" name="answer" value="回答を入力してください。"><input type="radio" name="radio"><input type="text" name="answer" value="回答を入力してください。"><input type="radio" name="radio"><input type="text" name="answer" value="回答を入力してください。"></td><td><button class="remove">-</button></td></tr>';
+				//append()を使ってtbody内の一番最後にhtmlを追加する
+				$('tbody').append(html);
+    });
 
-		//name属性の数字を+1
-		var namecode = clonecode.find('input.namae').attr('name');
-		namecode = namecode.replace(/input\[[0-9]{1,2}/g,'input[' + cloneno2);
-		clonecode.find('input.namae').attr('name',namecode);
+		// Tr削除処理
+		//削除ボタンがクリックされたら、function(){…}の処理を実行する
+		$(document).on('click', '.remove', function() {
+				//クリックされた.removeの親要素trをremove（削除）する
+        $(this).parents('tr').remove();
+    });
 
-		var namecode2 = clonecode.find('textarea.toiawase').attr('name');
-		namecode2 = namecode2.replace(/textarea\[[0-9]{1,2}/g,'textarea[' + cloneno2);
-		clonecode.find('textarea.toiawase').attr('name',namecode2);
-
-		//HTMLに追加
-		clonecode.insertAfter($('.box:last'));
-	});
-
-
-	//削除
-	$('.deletformbox').click(function() {
-		//クリックされた削除ボタンの親要素を削除
-		$(this).parents(".box").remove();
-
-		var scount = 0;
-		//番号振り直し
-		$('.box').each(function(){
-			var scount2 = scount + 1;
-
-			//data属性の数字
-			$(this).attr('data-formno',scount);
-
-			$('.no',this).html(scount2);
-
-
-			//input質問タイトル番号振り直し
-			var name = $('input.namae',this).attr('name');
-			name = name.replace(/input\[[0-9]{1,2}/g,'input[' + scount);
-			$('input.namae',this).attr('name',name);
-
-			var name2 = $('textarea.toiawase',this).attr('name');
-			name2 = name2.replace(/textarea\[[0-9]{1,2}/g,'textarea[' + scount);
-			$('textarea.toiawase',this).attr('name',name2);
-
-			scount += 1;
-		});
-	});
+		// 値を取得処理（確認用）
+		$('#getValues').click(function(){
+        var values = [];
+        $('input[name="name"]').each(function(i, elem){
+            values.push($(elem).val());
+        });
+        alert(values.join(', '));
+    });
 
 });
 </script>
-</head>
-
-<body>
-	<!--action=""の中に最初は route('parts.store') が入っていた。石塚さん作成。 -->
-	<form method="POST" action="{{ url('/testcreate/') }}">
-   @csrf
-	<div class="box" data-formno="0" style="border:dashed 1px #ccc">
-		<p class="no">1</p>
-		<p>
-		【問題タイトル】<br>
-		<input type="text" name="part_title" class="form-control {{ $errors->has('part_title') ? 'is-invalid' : '' }}"
-		id = "part_title"
-		value=""
-		>
-		</p>
-		<p>
-		【問題内容】<br>
-		<textarea name="textarea[0]" cols="30" rows="10" class="toiawase"></textarea>
-		</p>
-		<a class="deletformbox">削除</a>
-	</div>
-	<p><a class="addformbox">追加</a></p>
-
-	<div class="box" data-formno="0" style="border:dashed 1px #ccc">
-		<p class="no">1</p>
-		<p>
-		【問題タイトル】<br>
-		<input type="text" name="input[0]" class="namae">
-		</p>
-		<p>
-		【問題内容】<br>
-		<textarea name="textarea[0]" cols="30" rows="10" class="toiawase"></textarea>
-		</p>
-		<a class="deletformbox">削除</a>
-	</div>
-	<p><a class="addformbox">追加</a></p>
-
-	<div class="box" data-formno="0" style="border:dashed 1px #ccc">
-		<p class="no">1</p>
-		<p>
-		【問題タイトル】<br>
-		<input type="text" name="input[0]" class="namae">
-		</p>
-		<p>
-		【問題内容】<br>
-		<textarea name="textarea[0]" cols="30" rows="10" class="toiawase"></textarea>
-		</p>
-		<a class="deletformbox">削除</a>
-	</div>
-	<p><a class="addformbox">追加</a></p>
-
-	<button type="submit" class="btn btn-primary">作成する</button>
-   </form>
-
-	 <input type="submit" class="btn btn-primary btn-md" onclick="location.href='{{ url('/testlist/') }}'" value="戻る">
-
-	</body>
+</body>
 </html>
