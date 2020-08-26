@@ -250,12 +250,15 @@ figure figcaption {
   color: #228896;
 }
 
+/* タイマーの基準値入れてある */
 #fh5co-main {
   width: 80%;
   float: right;
   -webkit-transition: 0.5s;
   -o-transition: 0.5s;
   transition: 0.5s;
+  /* タイマー用の固定基準 */
+  /* position:relative; */
 }
 @media screen and (max-width: 1200px) {
   #fh5co-main {
@@ -1167,11 +1170,30 @@ body.offcanvas #fh5co-main, body.offcanvas .fh5co-nav-toggle {
 
 /* タイマー用のCSS */
 .box {
-     background-color: #F33;
-     font-weight: bold;
-     color: #FFF;
-     font-size: 72px;
-     border-radius: 20px;
-     padding: 20px;
+  background-color: #00CCFF;
+  font-weight: bold;
+  color: #FFF;
+  font-size: 72px;
+  border-radius: 20px;
+  padding: 20px;
+  width: 80%;
+  opacity: 0.9;
 }
+
+.hako {
+  width: auto;
+  border: 1px solid #CCC;
+  text-align: center;
+  margin: 30px;
+  position: fixed;
+  width: 60%;
+  top: 20px;
+  z-index: 10000;
+}
+
+/* 幅を持たせる為に入れている、画面次第では崩れるかも */
+.timerbox {
+  height: 200px;
+}
+
 /*# sourceMappingURL=style.css.map */

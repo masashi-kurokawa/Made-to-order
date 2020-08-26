@@ -87,9 +87,8 @@
 		</aside>
 
 	<div id="fh5co-main">
-		<div class="">
+		<div class="timerbox">
 			<h1 id="timer" class="hako box"></h1>
-			<!-- <p id="timer" class="hako box"></p> -->
 		</div>
 		<div class="fh5co-narrow-content">
 			<h2 class="fh5co-heading animate-box" data-animate-effect="fadeInLeft">テスト1</h2>
@@ -264,7 +263,7 @@
 					// 下に行きたいページ遷移をかく
 					// window.location.href = '{{ url('/home/') }}';
 					timer.innerHTML = 'Time up!'
-					timer.style.color="red";      　　　　　　　　
+					timer.style.color="white";
 					count_stop();
 				}   else {
 					to_timeup--;
