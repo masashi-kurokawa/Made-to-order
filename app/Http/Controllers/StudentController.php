@@ -11,14 +11,16 @@ class StudentController extends Controller
     {
        
 $student=new user;
-$dblist = $student->get();
-echo"<pre>";
-print_r($dblist);
-echo"</pre>";      
+$dblist = $student
+->where('user_id',1)
+->get();
+    
 
 
-        return view('student');
+
+
+        return view('student',compact('dblist'));
        
-       
+    
     }
 }
