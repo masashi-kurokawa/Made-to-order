@@ -16,9 +16,10 @@ class CreateMadeordersTable extends Migration
       if (!Schema::hasTable('users')) {
         Schema::create('users', function (Blueprint $table) {
           $table->increments('user_id')->comment('ユーザの主キー');
+          $table->string('slack_name', 255)->comment('ユーザの名前');
+          $table->string('slack_id', 255)->comment('スラックのID');
+          $table->string('slack_mail', 255)->comment('スラックに登録したメールアドレス');
           $table->integer('role')->comment('権限1、ユーザー2、講師3、営業');
-          $table->string('user_name', 255)->comment('ユーザの名前');
-          $table->string('password')->comment('パスワード');
           $table->timestamps();
         });
       }
