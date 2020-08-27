@@ -24,7 +24,8 @@ class RegisterUser extends FormRequest
     public function rules()
     {
         return [
-            //
+            'slack_id' => 'unique',
+            'slack_mail' => 'unique|email',
         ];
     }
 }
