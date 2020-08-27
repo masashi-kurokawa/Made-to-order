@@ -63,12 +63,10 @@
 
 	</head>
 	<body>
-	
 	<div id="fh5co-page">
 		<a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle"><i></i></a>
 		<aside id="fh5co-aside" role="complementary" class="border js-fullheight">
-			
-			
+
 			<h1 id="fh5co-logo"><a href="{{ url('/home/') }}">タイトル</a></h1>
 			<nav id="fh5co-main-menu" role="navigation">
 				<ul>
@@ -83,7 +81,7 @@
 			<div class="fh5co-footer">
 				<p><small>&copy; 2020 carecon. All Rights Reserved.</small></p>
 			</div>
-			
+
 		</aside>
 
 		<div id="fh5co-main">
@@ -111,21 +109,19 @@
 
 				<div class="row row-bottom-padded-md">
 				@foreach ($dblist as $key => $user)
-					<div class="col-md-student col-sm-6 col-padding animate-box" data-animate-effect="fadeInLeft">
+				<div class="col-md-student col-sm-6 col-padding animate-box" data-animate-effect="fadeInLeft">
 						<div class="blog-entry">
 							<a href="{{ url('/student-details/') }}" class="blog-img"><img src="{{$user->img}}" class="img-responsive" alt="#"></a>
 							<div class="desc">
 								<h3><a href="{{ url('/student-details/') }}">{{$user->user_name}}</a></h3>
 								<span>カリキュラム</span>
-								<p>生徒番号001</p>
-								<!--不明------------------------------------------------------------------>
+								<p>{{$user->user_id}}</p>
 								<a href="{{ url('/student-details/') }}" class="lead">生徒詳細<i class="icon-arrow-right3"></i></a>
 							</div>
 						</div>
 					</div>
 					@endforeach
 					
-
 				</div>
 			</div>
 		</div>
