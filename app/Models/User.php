@@ -8,13 +8,13 @@ use Illuminate\Http\Request;
 
 class User extends Model
 {
-    public function registerUser(Request $request)
+    public function registerUser($slack_name, $slack_id, $slack_mail)
     {
         $user = new User();
-        $user->slack_name = $request->slack_name;
-        $user->slack_id = $request->slack_id;
-        $user->slack_mail = $request->slack_mail;
-        $user->role = $request->role;
+        $user->slack_name = $slack_name;
+        $user->slack_id = $slack_id;
+        $user->slack_mail = $slack_mail;
+        $user->role = 1;
         $user->save();
     }
 }

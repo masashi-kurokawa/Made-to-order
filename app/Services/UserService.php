@@ -10,11 +10,11 @@ class UserService extends Service
 
 		public function __construct(User $userModel)
     {
-				$this->$userModel = $userModel;
+				$this->userModel = $userModel;
     }
 
-    public function registerUser(Request $request)
+    public function registerUser($slack_name, $slack_id, $slack_mail)
     {
-        return $this->userModel->registerUser($request);
+        return $this->userModel->registerUser($slack_name, $slack_id, $slack_mail);
     }
 }

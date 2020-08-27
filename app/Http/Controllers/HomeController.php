@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Services\SlackApi;
 use App\Services\UserService;
+use App\Http\Requests\RegisterUser;
 
 
 class HomeController extends Controller
@@ -13,7 +14,7 @@ class HomeController extends Controller
 
     public function __construct(UserService $userService)
     {
-        $this->$userService = $userService;
+        $this->userService = $userService;
     }
 
     public function index()
@@ -32,6 +33,11 @@ class HomeController extends Controller
 
               $user_info = $slack_api->seachUserInfo($token, $user_id);
               dump($user_info);
+
+              $slack_id = $user_info['user']['id'];
+              $slack_name = $user_info['user']['real_name'];
+              $slack_mail = $user_info['user']['name'];
+              $this->userService->registerUser($slack_name, $slack_id, $slack_mail);
           }
 
       }
