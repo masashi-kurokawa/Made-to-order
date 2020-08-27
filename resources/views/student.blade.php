@@ -108,9 +108,8 @@
 				</form>
 
 				<div class="row row-bottom-padded-md">
-					<div class="col-md-student col-sm-6 col-padding animate-box" data-animate-effect="fadeInLeft">
-						
-					@foreach ($dblist as $key => $user)
+				@foreach ($dblist as $key => $user)
+				<div class="col-md-student col-sm-6 col-padding animate-box" data-animate-effect="fadeInLeft">
 						<div class="blog-entry">
 							<a href="{{ url('/student-details/') }}" class="blog-img"><img src="{{$user->img}}" class="img-responsive" alt="#"></a>
 							<div class="desc">
@@ -122,9 +121,6 @@
 						</div>
 					</div>
 					@endforeach
-
-
-
 					
 				</div>
 			</div>
