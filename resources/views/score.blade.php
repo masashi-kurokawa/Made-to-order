@@ -1,3 +1,62 @@
+<!-- いったん点数早見表を作る為にデータベースに接続 -->
+<?php
+
+try {
+
+    /* リクエストから得たスーパーグローバル変数をチェックするなどの処理 */
+
+    // データベースに接続
+    $pdo = new PDO(
+        'mysql:dbname=Made_to_order;host=localhost;charset=utf8mb4',
+        'root',
+        'root',
+        [
+            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+        ]
+    );
+
+    /* データベースから値を取ってきたり， データを挿入したりする処理 */
+
+		// SELECT文を変数に格納
+		$sql = "SELECT * FROM test";
+
+		// SQLステートメントを実行し、結果を変数に格納
+		$stmt = $pdo->query($sql);
+
+		//レコード件数取得
+  	$row_count = $stmt->rowCount();
+
+  	while($row = $stmt->fetch()){
+  		$rows[] = $row;
+  	}
+
+		// foreach文で配列の中身を一行ずつ出力
+		foreach ($stmt as $row) {
+
+		  // データベースのフィールド名で出力
+		  echo $row['user_id'].'：'.$row['test_title'].'：'.$row['score'];
+
+		  // 改行を入れる
+		  echo '<br>';
+		};
+
+} catch (PDOException $e) {
+
+    // エラーが発生した場合は「500 Internal Server Error」でテキストとして表示して終了する
+    // - もし手抜きしたくない場合は普通にHTMLの表示を継続する
+    // - ここではエラー内容を表示しているが， 実際の商用環境ではログファイルに記録して， Webブラウザには出さないほうが望ましい
+    header('Content-Type: text/plain; charset=UTF-8', true, 500);
+    exit($e->getMessage());
+
+}
+
+// Webブラウザにこれから表示するものがUTF-8で書かれたHTMLであることを伝える
+// (これか <meta charset="utf-8"> の最低限どちらか1つがあればいい． 両方あっても良い．)
+header('Content-Type: text/html; charset=utf-8');
+
+?>
+
 
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
@@ -109,24 +168,21 @@
 							<option value="選択肢5">テスト4</option>
 							<option value="選択肢6">テスト5</option>
 							<option value="選択肢7">テスト6</option>
-							</select>
-						</th>
-					</tr>
+						</select>
+					</th>
+				</tr>
+				<!-- <tr> -->
+				<?php
+				foreach($rows as $row){
+					?>
 					<tr>
-						<td>生徒A</td>
-						<td>10点</td>
-						<td>10点</td>
+						<td><?php echo $row['user_id']; ?></td>
+						<td><?php echo $row['test_title']; ?></td>
+						<td><?php echo $row['score']; ?></td>
 					</tr>
-					<tr>
-						<td>生徒B</td>
-						<td>10点</td>
-						<td>10点</td>
-					</tr>
-					<tr>
-						<td>生徒C</td>
-						<td>10点</td>
-						<td>10点</td>
-					</tr>
+					<?php
+				}
+				?>
 					</table>
 				</div>
 

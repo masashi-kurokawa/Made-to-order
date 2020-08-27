@@ -260,7 +260,7 @@
 				var timer = document.getElementById("timer");
 				if(to_timeup===0){
 					// 次のページに行く様にするPHP使う
-					// 下に行きたいページ遷移をかく
+					// 下に行きたいページ遷移をかく（if文で完了か次のページに移す）
 					// window.location.href = '{{ url('/home/') }}';
 					timer.innerHTML = 'Time up!'
 					timer.style.color="white";
