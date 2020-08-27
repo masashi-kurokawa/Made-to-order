@@ -18,11 +18,9 @@ Route::get('/', function () {
 });
 
 //ホーム画面
-Route::get('/home/', function () {
-    return view('home');
-});
+Route::get('/home/', 'HomeController@index');
 
-//////////////////////////////////テスト一覧
+//テスト一覧
 //app/http/testlist/testlistController中の@index関数
 Route::get('/testlist/', 'TestlistController@index');
 
@@ -44,9 +42,8 @@ Route::get('/testend/', function () {
 });
 
 //アンケート一覧
-Route::get('/surveylist/', function () {
-    return view('surveylist');
-});
+
+Route::get('/surveylist/', 'SurveylistController@index');
 
 //アンケート新規作成
 Route::get('/surveycreate/', function () {
@@ -63,7 +60,7 @@ Route::get('/surveyend/', function () {
     return view('surveyend');
 });
 
-////////////////////生徒一覧
+//生徒一覧
 Route::get('/student/', 'StudentController@index');
 
 

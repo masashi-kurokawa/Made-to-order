@@ -92,8 +92,8 @@
 				<input type="submit" class="btn btn-primary btn-md" onclick="location.href='{{ url('/testcreate/') }}'" value="新規作成">
 
 				<div class="row row-bottom-padded-md">
-	
-				@foreach ($dblist as $key => $tests)				
+
+				@foreach ($dblist as $key => $tests)
 					<div class="col-md-3 col-sm-6 col-padding animate-box" data-animate-effect="fadeInLeft">
 						<div class="blog-entry">
 							<a href="{{ url('/test/') }}" class="blog-img"><img src="{{$tests->test_img}}" class="img-responsive" alt="#"></a>

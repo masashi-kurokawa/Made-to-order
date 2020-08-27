@@ -22,12 +22,6 @@ class TestlistController extends Controller
              ->get();
             
 
-
-
-
-
-
-
         //ブレードへ
        return view('testlist',compact('dblist'));
     
