@@ -158,7 +158,6 @@ header('Content-Type: text/html; charset=utf-8');
 					<table>
 					<tr>
 						<th>生徒</th>
-						<th>テスト1</th>
 						<th>
 							<select class="select-test" name="test" size="1">
 							<option value="">---テストを選択---</option>
@@ -170,6 +169,7 @@ header('Content-Type: text/html; charset=utf-8');
 							<option value="選択肢7">テスト6</option>
 						</select>
 					</th>
+					<th>点数</th>
 				</tr>
 				<!-- <tr> -->
 				<?php
