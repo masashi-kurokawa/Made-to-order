@@ -88,13 +88,13 @@
 			<div class="fh5co-narrow-content">
 				<h2 class="fh5co-heading animate-box" data-animate-effect="fadeInLeft">生徒一覧</h2>
 
-				<form action="">
+				<form action="#" method="get">
 					<div class="row">
 						<div class="col-md-12">
 							<div class="row">
 								<div class="col-md-6">
 									<div class="form-group">
-										<input type="text" class="form-control" placeholder="Name">
+										<input type="text" class="form-control" placeholder="Name"name="keyword" value="{{$inputlist['keyword']}}">
 									</div>
 								</div>
 								<div class="col-md-6">
