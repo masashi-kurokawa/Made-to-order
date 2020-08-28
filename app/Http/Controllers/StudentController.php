@@ -4,22 +4,34 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\user;
+
 class StudentController extends Controller
 {
-    //
-    public function index()
+    //urlの結果を取得
+    public function index(Request $request)
     {
        
         $student=new user;
-        $dblist = $student
-        ->where('user_id',1)
-        ->orwhere('user_id',2)
-        ->orwhere('user_id',3)
-        ->get();
+    
+        $inputlist=["keyword"=>$request->input('keyword')];
+
+
+        if( empty($request->input('keyword'))){
+            $dblist = $student
+            ->get();
+        }else{
+             //urlの結果を取得
+             $dblist = $student
+             //user_nameと検索で表示したデータを取得
+             ->where('user_name','like','%'.$request->input('keyword').'%')
+             ->get();
+
+        }
 
 
 
-        return view('student',compact('dblist'));
+
+        return view('student',compact('dblist','inputlist'));
        
     }
 }
