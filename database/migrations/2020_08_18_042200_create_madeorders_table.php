@@ -23,22 +23,22 @@ class CreateMadeordersTable extends Migration
           $table->timestamps();
         });
       }
-      if (!Schema::hasTable('tests')) {
-        Schema::create('tests', function (Blueprint $table) {
-          $table->increments('test_id');
-          $table->integer('user_id')->comment('ユーザの主キー');
-          $table->string('test_title', 255)->comment('テスト名');
-          $table->integer('question_id')->comment('問題の数');
-          //$table->integer('c_question')->comment('選択問題');　１、２、３、４、とかの番号で保存する？
-          $table->string('e_question')->comment('記述問題');
-          $table->integer('c_answer')->comment('選択問題回答');
-          $table->string('e_answer')->comment('記述問題回答');
-          //$table->integer('correct')->comment('正解');　正解判定をどうするか？　１、正解　２、不正解
-          $table->integer('score')->comment('点数');
-          $table->string('image_name')->comment('画像名');
-          $table->timestamps();
-        });
-      }
+      // if (!Schema::hasTable('tests')) {
+      //   Schema::create('tests', function (Blueprint $table) {
+      //     $table->increments('test_id');
+      //     $table->integer('user_id')->comment('ユーザの主キー');
+      //     $table->string('test_title', 255)->comment('テスト名');
+      //     $table->integer('question_id')->comment('問題の数');
+      //     //$table->integer('c_question')->comment('選択問題');　１、２、３、４、とかの番号で保存する？
+      //     $table->string('e_question')->comment('記述問題');
+      //     $table->integer('c_answer')->comment('選択問題回答');
+      //     $table->string('e_answer')->comment('記述問題回答');
+      //     //$table->integer('correct')->comment('正解');　正解判定をどうするか？　１、正解　２、不正解
+      //     $table->integer('score')->comment('点数');
+      //     $table->string('image_name')->comment('画像名');
+      //     $table->timestamps();
+      //   });
+      // }
       if (!Schema::hasTable('surveys')) {
         Schema::create('surveys', function (Blueprint $table) {
           $table->increments('survey_id');
