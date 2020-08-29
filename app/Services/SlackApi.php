@@ -10,6 +10,7 @@ class SlackApi
     private const ACCESSTOKEN_GET_API_URL = 'https://slack.com/api/oauth.access/';
     private const USERINFO_SEARCH_API_URL = 'https://slack.com/api/users.info/';
 
+    // スラックのアクセストークン取得
     public function getAcsesstoken($code)
     {
 
@@ -28,6 +29,7 @@ class SlackApi
         return json_decode($response->getBody()->getContents(), true);
     }
 
+    // ユーザー情報の検索
     public function seachUserInfo($token, $user)
     {
 

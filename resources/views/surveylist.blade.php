@@ -91,42 +91,24 @@
 				<input type="submit" class="btn btn-primary btn-md" onclick="location.href='{{ url('/surveycreate/') }}'" value="新規作成">
 
 				<div class="row row-bottom-padded-md">
+				
+				
 					<div class="col-md-3 col-sm-6 col-padding animate-box" data-animate-effect="fadeInLeft">
+					@foreach ($dblist as $key => $survey_list)
 						<div class="blog-entry">
-							<a href="{{ url('/survey/') }}" class="blog-img"><img src="images/img-1.jpg" class="img-responsive" alt="#"></a>
+							<a href="{{ url('/survey/') }}" class="blog-img"><img src="{{$survey_list->test_img}}" class="img-responsive" alt="#"></a>
 							<div class="desc">
-								<h3><a href="{{ url('/survey/') }}">アンケート1</a></h3>
+								<h3><a href="{{ url('/survey/') }}">{{$survey_list->c_question}}</a></h3>
 								<span><small> 2020 </small> / <small> 7 </small> / <small> 30 </small></span>
 								<p>ここにテキストを入れることができます。</p>
 								<a href="{{ url('/survey/') }}" class="lead">アンケートを受講する <i class="icon-arrow-right3"></i></a>
 								<a href="{{ url('/survey/') }}" class="lead">詳細・編集</a>
 							</div>
 						</div>
+						@endforeach
 					</div>
-					<div class="col-md-3 col-sm-6 col-padding animate-box" data-animate-effect="fadeInLeft">
-						<div class="blog-entry">
-							<a href="{{ url('/survey/') }}" class="blog-img"><img src="images/img-1.jpg" class="img-responsive" alt="#"></a>
-							<div class="desc">
-								<h3><a href="{{ url('/survey/') }}">アンケート2</a></h3>
-								<span><small> 2020 </small> / <small> 7 </small> / <small> 29 </small></span>
-								<p>ここにテキストを入れることができます。</p>
-								<a href="{{ url('/survey/') }}" class="lead">アンケートを受講する <i class="icon-arrow-right3"></i></a>
-								<a href="{{ url('/survey/') }}" class="lead">詳細・編集</a>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-3 col-sm-6 col-padding animate-box" data-animate-effect="fadeInLeft">
-						<div class="blog-entry">
-							<a href="{{ url('/survey/') }}" class="blog-img"><img src="images/img-1.jpg" class="img-responsive" alt="#"></a>
-							<div class="desc">
-								<h3><a href="{{ url('/survey/') }}">アンケート3</a></h3>
-								<span><small> 2020 </small> / <small> 7 </small> / <small> 28 </small></span>
-								<p></p>
-								<a href="{{ url('/survey/') }}" class="lead">アンケートを受講する <i class="icon-arrow-right3"></i></a>
-								<a href="{{ url('/survey/') }}" class="lead">詳細・編集</a>
-							</div>
-						</div>
-					</div>
+				
+					
 				</div>
 			</div>
 
