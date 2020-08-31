@@ -19,6 +19,7 @@ class CreateMadeordersTable extends Migration
           $table->string('slack_name', 255)->comment('ユーザの名前');
           $table->string('slack_id', 255)->comment('スラックのID');
           $table->string('slack_mail', 255)->comment('スラックに登録したメールアドレス');
+          $table->string('slack_image', 255)->comment('スラックで使っているプロフィール画像');
           $table->integer('role')->comment('権限1、ユーザー2、講師3、営業');
           $table->timestamps();
         });
