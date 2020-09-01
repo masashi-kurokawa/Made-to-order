@@ -19,3 +19,11 @@ class User extends Model
         $user->save();
     }
 }
+
+//点数早見表用
+class User extends Authenticatable
+{
+    protected $fillable = [
+        'user_id','test_title','score',
+    ];
+}
