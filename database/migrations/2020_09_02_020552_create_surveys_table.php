@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTestResultsTable extends Migration
+class CreateSurveysTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,10 @@ class CreateTestResultsTable extends Migration
      */
     public function up()
     {
-        Schema::create('test_results', function (Blueprint $table) {
+        Schema::create('surveys', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('user_name', 225)->comment('テスト受けた人の名前');
-            $table->integer('test_id')->length(11)->unsigned()->comment('テストのID');
-            $table->integer('results')->length(11)->comment('点数');
+            $table->string('title', 225)->comment('アンケートのタイトル');
+            $table->integer('status')->length(11)->comment('1:使われている 2:使われていない');
             $table->timestamps();
         });
     }
@@ -29,6 +28,6 @@ class CreateTestResultsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('test_results');
+        Schema::dropIfExists('surveys');
     }
 }

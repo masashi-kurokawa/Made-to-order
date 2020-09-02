@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateWriteSurveyAnswersTable extends Migration
+class CreateSelectSurveysTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,15 @@ class CreateWriteSurveyAnswersTable extends Migration
      */
     public function up()
     {
-        Schema::create('write_survey_answers', function (Blueprint $table) {
+        Schema::create('select_surveys', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id')->length(11)->unsigned()->comment('回答者のID');
-            $table->integer('test_id')->length(11)->unsigned()->comment('アンケートのID');
+            $table->integer('survey_id')->length(11)->unsigned()->comment('アンケートのID');
+            $table->string('question', 255)->comment('アンケートの内容');
             $table->integer('question_number')->length(11)->unsigned()->comment('何問目のアンケートか');
-            $table->string('answer', 225)->comment('回答');
             $table->timestamps();
 
             // 外部キーの設定
-            $table->foreign('user_id')->references('user_id')->on('users');
+            $table->foreign('survey_id')->references('id')->on('surveys');
         });
     }
 
@@ -33,6 +32,6 @@ class CreateWriteSurveyAnswersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('write_survey_answers');
+        Schema::dropIfExists('select_surveys');
     }
 }
