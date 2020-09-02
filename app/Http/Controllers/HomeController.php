@@ -25,6 +25,7 @@ class HomeController extends Controller
           $slack_api = new Slackapi;
 
           $accesstoken = $slack_api->getAcsesstoken($_GET['code']);
+          dump($accesstoken);
 
           if (isset($accesstoken)) {
 
@@ -36,10 +37,10 @@ class HomeController extends Controller
               dump($user_info);
 
               // ユーザー情報登録
-              $slack_id = $user_info['user']['id'];
-              $slack_name = $user_info['user']['real_name'];
-              $slack_mail = $user_info['user']['name'];
-              $this->userService->registerUser($slack_name, $slack_id, $slack_mail);
+              // $slack_id = $user_info['user']['id'];
+              // $slack_name = $user_info['user']['real_name'];
+              // $slack_mail = $user_info['user']['name'];
+              // $this->userService->registerUser($slack_name, $slack_id, $slack_mail);
           }
 
       }
