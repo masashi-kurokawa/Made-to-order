@@ -20,7 +20,7 @@ table {
     border: none;
     border-radius: 15px;
 }
-#addTest1, #addTest2, #addChoice2, #addChoice3, #addChoice4, #addText, #getValues {
+#addTest1, #addTest2, #addChoice4, #addChoice8, #addText, #getValues {
     width: 200px;
     height: 40px;
     font-size: 16px;
