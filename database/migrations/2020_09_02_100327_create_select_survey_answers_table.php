@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateWriteAnswersTable extends Migration
+class CreateSelectSurveyAnswersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,12 @@ class CreateWriteAnswersTable extends Migration
      */
     public function up()
     {
-        Schema::create('write_answers', function (Blueprint $table) {
+        Schema::create('select_survey_answers', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->length(11)->unsigned()->comment('回答者のID');
-            $table->integer('test_id')->length(11)->unsigned()->comment('テストのID');
-            $table->integer('question_number')->length(11)->unsigned()->comment('何問目の問題か');
-            $table->string('answer', 225)->comment('回答');
-            $table->integer('Judgment')->length(11)->comment('判定');
+            $table->integer('survey_id')->length(11)->unsigned()->comment('アンケートのID');
+            $table->integer('question_number')->length(11)->unsigned()->comment('何問目のアンケートか');
+            $table->integer('answer')->length(11)->comment('回答');
             $table->timestamps();
 
             // 外部キーの設定
@@ -34,6 +33,6 @@ class CreateWriteAnswersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('write_answers');
+        Schema::dropIfExists('select_survey_answers');
     }
 }

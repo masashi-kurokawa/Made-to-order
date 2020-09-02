@@ -13,8 +13,8 @@ class UserService extends Service
 				$this->userModel = $userModel;
     }
 
-    public function registerUser($slack_name, $slack_id, $slack_mail)
+    public function registerUser($slack_name, $slack_id, $slack_mail, $slack_image)
     {
-        return $this->userModel->registerUser($slack_name, $slack_id, $slack_mail);
+        return $this->userModel->registerUser($slack_name, $slack_id, $slack_mail, $slack_image);
     }
 }

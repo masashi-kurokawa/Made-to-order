@@ -33,5 +33,11 @@ class StudentController extends Controller
 
         return view('student',compact('dblist','inputlist'));
 
+<<<<<<< HEAD
+=======
+        return view('student',compact('dblist'));
+
+
+>>>>>>> kuroki
     }
 }
