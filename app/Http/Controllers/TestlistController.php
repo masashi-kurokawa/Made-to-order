@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\test;
+use App\Models\test;
 
 
 class TestlistController extends Controller
@@ -20,17 +20,11 @@ class TestlistController extends Controller
              ->orwhere('question_id',3)
             ->where('user_id',$session_userid)
              ->get();
-            
-
-
-
-
-
 
 
         //ブレードへ
        return view('testlist',compact('dblist'));
-    
-    
+
+
     }
 }

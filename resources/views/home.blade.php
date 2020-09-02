@@ -96,6 +96,7 @@
 					   				<div class="slider-text-inner">
 					   					<h1>タイトル（未定）を入れる</h1>
 					   					<h2>Slack Log in</h2>
+											{{-- <img src="data:image/png;base64,{{$base64}}"> --}}
 											<p>
 												<a class="btn btn-primary btn-demo popup-vimeo" href="https://slack.com/oauth/authorize?client_id={{$slack_client_id}}&scope=identify&redirect_uri={{ url('/home/') }}">ログイン</a>
 												<a class="btn btn-primary btn-learn">ログアウト</a>

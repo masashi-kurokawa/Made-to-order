@@ -1,3 +1,62 @@
+<!-- いったん点数早見表を作る為にデータベースに接続 -->
+<?php
+
+try {
+
+    /* リクエストから得たスーパーグローバル変数をチェックするなどの処理 */
+
+    // データベースに接続
+    $pdo = new PDO(
+        'mysql:dbname=Made_to_order;host=localhost;charset=utf8mb4',
+        'root',
+        'root',
+        [
+            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+        ]
+    );
+
+    /* データベースから値を取ってきたり， データを挿入したりする処理 */
+
+		// SELECT文を変数に格納
+		$sql = "SELECT * FROM test";
+
+		// SQLステートメントを実行し、結果を変数に格納
+		$stmt = $pdo->query($sql);
+
+		//レコード件数取得
+  	$row_count = $stmt->rowCount();
+
+  	while($row = $stmt->fetch()){
+  		$rows[] = $row;
+  	}
+
+		// foreach文で配列の中身を一行ずつ出力
+		foreach ($stmt as $row) {
+
+		  // データベースのフィールド名で出力
+		  echo $row['user_id'].'：'.$row['test_title'].'：'.$row['score'];
+
+		  // 改行を入れる
+		  echo '<br>';
+		};
+
+} catch (PDOException $e) {
+
+    // エラーが発生した場合は「500 Internal Server Error」でテキストとして表示して終了する
+    // - もし手抜きしたくない場合は普通にHTMLの表示を継続する
+    // - ここではエラー内容を表示しているが， 実際の商用環境ではログファイルに記録して， Webブラウザには出さないほうが望ましい
+    header('Content-Type: text/plain; charset=UTF-8', true, 500);
+    exit($e->getMessage());
+
+}
+
+// Webブラウザにこれから表示するものがUTF-8で書かれたHTMLであることを伝える
+// (これか <meta charset="utf-8"> の最低限どちらか1つがあればいい． 両方あっても良い．)
+header('Content-Type: text/html; charset=utf-8');
+
+?>
+
 
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
@@ -90,59 +149,53 @@
 			<div class="fh5co-narrow-content">
 				<h2 class="fh5co-heading animate-box" data-animate-effect="fadeInLeft">点数早見表</h2>
 
-				<label>選択した期間で受講した生徒をソート：</label>
-				<input type="date" name="sort-start">
-				<label>〜</label>
-				<input type="date" name="sort-end">
-
-				<div class="row row-bottom-padded-md">
-					<table>
-					<tr>
-						<th>生徒</th>
-						<th>テスト1</th>
-						<th>
-							<select class="select-test" name="test" size="1">
+				<form class="form-inline">
+					<div class="form-group">
+						<label>選択した期間で受講した生徒をソート：</label>
+						<input type="date" name="sort-start">
+						<label>〜</label>
+						<input type="date" name="sort-end">
+					</div>
+					<div class="form-group">
+						<select class="select-test" name="test" size="1">
 							<option value="">---テストを選択---</option>
-							<option value="選択肢2">テスト1</option>
-							<option value="選択肢3">テスト2</option>
-							<option value="選択肢4">テスト3</option>
-							<option value="選択肢5">テスト4</option>
-							<option value="選択肢6">テスト5</option>
-							<option value="選択肢7">テスト6</option>
-							</select>
-						</th>
-					</tr>
-					<tr>
-						<td>生徒A</td>
-						<td>10点</td>
-						<td>10点</td>
-					</tr>
-					<tr>
-						<td>生徒B</td>
-						<td>10点</td>
-						<td>10点</td>
-					</tr>
-					<tr>
-						<td>生徒C</td>
-						<td>10点</td>
-						<td>10点</td>
-					</tr>
-					</table>
-				</div>
-
-				<form action="">
-					<div class="row">
-						<div class="col-md-12">
-							<div class="row">
-								<div class="col-md-6">
-									<div class="form-group">
-										<input type="submit" class="btn btn-primary btn-md" value="検索">
-									</div>
-								</div>
-							</div>
-						</div>
+							<?php
+							foreach($rows as $row){
+								?>
+								<option value="選択肢2"><?php echo $row['test_title']; ?></option>
+								<?php
+							}
+							?>
+						</select>
+					</div>
+					<div class="form-group">
+						<input type="submit" class="btn btn-primary btn-md" value="検索">
 					</div>
 				</form>
+
+				<div class="row row-bottom-padded-md">
+					<table  style="table-layout:fixed;">
+						<tr>
+					    <th style="width:5%;">No</th>
+					    <th>生徒</th>
+					    <th>
+					      <?php echo $row['test_title']; ?>
+					      <?php echo "平均50点"; ?>
+					  </th>
+					</tr>
+					<?php
+					foreach($rows as $row){
+					  ?>
+					  <tr>
+					    <td><?php echo $row['user_id']; ?></td> <!-- テストナンバーに変える -->
+					    <td><?php echo $row['user_id']; ?></td>
+					    <td><?php echo $row['test_title']; ?></td>
+					  </tr>
+					  <?php
+					}
+					?>
+				</table>
+			</div>
 
 			</div>
 		</div>
