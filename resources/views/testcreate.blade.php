@@ -43,7 +43,7 @@ $(function(){
 =======
 
 <div id="count" class="container">
-  <!-- <form action="" method="post"> -->
+  <form action="" method="post">
     <table>
       <tbody>
         <tr>
@@ -53,21 +53,16 @@ $(function(){
         </tr>
       </tbody>
     </table>
-  <!-- </form> -->
+  </form>
 
   <p id="output">1</p>
-  <input id="output" type="text" value="1" readonly class="number">
 
   <button id="addTest1" class="plus">+ 問題追加 1回答</button></td>
-
   <button id="addTest2" class="plus">+ 問題追加 2回答</button>
-
   <button id="addChoice4" class="plus">+ 4択問題追加</button>
-
-<!--
   <button id="addChoice8">+ 8択問題追加</button>
   <button id="addText">+ テキスト問題追加</button>
-  <button id="getValues">値を取得</button> -->
+  <button id="getValues">値を取得</button>
 
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
