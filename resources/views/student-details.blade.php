@@ -92,7 +92,22 @@
 					<input type="submit" class="btn btn-primary btn-md" onclick="location.href='#'" value="アンケートのみ">
 				</div>
 				<div class="row row-bottom-padded-md">
-					<div class="col-md-3 col-sm-6 col-padding animate-box" data-animate-effect="fadeInLeft">
+					<!-- テストの一覧から持ってきた DB出来次第動くと思う-->
+					@foreach ($dblist as $key => $tests)
+						<div class="col-md-3 col-sm-6 col-padding animate-box" data-animate-effect="fadeInLeft">
+							<div class="blog-entry">
+								<a href="{{ url('/test/') }}" class="blog-img"><img src="{{$tests->test_img}}" class="img-responsive" alt="#"></a>
+								<div class="desc">
+									<h3><a href="{{ url('/test/') }}">{{$tests->test_title}}</a></h3>
+									<span><small>{{$tests->updated}} </small></span>
+									<p>ここにテキストを入れることができます。</p>
+									<a href="{{ url('/test/') }}" class="lead">詳細・編集</a>
+								</div>
+							</div>
+						</div>
+						@endforeach
+						<!-- 元あったやつ↓ -->
+					<!-- <div class="col-md-3 col-sm-6 col-padding animate-box" data-animate-effect="fadeInLeft">
 						<div class="blog-entry">
 							<a href="{{ url('/details/') }}" class="blog-img"><img src="images/img-1.jpg" class="img-responsive" alt="#"></a>
 							<div class="desc">
@@ -102,8 +117,8 @@
 								<a href="{{ url('/details/') }}" class="lead">詳細 <i class="icon-arrow-right3"></i></a>
 							</div>
 						</div>
-					</div>
-					<div class="col-md-3 col-sm-6 col-padding animate-box" data-animate-effect="fadeInLeft">
+					</div> -->
+					<!-- <div class="col-md-3 col-sm-6 col-padding animate-box" data-animate-effect="fadeInLeft">
 						<div class="blog-entry">
 							<a href="{{ url('/details/') }}" class="blog-img"><img src="images/img-1.jpg" class="img-responsive" alt="#"></a>
 							<div class="desc">
@@ -113,8 +128,22 @@
 								<a href="{{ url('/details/') }}" class="lead">詳細 <i class="icon-arrow-right3"></i></a>
 							</div>
 						</div>
+					</div> -->
+					<!-- アンケート一覧から持ってくる始まり　DB出来次第動くと思う -->
+					<div class="blog-entry">
+						<a href="{{ url('/survey/') }}" class="blog-img"><img src="{{$survey_list->test_img}}" class="img-responsive" alt="#"></a>
+						<div class="desc">
+							<h3><a href="{{ url('/survey/') }}">{{$survey_list->c_question}}</a></h3>
+							<span><small> 2020 </small> / <small> 7 </small> / <small> 30 </small></span>
+							<p>ここにテキストを入れることができます。</p>
+							<a href="{{ url('/survey/') }}" class="lead">アンケートを受講する <i class="icon-arrow-right3"></i></a>
+							<a href="{{ url('/survey/') }}" class="lead">詳細・編集</a>
+						</div>
 					</div>
-					<div class="col-md-3 col-sm-6 col-padding animate-box" data-animate-effect="fadeInLeft">
+					@endforeach
+					<!-- アンケート一覧から持ってくる終わり -->
+					<!-- 元あったやつ↓ -->
+					<!-- <div class="col-md-3 col-sm-6 col-padding animate-box" data-animate-effect="fadeInLeft">
 						<div class="blog-entry">
 							<a href="{{ url('/details/') }}" class="blog-img"><img src="images/img-1.jpg" class="img-responsive" alt="#"></a>
 							<div class="desc">
@@ -124,7 +153,7 @@
 								<a href="{{ url('/details/') }}" class="lead">詳細 <i class="icon-arrow-right3"></i></a>
 							</div>
 						</div>
-					</div>
+					</div> -->
 				</div>
 			</div>
 
