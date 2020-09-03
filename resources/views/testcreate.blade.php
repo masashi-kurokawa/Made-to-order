@@ -1,109 +1,197 @@
 <!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="utf-8">
-    <title>テーブル追加</title>
-		<!-- スタイル読み込み -->
-		<link rel="stylesheet" href="css/home.css">
-		<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
-</head>
-<body>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+	<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>タイトル &mdash; HOME</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="Free HTML5 Website Template by FreeHTML5.co" />
+	<meta name="keywords" content="free html5, free template, free bootstrap, free website template, html5, css3, mobile first, responsive" />
+	<meta name="author" content="FreeHTML5.co" />
 
-<div id="count" class="container">
-  <form action="" method="post">
-    <table>
-      <tbody>
-        <tr>
-          <td><textarea name="text" rows="5" cols="50" placeholder="ここに問題文を入力してください。"></textarea></td>
-          <td><input type="text" name="text" placeholder="回答を入力してください。"></td>
-          <td><button class="remove">-</button></td>
-        </tr>
-      </tbody>
-    </table>
-  </form>
+  	<!--
+	//////////////////////////////////////////////////////
 
-  <p id="output">1</p>
+	FREE HTML5 TEMPLATE
+	DESIGNED & DEVELOPED by FreeHTML5.co
 
-  <button id="addTest1" class="plus">+ 問題追加 1回答</button></td>
+	Website: 		http://freehtml5.co/
+	Email: 			info@freehtml5.co
+	Twitter: 		http://twitter.com/fh5co
+	Facebook: 		https://www.facebook.com/fh5co
 
-  <button id="addTest2" class="plus">+ 問題追加 2回答</button>
+	//////////////////////////////////////////////////////
+	-->
 
-  <button id="addChoice4" class="plus">+ 4択問題追加</button>
+  	<!-- Facebook and Twitter integration -->
+	<meta property="og:title" content=""/>
+	<meta property="og:image" content=""/>
+	<meta property="og:url" content=""/>
+	<meta property="og:site_name" content=""/>
+	<meta property="og:description" content=""/>
+	<meta name="twitter:title" content="" />
+	<meta name="twitter:image" content="" />
+	<meta name="twitter:url" content="" />
+	<meta name="twitter:card" content="" />
 
+	<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+	<link rel="shortcut icon" href="favicon.ico">
 
-  <button id="addChoice8">+ 8択問題追加</button>
-  <button id="addText">+ テキスト問題追加</button>
-  <button id="getValues">値を取得</button>
+	<link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700" rel="stylesheet">
 
-</div>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+	<!-- Animate.css -->
+	<link rel="stylesheet" href="css/animate.css">
+	<!-- Icomoon Icon Fonts-->
+	<link rel="stylesheet" href="css/icomoon.css">
+	<!-- Bootstrap  -->
+	<link rel="stylesheet" href="css/bootstrap.css">
+	<!-- Flexslider  -->
+	<link rel="stylesheet" href="css/flexslider.css">
+	<!-- Theme style  -->
+	<link rel="stylesheet" href="css/style.css">
+	<!-- score style  -->
+	<link rel="stylesheet" href="css/home.css">
 
-<script>
-$(function(){
-    // 並び替え機能
-    $('tbody').sortable();
+	<!-- Modernizr JS -->
+	<script src="js/modernizr-2.6.2.min.js"></script>
+	<!-- FOR IE9 below -->
+	<!--[if lt IE 9]>
+	<script src="js/respond.min.js"></script>
+	<![endif]-->
 
-		// 問題追加 1回答
-		//追加ボタンがクリックされたら、function(){…}の処理を実行する
-		$('#addTest1').click(function(){
-        var html = '<tr><td><textarea name="text" rows="5" cols="50" placeholder="ここに問題文を入力してください。"></textarea></td><td><input type="text" name="text" placeholder="回答を入力してください。"></td><td><button class="remove">-</button></td></tr>';
-				//append()を使ってtbody内の一番最後にhtmlを追加する
-				$('tbody').append(html);
-    });
+	</head>
+	<body>
+	<div id="fh5co-page">
+		<a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle"><i></i></a>
+		<aside id="fh5co-aside" role="complementary" class="border js-fullheight">
 
-    // 問題追加 2回答
-		//追加ボタンがクリックされたら、function(){…}の処理を実行する
-		$('#addTest2').click(function(){
-        var html = '<tr><td><textarea name="text" rows="5" cols="50" placeholder="ここに問題文を入力してください。"></textarea></td><td><input type="text" name="text" placeholder="回答を入力してください。"><input type="text" name="text" placeholder="回答を入力してください。"></td><td><button class="remove">-</button></td></tr>';
-				//append()を使ってtbody内の一番最後にhtmlを追加する
-				$('tbody').append(html);
-    });
+			<h1 id="fh5co-logo"><a href="{{ url('/home/') }}">タイトル</a></h1>
+			<nav id="fh5co-main-menu" role="navigation">
+				<ul>
+					<li><a href="{{ url('/home/') }}">Home</a></li>
+					<li><a href="{{ url('/testlist/') }}">テスト一覧</a></li>
+					<li><a href="{{ url('/surveylist/') }}">アンケート一覧</a></li>
+					<li><a href="{{ url('/student/') }}">生徒一覧</a></li>
+					<li><a href="{{ url('/score/') }}">点数早見表</a></li>
+				</ul>
+			</nav>
 
-    // 4択問題追加
-		//追加ボタンがクリックされたら、function(){…}の処理を実行する
-		$('#addChoice4').click(function(){
-        var html = '<tr><td><textarea name="text" rows="5" cols="50" placeholder="ここに問題文を入力してください。"></textarea></td><td><form><input type="radio" name="Choice4"><input type="text" name="answer" placeholder="回答を入力してください。"><input type="radio" name="Choice4"><input type="text" name="answer" placeholder="回答を入力してください。"><input type="radio" name="Choice4"><input type="text" name="answer" placeholder="回答を入力してください。"><input type="radio" name="Choice4"><input type="text" name="answer" placeholder="回答を入力してください。"></form></td><td><button class="remove">-</button></td></tr>';
-				//append()を使ってtbody内の一番最後にhtmlを追加する
-				$('tbody').append(html);
-    });
+			<div class="fh5co-footer">
+				<p><small>&copy; 2020 carecon. All Rights Reserved.</small></p>
+			</div>
 
-    // 8択問題追加
-		//追加ボタンがクリックされたら、function(){…}の処理を実行する
-		$('#addChoice8').click(function(){
-        var html = '<tr><td><textarea name="text" rows="5" cols="50" placeholder="ここに問題文を入力してください。"></textarea></td><td><form><input type="radio" name="Choice8"><input type="text" name="answer" placeholder="回答を入力してください。"><input type="radio" name="Choice8"><input type="text" name="answer" placeholder="回答を入力してください。"><input type="radio" name="Choice8"><input type="text" name="answer" placeholder="回答を入力してください。"><input type="radio" name="Choice8"><input type="text" name="answer" placeholder="回答を入力してください。"><input type="radio" name="Choice8"><input type="text" name="answer" placeholder="回答を入力してください。"><input type="radio" name="Choice8"><input type="text" name="answer" placeholder="回答を入力してください。"><input type="radio" name="Choice8"><input type="text" name="answer" placeholder="回答を入力してください。"><input type="radio" name="Choice8"><input type="text" name="answer" placeholder="回答を入力してください。"></form></td><td><button class="remove">-</button></td></tr>';
-				//append()を使ってtbody内の一番最後にhtmlを追加する
-				$('tbody').append(html);
-    });
+		</aside>
 
-		// 削除処理
-		//削除ボタンがクリックされたら、function(){…}の処理を実行する
-		$(document).on('click', '.remove', function() {
-				//クリックされた.removeの親要素trをremove（削除）する
-        $(this).parents('tr').remove();
-    });
+		<div id="fh5co-main">
+			<div class="fh5co-narrow-content">
+				<h2 class="fh5co-heading animate-box" data-animate-effect="fadeInLeft">テスト新規作成</h2>
+        <div id="count" class="container">
+          <form action="" method="post">
+            <table>
+              <tbody>
+              </tbody>
+            </table>
+          </form>
 
-		// 値を取得処理（確認用）
-		$('#getValues').click(function(){
-        var values = [];
-        $('input[name="test"]').each(function(i, elem){
-            values.push($(elem).val());
+          <p id="output">0</p>
+
+          <button id="addTest1" class="plus">+ 問題追加 1回答</button>
+          <button id="addTest2" class="plus">+ 問題追加 2回答</button>
+          <button id="addChoice4" class="plus">+ 4択問題追加</button>
+          <button id="addChoice8" class="plus">+ 8択問題追加</button>
+          <button id="addText" class="plus">+ テキスト問題追加</button>
+
+        </div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+        <script>
+        $(function(){
+            // 並び替え機能
+            $('tbody').sortable();
+
+        		// 問題追加 1回答
+        		//追加ボタンがクリックされたら、function(){…}の処理を実行する
+        		$('#addTest1').click(function(){
+                var html = '<tr><td><textarea name="text" rows="5" cols="50" placeholder="ここに問題文を入力してください。"></textarea></td><td><input type="text" name="text" placeholder="回答を入力してください。"></td><td><button class="remove">-</button></td></tr>';
+        				//append()を使ってtbody内の一番最後にhtmlを追加する
+        				$('tbody').append(html);
+            });
+
+            // 問題追加 2回答
+        		//追加ボタンがクリックされたら、function(){…}の処理を実行する
+        		$('#addTest2').click(function(){
+                var html = '<tr><td><textarea name="text" rows="5" cols="50" placeholder="ここに問題文を入力してください。"></textarea></td><td><input type="text" name="text" placeholder="回答を入力してください。"><input type="text" name="text" placeholder="回答を入力してください。"></td><td><button class="remove">-</button></td></tr>';
+        				//append()を使ってtbody内の一番最後にhtmlを追加する
+        				$('tbody').append(html);
+            });
+
+            // 4択問題追加
+        		//追加ボタンがクリックされたら、function(){…}の処理を実行する
+        		$('#addChoice4').click(function(){
+                var html = '<tr><td><textarea name="text" rows="5" cols="50" placeholder="ここに問題文を入力してください。"></textarea></td><td><form><input type="radio" name="Choice4"><input type="text" name="answer" placeholder="回答を入力してください。"><input type="radio" name="Choice4"><input type="text" name="answer" placeholder="回答を入力してください。"><input type="radio" name="Choice4"><input type="text" name="answer" placeholder="回答を入力してください。"><input type="radio" name="Choice4"><input type="text" name="answer" placeholder="回答を入力してください。"></form></td><td><button class="remove">-</button></td></tr>';
+        				//append()を使ってtbody内の一番最後にhtmlを追加する
+        				$('tbody').append(html);
+            });
+
+            // 8択問題追加
+        		//追加ボタンがクリックされたら、function(){…}の処理を実行する
+        		$('#addChoice8').click(function(){
+                var html = '<tr><td><textarea name="text" rows="5" cols="50" placeholder="ここに問題文を入力してください。"></textarea></td><td><form><input type="radio" name="Choice8"><input type="text" name="answer" placeholder="回答を入力してください。"><input type="radio" name="Choice8"><input type="text" name="answer" placeholder="回答を入力してください。"><input type="radio" name="Choice8"><input type="text" name="answer" placeholder="回答を入力してください。"><input type="radio" name="Choice8"><input type="text" name="answer" placeholder="回答を入力してください。"><input type="radio" name="Choice8"><input type="text" name="answer" placeholder="回答を入力してください。"><input type="radio" name="Choice8"><input type="text" name="answer" placeholder="回答を入力してください。"><input type="radio" name="Choice8"><input type="text" name="answer" placeholder="回答を入力してください。"><input type="radio" name="Choice8"><input type="text" name="answer" placeholder="回答を入力してください。"></form></td><td><button class="remove">-</button></td></tr>';
+        				//append()を使ってtbody内の一番最後にhtmlを追加する
+        				$('tbody').append(html);
+            });
+
+            // 問題追加 1回答
+        		//追加ボタンがクリックされたら、function(){…}の処理を実行する
+        		$('#addText').click(function(){
+                var html = '<tr><td><textarea name="text" rows="5" cols="50" placeholder="ここに問題文を入力してください。"></textarea></td><td><textarea name="text" rows="5" cols="50" placeholder="回答を入力してください。"></textarea></td><td><button class="remove">-</button></td></tr>';
+        				//append()を使ってtbody内の一番最後にhtmlを追加する
+        				$('tbody').append(html);
+            });
+
+        		// 削除処理
+        		//削除ボタンがクリックされたら、function(){…}の処理を実行する
+        		$(document).on('click', '.remove', function() {
+        				//クリックされた.removeの親要素trをremove（削除）する
+                $(this).parents('tr').remove();
+            });
+
         });
-        alert(values.join(', '));
-    });
+        </script>
+        <script>
+            $(document).on('click', '.plus', function() {
+                $('#output').html(function(i, val) { return val*1+1 });
+            });
 
-});
-</script>
-<script>
+            $(document).on('click', '.remove', function() {
+                $('#output').html(function(i, val) { return val*1-1 });
+            });
 
-    $(document).on('click', '.plus', function() {
-        $('#output').html(function(i, val) { return val*1+1 });
-    });
+        </script>
 
-    $(document).on('click', '.remove', function() {
-        $('#output').html(function(i, val) { return val*1-1 });
-    });
+			</div>
+		</div>
 
-</script>
-</body>
+
+		</div>
+
+	<!-- jQuery -->
+	<!-- <script src="js/jquery.min.js"></script> -->
+	<!-- jQuery Easing -->
+	<script src="js/jquery.easing.1.3.js"></script>
+	<!-- Bootstrap -->
+	<script src="js/bootstrap.min.js"></script>
+	<!-- Waypoints -->
+	<script src="js/jquery.waypoints.min.js"></script>
+	<!-- Flexslider -->
+	<script src="js/jquery.flexslider-min.js"></script>
+
+
+	<!-- MAIN JS -->
+	<script src="js/main.js"></script>
+
+	</body>
 </html>
