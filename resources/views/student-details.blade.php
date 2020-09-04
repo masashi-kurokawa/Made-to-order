@@ -130,6 +130,7 @@
 						</div>
 					</div> -->
 					<!-- アンケート一覧から持ってくる始まり　DB出来次第動くと思う -->
+					@foreach ($dblist as $key => $survey_list)
 					<div class="blog-entry">
 						<a href="{{ url('/survey/') }}" class="blog-img"><img src="{{$survey_list->test_img}}" class="img-responsive" alt="#"></a>
 						<div class="desc">
