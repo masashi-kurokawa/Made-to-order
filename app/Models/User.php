@@ -9,21 +9,14 @@ use Illuminate\Http\Request;
 class User extends Model
 {
     // ユーザー情報登録
-    public function registerUser($slack_name, $slack_id, $slack_mail)
+    public function registerUser($slack_name, $slack_id, $slack_mail, $slack_image)
     {
         $user = new User();
         $user->slack_name = $slack_name;
         $user->slack_id = $slack_id;
         $user->slack_mail = $slack_mail;
+        $user->slack_image = $slack_image;
         $user->role = 1;
         $user->save();
     }
-}
-
-//点数早見表用
-class User extends Authenticatable
-{
-    protected $fillable = [
-        'user_id','test_title','score',
-    ];
 }

@@ -3,16 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\user;
+use App\Models\user;
 
 class StudentController extends Controller
 {
     //urlの結果を取得
     public function index(Request $request)
     {
-       
+
         $student=new user;
-    
+
         $inputlist=["keyword"=>$request->input('keyword')];
 
         //urlの結果を取得
@@ -32,6 +32,12 @@ class StudentController extends Controller
 
         //使いたい変数をコンパクトセットで送る
         return view('student',compact('dblist','inputlist'));
-       
+
+<<<<<<< HEAD
+=======
+        return view('student',compact('dblist'));
+
+
+>>>>>>> kuroki
     }
 }
