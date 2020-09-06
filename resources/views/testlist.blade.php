@@ -96,10 +96,10 @@
 				@foreach ($dblist as $key => $tests)
 					<div class="col-md-3 col-sm-6 col-padding animate-box" data-animate-effect="fadeInLeft">
 						<div class="blog-entry">
-							<a href="{{ url('/test/') }}" class="blog-img"><img src="{{$tests->test_img}}" class="img-responsive" alt="#"></a>
+							<a href="{{ url('/test/') }}" class="blog-img"><img src="" class="img-responsive" alt="#"></a>
 							<div class="desc">
-								<h3><a href="{{ url('/test/') }}">{{$tests->test_title}}</a></h3>
-								<span><small>{{$tests->updated}} </small></span>
+								<h3><a href="{{ url('/test/') }}">{{$tests->title}}</a></h3>
+								<span><small>{{$tests->updated_at}} </small></span>
 								<p>ここにテキストを入れることができます。</p>
 								<a href="{{ url('/test/') }}" class="lead">テストを受講する <i class="icon-arrow-right3"></i></a>
 								<a href="{{ url('/test/') }}" class="lead">詳細・編集</a>

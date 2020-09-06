@@ -3,22 +3,19 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\test;
+use App\Models\Test;
 
 
 class TestlistController extends Controller
 {
     //
     public function index(){
-    $session_userid=1;
+   
 
 
              $test = new test;
              $dblist = $test
-             ->where('question_id',1)
-             ->orwhere('question_id',2)
-             ->orwhere('question_id',3)
-            ->where('user_id',$session_userid)
+             ->where('status',1)
              ->get();
 
 
