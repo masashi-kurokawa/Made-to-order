@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\user;
+use App\Models\User;
 
 class StudentController extends Controller
 {
@@ -15,29 +15,23 @@ class StudentController extends Controller
 
         $inputlist=["keyword"=>$request->input('keyword')];
 
-
+        //urlの結果を取得
         if( empty($request->input('keyword'))){
             $dblist = $student
             ->get();
         }else{
-             //urlの結果を取得
+             
              $dblist = $student
              //user_nameと検索で表示したデータを取得
-             ->where('user_name','like','%'.$request->input('keyword').'%')
+             ->where('name','like','%'.$request->input('keyword').'%')
              ->get();
 
         }
 
 
 
-
+        //使いたい変数をコンパクトセットで送る
         return view('student',compact('dblist','inputlist'));
 
-<<<<<<< HEAD
-=======
-        return view('student',compact('dblist'));
-
-
->>>>>>> kuroki
     }
 }
