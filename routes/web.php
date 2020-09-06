@@ -24,8 +24,6 @@ Route::get('/home/', 'HomeController@index');
 //app/http/testlist/testlistController中の@index関数
 Route::get('/testlist/', 'TestlistController@index');
 
-
-
 //テスト新規作成
 Route::get('/testcreate/', function () {
     return view('testcreate');
@@ -36,13 +34,17 @@ Route::get('/test/', function () {
     return view('test');
 });
 
+//テスト詳細・編集
+Route::get('/testedit/', function () {
+    return view('testedit');
+});
+
 //テスト終了
 Route::get('/testend/', function () {
     return view('testend');
 });
 
 //アンケート一覧
-
 Route::get('/surveylist/', 'SurveylistController@index');
 
 //アンケート新規作成
@@ -53,6 +55,11 @@ Route::get('/surveycreate/', function () {
 //アンケート受講
 Route::get('/survey/', function () {
     return view('survey');
+});
+
+//アンケート詳細・編集
+Route::get('/surveyedit/', function () {
+    return view('surveyedit');
 });
 
 //アンケート終了

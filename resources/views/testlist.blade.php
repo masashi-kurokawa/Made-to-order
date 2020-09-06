@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -89,7 +88,7 @@
 			<div class="fh5co-narrow-content">
 				<h2 class="fh5co-heading animate-box" data-animate-effect="fadeInLeft">テスト一覧</h2>
 
-				<input type="submit" class="btn btn-primary btn-md" onclick="location.href='{{ url('/testcreate/') }}'" value="新規作成">
+				<input type="submit" class="btn btn-primary btn-md animate-box" data-animate-effect="fadeInLeft" onclick="location.href='{{ url('/testcreate/') }}'" value="新規作成">
 
 				<div class="row row-bottom-padded-md">
 
@@ -101,8 +100,10 @@
 								<h3><a href="{{ url('/test/') }}">{{$tests->title}}</a></h3>
 								<span><small>{{$tests->updated_at}} </small></span>
 								<p>ここにテキストを入れることができます。</p>
-								<a href="{{ url('/test/') }}" class="lead">テストを受講する <i class="icon-arrow-right3"></i></a>
-								<a href="{{ url('/test/') }}" class="lead">詳細・編集</a>
+								<div class="more-center">
+									<a href="{{ url('/test/') }}" class="lead more">テスト受講</a>
+									<a href="{{ url('/testedit/') }}" class="lead more">詳細・編集</a>
+								</div>
 							</div>
 						</div>
 					</div>

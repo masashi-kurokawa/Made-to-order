@@ -514,6 +514,7 @@ p {
 }
 
 .lead {
+  margin: 0 auto;
   margin-bottom: 20px;
   font-size: 16px;
   font-weight: 300;
@@ -6255,6 +6256,19 @@ button.close {
   .hidden-print {
     display: none !important;
   }
+}
+
+.more-center{
+  text-align: center;
+}
+.more {
+  padding: 15px 30px;
+  border: 1px solid #dfe1e5;
+  border-radius: 100px;
+  color: #333;
+}
+.more:hover {
+  border-color: #228896;
 }
 
 /*# sourceMappingURL=bootstrap.css.map */

@@ -8,6 +8,13 @@ form {
   margin: 0 auto;
 }
 
+.title-rap {
+  margin-bottom: 30px;
+}
+.title-rap textarea {
+  width: 60%;
+}
+
 table {
   width: 100%;
 }
@@ -47,24 +54,53 @@ input[type="radio"]{
   width: 6%;
 }
 
-.remove {
-  float: right;
-    width: 30px;
-    height: 30px;
-    font-size: 20px;
-    background-color: tomato;
-    color: white;
-    border: none;
-    border-radius: 15px;
+input[type=submit] {
+  display: block;
+  font-size: 16px;
+  background-color: lightseagreen;
+  color: #fff;
+  width: 30%;
+  height: 40px;
+  margin: 0 auto;
+  padding: 0;
+  line-height: 2.6em;
+  text-align: center;
+  border: none;
+  border-radius: 30px;
 }
+input[type=submit]:link,input[type=submit]:visited,input[type=submit]:hover {
+  background-color: #228896;
+  color: #fff;
+}
+input[type=submit]:active {
+  background-color: #228896;
+  color: #eee;
+  box-shadow: 2px 2px 4px #002 inset;
+}
+
+.remove {
+  /* float: right; */
+  width: 30px;
+  height: 30px;
+  font-size: 20px;
+  background-color: tomato;
+  color: white;
+  border: none;
+  border-radius: 15px;
+}
+
+.remove-center {
+  text-align: center;
+}
+
 #addTest1, #addTest2, #addChoice4, #addChoice8, #addText, #getValues {
-    width: 200px;
-    height: 40px;
-    font-size: 16px;
-    background-color: lightseagreen;
-    color: white;
-    border: none;
-    margin: 20px;
+  width: 19%;
+  height: 40px;
+  font-size: 16px;
+  background-color: lightseagreen;
+  color: white;
+  border: none;
+  margin: 20px;
 }
 
 button {
