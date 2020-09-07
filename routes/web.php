@@ -79,6 +79,9 @@ Route::get('/score/', function () {
     return view('score');
 });
 
+//点数早見表（試し追加）
+Route::get('/score/', 'ScoreController@index');
+
 
 Route::get('/login/', function () {
     return view('login');

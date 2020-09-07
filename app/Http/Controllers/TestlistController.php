@@ -10,7 +10,7 @@ class TestlistController extends Controller
 {
     //
     public function index(){
-   
+
 
 
              $test = new test;

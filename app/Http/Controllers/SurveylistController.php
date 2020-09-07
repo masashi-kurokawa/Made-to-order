@@ -11,7 +11,7 @@ class SurveylistController extends Controller
     //
     public function index(){
 
-        
+
         $survey_list=new survey;
         $dblist = $survey_list
         ->get();

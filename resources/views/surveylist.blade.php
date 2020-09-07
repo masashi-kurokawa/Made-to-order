@@ -91,10 +91,10 @@
 				<input type="submit" class="btn btn-primary btn-md" onclick="location.href='{{ url('/surveycreate/') }}'" value="新規作成">
 
 				<div class="row row-bottom-padded-md">
-				
-				
+
+
 					<div class="col-md-3 col-sm-6 col-padding animate-box" data-animate-effect="fadeInLeft">
-					@foreach ($dblist as $key => $survey_list)
+					@foreach ($dblist as $key => $survey_list) <!-- ここの変数変える？ -->
 						<div class="blog-entry">
 							<a href="{{ url('/survey/') }}" class="blog-img"><img src="{{$survey_list->test_img}}" class="img-responsive" alt="#"></a>
 							<div class="desc">
@@ -107,8 +107,8 @@
 						</div>
 						@endforeach
 					</div>
-				
-					
+
+
 				</div>
 			</div>
 
