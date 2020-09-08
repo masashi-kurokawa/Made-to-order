@@ -17,8 +17,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-//ホーム画面
+//ホーム画面　管理者用
 Route::get('/home/', 'HomeController@index');
+
+//ホーム画面　一般ユーザー用
+Route::get('/home2/', 'HomeController@index');
 
 //テスト一覧
 //app/http/testlist/testlistController中の@index関数
@@ -85,13 +88,3 @@ Route::get('/details/', function () {
 Route::get('/score/', function () {
     return view('score');
 });
-
-
-Route::get('/login/', function () {
-    return view('login');
-});
-Route::get('/login2/', function () {
-    return view('login2');
-});
-Route::get('/redirect', 'OAuthController@redirectToProvider');
-Route::get('/callback', 'OAuthController@handleProviderCallback');
