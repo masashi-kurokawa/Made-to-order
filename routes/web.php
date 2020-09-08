@@ -94,6 +94,5 @@ Auth::routes(['register' => false]);
 
 // Route::get('/home', 'HomeController@index')->name('home');
 
-//ホーム画面
 Route::get('/auth/', 'AuthTestController@index')->name('authtest');;
 Route::post('/auth/', 'AuthTestController@index');

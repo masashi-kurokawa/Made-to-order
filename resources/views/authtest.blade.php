@@ -5,9 +5,10 @@
     <title></title>
   </head>
   <body>
-    <form method="post">
-      <input type="text" name="name" value="">
-      <input type="text" name="mail" value="">
+    <form method="post" action="{{ route('authtest') }}">
+      @csrf
+      <input type="text" name="slack_name" value="">
+      <input type="text" name="slack_mail" value="">
       <input type="submit" name="login" value="ログイン">
     </form>
   </body>

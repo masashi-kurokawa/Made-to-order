@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AuthTestController extends Controller
 {
@@ -15,13 +16,23 @@ class AuthTestController extends Controller
           dump($request);
       }
 
+      // $credentials = $request->only('slack_name', 'slack_mail');
+      //
+      //   if (Auth::attempt($credentials)) {
+      //       // 認証に成功した
+      //       echo "ok";
+      //   } else {
+      //     echo "no";
+      //     dump(Auth::check());
+      //   }
+
       return view('authtest');
     }
 
-    public function login(Request $request)
-    {
-
-      return  redirect()->route('authtest');
-
-    }
+    // public function login(Request $request)
+    // {
+    //
+    //   return  redirect()->route('authtest');
+    //
+    // }
 }
