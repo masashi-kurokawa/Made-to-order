@@ -1,5 +1,7 @@
-<!-- いったん点数早見表を作る為にデータベースに接続 -->
 <!DOCTYPE html>
+<?php
+ $status = ['活用中' => 1, '活用していない' => 2];
+?>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
@@ -105,6 +107,18 @@
               @endforeach
             </select>
           </div>
+          <!-- 使っているテストか判定 -->
+          <div class="form-group">
+            <select class="select-test" name="gender" size="1">
+              <option selected="selected" value="">選択してください</option>
+              @foreach($status as $key => $value)
+              <option value="{{ $value }}" {{ isset($params['status']) && $params['status'] == $value ? 'selected': null }}>
+                {{ $key }}
+              </option>
+              @endforeach
+            </select>
+          </div>
+            <!-- 使っているテストか判定終わり -->
           <div class="form-group">
             <input type="submit" class="btn btn-primary btn-md" value="検索">
           </div>

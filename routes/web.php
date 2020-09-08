@@ -83,6 +83,7 @@ Route::get('/score/', function () {
 Route::get('/score/', 'ScoreController@index');
 
 
+
 Route::get('/login/', function () {
     return view('login');
 });
