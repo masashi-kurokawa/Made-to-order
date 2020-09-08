@@ -216,7 +216,7 @@
 			</div>
 
 			<div class="test-btn">
-				<input type="submit" class="btn btn-primary btn-md" onclick="location.href='{{ url('/student-details/') }}'" value="戻る">
+				<input type="submit" class="btn btn-primary btn-md" onclick="location.href='{{ url('/student_details/') }}'" value="戻る">
 			</div>
 
 		</div>
