@@ -92,28 +92,20 @@
 					<input type="submit" class="btn btn-primary btn-md" onclick="location.href='#'" value="アンケートのみ">
 				</div>
 				<div class="row row-bottom-padded-md">
+				@foreach ($users_db as $key => $test)
 					<div class="col-md-3 col-sm-6 col-padding animate-box" data-animate-effect="fadeInLeft">
 						<div class="blog-entry">
 							<a href="{{ url('/details/') }}" class="blog-img"><img src="images/img-1.jpg" class="img-responsive" alt="#"></a>
 							<div class="desc">
-								<h3><a href="{{ url('/details/') }}">テスト1</a></h3>
+								<h3><a href="{{ url('/details/') }}">{{$test->title}}</a></h3>
 								<span><small> 2020 </small> / <small> 7 </small> / <small> 30 </small></span>
 								<p>ここにテキストを入れることができます。</p>
 								<a href="{{ url('/details/') }}" class="lead">詳細 <i class="icon-arrow-right3"></i></a>
 							</div>
 						</div>
 					</div>
-					<div class="col-md-3 col-sm-6 col-padding animate-box" data-animate-effect="fadeInLeft">
-						<div class="blog-entry">
-							<a href="{{ url('/details/') }}" class="blog-img"><img src="images/img-1.jpg" class="img-responsive" alt="#"></a>
-							<div class="desc">
-								<h3><a href="{{ url('/details/') }}">テスト2</a></h3>
-								<span><small> 2020 </small> / <small> 7 </small> / <small> 29 </small></span>
-								<p>ここにテキストを入れることができます。</p>
-								<a href="{{ url('/details/') }}" class="lead">詳細 <i class="icon-arrow-right3"></i></a>
-							</div>
-						</div>
-					</div>
+					@endforeach
+					
 					<div class="col-md-3 col-sm-6 col-padding animate-box" data-animate-effect="fadeInLeft">
 						<div class="blog-entry">
 							<a href="{{ url('/details/') }}" class="blog-img"><img src="images/img-1.jpg" class="img-responsive" alt="#"></a>
