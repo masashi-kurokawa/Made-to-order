@@ -86,10 +86,7 @@ Route::get('/details/', function () {
 Route::get('/score/', function () {
     return view('score');
 });
-<<<<<<< HEAD
-=======
-
-
+/*
 Route::get('/login/', function () {
     return view('login');
 });
@@ -105,4 +102,4 @@ Auth::routes(['register' => false]);
 
 Route::get('/auth/', 'AuthTestController@index')->name('authtest');;
 Route::post('/auth/', 'AuthTestController@index');
->>>>>>> kuroki
+*/
