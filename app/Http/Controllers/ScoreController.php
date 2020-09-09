@@ -15,20 +15,26 @@ class ScoreController extends Controller
     // }
 
     public function index(){
+    // public function index(Request $request){
+
+
+             $test = new test;
+             $dblist = $test
+             // ->where('title',テスト1,'status',1)
+             // ->get();
+             // $tests = $request->input('test');
+             // $request->input('test');
+             // echo ($request);
 
 
              // $test = new test;
              // $dblist = $test
-             // ->where('title',テスト1,'status',1)
-             // ->get();
-
-             $test = new test;
-             $dblist = $test
              ->where('title', 'テスト1')
+             // ->where('title', {$tests})
              // ->dd() // 上に移動させた
              ->where('status', 1)
              ->get();
-             // dump($dblist);
+             // dump(test);
 
              // $dt_from = new Carbon;
              // $dt_from->startOfMonth();

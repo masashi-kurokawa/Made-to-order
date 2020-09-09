@@ -92,24 +92,29 @@
       <div class="fh5co-narrow-content">
         <h2 class="fh5co-heading animate-box" data-animate-effect="fadeInLeft">点数早見表</h2>
 
-        <form class="form-inline">
+　　　　　<!-- 検索フォーム -->
+        <form class="form-inline" action="{{url('/score')}}" method="GET">
+          <!-- 期間ソート -->
           <div class="form-group">
             <label>選択した期間で受講した生徒をソート：</label>
             <input type="date" name="sort-start">
             <label>〜</label>
             <input type="date" name="sort-end">
           </div>
+          <!-- 期間ソート終わり -->
+          <!-- テストの検索 -->
           <div class="form-group">
             <select class="select-test" name="test" size="1">
               <option value="">---テストを選択---</option>
               @foreach ($dblist as $key => $tests)
-                <option value="選択肢2">{{$tests->title}}</option>
+                <option value="{{$tests->title}}">{{$tests->title}}</option>
               @endforeach
             </select>
           </div>
+          <!-- テストの検索終わり -->
           <!-- 使っているテストか判定 -->
           <div class="form-group">
-            <select class="select-test" name="gender" size="1">
+            <select class="select-test" name="status" size="1">
               <option selected="selected" value="">選択してください</option>
               @foreach($status as $key => $value)
               <option value="{{ $value }}" {{ isset($params['status']) && $params['status'] == $value ? 'selected': null }}>
@@ -123,9 +128,11 @@
             <input type="submit" class="btn btn-primary btn-md" value="検索">
           </div>
         </form>
+        <!-- 検索フォーム終わり -->
 
         <div class="row row-bottom-padded-md">
           <table  style="table-layout:fixed;">
+            <!-- 各項目 -->
             <tr>
               <th style="width:5%;">No</th>
               <th>生徒</th>
@@ -135,6 +142,8 @@
             </th>
             @endforeach
           </tr>
+          <!-- 各項目終わり -->
+          <!-- 検索結果 -->
             <tr>
               @foreach ($dblist as $key => $tests)
               <td><p>No</p></td> <!-- テストナンバーに変える -->
@@ -142,6 +151,7 @@
               <td><a href="{{ url('/test/') }}">{{$tests->title}}</a></td>
               @endforeach
             </tr>
+          <!-- 検索結果終わり -->
         </table>
       </div>
 
