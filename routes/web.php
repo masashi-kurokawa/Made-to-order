@@ -21,7 +21,10 @@ Route::get('/', function () {
 Route::get('/home/', 'HomeController@index');
 
 //ホーム画面　一般ユーザー用
-Route::get('/home2/', 'HomeController@index');
+// Route::get('/home2/', 'Home2Controller@index');
+Route::get('/home2/', function () {
+    return view('home2');
+});
 
 //テスト一覧
 //app/http/testlist/testlistController中の@index関数

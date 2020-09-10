@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -7,7 +6,7 @@
 	<head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>タイトル &mdash; HOME</title>
+	<title>タイトル &mdash; HOME2</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="description" content="Free HTML5 Website Template by FreeHTML5.co" />
 	<meta name="keywords" content="free html5, free template, free bootstrap, free website template, html5, css3, mobile first, responsive" />
@@ -70,7 +69,7 @@
 			<h1 id="fh5co-logo"><a href="{{ url('/home/') }}">タイトル</a></h1>
 			<nav id="fh5co-main-menu" role="navigation">
 				<ul>
-					<li class="fh5co-active"><a href="{{ url('/home/') }}">Home</a></li>
+					<li class="fh5co-active"><a href="{{ url('/home2/') }}">Home</a></li>
 					<li><a href="{{ url('/testlist/') }}">テスト一覧</a></li>
 					<li><a href="{{ url('/surveylist/') }}">アンケート一覧</a></li>
 					<li><a href="{{ url('/student/') }}">生徒一覧</a></li>
@@ -95,12 +94,7 @@
 					   			<div class="col-md-8 col-md-offset-2 text-center js-fullheight slider-text">
 					   				<div class="slider-text-inner">
 					   					<h1>タイトル（未定）を入れる</h1>
-					   					<h2>Slack Log in</h2>
-											{{-- <img src="data:image/png;base64,{{$base64}}"> --}}
-											<p>
-												<a class="btn btn-primary btn-demo popup-vimeo" href="https://slack.com/oauth/authorize?client_id={{$slack_client_id}}&scope=identify&redirect_uri={{ url('/home/') }}">ログイン</a>
-												<a class="btn btn-primary btn-learn">ログアウト</a>
-											</p>
+											<h2>ログイン完了画面</h2>
 					   				</div>
 					   			</div>
 					   		</div>
