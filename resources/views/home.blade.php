@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -71,10 +70,15 @@
 			<nav id="fh5co-main-menu" role="navigation">
 				<ul>
 					<li class="fh5co-active"><a href="{{ url('/home/') }}">Home</a></li>
-					<li><a href="{{ url('/testlist/') }}">テスト一覧</a></li>
+					<p>
+						Slackログイン前はメニュー画面消す。<br>
+						本番環境では↓消します。
+					</p>
+					<li><a href="{{ url('/home2/') }}">ログイン後Home画面</a></li>
+					<!-- <li><a href="{{ url('/testlist/') }}">テスト一覧</a></li>
 					<li><a href="{{ url('/surveylist/') }}">アンケート一覧</a></li>
 					<li><a href="{{ url('/student/') }}">生徒一覧</a></li>
-					<li><a href="{{ url('/score/') }}">点数早見表</a></li>
+					<li><a href="{{ url('/score/') }}">点数早見表</a></li> -->
 				</ul>
 			</nav>
 
