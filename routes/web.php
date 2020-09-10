@@ -17,10 +17,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-//ホーム画面　管理者用
+//ホーム画面　ログイン前
 Route::get('/home/', 'HomeController@index');
 
-//ホーム画面　一般ユーザー用
+//ホーム画面　ログイン後
 Route::get('/home2/', 'HomeController@index');
 
 //テスト一覧
