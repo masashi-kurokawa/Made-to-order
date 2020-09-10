@@ -66,7 +66,7 @@
 		<a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle"><i></i></a>
 		<aside id="fh5co-aside" role="complementary" class="border js-fullheight">
 
-			<h1 id="fh5co-logo"><a href="{{ url('/home/') }}">タイトル</a></h1>
+			<h1 id="fh5co-logo"><a href="{{ url('/home2/') }}">タイトル</a></h1>
 			<nav id="fh5co-main-menu" role="navigation">
 				<ul>
 					<li class="fh5co-active"><a href="{{ url('/home2/') }}">Home</a></li>
@@ -94,7 +94,11 @@
 					   			<div class="col-md-8 col-md-offset-2 text-center js-fullheight slider-text">
 					   				<div class="slider-text-inner">
 					   					<h1>タイトル（未定）を入れる</h1>
+<<<<<<< HEAD
 											<h2>ログイン完了画面</h2>
+=======
+					   					<h2>ログイン完了画面</h2>
+>>>>>>> feature/yutaka
 					   				</div>
 					   			</div>
 					   		</div>

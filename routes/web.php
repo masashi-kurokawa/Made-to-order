@@ -17,11 +17,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-//ホーム画面　管理者用
+//ホーム画面　ログイン前
 Route::get('/home/', 'HomeController@index');
 
+<<<<<<< HEAD
 //ホーム画面　一般ユーザー用
 // Route::get('/home2/', 'Home2Controller@index');
+=======
+//ホーム画面　ログイン後
+>>>>>>> feature/yutaka
 Route::get('/home2/', function () {
     return view('home2');
 });
