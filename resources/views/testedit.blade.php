@@ -90,10 +90,14 @@
 				<h2 class="fh5co-heading">テスト詳細・編集</h2>
         <div id="count" class="container animate-box" data-animate-effect="fadeInLeft">
           <form action="{{ url('/testlist/') }}" method="post">
+
+						@foreach ($dblist as $key => $tests)
             <div class="title-rap">
-              <input type="text" name="text" placeholder="テストタイトルを入力してください。">
+              <input type="text" name="text" value="{{$tests->title}}">
               <textarea name="text" rows="2" placeholder="ここにテキストを入れることができます。"></textarea>
             </div>
+						@endforeach
+
             <table>
               <tbody>
               <tr>

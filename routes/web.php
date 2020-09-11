@@ -45,9 +45,7 @@ Route::get('/test/', function () {
 });
 
 //テスト詳細・編集
-Route::get('/testedit/', function () {
-    return view('testedit');
-});
+Route::get('/testedit/', 'TesteditController@edit');
 
 //テスト終了
 Route::get('/testend/', function () {
@@ -95,3 +93,6 @@ Route::get('/details/', function () {
 Route::get('/score/', function () {
     return view('score');
 });
+
+// サンプル　2020/09/10 CRUD処理理解のため石田作成。プロジェクト終了後削除する。
+Route::resource('item', 'ItemController');
