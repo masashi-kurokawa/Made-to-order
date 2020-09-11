@@ -86,7 +86,7 @@ Route::get('/details/', function () {
 Route::get('/score/', function () {
     return view('score');
 });
-<<<<<<< HEAD
+// <<<<<<< HEAD
 
 //点数早見表（試し追加）
 // Route::get('/score/', 'ScoreController@index');
@@ -95,7 +95,7 @@ Route::get('/score', 'ScoreController@index');
 // Route::get('/serch', 'ScoreController@index');
 
 
-=======
+// =======
 /*
 >>>>>>> slackOauth
 Route::get('/login/', function () {

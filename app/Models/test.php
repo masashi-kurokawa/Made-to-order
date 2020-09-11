@@ -8,18 +8,18 @@ use Illuminate\Http\Request;
 
 class Test extends Model
 {
-<<<<<<< HEAD
+// <<<<<<< HEAD
     protected $table = 'tests';
     protected $primaryKey = 'id';
-=======
-  
-    
+// =======
 
 
 
 
 
 
->>>>>>> slackOauth
+
+
+// >>>>>>> slackOauth
 
 }
