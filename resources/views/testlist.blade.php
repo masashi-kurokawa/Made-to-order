@@ -98,7 +98,7 @@
 							<a href="{{ url('/test/') }}" class="blog-img"><img src="" class="img-responsive" alt="#"></a>
 							<div class="desc">
 								<h3><a href="{{ url('/test/') }}">{{$tests->title}}</a></h3>
-								<span><small>{{$tests->updated_at}} </small></span>
+								<span><small>{{$tests->updated_at}}</small></span>
 								<p>ここにテキストを入れることができます。</p>
 								<div class="more-center">
 									<a href="{{ url('/test/') }}" class="lead more">テスト受講</a>
