@@ -89,17 +89,9 @@ Route::get('/details/', function () {
 Route::get('/score/', function () {
     return view('score');
 });
-<<<<<<< HEAD
 
 // サンプル　2020/09/10 CRUD処理理解のため石田作成。プロジェクト終了後削除する。
 Route::resource('item', 'ItemController');
-=======
-<<<<<<< HEAD
-
-// サンプル　2020/09/10 CRUD処理理解のため石田作成。プロジェクト終了後削除する。
-Route::resource('item', 'ItemController');
-=======
-// <<<<<<< HEAD
 
 //点数早見表（試し追加）
 // Route::get('/score/', 'ScoreController@index');
@@ -107,8 +99,6 @@ Route::resource('item', 'ItemController');
 //検索結果を表示する
 // Route::get('/serch', 'ScoreController@index');
 
-
-// =======
 /*
 >>>>>>> slackOauth
 Route::get('/login/', function () {
@@ -127,5 +117,3 @@ Auth::routes(['register' => false]);
 Route::get('/auth/', 'AuthTestController@index')->name('authtest');;
 Route::post('/auth/', 'AuthTestController@index');
 */
->>>>>>> fec1da54fdf19ee51217c75be12297c35a0babf6
->>>>>>> slackOauth
