@@ -89,16 +89,17 @@
 			<div class="fh5co-narrow-content">
 				<h2 class="fh5co-heading">テスト新規作成</h2>
         <div id="count" class="container animate-box" data-animate-effect="fadeInLeft">
-          <form action="{{ url('/testlist/') }}" method="post">
+          <form action="#" method="post">
             <div class="title-rap">
-              <input type="text" name="text" placeholder="テストタイトルを入力してください。">
-              <textarea name="text" rows="2" placeholder="ここにテキストを入れることができます。"></textarea>
+              <input type="text" name="test[title]"   placeholder="テストタイトルを入力してください。">
+              <textarea name="test[coment]" rows="2" placeholder="ここにテキストを入れることができます。"></textarea>
             </div>
             <table>
               <tbody>
               <!-- ここに問題が追加されていきます。 -->
               </tbody>
             </table>
+			{{ csrf_field() }}
             <input type="submit" value="保存">
           </form>
 

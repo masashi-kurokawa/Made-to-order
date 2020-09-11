@@ -7,7 +7,7 @@ use App\Models\User;
 
 class StudentController extends Controller
 {
-    //urlの結果を取得
+    //urlの結果を取得 submitした内容をRequestで取得
     public function index(Request $request)
     {
 

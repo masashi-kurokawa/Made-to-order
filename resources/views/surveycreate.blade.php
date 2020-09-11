@@ -89,10 +89,10 @@
 			<div class="fh5co-narrow-content">
 				<h2 class="fh5co-heading">アンケート新規作成</h2>
         <div id="count" class="container animate-box" data-animate-effect="fadeInLeft">
-					<form action="{{ url('/surveylist/') }}" method="post">
+					<form action="#" method="post">
             <div class="title-rap">
-              <input type="text" name="text" placeholder="アンケートタイトルを入力してください。">
-              <textarea name="text" rows="2" placeholder="ここにテキストを入れることができます。"></textarea>
+              <input type="text" name="test[title]" placeholder="アンケートタイトルを入力してください。">
+              <textarea name="test[coment]" rows="2" placeholder="ここにテキストを入れることができます。"></textarea>
             </div>
             <table>
               <tbody>
