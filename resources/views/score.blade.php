@@ -104,7 +104,7 @@
           <!-- 期間ソート終わり -->
           <!-- テストの検索 -->
           <div class="form-group">
-            <select class="select-test" name="test" size="1">
+            <select class="select-test" name="test" value="{{$testss}}" size="1">
               <option value="">---テストを選択---</option>
               @foreach ($dblist as $key => $tests)
                 <option value="{{$tests->title}}">{{$tests->title}}</option>
@@ -136,21 +136,24 @@
             <tr>
               <th style="width:5%;">No</th>
               <th>生徒</th>
-              @foreach ($dblist as $key => $tests)
               <th>
-                {{$tests->title}}<p>平均50点</p>
+                @foreach ($dblist as $tests)
+                {{$tests->title}}
+                @endforeach
+                <p>平均{{ $avg }}点</p>
             </th>
-            @endforeach
           </tr>
           <!-- 各項目終わり -->
           <!-- 検索結果 -->
+          @if($dblist->count())
             <tr>
-              @foreach ($dblist as $key => $tests)
+              @foreach ($dblist as $tests)
               <td><p>No</p></td> <!-- テストナンバーに変える -->
               <td><p>名前</p></td>
               <td><a href="{{ url('/test/') }}">{{$tests->title}}</a></td>
               @endforeach
             </tr>
+          @endif
           <!-- 検索結果終わり -->
         </table>
       </div>

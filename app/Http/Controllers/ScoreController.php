@@ -5,48 +5,49 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use App\Models\Test;
+use Illuminate\Support\Facades\DB;
 
 class ScoreController extends Controller
 {
-    //
-    // public function index()
-    // {
-    //    return view('score');
-    // }
 
-    public function index(){
-    // public function index(Request $request){
+    public function index(Request $request){
 
 
-             $test = new test;
-             $dblist = $test
-             // ->where('title',テスト1,'status',1)
-             // ->get();
-             // $tests = $request->input('test');
-             // $request->input('test');
-             // echo ($request);
+             $testss = $request->input('test');
+             $status = $request->input('status');
+             $sortstart = $request->input('sort-start');
+             $sortend = $request->input('sort-end');
+
+             $query = test::query();
+             $test = test::value('created_at');
+             $created_at = date('Y-m-d',strtotime($test));
+
+             $testid = test::whereTitle("$testss")->value('id');
+             $items = DB::table('test_results')->whereTest_id("$testid")->get();
+             $avg = $items->avg('score');
+             // dump($avg);
+
+             if (!empty($sortstart && $sortend)) {
+               $query->whereBetween('created_at', ["$sortstart", "$sortend"]);
+             }
+
+             if (!empty($testss)) {
+               $query->where('title', "$testss");
+             }
+
+             if (!empty($status)) {
+               $query->where('status', "$status");
+             }
 
 
-             // $test = new test;
-             // $dblist = $test
-             ->where('title', 'テスト1')
-             // ->where('title', {$tests})
-             // ->dd() // 上に移動させた
-             ->where('status', 1)
-             ->get();
-             // dump(test);
-
-             // $dt_from = new Carbon;
-             // $dt_from->startOfMonth();
-             //
-             // $dt_to = new Carbon;
-             // $dt_to->endOfMonth();
-             //
-             // $reports = Report::whereBetween('report_date', [$dt_from, $dt_to])->get();
+             $dblist = $query->get();
+             // dump($dblist);
 
 
         //ブレードへ
-       return view('score',compact('dblist'));
+       return view('score',compact('dblist', 'testss', 'status', 'avg'));
 
     }
+
+
 }

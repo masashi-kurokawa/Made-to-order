@@ -80,8 +80,10 @@ Route::get('/score/', function () {
 });
 
 //点数早見表（試し追加）
-Route::get('/score/', 'ScoreController@index');
-
+// Route::get('/score/', 'ScoreController@index');
+Route::get('/score', 'ScoreController@index');
+//検索結果を表示する
+// Route::get('/serch', 'ScoreController@index');
 
 
 Route::get('/login/', function () {
