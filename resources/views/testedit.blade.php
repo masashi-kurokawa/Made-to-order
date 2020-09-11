@@ -6,7 +6,7 @@
 	<head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>タイトル &mdash; テスト新規作成</title>
+	<title>タイトル &mdash; テスト詳細・編集</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="description" content="Free HTML5 Website Template by FreeHTML5.co" />
 	<meta name="keywords" content="free html5, free template, free bootstrap, free website template, html5, css3, mobile first, responsive" />
@@ -87,7 +87,7 @@
 
 		<div id="fh5co-main" class="animate-box" data-animate-effect="fadeInLeft">
 			<div class="fh5co-narrow-content">
-				<h2 class="fh5co-heading">テスト新規作成</h2>
+				<h2 class="fh5co-heading">テスト詳細・編集</h2>
         <div id="count" class="container animate-box" data-animate-effect="fadeInLeft">
           <form action="{{ url('/testlist/') }}" method="post">
             <div class="title-rap">
@@ -96,8 +96,117 @@
             </div>
             <table>
               <tbody>
-              <!-- ここに問題が追加されていきます。 -->
-              </tbody>
+              <tr>
+								<td><textarea name="text" rows="5" cols="50" placeholder="ここに問題文を入力してください。"></textarea></td>
+								<td><input type="text" name="text" placeholder="回答を入力してください。"></td>
+								<td class="remove-center"><button class="remove">-</button></td>
+							</tr>
+							<tr>
+								<td><textarea name="text" rows="5" cols="50" placeholder="ここに問題文を入力してください。"></textarea></td>
+								<td><input type="text" name="text" placeholder="回答を入力してください。"><input type="text" name="text" placeholder="回答を入力してください。"></td>
+								<td class="remove-center"><button class="remove">-</button></td>
+							</tr>
+							<tr>
+								<td><textarea name="text" rows="5" cols="50" placeholder="ここに問題文を入力してください。"></textarea></td>
+								<td>
+									<form>
+										<input type="radio" name="Choice4">
+										<input type="text" name="answer" placeholder="回答を入力してください。">
+										<input type="radio" name="Choice4">
+										<input type="text" name="answer" placeholder="回答を入力してください。">
+										<input type="radio" name="Choice4">
+										<input type="text" name="answer" placeholder="回答を入力してください。">
+										<input type="radio" name="Choice4">
+										<input type="text" name="answer" placeholder="回答を入力してください。">
+									</form>
+								</td>
+								<td class="remove-center"><button class="remove">-</button></td>
+							</tr>
+							<tr>
+								<td><textarea name="text" rows="5" cols="50" placeholder="ここに問題文を入力してください。"></textarea></td>
+								<td>
+									<form>
+										<input type="radio" name="Choice8">
+										<input type="text" name="answer" placeholder="回答を入力してください。">
+										<input type="radio" name="Choice8">
+										<input type="text" name="answer" placeholder="回答を入力してください。">
+										<input type="radio" name="Choice8">
+										<input type="text" name="answer" placeholder="回答を入力してください。">
+										<input type="radio" name="Choice8">
+										<input type="text" name="answer" placeholder="回答を入力してください。">
+										<input type="radio" name="Choice8">
+										<input type="text" name="answer" placeholder="回答を入力してください。">
+										<input type="radio" name="Choice8">
+										<input type="text" name="answer" placeholder="回答を入力してください。">
+										<input type="radio" name="Choice8">
+										<input type="text" name="answer" placeholder="回答を入力してください。">
+										<input type="radio" name="Choice8">
+										<input type="text" name="answer" placeholder="回答を入力してください。">
+									</form>
+								</td>
+								<td class="remove-center"><button class="remove">-</button></td>
+							</tr>
+							<tr>
+								<td><textarea name="text" rows="5" cols="50" placeholder="ここに問題文を入力してください。"></textarea></td>
+								<td><input type="text" name="text" placeholder="回答を入力してください。"></td>
+								<td class="remove-center"><button class="remove">-</button></td>
+							</tr>
+							<tr>
+								<td><textarea name="text" rows="5" cols="50" placeholder="ここに問題文を入力してください。"></textarea></td>
+								<td><input type="text" name="text" placeholder="回答を入力してください。"><input type="text" name="text" placeholder="回答を入力してください。"></td>
+								<td class="remove-center"><button class="remove">-</button></td>
+							</tr>
+							<tr>
+								<td><textarea name="text" rows="5" cols="50" placeholder="ここに問題文を入力してください。"></textarea></td>
+								<td>
+									<form>
+										<input type="radio" name="Choice4">
+										<input type="text" name="answer" placeholder="回答を入力してください。">
+										<input type="radio" name="Choice4">
+										<input type="text" name="answer" placeholder="回答を入力してください。">
+										<input type="radio" name="Choice4">
+										<input type="text" name="answer" placeholder="回答を入力してください。">
+										<input type="radio" name="Choice4">
+										<input type="text" name="answer" placeholder="回答を入力してください。">
+									</form>
+								</td>
+								<td class="remove-center"><button class="remove">-</button></td>
+							</tr>
+							<tr>
+								<td><textarea name="text" rows="5" cols="50" placeholder="ここに問題文を入力してください。"></textarea></td>
+								<td>
+									<form>
+										<input type="radio" name="Choice8">
+										<input type="text" name="answer" placeholder="回答を入力してください。">
+										<input type="radio" name="Choice8">
+										<input type="text" name="answer" placeholder="回答を入力してください。">
+										<input type="radio" name="Choice8">
+										<input type="text" name="answer" placeholder="回答を入力してください。">
+										<input type="radio" name="Choice8">
+										<input type="text" name="answer" placeholder="回答を入力してください。">
+										<input type="radio" name="Choice8">
+										<input type="text" name="answer" placeholder="回答を入力してください。">
+										<input type="radio" name="Choice8">
+										<input type="text" name="answer" placeholder="回答を入力してください。">
+										<input type="radio" name="Choice8">
+										<input type="text" name="answer" placeholder="回答を入力してください。">
+										<input type="radio" name="Choice8">
+										<input type="text" name="answer" placeholder="回答を入力してください。">
+									</form>
+								</td>
+								<td class="remove-center"><button class="remove">-</button></td>
+							</tr>
+							<tr>
+								<td><textarea name="text" rows="5" cols="50" placeholder="ここに問題文を入力してください。"></textarea></td>
+								<td><input type="text" name="text" placeholder="回答を入力してください。"></td>
+								<td class="remove-center"><button class="remove">-</button></td>
+							</tr>
+							<tr>
+								<td><textarea name="text" rows="5" cols="50" placeholder="ここに問題文を入力してください。"></textarea></td>
+								<td><input type="text" name="text" placeholder="回答を入力してください。"><input type="text" name="text" placeholder="回答を入力してください。"></td>
+								<td class="remove-center"><button class="remove">-</button></td>
+							</tr>
+							</tbody>
             </table>
             <input type="submit" value="保存">
           </form>

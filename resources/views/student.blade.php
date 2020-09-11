@@ -111,12 +111,13 @@
 				@foreach ($dblist as $key => $user)
 				<div class="col-md-student col-sm-6 col-padding animate-box" data-animate-effect="fadeInLeft">
 						<div class="blog-entry">
-							<a href="{{ url('/student-details/') }}" class="blog-img"><img src="" class="img-responsive" alt="#"></a>
+						<!--?＝id1で値を渡す-->
+							<a href="{{  url('/student_details/?name='.$user->name)}}" class="blog-img"><img src="" class="img-responsive" alt="#"></a>
 							<div class="desc">
-								<h3><a href="{{ url('/student-details/') }}">{{$user->name}}</a></h3>
+								<h3><a href="{{  url('/student_details/?name='.$user->name)}}">{{$user->name}}</a></h3>
 								<span>カリキュラム</span>
 								<p>{{$user->id}}</p>
-								<a href="{{ url('/student-details/') }}" class="lead">生徒詳細<i class="icon-arrow-right3"></i></a>
+								<a href="{{ url('/student_details/?name='.$user->name)}}" class="lead">生徒詳細<i class="icon-arrow-right3"></i></a>
 							</div>
 						</div>
 					</div>

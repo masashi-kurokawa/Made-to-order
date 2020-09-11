@@ -17,14 +17,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-//ホーム画面
+//ホーム画面　管理者用
 Route::get('/home/', 'HomeController@index');
+
+//ホーム画面　一般ユーザー用
+Route::get('/home2/', 'HomeController@index');
 
 //テスト一覧
 //app/http/testlist/testlistController中の@index関数
 Route::get('/testlist/', 'TestlistController@index');
-
-
 
 //テスト新規作成
 Route::get('/testcreate/', function () {
@@ -36,13 +37,17 @@ Route::get('/test/', function () {
     return view('test');
 });
 
+//テスト詳細・編集
+Route::get('/testedit/', function () {
+    return view('testedit');
+});
+
 //テスト終了
 Route::get('/testend/', function () {
     return view('testend');
 });
 
 //アンケート一覧
-
 Route::get('/surveylist/', 'SurveylistController@index');
 
 //アンケート新規作成
@@ -55,6 +60,11 @@ Route::get('/survey/', function () {
     return view('survey');
 });
 
+//アンケート詳細・編集
+Route::get('/surveyedit/', function () {
+    return view('surveyedit');
+});
+
 //アンケート終了
 Route::get('/surveyend/', function () {
     return view('surveyend');
@@ -65,9 +75,7 @@ Route::get('/student/', 'StudentController@index');
 
 
 //生徒詳細
-Route::get('/student-details/', function () {
-    return view('student-details');
-});
+Route::get('/student_details/', 'Student_detailsController@index');
 
 //詳細
 Route::get('/details/', function () {
@@ -78,6 +86,7 @@ Route::get('/details/', function () {
 Route::get('/score/', function () {
     return view('score');
 });
+<<<<<<< HEAD
 
 //点数早見表（試し追加）
 // Route::get('/score/', 'ScoreController@index');
@@ -86,6 +95,9 @@ Route::get('/score', 'ScoreController@index');
 // Route::get('/serch', 'ScoreController@index');
 
 
+=======
+/*
+>>>>>>> slackOauth
 Route::get('/login/', function () {
     return view('login');
 });
@@ -94,3 +106,11 @@ Route::get('/login2/', function () {
 });
 Route::get('/redirect', 'OAuthController@redirectToProvider');
 Route::get('/callback', 'OAuthController@handleProviderCallback');
+
+Auth::routes(['register' => false]);
+
+// Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/auth/', 'AuthTestController@index')->name('authtest');;
+Route::post('/auth/', 'AuthTestController@index');
+*/

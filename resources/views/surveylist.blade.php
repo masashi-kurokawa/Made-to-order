@@ -84,36 +84,51 @@
 
 		</aside>
 
+
+
+
+
 		<div id="fh5co-main">
 			<div class="fh5co-narrow-content">
 				<h2 class="fh5co-heading animate-box" data-animate-effect="fadeInLeft">アンケート一覧</h2>
-
-				<input type="submit" class="btn btn-primary btn-md" onclick="location.href='{{ url('/surveycreate/') }}'" value="新規作成">
-
 				<div class="row row-bottom-padded-md">
+<<<<<<< HEAD
 
 
 					<div class="col-md-3 col-sm-6 col-padding animate-box" data-animate-effect="fadeInLeft">
 					@foreach ($dblist as $key => $survey_list) <!-- ここの変数変える？ -->
 						<div class="blog-entry">
 							<a href="{{ url('/survey/') }}" class="blog-img"><img src="{{$survey_list->test_img}}" class="img-responsive" alt="#"></a>
+=======
+				@foreach ($dblist as $key => $survey_list)
+					<div class="col-md-3 col-sm-6 col-padding animate-box" data-animate-effect="fadeInLeft">
+					<div class="blog-entry">
+							<a href="{{ url('/survey/') }}" class="blog-img"><img src= class="img-responsive" alt="#"></a>
+>>>>>>> slackOauth
 							<div class="desc">
-								<h3><a href="{{ url('/survey/') }}">{{$survey_list->c_question}}</a></h3>
+								<h3><a href="{{ url('/survey/') }}">{{$survey_list->title}}</a></h3>
 								<span><small> 2020 </small> / <small> 7 </small> / <small> 30 </small></span>
 								<p>ここにテキストを入れることができます。</p>
-								<a href="{{ url('/survey/') }}" class="lead">アンケートを受講する <i class="icon-arrow-right3"></i></a>
-								<a href="{{ url('/survey/') }}" class="lead">詳細・編集</a>
+								<div class="more-center">
+									<a href="{{ url('/survey/') }}" class="lead more">アンケート受講</a>
+									<a href="{{ url('/surveyedit/') }}" class="lead more">詳細・編集</a>
+								</div>
 							</div>
 						</div>
-						@endforeach
 					</div>
+<<<<<<< HEAD
 
 
+=======
+				@endforeach
+>>>>>>> slackOauth
 				</div>
 			</div>
 
 		</div>
 	</div>
+
+
 
 	<!-- jQuery -->
 	<script src="js/jquery.min.js"></script>

@@ -13,7 +13,7 @@ class TestlistController extends Controller
 
 
 
-             $test = new test;
+             $test = new Test;
              $dblist = $test
              ->where('status',1)
              ->get();
