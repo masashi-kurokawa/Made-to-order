@@ -9,4 +9,13 @@ class Survey extends Model
     //
     protected $table = 'surveys';
     protected $primaryKey = 'id';
+use Carbon\Carbon;
+use Illuminate\Http\Request;
+class Survey extends Model
+{
+ 
+
+
+
+
 }

@@ -10,10 +10,10 @@ class TestlistController extends Controller
 {
     //
     public function index(){
-   
 
 
-             $test = new test;
+
+             $test = new Test;
              $dblist = $test
              ->where('status',1)
              ->get();

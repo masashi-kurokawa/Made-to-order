@@ -1,64 +1,7 @@
-<!-- いったん点数早見表を作る為にデータベースに接続 -->
-<?php
-
-try {
-
-    /* リクエストから得たスーパーグローバル変数をチェックするなどの処理 */
-
-    // データベースに接続
-    $pdo = new PDO(
-        'mysql:dbname=Made_to_order;host=localhost;charset=utf8mb4',
-        'root',
-        'root',
-        [
-            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-        ]
-    );
-
-    /* データベースから値を取ってきたり， データを挿入したりする処理 */
-
-		// SELECT文を変数に格納
-		$sql = "SELECT * FROM test";
-
-		// SQLステートメントを実行し、結果を変数に格納
-		$stmt = $pdo->query($sql);
-
-		//レコード件数取得
-  	$row_count = $stmt->rowCount();
-
-  	while($row = $stmt->fetch()){
-  		$rows[] = $row;
-  	}
-
-		// foreach文で配列の中身を一行ずつ出力
-		foreach ($stmt as $row) {
-
-		  // データベースのフィールド名で出力
-		  echo $row['user_id'].'：'.$row['test_title'].'：'.$row['score'];
-
-		  // 改行を入れる
-		  echo '<br>';
-		};
-
-} catch (PDOException $e) {
-
-    // エラーが発生した場合は「500 Internal Server Error」でテキストとして表示して終了する
-    // - もし手抜きしたくない場合は普通にHTMLの表示を継続する
-    // - ここではエラー内容を表示しているが， 実際の商用環境ではログファイルに記録して， Webブラウザには出さないほうが望ましい
-    header('Content-Type: text/plain; charset=UTF-8', true, 500);
-    exit($e->getMessage());
-
-}
-
-// Webブラウザにこれから表示するものがUTF-8で書かれたHTMLであることを伝える
-// (これか <meta charset="utf-8"> の最低限どちらか1つがあればいい． 両方あっても良い．)
-header('Content-Type: text/html; charset=utf-8');
-
-?>
-
-
 <!DOCTYPE html>
+<?php
+ $status = ['活用中' => 1, '活用していない' => 2];
+?>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
@@ -145,60 +88,78 @@ header('Content-Type: text/html; charset=utf-8');
 
 		</aside>
 
-		<div id="fh5co-main">
-			<div class="fh5co-narrow-content">
-				<h2 class="fh5co-heading animate-box" data-animate-effect="fadeInLeft">点数早見表</h2>
+    <div id="fh5co-main">
+      <div class="fh5co-narrow-content">
+        <h2 class="fh5co-heading animate-box" data-animate-effect="fadeInLeft">点数早見表</h2>
 
-				<form class="form-inline">
-					<div class="form-group">
-						<label>選択した期間で受講した生徒をソート：</label>
-						<input type="date" name="sort-start">
-						<label>〜</label>
-						<input type="date" name="sort-end">
-					</div>
-					<div class="form-group">
-						<select class="select-test" name="test" size="1">
-							<option value="">---テストを選択---</option>
-							<?php
-							foreach($rows as $row){
-								?>
-								<option value="選択肢2"><?php echo $row['test_title']; ?></option>
-								<?php
-							}
-							?>
-						</select>
-					</div>
-					<div class="form-group">
-						<input type="submit" class="btn btn-primary btn-md" value="検索">
-					</div>
-				</form>
+　　　　　<!-- 検索フォーム -->
+        <form class="form-inline" action="{{url('/score')}}" method="GET">
+          <!-- 期間ソート -->
+          <div class="form-group">
+            <label>選択した期間で受講した生徒をソート：</label>
+            <input type="date" name="sort-start">
+            <label>〜</label>
+            <input type="date" name="sort-end">
+          </div>
+          <!-- 期間ソート終わり -->
+          <!-- テストの検索 -->
+          <div class="form-group">
+            <select class="select-test" name="test" value="{{$testss}}" size="1">
+              <option value="">---テストを選択---</option>
+              @foreach ($dblist as $key => $tests)
+                <option value="{{$tests->title}}">{{$tests->title}}</option>
+              @endforeach
+            </select>
+          </div>
+          <!-- テストの検索終わり -->
+          <!-- 使っているテストか判定 -->
+          <div class="form-group">
+            <select class="select-test" name="status" size="1">
+              <option selected="selected" value="">選択してください</option>
+              @foreach($status as $key => $value)
+              <option value="{{ $value }}" {{ isset($params['status']) && $params['status'] == $value ? 'selected': null }}>
+                {{ $key }}
+              </option>
+              @endforeach
+            </select>
+          </div>
+            <!-- 使っているテストか判定終わり -->
+          <div class="form-group">
+            <input type="submit" class="btn btn-primary btn-md" value="検索">
+          </div>
+        </form>
+        <!-- 検索フォーム終わり -->
 
-				<div class="row row-bottom-padded-md">
-					<table  style="table-layout:fixed;">
-						<tr>
-					    <th style="width:5%;">No</th>
-					    <th>生徒</th>
-					    <th>
-					      <?php echo $row['test_title']; ?>
-					      <?php echo "平均50点"; ?>
-					  </th>
-					</tr>
-					<?php
-					foreach($rows as $row){
-					  ?>
-					  <tr>
-					    <td><?php echo $row['user_id']; ?></td> <!-- テストナンバーに変える -->
-					    <td><?php echo $row['user_id']; ?></td>
-					    <td><?php echo $row['test_title']; ?></td>
-					  </tr>
-					  <?php
-					}
-					?>
-				</table>
-			</div>
+        <div class="row row-bottom-padded-md">
+          <table  style="table-layout:fixed;">
+            <!-- 各項目 -->
+            <tr>
+              <th style="width:5%;">No</th>
+              <th>生徒</th>
+              <th>
+                @foreach ($dblist as $tests)
+                {{$tests->title}}
+                @endforeach
+                <p>平均{{ $avg }}点</p>
+            </th>
+          </tr>
+          <!-- 各項目終わり -->
+          <!-- 検索結果 -->
+          @if($dblist->count())
+            <tr>
+              @foreach ($dblist as $tests)
+              <td><p>No</p></td> <!-- テストナンバーに変える -->
+              <td><p>名前</p></td>
+              <td><a href="{{ url('/test/') }}">{{$tests->title}}</a></td>
+              @endforeach
+            </tr>
+          @endif
+          <!-- 検索結果終わり -->
+        </table>
+      </div>
 
-			</div>
-		</div>
+      </div>
+    </div>
 
 
 		</div>
