@@ -3,9 +3,23 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Carbon\Carbon;
+use Illuminate\Http\Request;
 
 class Test extends Model
 {
+// <<<<<<< HEAD
     protected $table = 'tests';
     protected $primaryKey = 'id';
+// =======
+
+
+
+
+
+
+
+
+// >>>>>>> slackOauth
+
 }

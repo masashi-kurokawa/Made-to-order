@@ -84,21 +84,20 @@
 
 		</aside>
 
+
+
+
+
 		<div id="fh5co-main">
 			<div class="fh5co-narrow-content">
 				<h2 class="fh5co-heading animate-box" data-animate-effect="fadeInLeft">アンケート一覧</h2>
-
-				<input type="submit" class="btn btn-primary btn-md animate-box" data-animate-effect="fadeInLeft" onclick="location.href='{{ url('/surveycreate/') }}'" value="新規作成">
-
 				<div class="row row-bottom-padded-md">
-
-
+				@foreach ($dblist as $key => $survey_list)
 					<div class="col-md-3 col-sm-6 col-padding animate-box" data-animate-effect="fadeInLeft">
-					@foreach ($dblist as $key => $survey_list)
-						<div class="blog-entry">
-							<a href="{{ url('/survey/') }}" class="blog-img"><img src="{{$survey_list->test_img}}" class="img-responsive" alt="#"></a>
+					<div class="blog-entry">
+							<a href="{{ url('/survey/') }}" class="blog-img"><img src= class="img-responsive" alt="#"></a>
 							<div class="desc">
-								<h3><a href="{{ url('/survey/') }}">{{$survey_list->c_question}}</a></h3>
+								<h3><a href="{{ url('/survey/') }}">{{$survey_list->title}}</a></h3>
 								<span><small> 2020 </small> / <small> 7 </small> / <small> 30 </small></span>
 								<p>ここにテキストを入れることができます。</p>
 								<div class="more-center">
@@ -107,15 +106,15 @@
 								</div>
 							</div>
 						</div>
-						@endforeach
 					</div>
-
-
+				@endforeach
 				</div>
 			</div>
 
 		</div>
 	</div>
+
+
 
 	<!-- jQuery -->
 	<script src="js/jquery.min.js"></script>
