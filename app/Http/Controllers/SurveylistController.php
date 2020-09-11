@@ -11,14 +11,8 @@ class SurveylistController extends Controller
 {
     //
     public function index(){
-
-<<<<<<< HEAD
-
-        $survey_list=new survey;
-=======
         
         $survey_list=new Survey;
->>>>>>> slackOauth
         $dblist = $survey_list
         ->get();
 

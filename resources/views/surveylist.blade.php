@@ -92,19 +92,10 @@
 			<div class="fh5co-narrow-content">
 				<h2 class="fh5co-heading animate-box" data-animate-effect="fadeInLeft">アンケート一覧</h2>
 				<div class="row row-bottom-padded-md">
-<<<<<<< HEAD
-
-
-					<div class="col-md-3 col-sm-6 col-padding animate-box" data-animate-effect="fadeInLeft">
-					@foreach ($dblist as $key => $survey_list) <!-- ここの変数変える？ -->
-						<div class="blog-entry">
-							<a href="{{ url('/survey/') }}" class="blog-img"><img src="{{$survey_list->test_img}}" class="img-responsive" alt="#"></a>
-=======
 				@foreach ($dblist as $key => $survey_list)
 					<div class="col-md-3 col-sm-6 col-padding animate-box" data-animate-effect="fadeInLeft">
 					<div class="blog-entry">
 							<a href="{{ url('/survey/') }}" class="blog-img"><img src= class="img-responsive" alt="#"></a>
->>>>>>> slackOauth
 							<div class="desc">
 								<h3><a href="{{ url('/survey/') }}">{{$survey_list->title}}</a></h3>
 								<span><small> 2020 </small> / <small> 7 </small> / <small> 30 </small></span>
@@ -116,12 +107,7 @@
 							</div>
 						</div>
 					</div>
-<<<<<<< HEAD
-
-
-=======
 				@endforeach
->>>>>>> slackOauth
 				</div>
 			</div>
 
