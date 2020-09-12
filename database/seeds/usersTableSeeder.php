@@ -18,7 +18,7 @@ class usersTableSeeder extends Seeder
             'slack_id' => "abc",
             'slack_mail' => 'test@test.com',
             'slack_image' => 'abc',
-            'role' => 1,
+            'password' => Hash::make('kjikboRERTFKU98hg'),
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ]);
