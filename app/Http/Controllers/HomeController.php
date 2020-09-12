@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Services\SlackApi;
 use App\Services\UserService;
 use App\Http\Requests\RegisterUser;
+use Illuminate\Support\Facades\Auth;
 
 
 class HomeController extends Controller
@@ -20,6 +21,18 @@ class HomeController extends Controller
 
     public function index()
     {
+
+      if (Auth::check()) {
+            // 認証に成功した
+            dump(Auth::user());
+            // Auth::logout();
+            echo "ok";
+        } else {
+          echo "no";
+          dump(Auth::check());
+          dump(Auth::attempt());
+          dump(Auth::user());
+        }
 
       if (isset($_GET['code'])) {
 

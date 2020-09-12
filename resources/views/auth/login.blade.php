@@ -83,7 +83,13 @@
       @csrf
       <input type="text" name="slack_name" value="">
       <input type="text" name="slack_mail" value="">
+      <input type="hidden" name="password" value="{{$password}}">
       <input type="submit" name="login" value="ログイン">
+      @error('slack_name')
+          <span class="invalid-feedback" role="alert">
+              <strong>{{ $message }}</strong>
+          </span>
+      @enderror
     </form>
   </body>
 </html>
