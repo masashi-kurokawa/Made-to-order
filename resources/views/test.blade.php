@@ -130,93 +130,21 @@
 					</div>
 				</div>
 
-			<div class="fh5co-narrow-content animate-box" data-animate-effect="fadeInLeft">
-				<div class="row">
-					<div class="col-md-4">
-						<h4>問題2</h4>
-						<p>問題テキスト</p>
-					</div>
-				</div>
-				<form action="">
-				<div class="row">
-					<div class="col-md-12">
-						<div class="row">
-							<div class="col-md-6">
-								<div class="form-group">
-									<textarea name="" id="message" cols="30" rows="7" class="form-control" placeholder="テキスト"></textarea>
+				@foreach ($items as $key => $tests)
+					<div class="col-md-3 col-sm-6 col-padding animate-box" data-animate-effect="fadeInLeft">
+						<div class="blog-entry">
+							<a href="{{ url('/test/') }}" class="blog-img"><img src="" class="img-responsive" alt="#"></a>
+							<div class="desc">
+								<h3>{{$tests->question}}</h3>
+								<span><small>{{$tests->updated_at}} </small></span>
+								<p>ここにテキストを入れることができます。</p>
+								<div class="more-center">
 								</div>
 							</div>
 						</div>
 					</div>
-				</div>
-				</form>
-			</div>
+				@endforeach
 
-			<div class="fh5co-narrow-content animate-box" data-animate-effect="fadeInLeft">
-				<div class="row">
-					<div class="col-md-4">
-						<h4>問題3</h4>
-						<p>問題テキスト</p>
-					</div>
-				</div>
-				<form action="">
-				<div class="row">
-					<div class="col-md-12">
-						<div class="row">
-							<div class="col-md-6">
-								<div class="form-group">
-									<textarea name="" id="message" cols="30" rows="7" class="form-control" placeholder="テキスト"></textarea>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				</form>
-			</div>
-
-			<div class="fh5co-narrow-content animate-box" data-animate-effect="fadeInLeft">
-				<div class="row">
-					<div class="col-md-4">
-						<h4>問題4</h4>
-						<p>問題テキスト</p>
-					</div>
-				</div>
-				<form action="">
-				<div class="row">
-					<div class="col-md-12">
-						<div class="row">
-							<div class="col-md-6">
-								<div class="form-group">
-									<textarea name="" id="message" cols="30" rows="7" class="form-control" placeholder="テキスト"></textarea>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				</form>
-			</div>
-
-			<div class="fh5co-narrow-content animate-box" data-animate-effect="fadeInLeft">
-				<div class="row">
-					<div class="col-md-4">
-						<h4>問題5</h4>
-						<p>問題テキスト</p>
-					</div>
-				</div>
-				<form action="">
-				<div class="row">
-					<div class="col-md-12">
-						<div class="row">
-							<div class="col-md-6">
-								<div class="form-group">
-									<textarea name="" id="message" cols="30" rows="7" class="form-control" placeholder="テキスト"></textarea>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				</form>
-			</div>
 
 			<div class="test-btn">
 				<input type="submit" class="btn btn-primary btn-md" onclick="location.href='{{ url('/testend/') }}'" value="テスト終了">
@@ -242,8 +170,8 @@
 	<!-- タイマー機能の処理（jquery） -->
 	<script>
 
-	var to_timeup = 10;
-			var max = 10;
+	var to_timeup = 10; //講師の設定した時間をテーブルから持ってくる
+			// var max = 10; //いらないかも
 			var intervalid;
 			var start_flag = false;
 
