@@ -77,6 +77,15 @@
   <head>
     <meta charset="utf-8">
     <title></title>
+    <link rel="stylesheet" href="css/animate.css">
+  	<!-- Icomoon Icon Fonts-->
+  	<link rel="stylesheet" href="css/icomoon.css">
+  	<!-- Bootstrap  -->
+  	<link rel="stylesheet" href="css/bootstrap.css">
+  	<!-- Flexslider  -->
+  	<link rel="stylesheet" href="css/flexslider.css">
+  	<!-- Theme style  -->
+  	<link rel="stylesheet" href="css/style.css">
   </head>
   <body>
     <form method="post" action="{{ route('login') }}">
@@ -85,11 +94,25 @@
       <input type="text" name="slack_mail" value="">
       <input type="hidden" name="password" value="{{$password}}">
       <input type="submit" name="login" value="ログイン">
-      @error('slack_name')
+      {{-- @error('slack_name')
           <span class="invalid-feedback" role="alert">
               <strong>{{ $message }}</strong>
           </span>
       @enderror
+      @error('slack_mail')
+          <span class="invalid-feedback" role="alert">
+              <strong>{{ $message }}</strong>
+          </span>
+      @enderror --}}
+      @if($errors->any())
+    <div class="alert alert-danger">
+      <ul>
+        @foreach($errors->all() as $message)
+          <li>{{ $message }}</li>
+        @endforeach
+      </ul>
+    </div>
+      @endif
     </form>
   </body>
 </html>
