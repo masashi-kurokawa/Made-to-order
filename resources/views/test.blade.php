@@ -112,7 +112,7 @@
 								@if ($tests->role === 1)　<!-- テストの回答方式で判別 -->
 								 <div class="form-group">
 								   <label for="content">回答記入欄</label>
-								   <input type="hidden" class="form-control" name="question{{$tests->question_number}}" value="{{$tests->question_number}}">
+								   <input type="hidden" class="form-control" name="question{{$tests->question_number}}" value="{{$tests->role}}">
 								   <input type="hidden" class="form-control" name="{{$tests->question_number}}" value="{{$tests->answer}}">
 								   <input type="text" class="form-control" name="answer{{$tests->question_number}}" value="">
 								 </div>
@@ -120,7 +120,7 @@
 								 @elseif ($tests->role === 2)
 								 <div class="form-group">
 								   <label for="content">回答記入欄</label>
-								   <input type="hidden" class="form-control" name="question{{$tests->question_number}}" value="{{$tests->question_number}}">
+								   <input type="hidden" class="form-control" name="question{{$tests->question_number}}" value="{{$tests->role}}">
 									 <input type="hidden" class="form-control" name="{{$tests->question_number}}" value="{{$tests->answer}}">
 								   <input type="text" class="form-control" name="answer{{$tests->question_number}}" value="">
 								 </div>
@@ -128,7 +128,7 @@
 								 @elseif ($tests->role === 3)
 								 <div class="form-group">
 								   <label for="content">回答記入欄</label>
-								   <input type="hidden" class="form-control" name="question{{$tests->question_number}}" value="{{$tests->question_number}}">
+								   <input type="hidden" class="form-control" name="question{{$tests->question_number}}" value="{{$tests->role}}">
 									 <input type="hidden" class="form-control" name="{{$tests->question_number}}" value="{{$tests->answer}}">
 								   <input type="text" class="form-control" name="answer{{$tests->question_number}}" value="">
 								 </div>

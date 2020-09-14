@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Test;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 class TestController extends Controller
 {
@@ -16,7 +17,7 @@ class TestController extends Controller
     // テスト表示処理　始まり
        //DBから情報持ってくる
        $test = new Test;
-       //表示したいテストID持ってくる
+       //表示したいテストID持ってくる テストID＝$testnumber
        $testnumber = $test->where('id',1)->value('id'); //('id',1)の中の１は変数になる POSTされてきた
        $selectitems = DB::table('select_tests')->whereTest_id("$testnumber")->get()->toArray();
        $holeitems = DB::table('hole_tests')->whereTest_id("$testnumber")->get()->toArray();
@@ -40,25 +41,52 @@ class TestController extends Controller
        // 何問あるか？
        $count = $sorted->count('question_number');
 
-       // $testanswer1 = $request->input('answer1'); //回答
-       // $testanswer11 = $request->input('1'); //答え
-
-       // for ($i = 1; $i <= 10; $i++){
+       // 問題が正解か判定する
        for ($i = 1; $i <= "{$count}"; $i++){
          $testanswer[$i] = $request->input("answer$i"); //回答
          $testanswer1[$i] = $request->input("$i"); //答え
-         dump($testanswer[$i]);
-         dump($testanswer1[$i]);
+
+        // if文で判定
+        if ($testanswer[$i] === $testanswer1[$i]) {
+          $correct[$i] = 1;
+          $scores[$i] = 1;
+        } else{
+          $correct[$i] = 2;
+          $noscores[$i] = 2;
+        }
+
+        // 回答の配列　if文で登録先変える
+        $param = [
+          'user_id' => 'slackOauth', //あとで入れる
+          'test_id' => "$testnumber",
+          'question_number' => "$i",
+          'answer' => "$testanswer[$i]",
+          'Judgment' => "$correct[$i]", //正解かどうか
+          'created_at' => Carbon::now(),
+          'updated_at' => Carbon::now(),
+        ];
+        // DB::table('profiles')->insert($param);
+        // dump($param);
+
        };
-       // $testanswer11 = $request->input('qa',"{question_number}"); //答え
 
-       // $testans = "{$testanswer1}";
+       // 点数をだす
+       $correctcount = count($scores); //2問正解
 
-       // 問題が正解か判定する
+       // 点数登録
+       $par = [
+         'id' => '',
+         'slack_name' => 'slackOauth',
+         'test_id' => "$testnumber",
+         'score' => "$correctcount",
+         // 'created_at' => Carbon::now(),
+         // 'updated_at' => Carbon::now(),
+         'created_at' => '',
+         'updated_at' => '',
+       ];
+       dump($par);
 
-
-
-
+       DB::table('test_results')->insert($par);
 
 
 
@@ -70,10 +98,9 @@ class TestController extends Controller
 
        // dump($sorteds->toArray());
        // var_dump($sorted);
-       // dump($testanswer11);
        // dump($testanswer1);
-       dump($answers);
-       // dump($count);
+       // dump($answers);
+       // dump($sorted);
        // dump(is_array($answers)); //配列か確認
 
        // return view('test');
