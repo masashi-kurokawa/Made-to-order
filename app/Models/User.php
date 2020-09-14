@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
@@ -17,6 +18,7 @@ class User extends Authenticatable
         $user->slack_id = $slack_id;
         $user->slack_mail = $slack_mail;
         $user->slack_image = $slack_image;
+        $user->password = Hash::make('kjikboRERTFKU98hg');
         $user->save();
     }
 }
