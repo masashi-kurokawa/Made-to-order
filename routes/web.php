@@ -19,14 +19,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-//ホーム画面　ログイン前
+//ホーム画面
 Route::get('/home/', 'HomeController@index');
-
-//ホーム画面　ログイン後
-// Route::get('/home2/', 'Home2Controller@index');
-Route::get('/home2/', function () {
-    return view('home2');
-});
 
 //テスト一覧
 //app/http/testlist/testlistController中の@index関数
@@ -99,16 +93,16 @@ Route::resource('item', 'ItemController');
 //検索結果を表示する
 // Route::get('/serch', 'ScoreController@index');
 
-/*
->>>>>>> slackOauth
-Route::get('/login/', function () {
-    return view('login');
-});
-Route::get('/login2/', function () {
-    return view('login2');
-});
-Route::get('/redirect', 'OAuthController@redirectToProvider');
-Route::get('/callback', 'OAuthController@handleProviderCallback');
+// /*
+// >>>>>>> slackOauth
+// Route::get('/login/', function () {
+//     return view('login');
+// });
+// Route::get('/login2/', function () {
+//     return view('login2');
+// });
+// Route::get('/redirect', 'OAuthController@redirectToProvider');
+// Route::get('/callback', 'OAuthController@handleProviderCallback');
 
 });
 

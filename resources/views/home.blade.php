@@ -70,15 +70,11 @@
 			<nav id="fh5co-main-menu" role="navigation">
 				<ul>
 					<li class="fh5co-active"><a href="{{ url('/home/') }}">Home</a></li>
-					<p>
-						Slackログイン前はメニュー画面消す。<br>
-						本番環境では↓消します。
-					</p>
-					<li><a href="{{ url('/home2/') }}">ログイン後Home画面</a></li>
-					<!-- <li><a href="{{ url('/testlist/') }}">テスト一覧</a></li>
+					<li class="fh5co-active"><a href="{{ url('/home/') }}">Home</a></li>
+					<li><a href="{{ url('/testlist/') }}">テスト一覧</a></li>
 					<li><a href="{{ url('/surveylist/') }}">アンケート一覧</a></li>
 					<li><a href="{{ url('/student/') }}">生徒一覧</a></li>
-					<li><a href="{{ url('/score/') }}">点数早見表</a></li> -->
+					<li><a href="{{ url('/score/') }}">点数早見表</a></li>
 				</ul>
 			</nav>
 
@@ -102,7 +98,7 @@
 					   					<h2>Slack Log in</h2>
 											{{-- <img src="data:image/png;base64,{{$base64}}"> --}}
 											<p>
-												<a class="btn btn-primary btn-demo popup-vimeo" href="https://slack.com/oauth/authorize?client_id={{$slack_client_id}}&scope=identify&redirect_uri={{ url('/home/') }}">ログイン</a>
+												<a class="btn btn-primary btn-demo popup-vimeo" href="">ログイン</a>
 												<a class="btn btn-primary btn-learn">ログアウト</a>
 											</p>
 					   				</div>
