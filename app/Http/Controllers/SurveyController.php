@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Survey;
 use App\Models\Write_survey;
+use App\Models\Select_survey;
 
 class SurveyController extends Controller
 {
@@ -102,8 +103,17 @@ class SurveyController extends Controller
     public function edit($id)
     {
         $survey = Survey::find($id);
-        $write_survey = Write_survey::find($id);
-        return view('survey.edit',compact('survey'));
+        $write_survey = Write_survey::where('survey_id', $id)->get();
+        $select_survey = Select_survey::where('survey_id', $id)->get();
+        //確認用
+        // dump($write_survey);
+        // 初期記入方法
+        // return view('survey.edit',compact('survey'));
+        return view('survey.edit', [
+              'survey' => $survey,
+              'write_surveys' => $write_survey,
+              'select_surveys' => $select_survey,
+            ]);
     }
 
     /**

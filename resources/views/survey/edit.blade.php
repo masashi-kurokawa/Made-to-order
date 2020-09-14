@@ -89,7 +89,7 @@
 			<div class="fh5co-narrow-content">
 				<h2 class="fh5co-heading">アンケート詳細・編集</h2>
 
-        <div id="count" class="container animate-box" data-animate-effect="fadeInLeft">
+        <div class="container animate-box" data-animate-effect="fadeInLeft">
 					<form action="{{ route('survey.update',$survey->id)}}" method="POST">
 						@csrf
 				    @method('PUT')
@@ -100,10 +100,26 @@
             </div>
             <table>
               <tbody>
-							<tr>
-								<td><textarea name="question" rows="5" cols="50" value="{{ $write_survey->question }}"></textarea></td>
-								<td class="remove-center"><button class="remove">-</button></td>
-							</tr>
+								@foreach ($write_surveys as $write_survey)
+								<tr>
+									<td><textarea name="question" rows="5" cols="50">{{$write_survey->question}}</textarea></td>
+									<td class="remove-center"><button class="remove">-</button></td>
+								</tr>
+								@endforeach
+								@foreach ($select_surveys as $select_survey)
+								<tr>
+									<td><textarea name="text" rows="5" cols="50">{{$select_survey->question}}</textarea></td>
+									<td>
+										<form>
+											<input type="radio" name="Choice2">
+											<input type="text" name="answer" placeholder="回答を入力してください。">
+											<input type="radio" name="Choice2">
+											<input type="text" name="answer" placeholder="回答を入力してください。">
+										</form>
+									</td>
+									<td class="remove-center"><button class="remove">-</button></td>
+								</tr>
+								@endforeach
               </tbody>
             </table>
             <input type="submit" value="保存">
@@ -111,6 +127,7 @@
 						<p>{{ $message }}</p>
 						@endif
           </form>
+
           <p id="output">0</p>
 
           <button id="addChoice2" class="plus">+ 選択式ｱﾝｹｰﾄ追加</button>

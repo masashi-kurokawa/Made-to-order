@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::group(['middleware' => 'auth'], function() {
+// Route::group(['middleware' => 'auth'], function() {
 
 Route::get('/', function () {
     return view('welcome');
@@ -88,6 +88,9 @@ Route::get('/score/', function () {
     return view('score');
 });
 
+//未採点
+Route::get('/grade/', 'gradeController@index');
+
 // サンプル　2020/09/10 CRUD処理理解のため石田作成。プロジェクト終了後削除する。
 Route::resource('item', 'ItemController');
 
@@ -97,10 +100,6 @@ Route::resource('item', 'ItemController');
 //検索結果を表示する
 // Route::get('/serch', 'ScoreController@index');
 
-/*
-Route::get('/login/', function () {
-    return view('login');
->>>>>>> feature/yutaka
-});
-
-Auth::routes(['register' => false]);
+// });
+//
+// Auth::routes(['register' => false]);

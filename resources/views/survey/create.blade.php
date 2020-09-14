@@ -100,10 +100,6 @@
             <table>
               <tbody>
               <!-- ここに問題が追加されていきます。 -->
-							<!-- <tr>
-								<td><textarea name="question" rows="5" cols="50" placeholder="ここに質問を入力してください。"></textarea></td>
-								<td class="remove-center"><button class="remove">-</button></td>
-							</tr> -->
               </tbody>
             </table>
             <input type="submit" value="保存">
