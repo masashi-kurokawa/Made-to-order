@@ -93,7 +93,7 @@ input[type=submit]:active {
   text-align: center;
 }
 
-#addTest1, #addTest2, #addChoice4, #addChoice8, #addText, #getValues {
+#addTest1, #addTest2, #addChoice2, #addChoice4, #addChoice8, #addText, #getValues {
   width: 19%;
   height: 40px;
   font-size: 16px;

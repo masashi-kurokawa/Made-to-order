@@ -48,28 +48,30 @@ Route::get('/testend/', function () {
     return view('testend');
 });
 
-//アンケート一覧
-Route::get('/surveylist/', 'SurveylistController@index');
+//アンケート
+// Route::get('/surveylist/', 'SurveylistController@index');
+Route::resource('survey', 'SurveyController');
 
 //アンケート新規作成
-Route::get('/surveycreate/', function () {
-    return view('surveycreate');
-});
+// Route::get('/surveycreate/', function () {
+//     return view('surveycreate');
+// });
 
 //アンケート受講
-Route::get('/survey/', function () {
-    return view('survey');
-});
+// Route::get('/survey/', function () {
+//     return view('survey');
+// });
 
 //アンケート詳細・編集
-Route::get('/surveyedit/', function () {
-    return view('surveyedit');
-});
+// Route::get('/surveyedit/', 'SurveyeditController@index');
+// Route::get('/surveyedit/', function () {
+//     return view('surveyedit');
+// });
 
 //アンケート終了
-Route::get('/surveyend/', function () {
-    return view('surveyend');
-});
+// Route::get('/surveyend/', function () {
+//     return view('surveyend');
+// });
 
 //生徒一覧
 Route::get('/student/', 'StudentController@index');
