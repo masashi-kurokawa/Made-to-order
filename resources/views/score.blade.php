@@ -79,6 +79,7 @@
 					<li><a href="{{ url('/survey/') }}">アンケート一覧</a></li>
 					<li><a href="{{ url('/student/') }}">生徒一覧</a></li>
 					<li class="fh5co-active"><a href="{{ url('/score/') }}">点数早見表</a></li>
+          <li><a href="{{ url('/grade/') }}">未採点</a></li>
 				</ul>
 			</nav>
 
