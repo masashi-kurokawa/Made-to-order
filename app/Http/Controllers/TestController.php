@@ -45,6 +45,7 @@ class TestController extends Controller
        for ($i = 1; $i <= "{$count}"; $i++){
          $testanswer[$i] = $request->input("answer$i"); //回答
          $testanswer1[$i] = $request->input("$i"); //答え
+         $role = $request->input("question$i"); //問題判定選択、穴埋め、記述
 
         // if文で判定
         if ($testanswer[$i] === $testanswer1[$i]) {
@@ -56,17 +57,26 @@ class TestController extends Controller
         }
 
         // 回答の配列　if文で登録先変える
-        $param = [
-          'user_id' => 'slackOauth', //あとで入れる
-          'test_id' => "$testnumber",
-          'question_number' => "$i",
-          'answer' => "$testanswer[$i]",
-          'Judgment' => "$correct[$i]", //正解かどうか
-          'created_at' => Carbon::now(),
-          'updated_at' => Carbon::now(),
-        ];
-        // DB::table('profiles')->insert($param);
-        // dump($param);
+        // $param = [
+        //   'user_id' => 'slackOauth', //あとで入れる
+        //   'test_id' => "$testnumber",
+        //   'question_number' => "$i",
+        //   'answer' => "$testanswer[$i]",
+        //   'Judgment' => "$correct[$i]", //正解かどうか
+        //   'created_at' => Carbon::now(),
+        //   'updated_at' => Carbon::now(),
+        // ];
+
+        // 回答の配列　if文で登録先変える
+        // DB::table('test_results')->insert([
+        //   'user_id' => 'slackOauth', //とりあえず入れてる
+        //   'test_id' => "$testnumber",
+        //   'question_number' => "$i",
+        //   'answer' => "$testanswer[$i]",
+        //   'Judgment' => "$correct[$i]", //正解かどうか
+        //   'created_at' => Carbon::now(), //時間が違う、場所の設定が違うのかも
+        //   'updated_at' => Carbon::now()]); //時間が違う、場所の設定が違うのかも
+        dump($role);
 
        };
 
@@ -74,22 +84,12 @@ class TestController extends Controller
        $correctcount = count($scores); //2問正解
 
        // 点数登録
-       $par = [
-         'id' => '',
-         'slack_name' => 'slackOauth',
-         'test_id' => "$testnumber",
-         'score' => "$correctcount",
-         // 'created_at' => Carbon::now(),
-         // 'updated_at' => Carbon::now(),
-         'created_at' => '',
-         'updated_at' => '',
-       ];
-       dump($par);
-
-       DB::table('test_results')->insert($par);
-
-
-
+       // DB::table('test_results')->insert([
+       //   'user_name' => 'slackOauth', //とりあえず入れてる
+       //   'test_id' => "$testnumber",
+       //   'score' => "$correctcount",
+       //   'created_at' => Carbon::now(), //時間が違う、場所の設定が違うのかも
+       //   'updated_at' => Carbon::now()]); //時間が違う、場所の設定が違うのかも
 
     // 　テストの答え格納　終わり
 
