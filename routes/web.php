@@ -35,6 +35,7 @@ Route::get('/testcreate/', function () {
 Route::get('/test/', function () {
     return view('test');
 });
+Route::get('/test', 'TestController@index');
 
 //テスト詳細・編集
 Route::get('/testedit/', 'TesteditController@edit');
