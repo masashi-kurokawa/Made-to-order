@@ -27,9 +27,8 @@ Route::get('/home/', 'HomeController@index');
 Route::get('/testlist/', 'TestlistController@index');
 
 //テスト新規作成
-Route::get('/testcreate/', function () {
-    return view('testcreate');
-});
+Route::post('/testcreate/', 'TestcreateController@index');
+ Route::get('/testcreate/', 'TestcreateController@index');
 
 //テスト受講
 Route::get('/test/', function () {
