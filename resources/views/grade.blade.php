@@ -7,7 +7,7 @@
 	<head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>タイトル &mdash; アンケート一覧</title>
+	<title>タイトル &mdash; 未採点</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="description" content="Free HTML5 Website Template by FreeHTML5.co" />
 	<meta name="keywords" content="free html5, free template, free bootstrap, free website template, html5, css3, mobile first, responsive" />
@@ -72,9 +72,10 @@
 				<ul>
 					<li><a href="{{ url('/home/') }}">Home</a></li>
 					<li><a href="{{ url('/testlist/') }}">テスト一覧</a></li>
-					<li class="fh5co-active"><a href="{{ url('/surveylist/') }}">アンケート一覧</a></li>
+					<li><a href="{{ url('/survey/') }}">アンケート一覧</a></li>
 					<li><a href="{{ url('/student/') }}">生徒一覧</a></li>
 					<li><a href="{{ url('/score/') }}">点数早見表</a></li>
+					<li class="fh5co-active"><a href="{{ url('/grade/') }}">未採点</a></li>
 				</ul>
 			</nav>
 
@@ -84,37 +85,50 @@
 
 		</aside>
 
-
-
-
-
 		<div id="fh5co-main">
 			<div class="fh5co-narrow-content">
-				<h2 class="fh5co-heading animate-box" data-animate-effect="fadeInLeft">アンケート一覧</h2>
-				<div class="row row-bottom-padded-md">
-				@foreach ($dblist as $key => $survey_list)
-					<div class="col-md-3 col-sm-6 col-padding animate-box" data-animate-effect="fadeInLeft">
-					<div class="blog-entry">
-							<a href="{{ url('/survey/') }}" class="blog-img"><img src= class="img-responsive" alt="#"></a>
-							<div class="desc">
-								<h3><a href="{{ url('/survey/') }}">{{$survey_list->title}}</a></h3>
-								<span><small> 2020 </small> / <small> 7 </small> / <small> 30 </small></span>
-								<p>ここにテキストを入れることができます。</p>
-								<div class="more-center">
-									<a href="{{ url('/survey/') }}" class="lead more">アンケート受講</a>
-									<a href="{{ url('/surveyedit/') }}" class="lead more">詳細・編集</a>
+				<h2 class="fh5co-heading animate-box" data-animate-effect="fadeInLeft">未採点</h2>
+
+				<form action="#" method="get">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<input type="text" class="form-control" placeholder="Name"name="keyword">
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<input type="submit" class="btn btn-primary btn-md" value="検索">
+									</div>
 								</div>
 							</div>
 						</div>
 					</div>
-				@endforeach
+				</form>
+
+				<div class="row row-bottom-padded-md">
+
+				<div class="col-md-student col-sm-6 col-padding animate-box" data-animate-effect="fadeInLeft">
+						<div class="blog-entry">
+
+							<a href="#" class="blog-img"><img src="" class="img-responsive" alt="#"></a>
+							<div class="desc">
+								<h3><a href="#">生徒 氏名</a></h3>
+								<span>カリキュラム</span>
+								<p>テスト１</p>
+								<a href="#" class="lead more">採点する</a>
+							</div>
+						</div>
+					</div>
+
+
+
 				</div>
 			</div>
-
 		</div>
 	</div>
-
-
 
 	<!-- jQuery -->
 	<script src="js/jquery.min.js"></script>

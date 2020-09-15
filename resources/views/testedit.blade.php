@@ -73,9 +73,10 @@
 				<ul>
 					<li><a href="{{ url('/home/') }}">Home</a></li>
 					<li><a href="{{ url('/testlist/') }}">テスト一覧</a></li>
-					<li><a href="{{ url('/surveylist/') }}">アンケート一覧</a></li>
+					<li><a href="{{ url('/survey/') }}">アンケート一覧</a></li>
 					<li><a href="{{ url('/student/') }}">生徒一覧</a></li>
 					<li><a href="{{ url('/score/') }}">点数早見表</a></li>
+					<li><a href="{{ url('/grade/') }}">未採点</a></li>
 				</ul>
 			</nav>
 
@@ -90,10 +91,14 @@
 				<h2 class="fh5co-heading">テスト詳細・編集</h2>
         <div id="count" class="container animate-box" data-animate-effect="fadeInLeft">
           <form action="{{ url('/testlist/') }}" method="post">
+
+						@foreach ($dblist as $key => $tests)
             <div class="title-rap">
-              <input type="text" name="text" placeholder="テストタイトルを入力してください。">
+              <input type="text" name="text" value="{{$tests->title}}">
               <textarea name="text" rows="2" placeholder="ここにテキストを入れることができます。"></textarea>
             </div>
+						@endforeach
+
             <table>
               <tbody>
               <tr>

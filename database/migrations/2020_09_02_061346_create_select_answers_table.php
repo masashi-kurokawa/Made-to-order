@@ -24,7 +24,7 @@ class CreateSelectAnswersTable extends Migration
             $table->timestamps();
 
             // 外部キーの設定
-          //  $table->foreign('user_id')->references('user_id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

@@ -41,7 +41,7 @@ class LoginController extends Controller
 
     protected function guard()
     {
-        return Auth::guard('slack_mail');
+        return Auth::guard('web');
     }
 
     public function username()

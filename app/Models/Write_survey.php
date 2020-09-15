@@ -6,16 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 // use Carbon\Carbon;
 // use Illuminate\Http\Request;
 
-class Survey extends Model
+class Write_survey extends Model
 {
-    // // 元表示
-    // protected $table = 'surveys';
-    // protected $primaryKey = 'id';
-
     // item参考
     protected $fillable = [
-        'title',
-        'status',
+        'question',
+        'question_number',
     ];
 
 }

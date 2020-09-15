@@ -74,9 +74,10 @@
 				<ul>
 					<li><a href="{{ url('/home/') }}">Home</a></li>
 					<li><a href="{{ url('/testlist/') }}">テスト一覧</a></li>
-					<li><a href="{{ url('/surveylist/') }}">アンケート一覧</a></li>
+					<li><a href="{{ url('/survey/') }}">アンケート一覧</a></li>
 					<li><a href="{{ url('/student/') }}">生徒一覧</a></li>
 					<li><a href="{{ url('/score/') }}">点数早見表</a></li>
+					<li><a href="{{ url('/grade/') }}">未採点</a></li>
 				</ul>
 			</nav>
 
@@ -91,136 +92,61 @@
 			<h1 id="timer" class="hako box"></h1>
 		</div>
 		<div class="fh5co-narrow-content">
-			<h2 class="fh5co-heading animate-box" data-animate-effect="fadeInLeft">テスト1</h2>
+			<h2 class="fh5co-heading animate-box" data-animate-effect="fadeInLeft">テストタイトル</h2>
 
-				<div class="fh5co-narrow-content animate-box" data-animate-effect="fadeInLeft">
-					<div class="row">
-						<div class="col-md-4">
-							<h4>問題1</h4>
-							<p>問題テキスト</p>
-						</div>
-					</div>
-					<div class="row">
-					<form action="#">
-						<div class="col-md-12">
-							<div class="row">
-								<div class="col-md-6">
-									<div>
-								    <div class="radio">
-								      <input id="1" type="radio" name="radio">
-								      <label for="1">A</label>
-								    </div>
-								    <div class="radio">
-								      <input id="2" type="radio" name="radio">
-								      <label for="2">B</label>
-								    </div>
-										<div class="radio">
-								      <input id="3" type="radio" name="radio">
-								      <label for="3">C</label>
-								    </div>
-										<div class="radio">
-								      <input id="4" type="radio" name="radio">
-								      <label for="4">D</label>
-								    </div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</form>
-					</div>
-				</div>
 
-			<div class="fh5co-narrow-content animate-box" data-animate-effect="fadeInLeft">
-				<div class="row">
-					<div class="col-md-4">
-						<h4>問題2</h4>
-						<p>問題テキスト</p>
-					</div>
-				</div>
-				<form action="">
-				<div class="row">
-					<div class="col-md-12">
-						<div class="row">
-							<div class="col-md-6">
-								<div class="form-group">
-									<textarea name="" id="message" cols="30" rows="7" class="form-control" placeholder="テキスト"></textarea>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				</form>
-			</div>
+			　　<!-- 問題表示 -->
+			<form class="form-inline" id="answer" action="{{ url('/test') }}" method="GET">
+					@foreach ($sorteds as $key => $tests)
+					  <div class="fh5co-narrow-content animate-box" data-animate-effect="fadeInLeft">
+					    <div class="row">
+					      <div class="col-md-4">
+									<h4>問題{{$tests->question_number}}</h4>
+									<p><p>{{$tests->question}}</p></p>
+					      </div>
+					    </div>
+					    <div class="row">　<!-- ここからテスト問題の回答 -->
+								<!-- if文で選択、穴埋め、記述を切り分ける -->
 
-			<div class="fh5co-narrow-content animate-box" data-animate-effect="fadeInLeft">
-				<div class="row">
-					<div class="col-md-4">
-						<h4>問題3</h4>
-						<p>問題テキスト</p>
-					</div>
-				</div>
-				<form action="">
-				<div class="row">
-					<div class="col-md-12">
-						<div class="row">
-							<div class="col-md-6">
-								<div class="form-group">
-									<textarea name="" id="message" cols="30" rows="7" class="form-control" placeholder="テキスト"></textarea>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				</form>
-			</div>
+								<!-- テスト回答送信機能 -->
+								<!-- actionに問題の番号つけて送信した時に区別する -->
+								@if ($tests->role === 1)　<!-- テストの回答方式で判別 -->
+								 <div class="form-group">
+								   <label for="content">回答記入欄</label>
+								   <input type="hidden" class="form-control" name="question{{$tests->question_number}}" value="{{$tests->role}}">
+								   <input type="hidden" class="form-control" name="{{$tests->question_number}}" value="{{$tests->answer}}">
+								   <input type="text" class="form-control" name="answer{{$tests->question_number}}" value="">
+								 </div>
 
-			<div class="fh5co-narrow-content animate-box" data-animate-effect="fadeInLeft">
-				<div class="row">
-					<div class="col-md-4">
-						<h4>問題4</h4>
-						<p>問題テキスト</p>
-					</div>
-				</div>
-				<form action="">
-				<div class="row">
-					<div class="col-md-12">
-						<div class="row">
-							<div class="col-md-6">
-								<div class="form-group">
-									<textarea name="" id="message" cols="30" rows="7" class="form-control" placeholder="テキスト"></textarea>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				</form>
-			</div>
+								 @elseif ($tests->role === 2)
+								 <div class="form-group">
+								   <label for="content">回答記入欄</label>
+								   <input type="hidden" class="form-control" name="question{{$tests->question_number}}" value="{{$tests->role}}">
+									 <input type="hidden" class="form-control" name="{{$tests->question_number}}" value="{{$tests->answer}}">
+								   <input type="text" class="form-control" name="answer{{$tests->question_number}}" value="">
+								 </div>
 
-			<div class="fh5co-narrow-content animate-box" data-animate-effect="fadeInLeft">
-				<div class="row">
-					<div class="col-md-4">
-						<h4>問題5</h4>
-						<p>問題テキスト</p>
-					</div>
-				</div>
-				<form action="">
-				<div class="row">
-					<div class="col-md-12">
-						<div class="row">
-							<div class="col-md-6">
-								<div class="form-group">
-									<textarea name="" id="message" cols="30" rows="7" class="form-control" placeholder="テキスト"></textarea>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				</form>
-			</div>
+								 @elseif ($tests->role === 3)
+								 <div class="form-group">
+								   <label for="content">回答記入欄</label>
+								   <input type="hidden" class="form-control" name="question{{$tests->question_number}}" value="{{$tests->role}}">
+									 <input type="hidden" class="form-control" name="{{$tests->question_number}}" value="{{$tests->answer}}">
+								   <input type="text" class="form-control" name="answer{{$tests->question_number}}" value="">
+								 </div>
+
+								 @endif
+
+					    </div>
+					  </div>
+					@endforeach
+
+
 
 			<div class="test-btn">
-				<input type="submit" class="btn btn-primary btn-md" onclick="location.href='{{ url('/testend/') }}'" value="テスト終了">
+				<input type="submit" name="answers" form="answer" class="btn btn-primary btn-md"
+				onclick="location.href='{{ url('/testend/') }}'" value="テスト終了">
 			</div>
+		　</form>
 
 		</div>
 	</div>
@@ -242,8 +168,8 @@
 	<!-- タイマー機能の処理（jquery） -->
 	<script>
 
-	var to_timeup = 10;
-			var max = 10;
+	var to_timeup = 10; //講師の設定した時間をテーブルから持ってくる
+			// var max = 10; //いらないかも
 			var intervalid;
 			var start_flag = false;
 

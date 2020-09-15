@@ -3,12 +3,20 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Test;
 
 class TesteditController extends Controller
 {
-    //
-    public function index()
+    // 詳細・編集
+    public function edit()
     {
-       return view('testedit');
+      $test = new test;
+      $dblist = $test
+      ->where('id', 2)
+      ->get();
+
+      // view(Testedit.blade.php)へ
+      return view('testedit', compact('dblist'));
     }
+
 }
