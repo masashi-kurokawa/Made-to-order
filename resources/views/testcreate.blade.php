@@ -90,7 +90,7 @@
 			<div class="fh5co-narrow-content">
 				<h2 class="fh5co-heading">テスト新規作成</h2>
         <div id="count" class="container animate-box" data-animate-effect="fadeInLeft">
-          <form action="#" method="post">
+          <form action = "#" method="post">
             <div class="title-rap">
               <input type="text" name="test[title]"   placeholder="テストタイトルを入力してください。">
               <textarea name="test[coment]" rows="2" placeholder="ここにテキストを入れることができます。"></textarea>
