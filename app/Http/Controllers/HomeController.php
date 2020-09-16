@@ -23,7 +23,7 @@ class HomeController extends Controller
       if (Auth::check()) {
             // 認証に成功した
             dump(Auth::user());
-            Auth::logout();
+            // Auth::logout();
             echo "ok";
         } else {
           echo "no";
