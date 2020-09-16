@@ -76,6 +76,7 @@ Route::get('/student/', 'StudentController@index');
 //生徒詳細
 Route::get('/student_details/', 'Student_detailsController@index');
 
+
 //詳細
 Route::get('/details/', function () {
     return view('details');

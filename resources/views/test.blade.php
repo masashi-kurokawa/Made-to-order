@@ -97,6 +97,7 @@
 
 			　　<!-- 問題表示 -->
 			<form class="form-inline" id="answer" action="{{ url('/test') }}" method="GET">
+			<!-- <form class="form-inline" id="answer" action="{{ url('/testend/') }}" method="GET"> -->
 					@foreach ($sorteds as $key => $tests)
 					  <div class="fh5co-narrow-content animate-box" data-animate-effect="fadeInLeft">
 					    <div class="row">
@@ -143,7 +144,7 @@
 
 
 			<div class="test-btn">
-				<input type="submit" name="answers" form="answer" class="btn btn-primary btn-md"
+				<input type="submit" onclick="return confirm('テストを終了してもよろしいですか？')" name="answers" form="answer" class="btn btn-primary btn-md"
 				onclick="location.href='{{ url('/testend/') }}'" value="テスト終了">
 			</div>
 		　</form>
