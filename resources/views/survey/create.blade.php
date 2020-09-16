@@ -127,7 +127,6 @@
         		$('#addChoice2').click(function(){
 						  // if文入れていく
 							// for文入れていく
-                // var html = '
                 var html = '
 								<tr>
 								<td>
