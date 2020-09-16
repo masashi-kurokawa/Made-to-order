@@ -153,25 +153,36 @@
 				// 問題数カウント処理
 				$(function(){
 					var i = 0;
-					console.log(i);
-
-					if( 0 <= i && i <= 10 ){
+					if ((n === undefined)) {
+						var n = 0;
+					} else {
+						var n = n;
+					}
+					if( n <= 10 ){
 						// 問題を追加するたび数字をプラスする
 						$(document).on('click', '.plus', function() {
 							i++;
-							$('#output').html(i);
-			      });
+							var n = i;
+							if( n <= 9 ){
+								$('#output').html(i);
+							} else {
+								// 問題追加ボタンを非活性にする
+								$('.plus').hide();
+							}
+						});
 						// 問題を削除するたび数字をマイナスする
-			      $(document).on('click', '.remove', function() {
+						$(document).on('click', '.remove', function() {
 							i--;
-			      	$('#output').html(i);
-			      });
-					} else {
-						// 問題追加ボタンを非活性にする
-						$(".plus").prop("disabled", true);
+							var n = i;
+							console.log(n);
+							if( n >= 9 ){
+								$('#output').html(i);
+								$('.plus').show();
+							}
+						});
 					}
 				});
-        </script>
+			</script>
 
 
 				<a href="{{ route('survey.index')}}" class="more icon-arrow-left3"> 戻る</a>
