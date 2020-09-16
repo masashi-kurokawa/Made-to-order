@@ -16,7 +16,6 @@ class CreateWriteAnswersTable extends Migration
         Schema::create('write_answers', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->length(11)->unsigned()->comment('回答者のID');
-            // $table->foreignId('user_id')->constrained();
             $table->integer('test_id')->length(11)->unsigned()->comment('テストのID');
             $table->integer('question_number')->length(11)->unsigned()->comment('何問目の問題か');
             $table->string('answer', 225)->comment('回答');

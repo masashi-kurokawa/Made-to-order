@@ -16,7 +16,6 @@ class CreateWriteSurveyAnswersTable extends Migration
         Schema::create('write_survey_answers', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->length(11)->unsigned()->comment('回答者のID');
-            // $table->foreignId('user_id')->constrained();
             $table->integer('survey_id')->length(11)->unsigned()->comment('アンケートのID');
             $table->integer('question_number')->length(11)->unsigned()->comment('何問目のアンケートか');
             $table->string('answer', 225)->comment('回答');
