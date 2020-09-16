@@ -150,7 +150,7 @@
 
         });
 
-				// 問題数カウント処理
+				// 問題数カウント処理 //完成
 				$(function(){
 					var i = 0;
 					if ((n === undefined)) {
@@ -174,9 +174,8 @@
 						$(document).on('click', '.remove', function() {
 							i--;
 							var n = i;
-							console.log(n);
+							$('#output').html(i);
 							if( n >= 9 ){
-								$('#output').html(i);
 								$('.plus').show();
 							}
 						});
