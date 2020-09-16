@@ -76,7 +76,6 @@
 					<li><a href="{{ url('/survey/') }}">アンケート一覧</a></li>
 					<li><a href="{{ url('/student/') }}">生徒一覧</a></li>
 					<li><a href="{{ url('/score/') }}">点数早見表</a></li>
-					<li><a href="{{ url('/grade/') }}">未採点</a></li>
 				</ul>
 			</nav>
 
@@ -101,6 +100,10 @@
             <table>
               <tbody>
               <!-- ここに問題が追加されていきます。 -->
+							<!-- <tr>
+								<td><textarea name="question" rows="5" cols="50" placeholder="ここに質問を入力してください。"></textarea></td>
+								<td class="remove-center"><button class="remove">-</button></td>
+							</tr> -->
               </tbody>
             </table>
             <input type="submit" value="保存">
@@ -122,7 +125,26 @@
             // 2択問題追加
         		//追加ボタンがクリックされたら、function(){…}の処理を実行する
         		$('#addChoice2').click(function(){
-                var html = '<tr><td><textarea name="text" rows="5" cols="50" placeholder="ここに質問を入力してください。"></textarea></td><td><form><input type="radio" name="Choice4"><input type="text" name="answer" placeholder="回答を入力してください。"><input type="radio" name="Choice4"><input type="text" name="answer" placeholder="回答を入力してください。"></form></td><td class="remove-center"><button class="remove">-</button></td></tr>';
+						  // if文入れていく
+							// for文入れていく
+                // var html = '
+                var html = '
+								<tr>
+								<td>
+								<textarea name="text" rows="5" cols="50" placeholder="ここに質問を入力してください。"></textarea>
+								</td>
+								<td>
+								<form>
+								<input type="radio" name="Choice4">
+								<input type="text" name="answer" placeholder="回答を入力してください。">
+								<input type="radio" name="Choice4">
+								<input type="text" name="answer" placeholder="回答を入力してください。">
+								</form>
+								</td>
+								<td class="remove-center">
+								<button class="remove">-</button>
+								</td>
+								</tr>';
         				//append()を使ってtbody内の一番最後にhtmlを追加する
         				$('tbody').append(html);
             });
@@ -150,6 +172,7 @@
 				$(function(){
 					var i = 0;
 					if( 0 <= i && i <= 10 ){
+						// console.log(i);
 						// 問題を追加するたび数字をプラスする
 						$(document).on('click', '.plus', function() {
 							i++;
@@ -166,6 +189,7 @@
 					}
 				});
         </script>
+
 
 				<a href="{{ route('survey.index')}}" class="more icon-arrow-left3"> 戻る</a>
 			</div>
