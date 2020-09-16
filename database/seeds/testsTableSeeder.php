@@ -4,7 +4,7 @@ use Illuminate\Database\Seeder;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 
-class surveysTableSeeder extends Seeder
+class testsTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -13,8 +13,8 @@ class surveysTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('surveys')->insert([
-            'title' => 'アンケート1',
+        DB::table('tests')->insert([
+            'title' => 'テスト1',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ]);

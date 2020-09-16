@@ -15,15 +15,15 @@ class CreateSelectSurveyAnswersTable extends Migration
     {
         Schema::create('select_survey_answers', function (Blueprint $table) {
             $table->increments('id');
-            //$table->integer('user_id')->length(11)->unsigned()->comment('回答者のID');
-            $table->foreignId('user_id')->constrained();
+            $table->integer('user_id')->length(11)->unsigned()->comment('回答者のID');
+            // $table->foreignId('user_id')->constrained();
             $table->integer('survey_id')->length(11)->unsigned()->comment('アンケートのID');
             $table->integer('question_number')->length(11)->unsigned()->comment('何問目のアンケートか');
             $table->integer('answer')->length(11)->comment('回答');
             $table->timestamps();
 
             // 外部キーの設定
-            //$table->foreign('user_id')->references('id')->on('users');
+           $table->foreign('user_id')->references('id')->on('users');
         });
     }
 
