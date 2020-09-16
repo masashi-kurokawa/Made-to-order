@@ -14,4 +14,9 @@ class Write_survey extends Model
         'question_number',
     ];
 
+    // public function survey()
+    // {
+    //     return $this->belongsTo(Survey::class);
+    // }
+
 }
