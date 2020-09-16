@@ -109,12 +109,6 @@
 						</div>
 					</div>
 					@endforeach
-<<<<<<< HEAD
-
-=======
->>>>>>> feature/kurokawa
-
-
 
 
 				</div>

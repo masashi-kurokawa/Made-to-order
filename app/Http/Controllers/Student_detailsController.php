@@ -18,6 +18,7 @@ class Student_detailsController extends Controller
     ->where('test_results.user_name', $request->input('name'))
     ->get();
    
+    
 
 
 
