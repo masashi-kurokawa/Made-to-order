@@ -44,42 +44,38 @@ class SurveyController extends Controller
      */
     public function store(Request $request)
     {
+
         // //既存登録処理
         // Survey::create($request->all());
         // Write_survey::create($request->all());
 
+        // 参考処理
         $survey = new Survey;
         $survey->title = $request->title;
         $survey->status = $request->status;
         $survey->save();
 
-        // $write_survey = new Write_survey;
-        // $write_survey->survey_id = $survey->id;
-        // $write_survey->question = $request->question;
+        $write_survey = new Write_survey;
+        $write_survey->survey_id = $survey->id;
+        $write_survey->question = $request->question;
         // // question_numberに何問目か自動で振り分ける処理をフロントで作る必要ある
-        // $write_survey->question_number = $survey->id;
-        // $write_survey->save();
+        $write_survey->question_number = $survey->id;
+        $write_survey->save();
 
-        // $problem = new Problem;
-        // $problem->drill_id = $drill->id;
-        // $problem->problem0 = $request->problem0;
-        // $problem->problem1 = $request->problem1;
-        // $problem->problem2 = $request->problem2;
-        // $problem->problem3 = $request->problem3;
-        // $problem->problem4 = $request->problem4;
-        // $problem->problem5 = $request->problem5;
-        // $problem->problem6 = $request->problem6;
-        // $problem->problem7 = $request->problem7;
-        // $problem->problem8 = $request->problem8;
-        // $problem->problem9 = $request->problem9;
-        // $problem->save();
+        dump($write_survey);
 
-        // $drill = new Drill;
-        // Auth::user()->drills()->save($drill->fill($request->all()));
+        $select_survey = new Select_survey;
+        $select_survey->survey_id = $survey->id;
+        $select_survey->question = $request->choice;
+        // question_numberに何問目か自動で振り分ける処理をフロントで作る必要ある
+        $select_survey->question_number = $survey->id;
+        $select_survey->save();
 
-        // return redirect('/drills')->with('flash_message', __('Registered.'));
+        dump($select_survey);
 
-        return redirect()->route('survey.index')->with('success', 'データが登録されました');
+        // return redirect('/survey')->with('flash_message', __('Registered.'));
+
+        // return redirect()->route('survey.index')->with('success', 'データが登録されました');
     }
 
     /**

@@ -122,7 +122,7 @@
             // 2択問題追加
         		//追加ボタンがクリックされたら、function(){…}の処理を実行する
         		$('#addChoice2').click(function(){
-                var html = '<tr><td><textarea name="text" rows="5" cols="50" placeholder="ここに質問を入力してください。"></textarea></td><td><form><input type="radio" name="Choice4"><input type="text" name="answer" placeholder="回答を入力してください。"><input type="radio" name="Choice4"><input type="text" name="answer" placeholder="回答を入力してください。"></form></td><td class="remove-center"><button class="remove">-</button></td></tr>';
+                var html = '<tr><td><textarea name="choice" rows="5" cols="50" placeholder="ここに質問を入力してください。"></textarea></td><td><form><input type="radio" name="Choice4"><input type="text" name="answer" placeholder="回答を入力してください。"><input type="radio" name="Choice4"><input type="text" name="answer" placeholder="回答を入力してください。"></form></td><td class="remove-center"><button class="remove">-</button></td></tr>';
         				//append()を使ってtbody内の一番最後にhtmlを追加する
         				$('tbody').append(html);
             });
