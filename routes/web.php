@@ -49,9 +49,9 @@ Route::get('/testend/', function () {
 Route::resource('survey', 'SurveyController');
 
 //アンケート新規作成
-// Route::get('/surveycreate/', function () {
-//     return view('surveycreate');
-// });
+Route::get('/surveycreate/', function () {
+    return view('surveycreate');
+});
 
 //アンケート受講
 // Route::get('/survey/', function () {

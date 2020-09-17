@@ -100,13 +100,33 @@
             <table>
               <tbody>
               <!-- ここに問題が追加されていきます。 -->
+							<!-- 選択式アンケート -->
 							<!-- <tr>
-								<td><textarea name="question" rows="5" cols="50" placeholder="ここに質問を入力してください。"></textarea></td>
-								<td class="remove-center"><button class="remove">-</button></td>
+							<td>
+							<textarea name="text" rows="5" cols="50" placeholder="ここに質問を入力してください。"></textarea>
+							</td>
+							<td><form>
+							<input type="radio" name="Choice4">
+							<input type="text" name="answer" placeholder="回答を入力してください。">
+							<input type="radio" name="Choice4">
+							<input type="text" name="answer" placeholder="回答を入力してください。">
+							</form></td>
+							<td class="remove-center"><button class="remove">-</button></td>
 							</tr> -->
+
+							<!-- 記述式アンケート -->
+							<!-- <tr>
+							<td>
+							<textarea name="question" rows="5" cols="50" placeholder="ここに質問を入力してください。"></textarea>
+							</td>
+							<td class="remove-center">
+							<button class="remove">-</button>
+							</td>
+							</tr> -->
+
               </tbody>
             </table>
-            <input type="submit" value="保存">
+            <input type="submit" value="保存"> <!-- 保存した時にアンケート順番で連番つける（jQuery） -->
           </form>
 
           <p id="output">0</p>

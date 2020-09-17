@@ -42,6 +42,8 @@ class SurveyController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
+     // storeはPOSTで送信される
     public function store(Request $request)
     {
         // //既存登録処理
@@ -51,7 +53,11 @@ class SurveyController extends Controller
         $survey = new Survey;
         $survey->title = $request->title;
         $survey->status = $request->status;
-        $survey->save();
+        // $survey->save();
+
+
+        $postsurvey = $request->all();
+        dump($postsurvey);
 
         // $write_survey = new Write_survey;
         // $write_survey->survey_id = $survey->id;
@@ -79,7 +85,10 @@ class SurveyController extends Controller
 
         // return redirect('/drills')->with('flash_message', __('Registered.'));
 
-        return redirect()->route('survey.index')->with('success', 'データが登録されました');
+        // route('survey.index')の列にあとで戻す
+        // return redirect()->route('survey.index')->with('success', 'データが登録されました');
+        // return redirect()->route('survey.create')->with('success', 'データが登録されました');
+        return view('survey.create',compact('postsurvey'));
     }
 
     /**
@@ -115,7 +124,7 @@ class SurveyController extends Controller
               'select_surveys' => $select_survey,
             ]);
     }
-    
+
 
     /**
      * Update the specified resource in storage.
