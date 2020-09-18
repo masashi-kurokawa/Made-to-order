@@ -8,11 +8,38 @@ form {
   margin: 0 auto;
 }
 
+.title {
+  margin-top: 5%;
+  color: #777;
+}
+
 .title-rap {
   margin-bottom: 30px;
 }
 .title-rap textarea {
   width: 60%;
+}
+
+.space {
+  margin: 5% 0 7%;
+}
+
+.labelspace {
+  margin: 0 2%;
+  font-size: 1.3em;
+}
+
+input.geomsize {
+  width: 0.6em;
+  height: 0.6em;
+}
+
+.correct {
+  color: #e67168;
+}
+
+.incorrect {
+  color: #4682B4;
 }
 
 table {
@@ -50,8 +77,7 @@ input[type="text"] {
   padding: 5px;
 }
 input[type="radio"]{
-  display: inline-block;
-  width: 6%;
+  margin: 10px;
 }
 
 input[type=submit] {
