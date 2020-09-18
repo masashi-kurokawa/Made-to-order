@@ -111,16 +111,18 @@
 				<div class="row row-bottom-padded-md">
 
 				<div class="col-md-student col-sm-6 col-padding animate-box" data-animate-effect="fadeInLeft">
-						<div class="blog-entry">
 
+						<div class="blog-entry">
 							<a href="#" class="blog-img"><img src="" class="img-responsive" alt="#"></a>
 							<div class="desc">
 								<h3><a href="#">生徒 氏名</a></h3>
 								<span>カリキュラム</span>
 								<p>テスト１</p>
+								<!-- "採点する" をクリックすると grade.edit を表示する -->
 								<a href="#" class="lead more">採点する</a>
 							</div>
 						</div>
+
 					</div>
 
 

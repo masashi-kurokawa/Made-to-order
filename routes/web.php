@@ -90,7 +90,7 @@ Route::get('/score/', function () {
 });
 
 //未採点
-Route::get('/grade/', 'gradeController@index');
+Route::resource('grade', 'GradeController');
 
 // サンプル　2020/09/10 CRUD処理理解のため石田作成。プロジェクト終了後削除する。
 Route::resource('item', 'ItemController');
