@@ -142,10 +142,33 @@
 
         </div>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-        <script>
-        $(function(){
-            // 並び替え機能
+				<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+				<script>
+				// テーブルの値を１行ずつ取得してjqueryにて連想配列を作る
+				// $('#addText').click(function(){
+				// 		var obj = {};
+				// 		var $trs = $('table tr');
+				//
+				// 		$.each($trs,function(i,tr){
+				// 			var $tr = $(tr);
+				// 			var key = $tr.find('.dat').val();
+				// 			var id = $tr.find('.id').val();
+				//
+				// 			var rowData = {
+				// 				name : $tr.find('.name').val(),
+				// 				add : $tr.find('.add').val(),
+				// 			};
+				//
+				// 			if(obj.hasOwnProperty(key) === false) {
+				// 				obj[key] = {};
+				// 			}
+				// 			console.log(rowData);
+				//
+				// 			obj[key][id] = rowData;
+				// 	})
+				// 	});
+
+					// 並び替え機能
 						// $('tbody').sortable(
 
 						// $('tbody').sortable({
@@ -156,7 +179,7 @@
 									// $("#log").text($('tbody').sortable("toArray"));
 									$("#log").text($('#sortable').sortable("toArray"));
 									var size = $('tr').length;
-									alert(size);
+									// console.log(size);
 								}
 							});
 						// });
@@ -175,14 +198,14 @@
 							else {
 								var f = f;
 							}
-								// console.log(f);
+								console.log(f);
 
 								var html = '<tr id="' + f + '"><td><textarea name="selq-text' + f + '" rows="5" cols="50" placeholder="ここに質問を入力してください。"></textarea></td><td><input type="text" name="answer1-' + f + '" placeholder="回答を入力してください。"><input type="text" name="answer2-' + f + '" placeholder="回答を入力してください。"></td><td class="remove-center"><button class="remove">-</button></td></tr>';
 								//append()を使ってtbody内の一番最後にhtmlを追加する
 								$('tbody').append(html);
 								// console.log(data);
 								// $('tbody').append(data);
-								console.log(data);
+								// console.log(data);
             });
 
             // アンケート追加
@@ -200,10 +223,7 @@
                 var html ='<tr id="' + f + '"><td><textarea name="q-sentence' + f + '" rows="5" cols="50" placeholder="ここに質問を入力してください。"></textarea></td><td class="remove-center"><button class="remove">-</button></td></tr>';
 								//append()を使ってtbody内の一番最後にhtmlを追加する
         				$('tbody').append(html);
-								// h++;
-								// var f = h;
             });
-					// }
 
         		// 削除処理
         		//削除ボタンがクリックされたら、function(){…}の処理を実行する
@@ -215,7 +235,7 @@
 
         });
 
-				// 問題数カウント処理 //完成
+				// 問題数上限カウント処理 //完成
 				$(function(){
 					var i = 0;
 					if ((n === undefined)) {
