@@ -93,37 +93,43 @@
 					<form action="{{ route('survey.store')}}" method="POST">
 						@csrf
             <div class="title-rap">
-              <input type="text" name="title" placeholder="アンケートタイトルを入力してください。">
+              <input type="text" name="ak-title" placeholder="アンケートタイトルを入力してください。">
 							<input type="text" name="status" placeholder="使用:1　未使用:2">
               <!-- <textarea name="text" rows="2" placeholder="ここにテキストを入れることができます。"></textarea> -->
             </div>
             <table>
-              <tbody>
+              <!-- <tbody> -->
+              <tbody id="sortable">
               <!-- ここに問題が追加されていきます。 -->
 							<!-- 選択式アンケート -->
-							<!-- <tr>
+							<!--
+							<div class="">
+							<tr>
 							<td>
-							<textarea name="text" rows="5" cols="50" placeholder="ここに質問を入力してください。"></textarea>
+							<textarea name="selq-text" rows="5" cols="50" placeholder="ここに質問を入力してください。"></textarea>
 							</td>
 							<td><form>
-							<input type="radio" name="Choice4">
-							<input type="text" name="answer" placeholder="回答を入力してください。">
-							<input type="radio" name="Choice4">
-							<input type="text" name="answer" placeholder="回答を入力してください。">
+							<input type="text" name="answer1-" placeholder="回答を入力してください。">
+							<input type="text" name="answer2-" placeholder="回答を入力してください。">
 							</form></td>
 							<td class="remove-center"><button class="remove">-</button></td>
-							</tr> -->
+							</tr>
+						  </div> -->
 
 							<!-- 記述式アンケート -->
-							<!-- <tr>
+							<!--
+							<div class="">
+							<tr>
 							<td>
-							<textarea name="question" rows="5" cols="50" placeholder="ここに質問を入力してください。"></textarea>
+							<textarea name="q-sentence" rows="5" cols="50" placeholder="ここに質問を入力してください。"></textarea>
 							</td>
 							<td class="remove-center">
 							<button class="remove">-</button>
 							</td>
-							</tr> -->
+							</tr>
+						  </div>-->
 
+							<p>リストの順番は「<span id="log"></span>」です</p>
               </tbody>
             </table>
             <input type="submit" value="保存"> <!-- 保存した時にアンケート順番で連番つける（jQuery） -->
@@ -140,25 +146,64 @@
         <script>
         $(function(){
             // 並び替え機能
-            $('tbody').sortable();
+						// $('tbody').sortable(
 
+						// $('tbody').sortable({
+						$('#sortable').sortable({
+								// updateで並べ替えるたびに更新
+								update: function(){
+								// 	// toArrayで現在の順番を取得し出力
+									// $("#log").text($('tbody').sortable("toArray"));
+									$("#log").text($('#sortable').sortable("toArray"));
+									var size = $('tr').length;
+									alert(size);
+								}
+							});
+						// });
+						// );
+						// 登録する時に使う処理
+
+						var h = 0;
             // 2択問題追加
         		//追加ボタンがクリックされたら、function(){…}の処理を実行する
-        		$('#addChoice2').click(function(){
-						  // if文入れていく
-							// for文入れていく
-                var html = '<tr><td><textarea name="text" rows="5" cols="50" placeholder="ここに質問を入力してください。"></textarea></td><td><form><input type="radio" name="Choice4"><input type="text" name="answer" placeholder="回答を入力してください。"><input type="radio" name="Choice4"><input type="text" name="answer" placeholder="回答を入力してください。"></form></td><td class="remove-center"><button class="remove">-</button></td></tr>';
-        				//append()を使ってtbody内の一番最後にhtmlを追加する
-        				$('tbody').append(html);
+						$('#addChoice2').click(function(){
+							h++;
+							var f = h;
+							if (f > 5) {
+								var f = 0;
+							}
+							else {
+								var f = f;
+							}
+								// console.log(f);
+
+								var html = '<tr id="' + f + '"><td><textarea name="selq-text' + f + '" rows="5" cols="50" placeholder="ここに質問を入力してください。"></textarea></td><td><input type="text" name="answer1-' + f + '" placeholder="回答を入力してください。"><input type="text" name="answer2-' + f + '" placeholder="回答を入力してください。"></td><td class="remove-center"><button class="remove">-</button></td></tr>';
+								//append()を使ってtbody内の一番最後にhtmlを追加する
+								$('tbody').append(html);
+								// console.log(data);
+								// $('tbody').append(data);
+								console.log(data);
             });
 
             // アンケート追加
         		//追加ボタンがクリックされたら、function(){…}の処理を実行する
         		$('#addText').click(function(){
-                var html ='<tr><td><textarea name="question" rows="5" cols="50" placeholder="ここに質問を入力してください。"></textarea></td><td class="remove-center"><button class="remove">-</button></td></tr>';
+							h++;
+							var f = h;
+							if (f > 5) {
+								var f = 0;
+							}
+							else {
+								var f = f;
+							}
+
+                var html ='<tr id="' + f + '"><td><textarea name="q-sentence' + f + '" rows="5" cols="50" placeholder="ここに質問を入力してください。"></textarea></td><td class="remove-center"><button class="remove">-</button></td></tr>';
 								//append()を使ってtbody内の一番最後にhtmlを追加する
         				$('tbody').append(html);
+								// h++;
+								// var f = h;
             });
+					// }
 
         		// 削除処理
         		//削除ボタンがクリックされたら、function(){…}の処理を実行する
@@ -183,10 +228,11 @@
 						$(document).on('click', '.plus', function() {
 							i++;
 							var n = i;
+							// console.log(n);
 							if( n <= 9 ){
 								$('#output').html(i);
 							} else {
-								// 問題追加ボタンを非活性にする
+								// 問題追加ボタンを消す
 								$('.plus').hide();
 							}
 						});
@@ -196,11 +242,15 @@
 							var n = i;
 							$('#output').html(i);
 							if( n >= 9 ){
+								// 問題ボタンを復活させる
 								$('.plus').show();
 							}
 						});
 					}
 				});
+
+				// 何問目かの処理は登録の際に番号振る　//追加ボタンがクリックされたら、function(){…}の処理を実行する
+
 			</script>
 
 
