@@ -101,7 +101,7 @@
               </tbody>
             </table>
 			{{ csrf_field() }}
-            <input type="submit" value="保存">
+            <input type="submit" value="保存" class="submit_b">
           </form>
 
           <p id="output">0</p>
@@ -116,14 +116,18 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
         <script>
+		$('.submit_b').click(function(){
+			alert("test");
+		});
         $(function(){
+			
             // 並び替え機能
             $('tbody').sortable();
 
         		// 問題追加 1回答
         		//追加ボタンがクリックされたら、function(){…}の処理を実行する
         		$('#addTest1').click(function(){
-                var html = '<tr><td><textarea name="text" rows="5" cols="50" placeholder="ここに問題文を入力してください。"></textarea></td><td><input type="text" name="text" placeholder="回答を入力してください。"></td><td class="remove-center"><button class="remove">-</button></td></tr>';
+                var html = '<tr><td><textarea name="test[text][]" rows="5" cols="50" placeholder="ここに問題文を入力してください。"></textarea></td><td><input type="text" name="test[answer][]" placeholder="回答を入力してください。"></td><td class="remove-center"><button class="remove">-</button></td></tr>';
         				//append()を使ってtbody内の一番最後にhtmlを追加する
         				$('tbody').append(html);
             });
@@ -131,7 +135,7 @@
             // 問題追加 2回答
         		//追加ボタンがクリックされたら、function(){…}の処理を実行する
         		$('#addTest2').click(function(){
-                var html = '<tr><td><textarea name="text" rows="5" cols="50" placeholder="ここに問題文を入力してください。"></textarea></td><td><input type="text" name="text" placeholder="回答を入力してください。"><input type="text" name="text" placeholder="回答を入力してください。"></td><td class="remove-center"><button class="remove">-</button></td></tr>';
+                var html = '<tr><td><textarea name="test[text][] rows="5" cols="50" placeholder="ここに問題文を入力してください。"></textarea></td><td><input type="text" name="test[answer][]" placeholder="回答を入力してください。"><input type="text" name="test[answer][]" placeholder="回答を入力してください。"></td><td class="remove-center"><button class="remove">-</button></td></tr>';
         				//append()を使ってtbody内の一番最後にhtmlを追加する
         				$('tbody').append(html);
             });
@@ -139,7 +143,7 @@
             // 4択問題追加
         		//追加ボタンがクリックされたら、function(){…}の処理を実行する
         		$('#addChoice4').click(function(){
-                var html = '<tr><td><textarea name="text" rows="5" cols="50" placeholder="ここに問題文を入力してください。"></textarea></td><td><form><input type="radio" name="Choice4"><input type="text" name="answer" placeholder="回答を入力してください。"><input type="radio" name="Choice4"><input type="text" name="answer" placeholder="回答を入力してください。"><input type="radio" name="Choice4"><input type="text" name="answer" placeholder="回答を入力してください。"><input type="radio" name="Choice4"><input type="text" name="answer" placeholder="回答を入力してください。"></form></td><td class="remove-center"><button class="remove">-</button></td></tr>';
+                var html = '<tr><td><textarea name="test[text][] rows="5" cols="50" placeholder="ここに問題文を入力してください。"></textarea></td><td><form><input type="radio" name="choice"><input type="text" name="test[answer][]" placeholder="回答を入力してください。"><input type="radio" name="Choice"><input type="text" name="test[answer][]" placeholder="回答を入力してください。"><input type="radio" name="choice"><input type="text" name="test[answer][]" placeholder="回答を入力してください。"><input type="radio" name="choice"><input type="text" name="test[answer][]" placeholder="回答を入力してください。"></form></td><td class="remove-center"><button class="remove">-</button></td></tr>';
         				//append()を使ってtbody内の一番最後にhtmlを追加する
         				$('tbody').append(html);
             });
@@ -147,7 +151,7 @@
             // 8択問題追加
         		//追加ボタンがクリックされたら、function(){…}の処理を実行する
         		$('#addChoice8').click(function(){
-                var html = '<tr><td><textarea name="text" rows="5" cols="50" placeholder="ここに問題文を入力してください。"></textarea></td><td><form><input type="radio" name="Choice8"><input type="text" name="answer" placeholder="回答を入力してください。"><input type="radio" name="Choice8"><input type="text" name="answer" placeholder="回答を入力してください。"><input type="radio" name="Choice8"><input type="text" name="answer" placeholder="回答を入力してください。"><input type="radio" name="Choice8"><input type="text" name="answer" placeholder="回答を入力してください。"><input type="radio" name="Choice8"><input type="text" name="answer" placeholder="回答を入力してください。"><input type="radio" name="Choice8"><input type="text" name="answer" placeholder="回答を入力してください。"><input type="radio" name="Choice8"><input type="text" name="answer" placeholder="回答を入力してください。"><input type="radio" name="Choice8"><input type="text" name="answer" placeholder="回答を入力してください。"></form></td><td class="remove-center"><button class="remove">-</button></td></tr>';
+                var html = '<tr><td><textarea name="test[text][] rows="5" cols="50" placeholder="ここに問題文を入力してください。"></textarea></td><td><form><input type="radio" name="choice"><input type="text" name="test[answer][]" placeholder="回答を入力してください。"><input type="radio" name="choice"><input type="text" name="test[answer][]" placeholder="回答を入力してください。"><input type="radio" name="choice"><input type="text" name="test[answer][]" placeholder="回答を入力してください。"><input type="radio" name="choice"><input type="text" name="test[answer][]" placeholder="回答を入力してください。"><input type="radio" name="choice"><input type="text" name="test[answer][]" placeholder="回答を入力してください。"><input type="radio" name="choice"><input type="text" name="test[answer][]" placeholder="回答を入力してください。"><input type="radio" name="choice"><input type="text" name="test[answer][]" placeholder="回答を入力してください。"><input type="radio" name="choice"><input type="text" name="test[answer][]" placeholder="回答を入力してください。"></form></td><td class="remove-center"><button class="remove">-</button></td></tr>';
         				//append()を使ってtbody内の一番最後にhtmlを追加する
         				$('tbody').append(html);
             });
