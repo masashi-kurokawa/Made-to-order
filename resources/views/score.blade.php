@@ -93,77 +93,92 @@
       <div class="fh5co-narrow-content">
         <h2 class="fh5co-heading animate-box" data-animate-effect="fadeInLeft">点数早見表</h2>
 
-　　　　　<!-- 検索フォーム -->
-        <form class="form-inline" action="{{url('/score')}}" method="GET">
-          <!-- 期間ソート -->
-          <div class="form-group">
-            <label>選択した期間で受講した生徒をソート：</label>
-            <input type="date" name="sort-start">
-            <label>〜</label>
-            <input type="date" name="sort-end">
-          </div>
-          <!-- 期間ソート終わり -->
-          <!-- テストの検索 -->
-          <div class="form-group">
-            <select class="select-test" name="test" value="{{$testss}}" size="1">
-              <option value="">---テストを選択---</option>
-              @foreach ($dblist as $key => $tests)
-                <option value="{{$tests->title}}">{{$tests->title}}</option>
-              @endforeach
-            </select>
-          </div>
-          <!-- テストの検索終わり -->
-          <!-- 使っているテストか判定 -->
-          <div class="form-group">
-            <select class="select-test" name="status" size="1">
-              <option selected="selected" value="">選択してください</option>
+        <div class="animate-box search-form" data-animate-effect="fadeInLeft">
+  　　　　　<!-- 検索フォーム -->
+          <form action="{{url('/score')}}" method="GET">
+            <!-- 期間ソート -->
+            <div class="form-group">
+              <p class="fh5co-lead ">受講期間を選択：</p>
+              <input class="form-control form-sort" type="date" name="sort-start">
+              <label> 〜 </label>
+              <input class="form-control form-sort" type="date" name="sort-end">
+            </div>
+            <!-- 期間ソート終わり -->
+            <!-- テストの検索 -->
+            <div class="form-group-title">
+              <p class="fh5co-lead">テストを選択：</p>
+              <div class="title-sort">
+                <select class="select-test form-control" name="test" value="{{$testss}}">
+                  <option value="">---テストを選択---</option>
+                  @foreach ($dblist as $key => $tests)
+                    <option value="{{$tests->title}}">{{$tests->title}}</option>
+                  @endforeach
+                </select>
+              </div>
+            </div>
+            <!-- テストの検索終わり -->
+            
+            <!-- 使っているテストか判定 -->
+            <div class="form-group-status">
+              <p class="fh5co-lead">使用有無を選択：</p>
               @foreach($status as $key => $value)
-              <option value="{{ $value }}" {{ isset($params['status']) && $params['status'] == $value ? 'selected': null }}>
-                {{ $key }}
-              </option>
+              <label class="use-status"><input type="radio" name="status" value="1" checked="checked"> 使用</label>
+							<label class="use-status"><input type="radio" name="status" value="2"> 未使用</label>
               @endforeach
-            </select>
-          </div>
+            </div>
             <!-- 使っているテストか判定終わり -->
-          <div class="form-group">
-            <input type="submit" class="btn btn-primary btn-md" value="検索">
-          </div>
-        </form>
-        <!-- 検索フォーム終わり -->
 
-        <div class="row row-bottom-padded-md">
+            <!-- 改善前プログラム -->
+            <!-- 使っているテストか判定 -->
+            <!-- <div class="form-group">
+              <select class="select-test" name="status" size="1">
+                <option selected="selected" value="">選択してください</option>
+                @foreach($status as $key => $value)
+                <option value="{{ $value }}" {{ isset($params['status']) && $params['status'] == $value ? 'selected': null }}>
+                  {{ $key }}
+                </option>
+                @endforeach
+              </select>
+            </div> -->
+            <!-- 使っているテストか判定終わり -->
+
+            <div class="form-submit">
+              <input type="submit" class="btn btn-primary btn-md" value="検索">
+            </div>
+          </form>
+          <!-- 検索フォーム終わり -->
+        </div>
+
+        <div class="score-table animate-box" data-animate-effect="fadeInLeft">
           <table  style="table-layout:fixed;">
             <!-- 各項目 -->
             <tr>
-              <th style="width:5%;">No</th>
+              <th id="number">No.</th>
               <th>生徒</th>
               <th>
                 @foreach ($dblist as $tests)
-                {{$tests->title}}
+                <p class="table-th-p">{{$tests->title}}</p>
                 @endforeach
-                <p>平均{{ $avg }}点</p>
-            </th>
-          </tr>
-          <!-- 各項目終わり -->
-          <!-- 検索結果 -->
-          @if($dblist->count())
+                <p class="table-p">平均 {{ $avg }} 点</p>
+              </th>
+            </tr>
+            <!-- 各項目終わり -->
+            <!-- 検索結果 -->
+            @if($dblist->count())
             <tr>
               @foreach ($dblist as $tests)
-              <td><p>No</p></td> <!-- テストナンバーに変える -->
-              <td><p>名前</p></td>
+              <td><p class="table-p">No</p></td> <!-- テストナンバーに変える -->
+              <td><p class="table-p">名前</p></td>
               <td><a href="{{ url('/test/') }}">{{$tests->title}}</a></td>
               @endforeach
             </tr>
           @endif
           <!-- 検索結果終わり -->
-        </table>
-      </div>
-
+          </table>
+        </div>
       </div>
     </div>
-
-
-		</div>
+	</div>
 
 	<!-- jQuery -->
 	<script src="js/jquery.min.js"></script>
