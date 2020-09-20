@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Survey;
 use App\Models\Write_survey;
 use App\Models\Select_survey;
+use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 class SurveyController extends Controller
 {
@@ -44,6 +46,7 @@ class SurveyController extends Controller
      */
 
      // storeはPOSTで送信される
+     //新規作成ページ用
     public function store(Request $request)
     {
         // //既存登録処理
@@ -51,39 +54,56 @@ class SurveyController extends Controller
         // Write_survey::create($request->all());
 
         $survey = new Survey;
-        $survey->title = $request->title;
-        $survey->status = $request->status;
-        // $survey->save();
-
-
         $postsurvey = $request->all();
-        dump($postsurvey);
+        // アンケート登録してから問題の保存
+        $surveyno = $request->input('ak_title');
+        $surveystatus = $request->input('status');
+        // dump($surveyno);
+        // DB::table('surveys')->insert([
+        //   'title' => "$surveyno", //SlackIDじゃないと入らない
+        //   'status' => "$surveystatus",
+        //   'created_at' => Carbon::now(), //時間が違う、場所の設定が違うのかも
+        //   'updated_at' => Carbon::now()  //時間が違う、場所の設定が違うのかも
+        // ]);
 
-        // $write_survey = new Write_survey;
-        // $write_survey->survey_id = $survey->id;
-        // $write_survey->question = $request->question;
-        // // question_numberに何問目か自動で振り分ける処理をフロントで作る必要ある
-        // $write_survey->question_number = $survey->id;
-        // $write_survey->save();
 
-        // $problem = new Problem;
-        // $problem->drill_id = $drill->id;
-        // $problem->problem0 = $request->problem0;
-        // $problem->problem1 = $request->problem1;
-        // $problem->problem2 = $request->problem2;
-        // $problem->problem3 = $request->problem3;
-        // $problem->problem4 = $request->problem4;
-        // $problem->problem5 = $request->problem5;
-        // $problem->problem6 = $request->problem6;
-        // $problem->problem7 = $request->problem7;
-        // $problem->problem8 = $request->problem8;
-        // $problem->problem9 = $request->problem9;
-        // $problem->save();
+        //問題の保存
+        $surveysno = DB::table('surveys')->whereTitle("アンケート1")->value('id'); //テストの番号　撮り方の選定があまい
 
-        // $drill = new Drill;
-        // Auth::user()->drills()->save($drill->fill($request->all()));
+        $surveyno = $request->input('id');
+        dump($surveysno);
+        for ($i=1; $i <= $surveyno; $i++) {
+          //survey_id　アンケート自体のID　登録完了してから入れる
+          $choice_text[$i] = $request->input("choice_text$i");
+          $describing_text[$i] = $request->input("describing_text$i");
+          $question_number[$i] = $i;
+          // dump($choice_text[$i]);
+          if (!empty($choice_text[$i])) {
+            dump($choice_text[$i]);
+            // DB::table('select_surveys')->insert([
+            //   'survey_id' => "$surveysno",
+            //   'question' => "$choice_text[$i]",
+            //   'question_number' => "$question_number[$i]",
+            //   'created_at' => Carbon::now(), //時間が違う、場所の設定が違うのかも
+            //   'updated_at' => Carbon::now()  //時間が違う、場所の設定が違うのかも
+            // ]);
+          } else {
+            dump($describing_text[$i]);
+            // DB::table('write_surveys')->insert([
+            //   'survey_id' => "$surveysno",
+            //   'question' => "$describing_text[$i]",
+            //   'question_number' => "$question_number[$i]",
+            //   'created_at' => Carbon::now(), //時間が違う、場所の設定が違うのかも
+            //   'updated_at' => Carbon::now()  //時間が違う、場所の設定が違うのかも
+            // ]);
+          }
+        }
 
-        // return redirect('/drills')->with('flash_message', __('Registered.'));
+
+        //POSTされたデータを分ける
+
+
+
 
         // route('survey.index')の列にあとで戻す
         // return redirect()->route('survey.index')->with('success', 'データが登録されました');

@@ -93,7 +93,7 @@
 					<form action="{{ route('survey.store')}}" method="POST">
 						@csrf
             <div class="title-rap">
-              <input type="text" name="ak-title" placeholder="アンケートタイトルを入力してください。">
+              <input type="text" name="ak_title" placeholder="アンケートタイトルを入力してください。">
 							<input type="text" name="status" placeholder="使用:1　未使用:2">
               <!-- <textarea name="text" rows="2" placeholder="ここにテキストを入れることができます。"></textarea> -->
             </div>
@@ -101,41 +101,14 @@
               <!-- <tbody> -->
               <tbody id="sortable">
               <!-- ここに問題が追加されていきます。 -->
-							<!-- 選択式アンケート -->
-							<!--
-							<div class="">
-							<tr>
-							<td>
-							<textarea name="selq-text" rows="5" cols="50" placeholder="ここに質問を入力してください。"></textarea>
-							</td>
-							<td><form>
-							<input type="text" name="answer1-" placeholder="回答を入力してください。">
-							<input type="text" name="answer2-" placeholder="回答を入力してください。">
-							</form></td>
-							<td class="remove-center"><button class="remove">-</button></td>
-							</tr>
-						  </div> -->
 
-							<!-- 記述式アンケート -->
-							<!--
-							<div class="">
-							<tr>
-							<td>
-							<textarea name="q-sentence" rows="5" cols="50" placeholder="ここに質問を入力してください。"></textarea>
-							</td>
-							<td class="remove-center">
-							<button class="remove">-</button>
-							</td>
-							</tr>
-						  </div>-->
 
-							<p>リストの順番は「<span id="log"></span>」です</p>
               </tbody>
             </table>
-            <input type="submit" value="保存"> <!-- 保存した時にアンケート順番で連番つける（jQuery） -->
+            <input type="submit" id="save" value="保存"> <!-- 保存した時にアンケート順番で連番つける（jQuery） -->
           </form>
 
-          <p id="output">0</p>
+          <!-- <p id="output">0</p> -->
 
           <button id="addChoice2" class="plus">+ 2択問題追加</button>
           <button id="addText" class="plus">+ アンケート追加</button>
@@ -145,82 +118,67 @@
 				<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 				<script>
 				// テーブルの値を１行ずつ取得してjqueryにて連想配列を作る
+				// .idの処理
 				// $('#addText').click(function(){
-				// 		var obj = {};
-				// 		var $trs = $('table tr');
-				//
-				// 		$.each($trs,function(i,tr){
-				// 			var $tr = $(tr);
-				// 			var key = $tr.find('.dat').val();
-				// 			var id = $tr.find('.id').val();
-				//
-				// 			var rowData = {
-				// 				name : $tr.find('.name').val(),
-				// 				add : $tr.find('.add').val(),
-				// 			};
-				//
-				// 			if(obj.hasOwnProperty(key) === false) {
-				// 				obj[key] = {};
-				// 			}
-				// 			console.log(rowData);
-				//
-				// 			obj[key][id] = rowData;
-				// 	})
-				// 	});
+					$('#save').click(function(){
+						// コンテナーにid振る
+						$('#sortable tr').each(function(i){
+							$(this).attr('value',(i+1));
+							// alert(value);
+						});
+						$('#sortable #con').each(function(i){
+								$(this).attr('class','con' + (i+1));
+						});
+						$('#sortable #tainer').each(function(i){
+							$(this).attr('class','tainer' + (i+1));
+						});
+
+						$('#sortable .id').each(function(i){
+							// $(this).attr('name','id_' + (i+1));
+							$(this).attr('name','id');
+							$(this).attr('value',(i+1));
+						});
+
+						// .choice-textの処理
+						$('#sortable .choice-text').each(function(i){
+							var value = $('.con' + (i+1)).attr("value");
+							$(this).attr('name','choice_text' + (value));
+						});
+						// .yes-answerの処理
+						$('#sortable .yes-answer').each(function(i){
+							var value = $('.con' + (i+1)).attr("value");
+							$(this).attr('name','yes_answer' + (value));
+						});
+						// .no-answerの処理
+						$('#sortable .no-answer').each(function(i){
+							var value = $('.con' + (i+1)).attr("value");
+							$(this).attr('name','no_answer' + (value));
+						});
+						// .describing-textの処理
+						$('#sortable .describing-text').each(function(i){
+							var value = $('.tainer' + (i+1)).attr("value");
+							alert(value);
+							$(this).attr('name','describing_text' + (value));
+						});
+
+					});
 
 					// 並び替え機能
-						// $('tbody').sortable(
-
-						// $('tbody').sortable({
-						$('#sortable').sortable({
-								// updateで並べ替えるたびに更新
-								update: function(){
-								// 	// toArrayで現在の順番を取得し出力
-									// $("#log").text($('tbody').sortable("toArray"));
-									$("#log").text($('#sortable').sortable("toArray"));
-									var size = $('tr').length;
-									// console.log(size);
-								}
-							});
-						// });
-						// );
-						// 登録する時に使う処理
+						$('tbody').sortable();
 
 						var h = 0;
             // 2択問題追加
         		//追加ボタンがクリックされたら、function(){…}の処理を実行する
 						$('#addChoice2').click(function(){
-							h++;
-							var f = h;
-							if (f > 5) {
-								var f = 0;
-							}
-							else {
-								var f = f;
-							}
-								console.log(f);
-
-								var html = '<tr id="' + f + '"><td><textarea name="selq-text' + f + '" rows="5" cols="50" placeholder="ここに質問を入力してください。"></textarea></td><td><input type="text" name="answer1-' + f + '" placeholder="回答を入力してください。"><input type="text" name="answer2-' + f + '" placeholder="回答を入力してください。"></td><td class="remove-center"><button class="remove">-</button></td></tr>';
+								var html = '<tr id="con" class=""><input type="hidden" class="id" value=""><td><textarea class="choice-text" name="" rows="5" cols="50" placeholder="ここに質問を入力してください。" value=""></textarea></td><td><input type="text" class="yes-answer" name="" value="" placeholder="回答を入力してください。"><input type="text" class="no-answer" name="" value="" placeholder="回答を入力してください。"></td><td class="remove-center"><button class="remove">-</button></td></tr>';
 								//append()を使ってtbody内の一番最後にhtmlを追加する
 								$('tbody').append(html);
-								// console.log(data);
-								// $('tbody').append(data);
-								// console.log(data);
             });
 
             // アンケート追加
         		//追加ボタンがクリックされたら、function(){…}の処理を実行する
         		$('#addText').click(function(){
-							h++;
-							var f = h;
-							if (f > 5) {
-								var f = 0;
-							}
-							else {
-								var f = f;
-							}
-
-                var html ='<tr id="' + f + '"><td><textarea name="q-sentence' + f + '" rows="5" cols="50" placeholder="ここに質問を入力してください。"></textarea></td><td class="remove-center"><button class="remove">-</button></td></tr>';
+								var html ='<tr id="tainer" class=""><input type="hidden" class="id" value=""><td><textarea class="describing-text" name="" rows="5" cols="50" placeholder="ここに質問を入力してください。"></textarea></td><td class="remove-center"><button class="remove">-</button></td></tr>';
 								//append()を使ってtbody内の一番最後にhtmlを追加する
         				$('tbody').append(html);
             });
@@ -233,7 +191,6 @@
             });
 
 
-        });
 
 				// 問題数上限カウント処理 //完成
 				$(function(){
@@ -243,14 +200,13 @@
 					} else {
 						var n = n;
 					}
-					if( n <= 10 ){
 						// 問題を追加するたび数字をプラスする
 						$(document).on('click', '.plus', function() {
 							i++;
 							var n = i;
-							// console.log(n);
+							alert(n);
 							if( n <= 9 ){
-								$('#output').html(i);
+								// $('#output').html(i);
 							} else {
 								// 問題追加ボタンを消す
 								$('.plus').hide();
@@ -260,16 +216,14 @@
 						$(document).on('click', '.remove', function() {
 							i--;
 							var n = i;
-							$('#output').html(i);
+							// alert(n);
+							// $('#output').html(i);
 							if( n >= 9 ){
 								// 問題ボタンを復活させる
 								$('.plus').show();
 							}
 						});
-					}
 				});
-
-				// 何問目かの処理は登録の際に番号振る　//追加ボタンがクリックされたら、function(){…}の処理を実行する
 
 			</script>
 
