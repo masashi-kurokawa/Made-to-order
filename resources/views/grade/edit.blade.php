@@ -6,7 +6,7 @@
 	<head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>タイトル &mdash; テスト一覧</title>
+	<title>タイトル &mdash; 未採点</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="description" content="Free HTML5 Website Template by FreeHTML5.co" />
 	<meta name="keywords" content="free html5, free template, free bootstrap, free website template, html5, css3, mobile first, responsive" />
@@ -43,18 +43,23 @@
 	<link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700" rel="stylesheet">
 
 	<!-- Animate.css -->
-	<link rel="stylesheet" href="css/animate.css">
+	<link rel="stylesheet" href="{{ asset('css/animate.css') }}">
 	<!-- Icomoon Icon Fonts-->
-	<link rel="stylesheet" href="css/icomoon.css">
+	<link rel="stylesheet" href="{{ asset('css/icomoon.css') }}">
 	<!-- Bootstrap  -->
-	<link rel="stylesheet" href="css/bootstrap.css">
+	<link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
 	<!-- Flexslider  -->
-	<link rel="stylesheet" href="css/flexslider.css">
+	<link rel="stylesheet" href="{{ asset('css/flexslider.css') }}">
 	<!-- Theme style  -->
-	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="{{ asset('css/style.css') }}">
+	<!-- survey style  -->
+	<link rel="stylesheet" href="{{ asset('css/home.css') }}">
 
 	<!-- Modernizr JS -->
 	<script src="js/modernizr-2.6.2.min.js"></script>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 	<!-- FOR IE9 below -->
 	<!--[if lt IE 9]>
 	<script src="js/respond.min.js"></script>
@@ -62,7 +67,6 @@
 
 	</head>
 	<body>
-
 	<div id="fh5co-page">
 		<a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle"><i></i></a>
 		<aside id="fh5co-aside" role="complementary" class="border js-fullheight">
@@ -71,7 +75,7 @@
 			<nav id="fh5co-main-menu" role="navigation">
 				<ul>
 					<li><a href="{{ url('/home/') }}">Home</a></li>
-					<li class="fh5co-active"><a href="{{ url('/testlist/') }}">テスト一覧</a></li>
+					<li><a href="{{ url('/testlist/') }}">テスト一覧</a></li>
 					<li><a href="{{ url('/survey/') }}">アンケート一覧</a></li>
 					<li><a href="{{ url('/student/') }}">生徒一覧</a></li>
 					<li><a href="{{ url('/score/') }}">点数早見表</a></li>
@@ -87,38 +91,69 @@
 
 		<div id="fh5co-main">
 			<div class="fh5co-narrow-content">
-				<h2 class="fh5co-heading animate-box" data-animate-effect="fadeInLeft">テスト一覧</h2>
+				<h2 class="fh5co-heading animate-box" data-animate-effect="fadeInLeft">未採点</h2>
 
-				<input type="submit" class="btn btn-primary btn-md animate-box" data-animate-effect="fadeInLeft" onclick="location.href='{{ url('/testcreate/') }}'" value="新規作成">
+        <div class="animate-box" data-animate-effect="fadeInLeft">
+					<div class="title-rap">
+						<h4 class="title">テストタイトル</h4>
+						<!-- <textarea name="text" rows="2" placeholder="ここにテキストを入れることができます。"></textarea> -->
+					</div>
+					<form action="" method="POST">
 
-				<div class="row row-bottom-padded-md">
-
-				@foreach ($dblist as $key => $tests)
-					<div class="col-md-3 col-sm-6 col-padding animate-box" data-animate-effect="fadeInLeft">
-						<div class="blog-entry">
-							<a href="{{ url('/test/') }}" class="blog-img"><img src="" class="img-responsive" alt="#"></a>
-							<div class="desc">
-								<h3><a href="{{ url('/test/') }}">{{$tests->title}}</a></h3>
-								<span><small>{{$tests->updated_at}}</small></span>
-								<p>ここにテキストを入れることができます。</p>
-								<div class="more-center">
-									<a href="{{ url('/test/') }}" class="lead more">テスト受講</a>
-									<a href="{{ url('/testedit/') }}" class="lead more">詳細・編集</a>
+					<!-- 1回答サンプル -->
+					<div class="animate-box" data-animate-effect="fadeInLeft">
+						<div class="row">
+							<div class="col-md-10">
+								<div class="space">
+									<h4>問題1</h4>
+										<p>問題テキストああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああ</p>
+								</div>
+								<div class="space">
+									<h5>回答</h5>
+										<p>1回答テキスト</p>
+								</div>
+								<div class="space">
+									<!-- nameタグの grade の後ろに問題番号の数字を入れることでradioボタンを他問題と分けることができる -->
+									<label class="labelspace correct"><input class="geomsize" type="radio" name="grade1" value="1" required>正解</label>
+									<label class="labelspace incorrect"><input class="geomsize" type="radio" name="grade1" value="2">不正解</label>
 								</div>
 							</div>
 						</div>
 					</div>
-					@endforeach
 
+					<!-- 2回答サンプル -->
+					<div class="animate-box" data-animate-effect="fadeInLeft">
+						<div class="row">
+							<div class="col-md-10">
+								<div class="space">
+									<h4>問題2</h4>
+										<p>問題テキスト</p>
+								</div>
+								<div class="space">
+									<h5>回答</h5>
+										<p>2回答テキスト</p>
+										<p>2回答テキスト</p>
+								</div>
+								<div class="space">
+									<!-- nameタグの grade の後ろに問題番号の数字を入れることでradioボタンを他問題と分けることができる -->
+									<label class="labelspace correct"><input class="geomsize" type="radio" name="grade2" value="1" required>正解</label>
+									<label class="labelspace incorrect"><input class="geomsize" type="radio" name="grade2" value="2">不正解</label>
+								</div>
+							</div>
+						</div>
+					</div>
 
-				</div>
+          <input type="submit" value="保存">
+          </form>
+        </div>
+
+				<a href="{{ route('survey.index')}}" class="more icon-arrow-left3"> 戻る</a>
 			</div>
-
 		</div>
-	</div>
+		</div>
 
 	<!-- jQuery -->
-	<script src="js/jquery.min.js"></script>
+	<!-- <script src="js/jquery.min.js"></script> -->
 	<!-- jQuery Easing -->
 	<script src="js/jquery.easing.1.3.js"></script>
 	<!-- Bootstrap -->

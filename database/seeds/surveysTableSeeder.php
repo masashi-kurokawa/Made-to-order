@@ -15,7 +15,6 @@ class surveysTableSeeder extends Seeder
     {
         DB::table('surveys')->insert([
             'title' => 'アンケート1',
-            'status' => 1,
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ]);

@@ -28,7 +28,9 @@ Route::get('/testlist/', 'TestlistController@index');
 
 //テスト新規作成
 Route::post('/testcreate/', 'TestcreateController@index');
- Route::get('/testcreate/', 'TestcreateController@index');
+Route::get('/testcreate/', 'TestcreateController@index');
+
+
 
 //テスト受講
 Route::get('/test/', function () {
@@ -74,9 +76,8 @@ Route::get('/student/', 'StudentController@index');
 
 
 //生徒詳細
-Route::get('/student_details/', function () {
-    return view('student_details');
-});
+Route::get('/student_details/', 'Student_detailsController@index');
+
 
 //詳細
 Route::get('/details/', function () {
@@ -89,7 +90,7 @@ Route::get('/score/', function () {
 });
 
 //未採点
-Route::get('/grade/', 'gradeController@index');
+Route::resource('grade', 'GradeController');
 
 // サンプル　2020/09/10 CRUD処理理解のため石田作成。プロジェクト終了後削除する。
 Route::resource('item', 'ItemController');

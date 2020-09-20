@@ -24,9 +24,6 @@ class Student_detailsController extends Controller
 
 
 
-
-
-
     return view('student_details',compact('users_db'));
 
     }

@@ -16,7 +16,7 @@ class CreateSurveysTable extends Migration
         Schema::create('surveys', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title', 225)->comment('アンケートのタイトル');
-            $table->integer('status')->length(11)->comment('1:使われている 2:使われていない');
+            $table->integer('status')->length(11)->default(1)->comment('1:使われている 2:使われていない');
             $table->timestamps();
         });
     }

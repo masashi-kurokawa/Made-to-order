@@ -18,4 +18,9 @@ class Survey extends Model
         'status',
     ];
 
+    // public function write_survey()
+    // {
+    //     return $this->hasMany(Write_survey::class);
+    // }
+
 }

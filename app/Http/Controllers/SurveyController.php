@@ -49,10 +49,12 @@ class SurveyController extends Controller
      //新規作成ページ用
     public function store(Request $request)
     {
+
         // //既存登録処理
         // Survey::create($request->all());
         // Write_survey::create($request->all());
 
+        // 参考処理
         $survey = new Survey;
         $postsurvey = $request->all();
         // アンケート登録してから問題の保存

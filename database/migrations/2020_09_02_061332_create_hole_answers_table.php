@@ -15,8 +15,7 @@ class CreateHoleAnswersTable extends Migration
     {
         Schema::create('hole_answers', function (Blueprint $table) {
             $table->increments('id');
-            //$table->integer('user_id')->length(11)->unsigned()->comment('回答者のID');
-            $table->foreignId('user_id')->constrained();
+            $table->integer('user_id')->length(11)->unsigned()->comment('回答者のID');
             $table->integer('test_id')->length(11)->unsigned()->comment('テストのID');
             $table->integer('question_number')->length(11)->unsigned()->comment('何問目の問題か');
             $table->string('answer', 225)->comment('回答');
@@ -24,8 +23,7 @@ class CreateHoleAnswersTable extends Migration
             $table->timestamps();
 
             // 外部キーの設定
-            //$table->foreign('user_id')->references('id')->on('users');
-              //$table->foreignId('user_id')->constrained();
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 
