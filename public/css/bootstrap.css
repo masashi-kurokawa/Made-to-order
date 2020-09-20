@@ -2075,7 +2075,7 @@ output {
   width: 100%;
   height: 42px;
   padding: 10px 20px;
-  font-size: 14px;
+  font-size: 8px;
   line-height: 1.42857;
   color: #555555;
   background-color: #fff;
@@ -2088,6 +2088,7 @@ output {
   -o-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
   transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
 }
+
 .form-control:focus {
   border-color: #66afe9;
   outline: 0;
@@ -2170,6 +2171,22 @@ input[type="search"] {
 }
 .form-group {
   margin-bottom: 15px;
+  margin-left: 10px;
+  display: block;
+  width: 45%;
+}
+
+.form-group-title {
+  margin-bottom: 15px;
+  margin-left: 10px;
+  display: inline-block;
+  width: 35%;
+}
+
+.form-group-status {
+  width: 15%;
+  display: inline-block;
+  margin-left: 10px;
 }
 
 .radio,
