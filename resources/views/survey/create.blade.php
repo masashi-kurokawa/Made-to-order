@@ -93,37 +93,88 @@
 					<form action="{{ route('survey.store')}}" method="POST">
 						@csrf
             <div class="title-rap">
-              <input type="text" name="title" placeholder="アンケートタイトルを入力してください。">
+              <input type="text" name="ak_title" placeholder="アンケートタイトルを入力してください。">
 							<input type="text" name="status" placeholder="使用:1　未使用:2">
               <!-- <textarea name="text" rows="2" placeholder="ここにテキストを入れることができます。"></textarea> -->
             </div>
             <table>
-              <tbody>
+              <!-- <tbody> -->
+              <tbody id="sortable">
               <!-- ここに問題が追加されていきます。 -->
-							<!-- <tr>
-								<td><textarea name="question" rows="5" cols="50" placeholder="ここに質問を入力してください。"></textarea></td>
-								<td class="remove-center"><button class="remove">-</button></td>
-							</tr> -->
+
+
               </tbody>
             </table>
-            <input type="submit" value="保存">
+            <input type="submit" id="save" value="保存"> <!-- 保存した時にアンケート順番で連番つける（jQuery） -->
           </form>
 
-          <p id="output">0</p>
+          <!-- <p id="output">0</p> -->
 
           <button id="addChoice2" class="plus">+ 2択問題追加</button>
           <button id="addText" class="plus">+ アンケート追加</button>
 
         </div>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-        <script>
-        $(function(){
-            // 並び替え機能
-            $('tbody').sortable();
+				<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+				<script>
+				// テーブルの値を１行ずつ取得してjqueryにて連想配列を作る
+				// .idの処理
+				// $('#addText').click(function(){
+					$('#save').click(function(){
+						// コンテナーにid振る
+						$('#sortable tr').each(function(i){
+							$(this).attr('value',(i+1));
+							// alert(value);
+						});
+						$('#sortable #con').each(function(i){
+								$(this).attr('class','con' + (i+1));
+						});
+						$('#sortable #tainer').each(function(i){
+							$(this).attr('class','tainer' + (i+1));
+						});
 
+						$('#sortable .id').each(function(i){
+							// $(this).attr('name','id_' + (i+1));
+							$(this).attr('name','id');
+							$(this).attr('value',(i+1));
+						});
+
+						// .choice-textの処理
+						$('#sortable .choice-text').each(function(i){
+							var value = $('.con' + (i+1)).attr("value");
+							$(this).attr('name','choice_text' + (value));
+						});
+						// .yes-answerの処理
+						$('#sortable .yes-answer').each(function(i){
+							var value = $('.con' + (i+1)).attr("value");
+							$(this).attr('name','yes_answer' + (value));
+						});
+						// .no-answerの処理
+						$('#sortable .no-answer').each(function(i){
+							var value = $('.con' + (i+1)).attr("value");
+							$(this).attr('name','no_answer' + (value));
+						});
+						// .describing-textの処理
+						$('#sortable .describing-text').each(function(i){
+							var value = $('.tainer' + (i+1)).attr("value");
+							alert(value);
+							$(this).attr('name','describing_text' + (value));
+						});
+
+					});
+
+					// 並び替え機能
+						$('tbody').sortable();
+
+						var h = 0;
             // 2択問題追加
         		//追加ボタンがクリックされたら、function(){…}の処理を実行する
+<<<<<<< HEAD
+						$('#addChoice2').click(function(){
+								var html = '<tr id="con" class=""><input type="hidden" class="id" value=""><td><textarea class="choice-text" name="" rows="5" cols="50" placeholder="ここに質問を入力してください。" value=""></textarea></td><td><input type="text" class="yes-answer" name="" value="" placeholder="回答を入力してください。"><input type="text" class="no-answer" name="" value="" placeholder="回答を入力してください。"></td><td class="remove-center"><button class="remove">-</button></td></tr>';
+								//append()を使ってtbody内の一番最後にhtmlを追加する
+								$('tbody').append(html);
+=======
         		$('#addChoice2').click(function(){
 <<<<<<< HEAD
                 var html = '<tr><td><textarea name="choice" rows="5" cols="50" placeholder="ここに質問を入力してください。"></textarea></td><td><form><input type="radio" name="Choice4"><input type="text" name="answer" placeholder="回答を入力してください。"><input type="radio" name="Choice4"><input type="text" name="answer" placeholder="回答を入力してください。"></form></td><td class="remove-center"><button class="remove">-</button></td></tr>';
@@ -134,12 +185,13 @@
 >>>>>>> feature/kurrokawa2
         				//append()を使ってtbody内の一番最後にhtmlを追加する
         				$('tbody').append(html);
+>>>>>>> slackOauth
             });
 
             // アンケート追加
         		//追加ボタンがクリックされたら、function(){…}の処理を実行する
         		$('#addText').click(function(){
-                var html ='<tr><td><textarea name="question" rows="5" cols="50" placeholder="ここに質問を入力してください。"></textarea></td><td class="remove-center"><button class="remove">-</button></td></tr>';
+								var html ='<tr id="tainer" class=""><input type="hidden" class="id" value=""><td><textarea class="describing-text" name="" rows="5" cols="50" placeholder="ここに質問を入力してください。"></textarea></td><td class="remove-center"><button class="remove">-</button></td></tr>';
 								//append()を使ってtbody内の一番最後にhtmlを追加する
         				$('tbody').append(html);
             });
@@ -152,9 +204,8 @@
             });
 
 
-        });
 
-				// 問題数カウント処理
+				// 問題数上限カウント処理 //完成
 				$(function(){
 					var i = 0;
 					if ((n === undefined)) {
@@ -162,15 +213,15 @@
 					} else {
 						var n = n;
 					}
-					if( n <= 10 ){
 						// 問題を追加するたび数字をプラスする
 						$(document).on('click', '.plus', function() {
 							i++;
 							var n = i;
+							alert(n);
 							if( n <= 9 ){
-								$('#output').html(i);
+								// $('#output').html(i);
 							} else {
-								// 問題追加ボタンを非活性にする
+								// 問題追加ボタンを消す
 								$('.plus').hide();
 							}
 						});
@@ -178,15 +229,17 @@
 						$(document).on('click', '.remove', function() {
 							i--;
 							var n = i;
-							console.log(n);
+							// alert(n);
+							// $('#output').html(i);
 							if( n >= 9 ){
-								$('#output').html(i);
+								// 問題ボタンを復活させる
 								$('.plus').show();
 							}
 						});
-					}
 				});
+
 			</script>
+
 
 
 				<a href="{{ route('survey.index')}}" class="more icon-arrow-left3"> 戻る</a>

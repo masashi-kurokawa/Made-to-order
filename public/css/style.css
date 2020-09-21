@@ -617,8 +617,9 @@ body.offcanvas #fh5co-main, body.offcanvas .fh5co-nav-toggle {
 }
 
 .fh5co-lead {
-  font-size: 18px;
+  font-size: 15px;
   line-height: 1.5;
+  margin: 0;
 }
 
 .fh5co-heading-colored {
@@ -993,6 +994,10 @@ body.offcanvas #fh5co-main, body.offcanvas .fh5co-nav-toggle {
   box-shadow: none;
 }
 
+.title-sort {
+  width: 95%;
+}
+
 .form-control {
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -1000,14 +1005,19 @@ body.offcanvas #fh5co-main, body.offcanvas .fh5co-nav-toggle {
   box-shadow: none;
   background: transparent;
   border: 2px solid rgba(0, 0, 0, 0.1);
-  height: 54px;
-  font-size: 18px;
+  font-size: 15px;
   font-weight: 300;
   -webkit-border-radius: 7px;
   -moz-border-radius: 7px;
   -ms-border-radius: 7px;
   border-radius: 7px;
 }
+
+.form-sort {
+  display: inline-block;
+  width: 45%;
+}
+
 .form-control:active, .form-control:focus {
   outline: none;
   box-shadow: none;

@@ -51,9 +51,9 @@ Route::get('/testend/', function () {
 Route::resource('survey', 'SurveyController');
 
 //アンケート新規作成
-// Route::get('/surveycreate/', function () {
-//     return view('surveycreate');
-// });
+Route::get('/surveycreate/', function () {
+    return view('surveycreate');
+});
 
 //アンケート受講
 // Route::get('/survey/', function () {
@@ -90,7 +90,7 @@ Route::get('/score/', function () {
 });
 
 //未採点
-Route::get('/grade/', 'gradeController@index');
+Route::resource('grade', 'GradeController');
 
 // サンプル　2020/09/10 CRUD処理理解のため石田作成。プロジェクト終了後削除する。
 Route::resource('item', 'ItemController');

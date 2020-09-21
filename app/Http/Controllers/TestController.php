@@ -87,6 +87,7 @@ class TestController extends Controller
             'updated_at' => Carbon::now()]); //時間が違う、場所の設定が違うのかも
           }
 
+
           if ($role == 2) { //穴埋め問題
             DB::table('hole_answers')->insert([
               'user_id' => "$user_id", //SlackIDじゃないと入らない
@@ -118,7 +119,7 @@ class TestController extends Controller
 
        // 点数登録
        if ( isset ( $correctcount ) ) {
-         dump($sum);
+         // dump($sum);
          DB::table('test_results')->insert([
            'user_name' => 'slackOauth', //とりあえず入れてる
            'test_id' => "$testnumber",
@@ -136,11 +137,9 @@ class TestController extends Controller
 
        // dump($sorteds->toArray());
        // var_dump($sorted);
-       // dump($testanswer1);
        // dump($answers);
        // dump(is_array($sorteds)); //配列か確認
 
        return view('test',compact('sorteds'));
-       // return view('test',compact('', '', '', ''));
     }
 }
