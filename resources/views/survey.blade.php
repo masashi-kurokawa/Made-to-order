@@ -128,6 +128,7 @@
 					</div>
 				</div>
 
+
 			<div class="fh5co-narrow-content animate-box" data-animate-effect="fadeInLeft">
 				<div class="row">
 					<div class="col-md-4">
@@ -217,7 +218,7 @@
 			</div>
 
 			<div class="test-btn">
-				<input type="submit" class="btn btn-primary btn-md" onclick="location.href='{{ url('/surveyend/') }}'" value="アンケート終了">
+				<input type="submit" class="btn btn-primary btn-md" onclick="location.href='{{ url('/survey/') }}'" value="アンケート終了">
 			</div>
 
 		</div>

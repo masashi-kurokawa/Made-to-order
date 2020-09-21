@@ -47,7 +47,7 @@ Route::get('/testend/', function () {
 });
 
 //アンケート
-// Route::get('/surveylist/', 'SurveylistController@index');
+Route::get('/surveylist/', 'SurveylistController@index');
 Route::resource('survey', 'SurveyController');
 
 //アンケート新規作成

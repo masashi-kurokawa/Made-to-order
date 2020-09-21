@@ -22,9 +22,15 @@ class SurveyController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+
+     //テストを受けるやつ
+    // public function index()
+    public function index(Request $request)
     {
         $surveys = Survey::all();
+        $postsurvey = $request->all();
+        dump($surveys);
+
         return view('survey.index' , compact('surveys'));
     }
 
@@ -101,8 +107,6 @@ class SurveyController extends Controller
           }
         }
 
-
-        //POSTされたデータを分ける
 
 
 

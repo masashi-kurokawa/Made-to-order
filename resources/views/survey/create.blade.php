@@ -160,7 +160,6 @@
 							alert(value);
 							$(this).attr('name','describing_text' + (value));
 						});
-
 					});
 
 					// 並び替え機能
@@ -169,23 +168,10 @@
 						var h = 0;
             // 2択問題追加
         		//追加ボタンがクリックされたら、function(){…}の処理を実行する
-<<<<<<< HEAD
 						$('#addChoice2').click(function(){
 								var html = '<tr id="con" class=""><input type="hidden" class="id" value=""><td><textarea class="choice-text" name="" rows="5" cols="50" placeholder="ここに質問を入力してください。" value=""></textarea></td><td><input type="text" class="yes-answer" name="" value="" placeholder="回答を入力してください。"><input type="text" class="no-answer" name="" value="" placeholder="回答を入力してください。"></td><td class="remove-center"><button class="remove">-</button></td></tr>';
 								//append()を使ってtbody内の一番最後にhtmlを追加する
 								$('tbody').append(html);
-=======
-        		$('#addChoice2').click(function(){
-<<<<<<< HEAD
-                var html = '<tr><td><textarea name="choice" rows="5" cols="50" placeholder="ここに質問を入力してください。"></textarea></td><td><form><input type="radio" name="Choice4"><input type="text" name="answer" placeholder="回答を入力してください。"><input type="radio" name="Choice4"><input type="text" name="answer" placeholder="回答を入力してください。"></form></td><td class="remove-center"><button class="remove">-</button></td></tr>';
-=======
-						  // if文入れていく
-							// for文入れていく
-                var html = '<tr><td><textarea name="text" rows="5" cols="50" placeholder="ここに質問を入力してください。"></textarea></td><td><form><input type="radio" name="Choice4"><input type="text" name="answer" placeholder="回答を入力してください。"><input type="radio" name="Choice4"><input type="text" name="answer" placeholder="回答を入力してください。"></form></td><td class="remove-center"><button class="remove">-</button></td></tr>';
->>>>>>> feature/kurrokawa2
-        				//append()を使ってtbody内の一番最後にhtmlを追加する
-        				$('tbody').append(html);
->>>>>>> slackOauth
             });
 
             // アンケート追加
@@ -218,7 +204,7 @@
 							i++;
 							var n = i;
 							alert(n);
-							if( n <= 9 ){
+							if( n <= 49 ){
 								// $('#output').html(i);
 							} else {
 								// 問題追加ボタンを消す
@@ -231,7 +217,7 @@
 							var n = i;
 							// alert(n);
 							// $('#output').html(i);
-							if( n >= 9 ){
+							if( n >= 49 ){
 								// 問題ボタンを復活させる
 								$('.plus').show();
 							}
