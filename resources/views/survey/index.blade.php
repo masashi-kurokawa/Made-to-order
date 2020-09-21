@@ -105,7 +105,7 @@
 								<span>{{ $survey->updated_at->format('Y-m-d') }}</span>
 								<!-- <p>ここにテキストを入れることができます。</p> -->
 								<div class="more-center">
-									<a href="#" class="lead more">アンケート受講</a>
+									<a href="{{ url('/take_survey/') }}" class="lead more">アンケート受講</a>
 									<a href="{{ route('survey.edit', $survey->id)}}" class="lead more">詳細・編集</a>
 									<form action="{{ route('survey.destroy', $survey->id)}}" method="POST">
 										@csrf
