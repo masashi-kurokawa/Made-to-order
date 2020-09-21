@@ -96,7 +96,7 @@
   　　　　　<!-- 検索フォーム -->
           <form action="{{url('/score')}}" method="GET">
             <!-- 期間ソート -->
-            <div class="form-group">
+            <div class="form-group-date">
               <p class="fh5co-lead ">受講期間を選択：</p>
               <input class="form-control form-sort" type="date" name="sort-start">
               <label> 〜 </label>

@@ -82,10 +82,106 @@ figure figcaption {
   background: #228896;
 }
 
+.space-bot {
+  margin-bottom: 20%;
+}
+
 .bg-rgba {
   background-color:rgba(0,0,0,0.4);
-  margin: auto;
-  text-align: center;
+  padding: 15% 0;
+}
+
+.login-text {
+  font-size: 15px;
+  color: #fff;
+  margin: 4% 0 2%;
+}
+
+#login-menu input {
+  display: block;
+  margin: 2% auto;
+}
+
+#login-menu input::placeholder {
+  color: #aaa;
+}
+
+#login-menu input[type=text],input[type=email]{
+  color: #fff;
+    width: 250px;
+    height: 40px;
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.7);
+    border-radius: 2px;
+    color: #fff;
+    font-family: 'Exo', sans-serif;
+    font-size: 17px;
+    font-weight: 400;
+    padding: 10px;
+}
+
+#login-menu input[type=password]{
+    width: 250px;
+    height: 30px;
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.6);
+    border-radius: 2px;
+    color: #fff;
+    font-family: 'Exo', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    padding: 4px;
+    margin-top: 10px;
+}
+
+#login-menu input[type=submit]{
+    width: 250px;
+    height: 40px;
+    background: #fff;
+    border: 1px solid #fff;
+    cursor: pointer;
+    border-radius: 2px;
+    font-family: 'Exo', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    padding: 6px;
+    margin-top: 10px;
+}
+
+#login-menu input[type=submit]:hover{
+    opacity: 0.8;
+}
+
+#login-menu input[type=submit]:active{
+    opacity: 0.6;
+}
+
+#login-menu input[type=text]:focus{
+    outline: none;
+    border: 1px solid rgba(255,255,255,0.9);
+}
+
+#login-menu input[type=email]:focus{
+    outline: none;
+    border: 1px solid rgba(255,255,255,0.9);
+}
+
+#login-menu input[type=password]:focus{
+    outline: none;
+    border: 1px solid rgba(255,255,255,0.9);
+}
+
+#login-menu input[type=submit]:focus{
+    outline: none;
+}
+
+.alert-form {
+  width: 70%;
+  margin: 0 auto;
+}
+
+.alert-form ul {
+  list-style-type: none;
   padding: 0;
 }
 
@@ -326,9 +422,10 @@ figure figcaption {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  min-height: 500px;
+  /* min-height: 500px; */
   position: relative;
 }
+
 #fh5co-hero .flexslider .flex-control-nav {
   bottom: 20px;
   z-index: 1000;
@@ -379,7 +476,7 @@ figure figcaption {
   font-family: "Roboto", Arial, sans-serif;
 }
 #fh5co-hero .flexslider .slider-text > .slider-text-inner h1 {
-  margin-bottom: 20px;
+  margin-bottom: 7%;
   font-size: 45px;
   line-height: 1.3;
   font-weight: 100;
@@ -419,12 +516,12 @@ figure figcaption {
 }
 #fh5co-hero .flexslider .slider-text > .slider-text-inner .btn {
   font-size: 12px;
-  text-transform: uppercase;
   letter-spacing: 2px;
   color: #fff;
   padding: 22px 30px !important;
   border: none;
   font-weight: 500;
+  border-radius: 2px;
 }
 #fh5co-hero .flexslider .slider-text > .slider-text-inner .btn.btn-learn {
   background: #fff;
@@ -869,7 +966,6 @@ body.offcanvas #fh5co-main, body.offcanvas .fh5co-nav-toggle {
   font-family: "Roboto", Arial, sans-serif;
   font-size: 18px;
   font-weight: 400;
-  text-transform: uppercase;
   letter-spacing: 1px;
   -webkit-border-radius: 0px;
   -moz-border-radius: 0px;
