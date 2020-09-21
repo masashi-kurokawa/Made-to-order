@@ -103,4 +103,4 @@ Route::resource('item', 'ItemController');
 
 // });
 //
-// Auth::routes(['register' => false]);
+Auth::routes(['register' => false]);
