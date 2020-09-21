@@ -97,7 +97,7 @@
   　　　　　<!-- 検索フォーム -->
           <form action="{{url('/score')}}" method="GET">
             <!-- 期間ソート -->
-            <div class="form-group">
+            <div class="form-group-date">
               <p class="fh5co-lead ">受講期間を選択：</p>
               <input class="form-control form-sort" type="date" name="sort-start">
               <label> 〜 </label>
@@ -117,7 +117,7 @@
               </div>
             </div>
             <!-- テストの検索終わり -->
-            
+
             <!-- 使っているテストか判定 -->
             <div class="form-group-status">
               <p class="fh5co-lead">使用有無を選択：</p>
