@@ -47,18 +47,15 @@ Route::get('/testend/', function () {
 });
 
 //アンケート
-Route::get('/surveylist/', 'SurveylistController@index');
 Route::resource('survey', 'SurveyController');
+
+// アンケート受講
+Route::get('/take_survey/', 'Take_surveyController@index');
 
 //アンケート新規作成
 Route::get('/surveycreate/', function () {
     return view('surveycreate');
 });
-
-//アンケート受講
-// Route::get('/survey/', function () {
-//     return view('survey');
-// });
 
 //アンケート詳細・編集
 // Route::get('/surveyedit/', 'SurveyeditController@index');
