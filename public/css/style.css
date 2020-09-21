@@ -82,6 +82,13 @@ figure figcaption {
   background: #228896;
 }
 
+.bg-rgba {
+  background-color:rgba(0,0,0,0.4);
+  margin: auto;
+  text-align: center;
+  padding: 0;
+}
+
 #fh5co-page {
   width: 100%;
   overflow: hidden;
