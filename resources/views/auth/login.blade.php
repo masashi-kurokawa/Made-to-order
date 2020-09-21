@@ -129,6 +129,7 @@
 			  	</div>
 			</aside>
 		</div>
+	</div>
 
 	<!-- jQuery -->
 	<script src="js/jquery.min.js"></script>
