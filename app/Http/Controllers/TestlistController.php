@@ -24,4 +24,11 @@ class TestlistController extends Controller
 
 
     }
+
+    // 削除処理
+    public function delete(Request $request)
+    {
+        Test::find($request->id)->delete();
+        return redirect('/testlist');
+    }
 }

@@ -103,7 +103,13 @@
 								<p>ここにテキストを入れることができます。</p>
 								<div class="more-center">
 									<a href="{{ url('/test/') }}" class="lead more">テスト受講</a>
-									<a href="{{ url('/testedit/') }}" class="lead more">詳細・編集</a>
+									<a href="{{ url('/testedit/'.$tests->id)}}" class="lead more">詳細・編集</a>
+
+									<form action="/testlist/delete/{{$tests->id}}" method="POST">
+										{{ csrf_field() }}
+										<input class="lead more" type="submit" value="削除" onclick='return confirm("本当に削除しますか？");'>
+									</form>
+
 								</div>
 							</div>
 						</div>
