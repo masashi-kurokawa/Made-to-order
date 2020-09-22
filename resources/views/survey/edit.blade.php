@@ -96,7 +96,8 @@
 				    @method('PUT')
             <div class="title-rap">
               <input type="text" name="title" value="{{ $survey->title }}">
-							<input type="text" name="status" value="{{ $survey->status }}">
+							<label><input type="radio" value="1" name="status" @if (old('status', $survey->status) == 1) checked @endif>使用</label>
+							<label><input type="radio" value="2" name="status" @if (old('status', $survey->status) == 2) checked @endif>未使用</label>
               <!-- <textarea name="text" rows="2" placeholder="ここにテキストを入れることができます。"></textarea> -->
             </div>
             <table>
