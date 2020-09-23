@@ -18,6 +18,7 @@ class selectSurveyAnswersTableSeeder extends Seeder
             'survey_id' => 1,
             'question_number' => 1,
             'answer' => 1,
+            'answer_item' => 'ほしい',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ]);
