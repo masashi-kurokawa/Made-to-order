@@ -21,8 +21,8 @@ class CreateSelectSurveysTable extends Migration
             $table->integer('role')->length(11)->default(2)->comment('問題の種類');
             $table->integer('select1')->length(11)->comment('選択肢');
             $table->integer('select2')->length(11)->comment('選択肢');
-            $table->integer('select_item1')->length(11)->comment('選択肢の内容');
-            $table->integer('select_item2')->length(11)->comment('選択肢の内容');
+            $table->string('select_item1', 255)->length(11)->comment('選択肢の内容');
+            $table->string('select_item2', 255)->length(11)->comment('選択肢の内容');
             $table->timestamps();
 
             // 外部キーの設定

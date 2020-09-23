@@ -16,7 +16,6 @@ class writeTestsTableSeeder extends Seeder
         DB::table('write_tests')->insert([
             'test_id' => 1,
             'question' => '2 + 2は何？',
-            'answer' => '4',
             'question_number' => 3,
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
