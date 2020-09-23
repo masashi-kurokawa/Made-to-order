@@ -18,7 +18,6 @@ class writeAnswersTableSeeder extends Seeder
             'test_id' => 1,
             'question_number' => 3,
             'answer' => '4',
-            'Judgment' => 1,
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ]);
