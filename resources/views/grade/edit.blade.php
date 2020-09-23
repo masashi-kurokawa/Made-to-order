@@ -95,55 +95,34 @@
 
         <div class="animate-box" data-animate-effect="fadeInLeft">
 					<div class="title-rap">
-						<h4 class="title">テストタイトル</h4>
+						<h4 class="title">{{$test_title}}</h4>
 						<!-- <textarea name="text" rows="2" placeholder="ここにテキストを入れることができます。"></textarea> -->
 					</div>
-					<form action="" method="POST">
-
-					<!-- 1回答サンプル -->
-					<div class="animate-box" data-animate-effect="fadeInLeft">
-						<div class="row">
-							<div class="col-md-10">
-								<div class="space">
-									<h4>問題1</h4>
-										<p>問題テキストああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああああ</p>
-								</div>
-								<div class="space">
-									<h5>回答</h5>
-										<p>1回答テキスト</p>
-								</div>
-								<div class="space">
-									<!-- nameタグの grade の後ろに問題番号の数字を入れることでradioボタンを他問題と分けることができる -->
-									<label class="labelspace correct"><input class="geomsize" type="radio" name="grade1" value="1" required>正解</label>
-									<label class="labelspace incorrect"><input class="geomsize" type="radio" name="grade1" value="2">不正解</label>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<!-- 2回答サンプル -->
-					<div class="animate-box" data-animate-effect="fadeInLeft">
-						<div class="row">
-							<div class="col-md-10">
-								<div class="space">
-									<h4>問題2</h4>
-										<p>問題テキスト</p>
-								</div>
-								<div class="space">
-									<h5>回答</h5>
-										<p>2回答テキスト</p>
-										<p>2回答テキスト</p>
-								</div>
-								<div class="space">
-									<!-- nameタグの grade の後ろに問題番号の数字を入れることでradioボタンを他問題と分けることができる -->
-									<label class="labelspace correct"><input class="geomsize" type="radio" name="grade2" value="1" required>正解</label>
-									<label class="labelspace incorrect"><input class="geomsize" type="radio" name="grade2" value="2">不正解</label>
+					<form action="{{ route('grade.edit', ['id' => $test_id, 'user_id' => $user_id]) }}" method="POST">
+						@csrf
+						@foreach ($unscored_data as $value)
+						<div class="animate-box" data-animate-effect="fadeInLeft">
+							<div class="row">
+								<div class="col-md-10">
+									<div class="space">
+										<h4>問題{{$value['question_number']}}</h4>
+											<p>{{$value['question']}}</p>
+									</div>
+									<div class="space">
+										<h5>回答</h5>
+											<p>{{$value['users_answer']}}</p>
+									</div>
+									<div class="space">
+										<!-- nameタグの grade の後ろに問題番号の数字を入れることでradioボタンを他問題と分けることができる -->
+										<label class="labelspace correct"><input class="geomsize" type="radio" name="{{$value['question_number']}}" value="1" required>正解</label>
+										<label class="labelspace incorrect"><input class="geomsize" type="radio" name="{{$value['question_number']}}" value="2">不正解</label>
+									</div>
 								</div>
 							</div>
 						</div>
-					</div>
+						@endforeach
 
-          <input type="submit" value="保存">
+	          <input type="submit" value="保存">
           </form>
         </div>
 

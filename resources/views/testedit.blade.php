@@ -43,17 +43,17 @@
 	<link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700" rel="stylesheet">
 
 	<!-- Animate.css -->
-	<link rel="stylesheet" href="css/animate.css">
+	<link rel="stylesheet" href="{{ asset('css/animate.css') }}">
 	<!-- Icomoon Icon Fonts-->
-	<link rel="stylesheet" href="css/icomoon.css">
+	<link rel="stylesheet" href="{{ asset('css/icomoon.css') }}">
 	<!-- Bootstrap  -->
-	<link rel="stylesheet" href="css/bootstrap.css">
+	<link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
 	<!-- Flexslider  -->
-	<link rel="stylesheet" href="css/flexslider.css">
+	<link rel="stylesheet" href="{{ asset('css/flexslider.css') }}">
 	<!-- Theme style  -->
-	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="{{ asset('css/style.css') }}">
 	<!-- score style  -->
-	<link rel="stylesheet" href="css/home.css">
+	<link rel="stylesheet" href="{{ asset('css/home.css') }}">
 
 	<!-- Modernizr JS -->
 	<script src="js/modernizr-2.6.2.min.js"></script>
@@ -91,126 +91,34 @@
 				<h2 class="fh5co-heading">テスト詳細・編集</h2>
         <div id="count" class="container animate-box" data-animate-effect="fadeInLeft">
           <form action="{{ url('/testlist/') }}" method="post">
-
-						@foreach ($dblist as $key => $tests)
+						@csrf
+				    @method('PUT')
             <div class="title-rap">
-              <input type="text" name="text" value="{{$tests->title}}">
-              <textarea name="text" rows="2" placeholder="ここにテキストを入れることができます。"></textarea>
+              <input type="text" name="text" value="{{$test->title}}">
+							<label><input type="radio" value="1" name="status" @if (old('status', $test->status) == 1) checked @endif>使用</label>
+							<label><input type="radio" value="2" name="status" @if (old('status', $test->status) == 2) checked @endif>未使用</label>
+              <!-- <textarea name="text" rows="2" placeholder="ここにテキストを入れることができます。"></textarea> -->
             </div>
-						@endforeach
 
             <table>
               <tbody>
+							@foreach ($write_tests as $write_test)
               <tr>
-								<td><textarea name="text" rows="5" cols="50" placeholder="ここに問題文を入力してください。"></textarea></td>
-								<td><input type="text" name="text" placeholder="回答を入力してください。"></td>
+								<td><textarea name="question" rows="5" cols="50" placeholder="ここに問題文を入力してください。">{{$write_test->question}}</textarea></td>
+								<td><input type="text" name="text" placeholder="回答を入力してください。" value="{{$write_test->answer}}"></td>
 								<td class="remove-center"><button class="remove">-</button></td>
 							</tr>
+							@endforeach
+							@foreach ($select_tests as $select_test)
 							<tr>
-								<td><textarea name="text" rows="5" cols="50" placeholder="ここに問題文を入力してください。"></textarea></td>
-								<td><input type="text" name="text" placeholder="回答を入力してください。"><input type="text" name="text" placeholder="回答を入力してください。"></td>
-								<td class="remove-center"><button class="remove">-</button></td>
-							</tr>
-							<tr>
-								<td><textarea name="text" rows="5" cols="50" placeholder="ここに問題文を入力してください。"></textarea></td>
+								<td><textarea name="question" rows="5" cols="50" placeholder="ここに問題文を入力してください。">{{$select_test->question}}</textarea></td>
 								<td>
-									<form>
-										<input type="radio" name="Choice4">
-										<input type="text" name="answer" placeholder="回答を入力してください。">
-										<input type="radio" name="Choice4">
-										<input type="text" name="answer" placeholder="回答を入力してください。">
-										<input type="radio" name="Choice4">
-										<input type="text" name="answer" placeholder="回答を入力してください。">
-										<input type="radio" name="Choice4">
-										<input type="text" name="answer" placeholder="回答を入力してください。">
-									</form>
+									<input type="radio" name="Choice{{$select_test->question_number}}">
+									<input type="text" name="answer" placeholder="回答を入力してください。" value="{{$select_test->answer}}">
 								</td>
 								<td class="remove-center"><button class="remove">-</button></td>
 							</tr>
-							<tr>
-								<td><textarea name="text" rows="5" cols="50" placeholder="ここに問題文を入力してください。"></textarea></td>
-								<td>
-									<form>
-										<input type="radio" name="Choice8">
-										<input type="text" name="answer" placeholder="回答を入力してください。">
-										<input type="radio" name="Choice8">
-										<input type="text" name="answer" placeholder="回答を入力してください。">
-										<input type="radio" name="Choice8">
-										<input type="text" name="answer" placeholder="回答を入力してください。">
-										<input type="radio" name="Choice8">
-										<input type="text" name="answer" placeholder="回答を入力してください。">
-										<input type="radio" name="Choice8">
-										<input type="text" name="answer" placeholder="回答を入力してください。">
-										<input type="radio" name="Choice8">
-										<input type="text" name="answer" placeholder="回答を入力してください。">
-										<input type="radio" name="Choice8">
-										<input type="text" name="answer" placeholder="回答を入力してください。">
-										<input type="radio" name="Choice8">
-										<input type="text" name="answer" placeholder="回答を入力してください。">
-									</form>
-								</td>
-								<td class="remove-center"><button class="remove">-</button></td>
-							</tr>
-							<tr>
-								<td><textarea name="text" rows="5" cols="50" placeholder="ここに問題文を入力してください。"></textarea></td>
-								<td><input type="text" name="text" placeholder="回答を入力してください。"></td>
-								<td class="remove-center"><button class="remove">-</button></td>
-							</tr>
-							<tr>
-								<td><textarea name="text" rows="5" cols="50" placeholder="ここに問題文を入力してください。"></textarea></td>
-								<td><input type="text" name="text" placeholder="回答を入力してください。"><input type="text" name="text" placeholder="回答を入力してください。"></td>
-								<td class="remove-center"><button class="remove">-</button></td>
-							</tr>
-							<tr>
-								<td><textarea name="text" rows="5" cols="50" placeholder="ここに問題文を入力してください。"></textarea></td>
-								<td>
-									<form>
-										<input type="radio" name="Choice4">
-										<input type="text" name="answer" placeholder="回答を入力してください。">
-										<input type="radio" name="Choice4">
-										<input type="text" name="answer" placeholder="回答を入力してください。">
-										<input type="radio" name="Choice4">
-										<input type="text" name="answer" placeholder="回答を入力してください。">
-										<input type="radio" name="Choice4">
-										<input type="text" name="answer" placeholder="回答を入力してください。">
-									</form>
-								</td>
-								<td class="remove-center"><button class="remove">-</button></td>
-							</tr>
-							<tr>
-								<td><textarea name="text" rows="5" cols="50" placeholder="ここに問題文を入力してください。"></textarea></td>
-								<td>
-									<form>
-										<input type="radio" name="Choice8">
-										<input type="text" name="answer" placeholder="回答を入力してください。">
-										<input type="radio" name="Choice8">
-										<input type="text" name="answer" placeholder="回答を入力してください。">
-										<input type="radio" name="Choice8">
-										<input type="text" name="answer" placeholder="回答を入力してください。">
-										<input type="radio" name="Choice8">
-										<input type="text" name="answer" placeholder="回答を入力してください。">
-										<input type="radio" name="Choice8">
-										<input type="text" name="answer" placeholder="回答を入力してください。">
-										<input type="radio" name="Choice8">
-										<input type="text" name="answer" placeholder="回答を入力してください。">
-										<input type="radio" name="Choice8">
-										<input type="text" name="answer" placeholder="回答を入力してください。">
-										<input type="radio" name="Choice8">
-										<input type="text" name="answer" placeholder="回答を入力してください。">
-									</form>
-								</td>
-								<td class="remove-center"><button class="remove">-</button></td>
-							</tr>
-							<tr>
-								<td><textarea name="text" rows="5" cols="50" placeholder="ここに問題文を入力してください。"></textarea></td>
-								<td><input type="text" name="text" placeholder="回答を入力してください。"></td>
-								<td class="remove-center"><button class="remove">-</button></td>
-							</tr>
-							<tr>
-								<td><textarea name="text" rows="5" cols="50" placeholder="ここに問題文を入力してください。"></textarea></td>
-								<td><input type="text" name="text" placeholder="回答を入力してください。"><input type="text" name="text" placeholder="回答を入力してください。"></td>
-								<td class="remove-center"><button class="remove">-</button></td>
-							</tr>
+							@endforeach
 							</tbody>
             </table>
             <input type="submit" value="保存">
@@ -235,7 +143,7 @@
         		// 問題追加 1回答
         		//追加ボタンがクリックされたら、function(){…}の処理を実行する
         		$('#addTest1').click(function(){
-                var html = '<tr><td><textarea name="text" rows="5" cols="50" placeholder="ここに問題文を入力してください。"></textarea></td><td><input type="text" name="text" placeholder="回答を入力してください。"></td><td class="remove-center"><button class="remove">-</button></td></tr>';
+                var html = '<tr><td><textarea name="question" rows="5" cols="50" placeholder="ここに問題文を入力してください。"></textarea></td><td><input type="text" name="text" placeholder="回答を入力してください。"></td><td class="remove-center"><button class="remove">-</button></td></tr>';
         				//append()を使ってtbody内の一番最後にhtmlを追加する
         				$('tbody').append(html);
             });
@@ -243,7 +151,7 @@
             // 問題追加 2回答
         		//追加ボタンがクリックされたら、function(){…}の処理を実行する
         		$('#addTest2').click(function(){
-                var html = '<tr><td><textarea name="text" rows="5" cols="50" placeholder="ここに問題文を入力してください。"></textarea></td><td><input type="text" name="text" placeholder="回答を入力してください。"><input type="text" name="text" placeholder="回答を入力してください。"></td><td class="remove-center"><button class="remove">-</button></td></tr>';
+                var html = '<tr><td><textarea name="question" rows="5" cols="50" placeholder="ここに問題文を入力してください。"></textarea></td><td><input type="text" name="text" placeholder="回答を入力してください。"><input type="text" name="text" placeholder="回答を入力してください。"></td><td class="remove-center"><button class="remove">-</button></td></tr>';
         				//append()を使ってtbody内の一番最後にhtmlを追加する
         				$('tbody').append(html);
             });
@@ -251,7 +159,7 @@
             // 4択問題追加
         		//追加ボタンがクリックされたら、function(){…}の処理を実行する
         		$('#addChoice4').click(function(){
-                var html = '<tr><td><textarea name="text" rows="5" cols="50" placeholder="ここに問題文を入力してください。"></textarea></td><td><form><input type="radio" name="Choice4"><input type="text" name="answer" placeholder="回答を入力してください。"><input type="radio" name="Choice4"><input type="text" name="answer" placeholder="回答を入力してください。"><input type="radio" name="Choice4"><input type="text" name="answer" placeholder="回答を入力してください。"><input type="radio" name="Choice4"><input type="text" name="answer" placeholder="回答を入力してください。"></form></td><td class="remove-center"><button class="remove">-</button></td></tr>';
+                var html = '<tr><td><textarea name="question" rows="5" cols="50" placeholder="ここに問題文を入力してください。"></textarea></td><td><input type="radio" name="Choice{{$select_test->question_number}}"><input type="text" name="answer" placeholder="回答を入力してください。"><input type="radio" name="Choice{{$select_test->question_number}}"><input type="text" name="answer" placeholder="回答を入力してください。"><input type="radio" name="Choice{{$select_test->question_number}}"><input type="text" name="answer" placeholder="回答を入力してください。"><input type="radio" name="Choice{{$select_test->question_number}}"><input type="text" name="answer" placeholder="回答を入力してください。"></td><td class="remove-center"><button class="remove">-</button></td></tr>';
         				//append()を使ってtbody内の一番最後にhtmlを追加する
         				$('tbody').append(html);
             });
@@ -259,7 +167,7 @@
             // 8択問題追加
         		//追加ボタンがクリックされたら、function(){…}の処理を実行する
         		$('#addChoice8').click(function(){
-                var html = '<tr><td><textarea name="text" rows="5" cols="50" placeholder="ここに問題文を入力してください。"></textarea></td><td><form><input type="radio" name="Choice8"><input type="text" name="answer" placeholder="回答を入力してください。"><input type="radio" name="Choice8"><input type="text" name="answer" placeholder="回答を入力してください。"><input type="radio" name="Choice8"><input type="text" name="answer" placeholder="回答を入力してください。"><input type="radio" name="Choice8"><input type="text" name="answer" placeholder="回答を入力してください。"><input type="radio" name="Choice8"><input type="text" name="answer" placeholder="回答を入力してください。"><input type="radio" name="Choice8"><input type="text" name="answer" placeholder="回答を入力してください。"><input type="radio" name="Choice8"><input type="text" name="answer" placeholder="回答を入力してください。"><input type="radio" name="Choice8"><input type="text" name="answer" placeholder="回答を入力してください。"></form></td><td class="remove-center"><button class="remove">-</button></td></tr>';
+                var html = '<tr><td><textarea name="question" rows="5" cols="50" placeholder="ここに問題文を入力してください。"></textarea></td><td><input type="radio" name="Choice{{$select_test->question_number}}"><input type="text" name="answer" placeholder="回答を入力してください。"><input type="radio" name="Choice{{$select_test->question_number}}"><input type="text" name="answer" placeholder="回答を入力してください。"><input type="radio" name="Choice{{$select_test->question_number}}"><input type="text" name="answer" placeholder="回答を入力してください。"><input type="radio" name="Choice{{$select_test->question_number}}"><input type="text" name="answer" placeholder="回答を入力してください。"><input type="radio" name="Choice{{$select_test->question_number}}"><input type="text" name="answer" placeholder="回答を入力してください。"><input type="radio" name="Choice{{$select_test->question_number}}"><input type="text" name="answer" placeholder="回答を入力してください。"><input type="radio" name="Choice{{$select_test->question_number}}"><input type="text" name="answer" placeholder="回答を入力してください。"><input type="radio" name="Choice{{$select_test->question_number}}"><input type="text" name="answer" placeholder="回答を入力してください。"></td><td class="remove-center"><button class="remove">-</button></td></tr>';
         				//append()を使ってtbody内の一番最後にhtmlを追加する
         				$('tbody').append(html);
             });
