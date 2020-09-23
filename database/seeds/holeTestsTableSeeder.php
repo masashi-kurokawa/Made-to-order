@@ -16,7 +16,8 @@ class holeTestsTableSeeder extends Seeder
         DB::table('hole_tests')->insert([
             'test_id' => 1,
             'question' => '1 + 2は〇〇',
-            'answer' => '3',
+            'answer1' => '3',
+            'answer2' => '3',
             'question_number' => 1,
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
