@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::group(['middleware' => 'auth'], function() {
+Route::group(['middleware' => 'auth'], function() {
 
 Route::get('/', function () {
     return view('welcome');
@@ -90,7 +90,12 @@ Route::get('/score/', function () {
 });
 
 //未採点
-Route::resource('grade', 'GradeController');
+Route::get('/grade/', 'GradeController@index')->name('grade.index');
+Route::post('/grade/', 'GradeController@index');
+
+Route::get('/grade/{id}/edit/{user_id}', 'GradeController@showEditForm')->name('grade.edit');
+Route::post('/grade/{id}/edit/{user_id}', 'GradeController@edit');
+// Route::post('/grade/{id}/edit', 'GradeController@edit');
 
 // サンプル　2020/09/10 CRUD処理理解のため石田作成。プロジェクト終了後削除する。
 Route::resource('item', 'ItemController');
@@ -101,6 +106,6 @@ Route::resource('item', 'ItemController');
 //検索結果を表示する
 // Route::get('/serch', 'ScoreController@index');
 
-// });
+});
 //
 Auth::routes(['register' => false]);

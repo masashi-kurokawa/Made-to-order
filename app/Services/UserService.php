@@ -17,4 +17,9 @@ class UserService extends Service
     {
         return $this->userModel->registerUser($slack_name, $slack_id, $slack_mail, $slack_image);
     }
+
+		public function getUserUnscored(int $user_id)
+    {
+        return $this->userModel->getUserUnscored($user_id);
+    }
 }
