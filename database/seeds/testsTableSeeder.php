@@ -16,6 +16,7 @@ class testsTableSeeder extends Seeder
         DB::table('tests')->insert([
             'title' => 'テスト1',
             'status' => 1,
+            'test_time' => 10,
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ]);
