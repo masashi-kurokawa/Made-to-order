@@ -16,13 +16,13 @@ class ScoreController extends Controller
 
              //デフォルト表示の時に使う
              $query = test::query();
-             $id = test::value('id')->all();
+             // $id = test::value('id')->all();
              // $dblist = $query->get();
              // $dblist = $query->where('id')->get();
              // $id = test::where('id')->get();
              // $id = test::where('id')->all();
              // $id = test::value('id')->all();
-             dump($id);
+             // dump($id);
 
 
              // ポストした内容を表示
