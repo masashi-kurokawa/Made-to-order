@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::group(['middleware' => 'auth'], function() {
+// Route::group(['middleware' => 'auth'], function() {
 
 Route::get('/', function () {
     return view('welcome');
@@ -101,11 +101,8 @@ Route::post('/grade/{id}/edit/{user_id}', 'GradeController@edit');
 Route::resource('item', 'ItemController');
 
 //点数早見表（試し追加）
-// Route::get('/score/', 'ScoreController@index');
-// Route::get('/score', 'ScoreController@index');
-//検索結果を表示する
-// Route::get('/serch', 'ScoreController@index');
+Route::get('/score', 'ScoreController@index');
 
-});
+// });
 //
-Auth::routes(['register' => false]);
+// Auth::routes(['register' => false]);
