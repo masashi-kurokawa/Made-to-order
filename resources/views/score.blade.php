@@ -120,10 +120,8 @@
             <!-- 使っているテストか判定 -->
             <div class="form-group-status">
               <p class="fh5co-lead">使用有無を選択：</p>
-              @foreach($status as $key => $value)
               <label class="use-status"><input type="radio" name="status" value="1" checked="checked"> 使用</label>
 							<label class="use-status"><input type="radio" name="status" value="2"> 未使用</label>
-              @endforeach
             </div>
             <!-- 使っているテストか判定終わり -->
 
@@ -155,22 +153,22 @@
               <th id="number">No.</th>
               <th>生徒</th>
               <th>
-                @foreach ($dblist as $tests)
                 <p class="table-th-p">{{$tests->title}}</p>
-                @endforeach
                 <p class="table-p">平均 {{ $avg }} 点</p>
               </th>
             </tr>
             <!-- 各項目終わり -->
             <!-- 検索結果 -->
             @if($dblist->count())
+            @foreach ($dblist as $tests)
             <tr>
-              @foreach ($dblist as $tests)
               <td><p class="table-p">No</p></td> <!-- テストナンバーに変える -->
-              <td><p class="table-p">名前</p></td>
-              <td><a href="{{ url('/test/') }}">{{$tests->title}}</a></td>
+              <td><p class="table-p">{{$tests->title}}</p></td>
+              @foreach ($items as $ite)
+              <td><a href="{{ url('/test/') }}">{{$ite->score}}</a></td>
               @endforeach
             </tr>
+            @endforeach
           @endif
           <!-- 検索結果終わり -->
           </table>
