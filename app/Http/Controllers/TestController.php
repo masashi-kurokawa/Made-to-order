@@ -25,7 +25,7 @@ class TestController extends Controller
 
 
        // user_idをとってくるSlackIDまでのつなぎ
-       $user_id = DB::table('users')->whereUser_id("1")->value('user_id');
+       $user_id = DB::table('users')->whereId("1")->value('id');
 
        //配列を合わせる
        $str3 = array_merge($selectitems, $holeitems, $writeitems);
