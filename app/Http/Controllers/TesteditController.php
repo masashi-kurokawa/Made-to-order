@@ -21,20 +21,27 @@ class TesteditController extends Controller
     //   return view('testedit', compact('dblist'));
     // }
 
-    public function edit($id)
+    public function edit(Request $request, $id)
     {
         $test = Test::find($id);
         $write_test = Write_test::where('test_id', $id)->get();
         $select_test = Select_test::where('test_id', $id)->get();
+
+        // 並び替え
+        $select_test = Select_test::orderBy('question_number', 'asc')->get();
+
         //確認用
         // dump($write_survey);
-        // 初期記入方法
-        // return view('survey.edit',compact('survey'));
-        return view('testedit', [
-              'test' => $test,
-              'write_tests' => $write_test,
-              'select_tests' => $select_test,
-            ]);
+
+        return view('testedit',
+          [
+            'test' => $test,
+            'write_tests' => $write_test,
+            'select_tests' => $select_test,
+          ],
+
+          ['select_test'=>$select_test]);
+
     }
 
 }

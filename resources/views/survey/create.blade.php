@@ -94,7 +94,8 @@
 						@csrf
             <div class="title-rap">
               <input type="text" name="ak_title" placeholder="アンケートタイトルを入力してください。">
-							<input type="text" name="status" placeholder="使用:1　未使用:2">
+							<label><input type="radio" name="status" value="1">使用</label>
+							<label><input type="radio" name="status" value="2">未使用</label>
               <!-- <textarea name="text" rows="2" placeholder="ここにテキストを入れることができます。"></textarea> -->
             </div>
             <table>

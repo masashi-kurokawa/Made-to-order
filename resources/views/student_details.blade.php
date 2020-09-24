@@ -89,8 +89,8 @@
 			<div class="fh5co-narrow-content">
 				<h2 class="fh5co-heading animate-box" data-animate-effect="fadeInLeft">受講履歴</h2>
 				<div class="test-btn">
-					<input type="submit" class="btn btn-primary btn-md" onclick="location.href='#'" value="テストのみ">
-					<input type="submit" class="btn btn-primary btn-md" onclick="location.href='#'" value="アンケートのみ">
+					<input type="submit" class="btn btn-primary btn-md" onclick="location.href=location.href+'&mode=test'" value="テストのみ">
+					<input type="submit" class="btn btn-primary btn-md" onclick="location.href=location.href+'&mode=survey'" value="アンケートのみ">
 				</div>
 				<div class="row row-bottom-padded-md">
 					<!-- テストの一覧から持ってきた DB出来次第動くと思う-->
@@ -107,6 +107,30 @@
 							</div>
 						</div>
 						@endforeach
+
+						@foreach ($surveys_db as $survey)
+					<div class="col-md-3 col-sm-6 col-padding animate-box" data-animate-effect="fadeInLeft">
+						<div class="blog-entry">
+							<a href="#" class="blog-img"><img src= class="img-responsive" alt="#"></a>
+							<div class="desc">
+								<h3><a href="#">{{ $survey->title }}</a></h3>
+								<span>{{ $survey->updated_at->format('Y-m-d') }}</span>
+								<!-- <p>ここにテキストを入れることができます。</p> -->
+								<div class="more-center">
+									<a href="{{ url('/take_survey/') }}" class="lead more">アンケート受講</a>
+									<a href="{{ route('survey.edit', $survey->id)}}" class="lead more">詳細・編集</a>
+									<form action="{{ route('survey.destroy', $survey->id)}}" method="POST">
+										@csrf
+										@method('DELETE')
+										<input class="lead more" type="submit" name="" value="削 除">
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+					@endforeach
+
+						
 
 
 				</div>
