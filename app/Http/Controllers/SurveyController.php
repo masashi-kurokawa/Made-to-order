@@ -23,7 +23,6 @@ class SurveyController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-     //テストを受けるやつ
     // public function index()
     public function index(Request $request)
     {

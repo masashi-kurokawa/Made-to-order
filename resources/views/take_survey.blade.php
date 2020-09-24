@@ -91,134 +91,37 @@
 		<div class="fh5co-narrow-content">
 			<h2 class="fh5co-heading animate-box" data-animate-effect="fadeInLeft">アンケート1</h2>
 
-				<div class="fh5co-narrow-content animate-box" data-animate-effect="fadeInLeft">
-					<div class="row">
-						<div class="col-md-4">
-							<h4>Q1</h4>
-							<p>アンケートテキスト</p>
-						</div>
-					</div>
-					<div class="row">
-					<form action="#">
-						<div class="col-md-12">
-							<div class="row">
-								<div class="col-md-6">
-									<div>
-								    <div class="radio">
-								      <input id="1" type="radio" name="radio">
-								      <label for="1">A</label>
-								    </div>
-								    <div class="radio">
-								      <input id="2" type="radio" name="radio">
-								      <label for="2">B</label>
-								    </div>
-										<div class="radio">
-								      <input id="3" type="radio" name="radio">
-								      <label for="3">C</label>
-								    </div>
-										<div class="radio">
-								      <input id="4" type="radio" name="radio">
-								      <label for="4">D</label>
-								    </div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</form>
-					</div>
-				</div>
+			<!-- 問題表示 -->
+			<form class="form-inline" id="answer" action="" method="GET">
+			    @foreach ($sorteds as $key => $ak)
+			      <div class="fh5co-narrow-content animate-box" data-animate-effect="fadeInLeft">
+			        <div class="row">
+			          <div class="col-md-4">
+			            <h4>問{{$ak->question_number}}</h4>
+			            <p><p>{{$ak->question}}</p></p>
+			          </div>
+			        </div>
 
-			<div class="fh5co-narrow-content animate-box" data-animate-effect="fadeInLeft">
-				<div class="row">
-					<div class="col-md-4">
-						<h4>Q2</h4>
-						<p>アンケートテキスト</p>
-					</div>
-				</div>
-				<form action="">
-				<div class="row">
-					<div class="col-md-12">
-						<div class="row">
-							<div class="col-md-6">
+							<!-- テスト回答送信機能 -->
+							<!-- actionに問題の番号つけて送信した時に区別する -->
+			        <div class="row">　<!-- ここからテスト問題の回答 -->
+			          <!-- if文で選択、穴埋め、記述を切り分ける -->
 								<div class="form-group">
-									<textarea name="" id="message" cols="30" rows="7" class="form-control" placeholder="テキスト"></textarea>
+									<label for="content">回答記入欄</label>
+									<input type="hidden" class="form-control" name="question{{$ak->question_number}}" value="">　<!-- valueロール権限 -->
+									<input type="text" class="form-control" name="answer{{$ak->question_number}}" value="">
 								</div>
 							</div>
 						</div>
-					</div>
-				</div>
-				</form>
-			</div>
 
-			<div class="fh5co-narrow-content animate-box" data-animate-effect="fadeInLeft">
-				<div class="row">
-					<div class="col-md-4">
-						<h4>Q3</h4>
-						<p>アンケートテキスト</p>
-					</div>
-				</div>
-				<form action="">
-				<div class="row">
-					<div class="col-md-12">
-						<div class="row">
-							<div class="col-md-6">
-								<div class="form-group">
-									<textarea name="" id="message" cols="30" rows="7" class="form-control" placeholder="テキスト"></textarea>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				</form>
-			</div>
+			     @endforeach
 
-			<div class="fh5co-narrow-content animate-box" data-animate-effect="fadeInLeft">
-				<div class="row">
-					<div class="col-md-4">
-						<h4>Q4</h4>
-						<p>アンケートテキスト</p>
-					</div>
-				</div>
-				<form action="">
-				<div class="row">
-					<div class="col-md-12">
-						<div class="row">
-							<div class="col-md-6">
-								<div class="form-group">
-									<textarea name="" id="message" cols="30" rows="7" class="form-control" placeholder="テキスト"></textarea>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				</form>
-			</div>
 
-			<div class="fh5co-narrow-content animate-box" data-animate-effect="fadeInLeft">
-				<div class="row">
-					<div class="col-md-4">
-						<h4>Q5</h4>
-						<p>アンケートテキスト</p>
-					</div>
-				</div>
-				<form action="">
-				<div class="row">
-					<div class="col-md-12">
-						<div class="row">
-							<div class="col-md-6">
-								<div class="form-group">
-									<textarea name="" id="message" cols="30" rows="7" class="form-control" placeholder="テキスト"></textarea>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				</form>
-			</div>
 
-			<div class="test-btn">
-				<input type="submit" class="btn btn-primary btn-md" onclick="location.href='{{ url('/surveyend/') }}'" value="アンケート終了">
-			</div>
+				<div class="test-btn">
+					<input type="submit" class="btn btn-primary btn-md" onclick="location.href='{{ url('/surveyend/') }}'" value="アンケート終了">
+				</div>
+			</form>
 
 		</div>
 	</div>

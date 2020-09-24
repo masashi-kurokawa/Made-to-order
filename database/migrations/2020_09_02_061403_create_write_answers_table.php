@@ -20,7 +20,7 @@ class CreateWriteAnswersTable extends Migration
             $table->integer('test_id')->length(11)->unsigned()->comment('テストのID');
             $table->integer('question_number')->length(11)->unsigned()->comment('何問目の問題か');
             $table->string('answer', 225)->comment('回答');
-            $table->integer('Judgment')->length(11)->comment('1:正解 2:不正解');
+            $table->integer('Judgment')->length(11)->default(3)->comment('1:正解 2:不正解 3:未採点');
             $table->timestamps();
 
             // 外部キーの設定
