@@ -25,7 +25,8 @@ class TestController extends Controller
 
 
        // user_idをとってくるSlackIDまでのつなぎ
-       $user_id = DB::table('users')->whereUser_id("1")->value('user_id');
+       // $user_id = DB::table('users')->whereUser_id("1")->value('user_id');
+       $user_id = DB::table('users')->whereSlack_id("abc")->value('slack_id');
 
        //配列を合わせる
        $str3 = array_merge($selectitems, $holeitems, $writeitems);
@@ -35,6 +36,7 @@ class TestController extends Controller
 
        // テストのソート
        $sorteds = $sorted->sortBy('question_number')->all();
+       dump($sorteds);
     // テスト表示処理　終わり
 
 

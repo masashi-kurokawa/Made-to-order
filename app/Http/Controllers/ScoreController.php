@@ -16,13 +16,11 @@ class ScoreController extends Controller
 
              //デフォルト表示の時に使う
              $query = test::query();
-             // $id = test::value('id')->all();
-             // $dblist = $query->get();
-             // $dblist = $query->where('id')->get();
-             // $id = test::where('id')->get();
-             // $id = test::where('id')->all();
-             // $id = test::value('id')->all();
-             // dump($id);
+             $db = $query->get();
+             // $id = test::select('id')->get();
+             $it = DB::table('test_results')->get();
+             $dfavg = $it->avg('score');
+             // dump($av);
 
 
              // ポストした内容を表示
@@ -30,18 +28,16 @@ class ScoreController extends Controller
              $status = $request->input('status');
              $sortstart = $request->input('sort-start');
              $sortend = $request->input('sort-end');
+             // dump($testss);
 
-             $query = test::query();
-             $dblist = $query->get();
 
              $test = test::value('created_at');
              $created_at = date('Y-m-d',strtotime($test));
 
              $testid = test::whereTitle("$testss")->value('id');
              $items = DB::table('test_results')->whereTest_id("$testid")->get();
-             // dump($created_at);
              $avg = $items->avg('score');
-             // dump($avg);
+             dump($items);
 
              if (!empty($sortstart && $sortend)) {
                $query->whereBetween('created_at', ["$sortstart", "$sortend"]);
@@ -56,12 +52,12 @@ class ScoreController extends Controller
              }
 
 
-             // $dblist = $query->get();
+             $dblist = $query->get();
              // dump($dblist);
 
 
         //ブレードへ
-       return view('score',compact('dblist', 'testss', 'status', 'items', 'avg'));
+       return view('score',compact('dblist', 'testss', 'status', 'dfavg', 'avg', 'db', 'items'));
 
     }
 

@@ -115,7 +115,7 @@
 								 <div class="form-group">
 								   <label for="content">回答記入欄</label>
 								   <input type="hidden" class="form-control" name="question{{$tests->question_number}}" value="{{$tests->role}}">
-								   <input type="hidden" class="form-control" name="{{$tests->question_number}}" value="{{$tests->answer}}">
+
 								   <input type="text" class="form-control" name="answer{{$tests->question_number}}" value="">
 								 </div>
 
@@ -123,7 +123,7 @@
 								 <div class="form-group">
 								   <label for="content">回答記入欄</label>
 								   <input type="hidden" class="form-control" name="question{{$tests->question_number}}" value="{{$tests->role}}">
-									 <input type="hidden" class="form-control" name="{{$tests->question_number}}" value="{{$tests->answer}}">
+
 								   <input type="text" class="form-control" name="answer{{$tests->question_number}}" value="">
 								 </div>
 
@@ -131,11 +131,12 @@
 								 <div class="form-group">
 								   <label for="content">回答記入欄</label>
 								   <input type="hidden" class="form-control" name="question{{$tests->question_number}}" value="{{$tests->role}}">
-									 <input type="hidden" class="form-control" name="{{$tests->question_number}}" value="{{$tests->answer}}">
+
 								   <input type="text" class="form-control" name="answer{{$tests->question_number}}" value="">
 								 </div>
 
 								 @endif
+
 
 					    </div>
 					  </div>

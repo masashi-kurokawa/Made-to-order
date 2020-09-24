@@ -109,8 +109,8 @@
               <div class="title-sort">
                 <select class="select-test form-control" name="test" value="{{$testss}}">
                   <option value="">---テストを選択---</option>
-                  @foreach ($dblist as $key => $tests)
-                    <option value="{{$tests->title}}">{{$tests->title}}</option>
+                  @foreach ($db as $key => $test)
+                    <option value="{{$test->title}}">{{$test->title}}</option>
                   @endforeach
                 </select>
               </div>
@@ -153,20 +153,35 @@
               <th id="number">No.</th>
               <th>生徒</th>
               <th>
-                <p class="table-th-p">{{$tests->title}}</p>
-                <p class="table-p">平均 {{ $avg }} 点</p>
+                <p class="table-th-p">
+                  @empty($testss)
+                    全てのテスト
+                  @endempty
+                  @isset ($testss)
+                    {{$testss}}
+                  @endisset
+                </p>
+                <p class="table-p">平均
+                  @empty($testss)
+                   {{ $dfavg }}
+                  @endempty
+                   {{ $avg }}
+                点</p>
               </th>
             </tr>
             <!-- 各項目終わり -->
             <!-- 検索結果 -->
+
             @if($dblist->count())
-            @foreach ($dblist as $tests)
+            <?php $counter = 1;//カウンター ?>
+            @foreach ($items as $tests)
             <tr>
-              <td><p class="table-p">No</p></td> <!-- テストナンバーに変える -->
-              <td><p class="table-p">{{$tests->title}}</p></td>
-              @foreach ($items as $ite)
-              <td><a href="{{ url('/test/') }}">{{$ite->score}}</a></td>
-              @endforeach
+              <td><p class="table-p"><?php echo $counter ?></p></td> <!-- テストナンバーに変える -->
+              <td><p class="table-p">{{$tests->user_name}}</p></td>
+
+              <td><a href="{{ url('/test/') }}">{{$tests->score}}点</a></td>
+              <?php $counter++;//カウントを増加 ?>
+
             </tr>
             @endforeach
           @endif

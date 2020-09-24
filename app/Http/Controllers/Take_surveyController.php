@@ -17,13 +17,15 @@ class Take_surveyController extends Controller
        $postsurvey = $request->all();
        // dump($surveys);
 
+
        //表示したいアンケートID持ってくる アンケートID＝$testnumber
        $surveynumber = $surveys->where('id',1)->value('id'); //('id',1)の中の１は変数になる POSTされてきた
        $selectitems = DB::table('select_surveys')->whereSurvey_id("$surveynumber")->get()->toArray();
        $writeitems = DB::table('write_surveys')->whereSurvey_id("$surveynumber")->get()->toArray();
 
        // user_idをとってくるSlackIDまでのつなぎ
-       $user_id = DB::table('users')->whereUser_id("1")->value('user_id');
+       $user_id = DB::table('users')->whereSlack_id("abc")->value('slack_id');
+       // $user_id = DB::table('users')->whereUser_id("1")->value('user_id');
 
        //配列を合わせる
        $str2 = array_merge($selectitems, $writeitems);
