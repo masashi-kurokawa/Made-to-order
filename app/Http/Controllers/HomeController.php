@@ -11,17 +11,7 @@ class HomeController extends Controller
     public function index()
     {
 
-      if (Auth::check()) {
-            // 認証に成功した
-            dump(Auth::user());
-            // Auth::logout();
-            echo "ok";
-        } else {
-          echo "no";
-          dump(Auth::check());
-          dump(Auth::attempt());
-          dump(Auth::user());
-        }
+      // Auth::logout();
 
       return view('home');
     }
