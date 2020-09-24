@@ -93,7 +93,9 @@
           <form action = "#" method="post">
             <!-- <div class="title-rap"> -->
               <input type="text" name="test_title"   placeholder="テストタイトルを入力してください。">
-              <textarea name="test_heory" rows="2" placeholder="ここにテキストを入れることができます。"></textarea>
+							<label><input type="radio" name="status" value="1">使用</label>
+							<label><input type="radio" name="status" value="2">未使用</label>
+              <!-- <textarea name="test_heory" rows="2" placeholder="ここにテキストを入れることができます。"></textarea> -->
             <!-- </div> -->
             <table>
               <tbody id="sortable">
@@ -116,7 +118,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
         <script>
-		
+
         $(function(){
 
 					// テーブルの値を１行ずつ取得してjqueryにて連想配列を作る
