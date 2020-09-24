@@ -24,26 +24,60 @@ class GradeController extends Controller
         $this->write_testService = $write_testService;
     }
 
-    public function index()
+    public function index(Request $request)
     {
         // 未採点の記述テスト取得
         $unscored_tests = $this->write_answerService->getUnscored();
 
-        // 未採点の記述テスト、その解答、回答した生徒を配列にしてまとめる
         $data = array();
         $i = 0;
-        foreach ($unscored_tests as $unscored_test) {
-            $i++;
-            $user = $this->userService->getUserUnscored($unscored_test->user_id);
-            $test = $this->testService->getTestUnscored($unscored_test->test_id);
+        $ii = 0;
+        // 検索フォームに入力があるか確認
+        if ($request->keyword === null) {
+            // 未採点の記述テスト、その解答、回答した生徒を配列にしてまとめる
+            foreach ($unscored_tests as $unscored_test) {
+                $i++;
+                $user = $this->userService->getUserUnscored($unscored_test->user_id);
+                $test = $this->testService->getTestUnscored($unscored_test->test_id);
 
-            if($i==1){
-                $data[] = array('name' => $user->slack_name, 'test_title' => $test->title, 'write_test_id' => $unscored_test->id, 'user_id' => $unscored_test->user_id);
-            }else{
-                foreach ($data as $value) {
-                      // 重複チェック
-                    if ($value['name'] != $user->slack_name && $value['write_test_id'] != $unscored_test->id) {
-                        $data[] = array('name' => $user->slack_name, 'test_title' => $test->title, 'write_test_id' => $unscored_test->id, 'user_id' => $unscored_test->user_id);
+                if($i==1){
+                    $data[] = array('name' => $user->slack_name, 'test_title' => $test->title, 'write_test_id' => $unscored_test->id, 'test_id' => $unscored_test->test_id, 'user_id' => $unscored_test->user_id);
+                }else{
+                    foreach ($data as $value) {
+                          // 重複チェック
+                        if ($value['name'] == $user->slack_name && $value['test_id'] == $unscored_test->test_id) {
+                            $ii++;
+                        }
+                    }
+                    if ($ii == 0) {
+                        $data[] = array('name' => $user->slack_name, 'test_title' => $test->title, 'write_test_id' => $unscored_test->id, 'test_id' => $unscored_test->test_id, 'user_id' => $unscored_test->user_id);
+                    }
+                }
+            }
+            // dump($data);
+        } else {
+            foreach ($unscored_tests as $unscored_test) {
+                $i++;
+                $user = $this->userService->getUserUnscored($unscored_test->user_id);
+                $test = $this->testService->getTestUnscored($unscored_test->test_id);
+                // 検索フォームからユーザーを検索
+                $seach_name = $this->userService->searchUser($request->keyword);
+
+                foreach ($seach_name as $value) {
+                    if ($value->slack_name == $user->slack_name) {
+                        if($i==1){
+                            $data[] = array('name' => $user->slack_name, 'test_title' => $test->title, 'write_test_id' => $unscored_test->id, 'test_id' => $unscored_test->test_id, 'user_id' => $unscored_test->user_id);
+                        }else{
+                            foreach ($data as $value) {
+                                  // 重複チェック
+                                if ($value['name'] == $user->slack_name && $value['test_id'] == $unscored_test->test_id) {
+                                    $ii++;
+                                }
+                            }
+                            if ($ii == 0) {
+                                $data[] = array('name' => $user->slack_name, 'test_title' => $test->title, 'write_test_id' => $unscored_test->id, 'user_id' => $unscored_test->user_id);
+                            }
+                        }
                     }
                 }
             }

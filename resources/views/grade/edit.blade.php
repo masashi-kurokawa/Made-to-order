@@ -126,7 +126,7 @@
           </form>
         </div>
 
-				<a href="{{ route('survey.index')}}" class="more icon-arrow-left3"> 戻る</a>
+				<a href="{{ route('grade.index')}}" class="more icon-arrow-left3"> 戻る</a>
 			</div>
 		</div>
 		</div>

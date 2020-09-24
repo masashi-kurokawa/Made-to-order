@@ -28,4 +28,9 @@ class User extends Authenticatable
     {
         return User::find($user_id);
     }
+
+    public function searchUser($keyword)
+    {
+        return User::where('slack_name','like','%'.$keyword.'%')->get();
+    }
 }

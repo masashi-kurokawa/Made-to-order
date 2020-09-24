@@ -22,4 +22,9 @@ class UserService extends Service
     {
         return $this->userModel->getUserUnscored($user_id);
     }
+
+		public function searchUser($keyword)
+    {
+        return $this->userModel->searchUser($keyword);
+    }
 }
