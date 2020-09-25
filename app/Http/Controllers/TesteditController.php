@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Test;
 use App\Models\Write_test;
 use App\Models\Select_test;
+use Illuminate\Support\Facades\DB;
 
 class TesteditController extends Controller
 {
@@ -21,27 +22,30 @@ class TesteditController extends Controller
     //   return view('testedit', compact('dblist'));
     // }
 
-    public function edit(Request $request, $id)
+    public function edit($id)
     {
-        $test = Test::find($id);
-        $write_test = Write_test::where('test_id', $id)->get();
-        $select_test = Select_test::where('test_id', $id)->get();
+      $test = Test::find($id);
+      $selectitems = DB::table('select_tests')->whereTest_id("$id")->get()->toArray();
+      $writeitems = DB::table('write_tests')->whereTest_id("$id")->get()->toArray();
 
-        // 並び替え
-        $select_test = Select_test::orderBy('question_number', 'asc')->get();
+      $sum = array_merge($selectitems, $writeitems);
 
-        //確認用
-        // dump($write_survey);
+      $sort = collect($sum);
 
-        return view('testedit',
-          [
-            'test' => $test,
-            'write_tests' => $write_test,
-            'select_tests' => $select_test,
-          ],
+      $sort = $sort->sortBy('question_number')->all();
 
-          ['select_test'=>$select_test]);
+      dump($sort);
 
+      // $test = Test::find($id);
+      $write_test = Write_test::where('test_id', $id)->get();
+      $select_test = Select_test::where('test_id', $id)->get();
+
+
+      return view('testedit',
+        [
+          'test' => $test,
+          'write_tests' => $write_test,
+          'select_tests' => $select_test,
+        ], compact('sort'));
     }
-
 }
