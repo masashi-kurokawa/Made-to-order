@@ -98,28 +98,40 @@
 			        <div class="row">
 			          <div class="col-md-4">
 			            <h4>問{{$ak->question_number}}</h4>
-			            <p><p>{{$ak->question}}</p></p>
+			            <p>{{$ak->question}}</p>
+									<input type="hidden" class="form-control" name="text_question{{$ak->question_number}}" value="{{$ak->question}}">　<!-- 問題送る様 -->
 			          </div>
 			        </div>
 
 							<!-- テスト回答送信機能 -->
-							<!-- actionに問題の番号つけて送信した時に区別する -->
 			        <div class="row">　<!-- ここからテスト問題の回答 -->
 			          <!-- if文で選択、穴埋め、記述を切り分ける -->
+								@if ($ak->role === 1)　<!-- 記述アンケート -->
 								<div class="form-group">
 									<label for="content">回答記入欄</label>
-									<input type="hidden" class="form-control" name="question{{$ak->question_number}}" value="">　<!-- valueロール権限 -->
 									<input type="text" class="form-control" name="answer{{$ak->question_number}}" value="">
+									<input type="hidden" class="form-control" name="role{{$ak->question_number}}" value="{{$ak->role}}">
+								</div>
+
+								@elseif ($ak->role === 2)　<!-- 選択アンケート -->
+								<div class="form-group">
+									<input type="radio" name="b_answer{{$ak->question_number}}" value="1">　<!-- ラジオボタン送信様 -->
+									<input type="hidden" class="form-control" name="question{{$ak->question_number}}" value="{{$ak->role}}">
+									<label for="content">{{$ak->select_item1}}</label>
+									<input type="radio" name="b_answer{{$ak->question_number}}" value="2">　<!-- ラジオボタン送信様 -->
+									<input type="hidden" class="form-control" name="question{{$ak->question_number}}" value="{{$ak->role}}">
+									<label for="content">{{$ak->select_item2}}</label>
+									<input type="hidden" class="form-control" name="role{{$ak->question_number}}" value="{{$ak->role}}">
 								</div>
 							</div>
 						</div>
+						@endif
 
 			     @endforeach
 
 
-
 				<div class="test-btn">
-					<input type="submit" class="btn btn-primary btn-md" onclick="location.href='{{ url('/surveyend/') }}'" value="アンケート終了">
+					<input type="submit" class="btn btn-primary btn-md" onclick="return confirm('アンケートを終了してもよろしいですか？')" onclick="location.href='{{ url('/surveyend/') }}'" value="アンケート終了">
 				</div>
 			</form>
 
