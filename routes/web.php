@@ -97,6 +97,12 @@ Route::get('/grade/{id}/edit/{user_id}', 'GradeController@showEditForm')->name('
 Route::post('/grade/{id}/edit/{user_id}', 'GradeController@edit');
 // Route::post('/grade/{id}/edit', 'GradeController@edit');
 
+// ログアウト処理
+Route::get('/logout',[
+  'uses' => 'HomeController@getLogout',
+  'as' => 'login'
+]);
+
 // サンプル　2020/09/10 CRUD処理理解のため石田作成。プロジェクト終了後削除する。
 Route::resource('item', 'ItemController');
 
