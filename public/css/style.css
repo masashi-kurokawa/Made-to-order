@@ -204,6 +204,15 @@ figure figcaption {
   padding: 0;
 }
 
+.question-p {
+  margin: 0;
+}
+
+.question-input {
+  margin: 0 10px 10px;
+  height: 40px;
+}
+
 #fh5co-page {
   width: 100%;
   overflow: hidden;
@@ -396,7 +405,7 @@ figure figcaption {
   position: relative;
   width: 93%;
   margin: 0 auto;
-  padding: 4em 0;
+  padding: 5em 0;
   clear: both;
 }
 @media screen and (max-width: 768px) {
