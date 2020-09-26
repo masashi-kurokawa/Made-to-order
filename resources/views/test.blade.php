@@ -111,23 +111,38 @@
 
 								<!-- テスト回答送信機能 -->
 								<!-- actionに問題の番号つけて送信した時に区別する -->
-								@if ($tests->role === 1)　<!-- テストの回答方式で判別 -->
+								<!-- テストの回答方式で判別 -->
+								@if ($tests->role === 1)　<!-- role　1　記述問題 -->
 								 <div class="form-group">
 								   <label for="content">回答記入欄</label>
-								   <input type="hidden" class="form-control" name="question{{$tests->question_number}}" value="{{$tests->role}}">
-
+								   <input type="hidden" class="form-control" name="question{{$tests->question_number}}" value="{{$tests->role}}">　<!-- ロール判定用 -->
 								   <input type="text" class="form-control" name="answer{{$tests->question_number}}" value="">
 								 </div>
 
-								 @elseif ($tests->role === 2)
+								 @elseif ($tests->role === 2)　<!-- role　2　選択問題 -->
+								 <!-- もし4択8択で切り分けが必要な時はNULLをif文できる -->
 								 <div class="form-group">
-								   <label for="content">回答記入欄</label>
-								   <input type="hidden" class="form-control" name="question{{$tests->question_number}}" value="{{$tests->role}}">
+									 <input type="hidden" class="form-control" name="question{{$tests->question_number}}" value="{{$tests->role}}"> <!-- ロール判定用 -->
+									 <input type="hidden" class="form-control" name="question_answer{{$tests->question_number}}" value="{{$tests->answer}}"> <!-- 回答正解判定用 -->
+ 									<input type="radio" name="b_answer{{$tests->question_number}}" value="1">　<!-- ラジオボタン送信様 -->
+ 									<label for="content">{{$tests->select_item1}}</label>
+ 									<input type="radio" name="b_answer{{$tests->question_number}}" value="2">　<!-- ラジオボタン送信様 -->
+ 									<label for="content">{{$tests->select_item2}}</label>
+ 									<input type="radio" name="b_answer{{$tests->question_number}}" value="3">　<!-- ラジオボタン送信様 -->
+ 									<label for="content">{{$tests->select_item3}}</label>
+ 									<input type="radio" name="b_answer{{$tests->question_number}}" value="4">　<!-- ラジオボタン送信様 -->
+ 									<label for="content">{{$tests->select_item4}}</label>
+ 									<input type="radio" name="b_answer{{$tests->question_number}}" value="5">　<!-- ラジオボタン送信様 -->
+ 									<label for="content">{{$tests->select_item5}}</label>
+ 									<input type="radio" name="b_answer{{$tests->question_number}}" value="6">　<!-- ラジオボタン送信様 -->
+ 									<label for="content">{{$tests->select_item6}}</label>
+ 									<input type="radio" name="b_answer{{$tests->question_number}}" value="7">　<!-- ラジオボタン送信様 -->
+ 									<label for="content">{{$tests->select_item7}}</label>
+ 									<input type="radio" name="b_answer{{$tests->question_number}}" value="8">　<!-- ラジオボタン送信様 -->
+ 									<label for="content">{{$tests->select_item8}}</label>
+ 								</div>
 
-								   <input type="text" class="form-control" name="answer{{$tests->question_number}}" value="">
-								 </div>
-
-								 @elseif ($tests->role === 3)
+								 @elseif ($tests->role === 3)　<!-- role　3　穴埋め問題 -->
 								 <div class="form-group">
 								   <label for="content">回答記入欄</label>
 								   <input type="hidden" class="form-control" name="question{{$tests->question_number}}" value="{{$tests->role}}">
