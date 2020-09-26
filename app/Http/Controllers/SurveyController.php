@@ -65,6 +65,7 @@ class SurveyController extends Controller
         // アンケート登録してから問題の保存
         $surveyno = $request->input('ak_title');
         $surveystatus = $request->input('status');
+        dump($surveystatus);
         // dump($surveyno);
         // DB::table('surveys')->insert([
         //   'title' => "$surveyno", //SlackIDじゃないと入らない
@@ -78,7 +79,7 @@ class SurveyController extends Controller
         $surveysno = DB::table('surveys')->whereTitle("アンケート1")->value('id'); //テストの番号　撮り方の選定があまい
 
         $surveyno = $request->input('id');
-        dump($surveysno);
+        // dump($surveysno);
         for ($i=1; $i <= $surveyno; $i++) {
           //survey_id　アンケート自体のID　登録完了してから入れる
           $choice_text[$i] = $request->input("choice_text$i");
@@ -86,7 +87,7 @@ class SurveyController extends Controller
           $question_number[$i] = $i;
           // dump($choice_text[$i]);
           if (!empty($choice_text[$i])) {
-            dump($choice_text[$i]);
+            // dump($choice_text[$i]);
             // DB::table('select_surveys')->insert([
             //   'survey_id' => "$surveysno",
             //   'question' => "$choice_text[$i]",
@@ -95,7 +96,7 @@ class SurveyController extends Controller
             //   'updated_at' => Carbon::now()  //時間が違う、場所の設定が違うのかも
             // ]);
           } else {
-            dump($describing_text[$i]);
+            // dump($describing_text[$i]);
             // DB::table('write_surveys')->insert([
             //   'survey_id' => "$surveysno",
             //   'question' => "$describing_text[$i]",

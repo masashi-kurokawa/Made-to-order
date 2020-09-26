@@ -89,7 +89,7 @@
 
 	<div id="fh5co-main">
 		<div class="timerbox">
-			<h1 id="timer" class="hako box"></h1>
+			<h1 id="timer" class="hako box" style="visibility: hidden;"></h1>
 		</div>
 		<div class="fh5co-narrow-content">
 			<h2 class="fh5co-heading animate-box" data-animate-effect="fadeInLeft">テストタイトル</h2>
@@ -111,28 +111,47 @@
 
 								<!-- テスト回答送信機能 -->
 								<!-- actionに問題の番号つけて送信した時に区別する -->
-								@if ($tests->role === 1)　<!-- テストの回答方式で判別 -->
+								<!-- テストの回答方式で判別 -->
+								@if ($tests->role === 1)　<!-- role　1　記述問題 -->
 								 <div class="form-group">
 								   <label for="content">回答記入欄</label>
-								   <input type="hidden" class="form-control" name="question{{$tests->question_number}}" value="{{$tests->role}}">
-
+								   <input type="hidden" class="form-control" name="question{{$tests->question_number}}" value="{{$tests->role}}">　<!-- ロール判定用 -->
 								   <input type="text" class="form-control" name="answer{{$tests->question_number}}" value="">
 								 </div>
 
-								 @elseif ($tests->role === 2)
+								 @elseif ($tests->role === 2)　<!-- role　2　選択問題 -->
+								 <!-- もし4択8択で切り分けが必要な時はNULLをif文できる -->
+								 <div class="form-group">
+									 <input type="hidden" class="form-control" name="question{{$tests->question_number}}" value="{{$tests->role}}"> <!-- ロール判定用 -->
+									 <input type="hidden" class="form-control" name="question_answer{{$tests->question_number}}" value="{{$tests->answer}}"> <!-- 回答正解判定用 -->
+ 									<input type="radio" name="b_answer{{$tests->question_number}}" value="1">　<!-- ラジオボタン送信様 -->
+ 									<label for="content">{{$tests->select_item1}}</label>
+ 									<input type="radio" name="b_answer{{$tests->question_number}}" value="2">　<!-- ラジオボタン送信様 -->
+ 									<label for="content">{{$tests->select_item2}}</label>
+ 									<input type="radio" name="b_answer{{$tests->question_number}}" value="3">　<!-- ラジオボタン送信様 -->
+ 									<label for="content">{{$tests->select_item3}}</label>
+ 									<input type="radio" name="b_answer{{$tests->question_number}}" value="4">　<!-- ラジオボタン送信様 -->
+ 									<label for="content">{{$tests->select_item4}}</label>
+ 									<input type="radio" name="b_answer{{$tests->question_number}}" value="5">　<!-- ラジオボタン送信様 -->
+ 									<label for="content">{{$tests->select_item5}}</label>
+ 									<input type="radio" name="b_answer{{$tests->question_number}}" value="6">　<!-- ラジオボタン送信様 -->
+ 									<label for="content">{{$tests->select_item6}}</label>
+ 									<input type="radio" name="b_answer{{$tests->question_number}}" value="7">　<!-- ラジオボタン送信様 -->
+ 									<label for="content">{{$tests->select_item7}}</label>
+ 									<input type="radio" name="b_answer{{$tests->question_number}}" value="8">　<!-- ラジオボタン送信様 -->
+ 									<label for="content">{{$tests->select_item8}}</label>
+ 								</div>
+
+								 @elseif ($tests->role === 3)　<!-- role　3　穴埋め問題 -->
 								 <div class="form-group">
 								   <label for="content">回答記入欄</label>
-								   <input type="hidden" class="form-control" name="question{{$tests->question_number}}" value="{{$tests->role}}">
-
-								   <input type="text" class="form-control" name="answer{{$tests->question_number}}" value="">
-								 </div>
-
-								 @elseif ($tests->role === 3)
-								 <div class="form-group">
-								   <label for="content">回答記入欄</label>
-								   <input type="hidden" class="form-control" name="question{{$tests->question_number}}" value="{{$tests->role}}">
-
-								   <input type="text" class="form-control" name="answer{{$tests->question_number}}" value="">
+								   <input type="hidden" class="form-control" name="question{{$tests->question_number}}" value="{{$tests->role}}">　<!-- ロール判定用 -->
+									 <input type="hidden" class="form-control" name="question_answer1_{{$tests->question_number}}" value="{{$tests->answer1}}"> <!-- 1回答正解判定用 -->
+									 <label for="content">1</label>
+								   <input type="text" class="form-control" name="h_answer1_{{$tests->question_number}}" value="">
+									 <input type="hidden" class="form-control" name="question_answer2_{{$tests->question_number}}" value="{{$tests->answer2}}"> <!-- 2回答正解判定用 -->
+									 <label for="content">2</label>
+								   <input type="text" class="form-control" name="h_answer2_{{$tests->question_number}}" value="">
 								 </div>
 
 								 @endif
@@ -145,8 +164,12 @@
 
 
 			<div class="test-btn">
-				<input type="submit" onclick="return confirm('テストを終了してもよろしいですか？')" name="answers" form="answer" class="btn btn-primary btn-md"
-				onclick="location.href='{{ url('/testend/') }}'" value="テスト終了">
+				<!-- <input type="submit" onclick="return confirm('テストを終了してもよろしいですか？')" name="answers" form="answer" class="btn btn-primary btn-md"
+				onclick="location.href='{{ url('/testend/') }}'" value="テスト終了"> -->
+				<input type="submit" onclick="return confirm('テストを終了してもよろしいですか？')" class="btn btn-primary btn-md" value="テスト終了">
+				<!-- <input id="btn" type="hidden" name="answers" form="answer" onclick="return confirm('テストを終了を終了します。')" value="テスト終了"> -->
+				<input id="btn" type="submit" style="visibility: hidden;" name="answers" form="answer" onclick="" value="テスト終了">
+				<!-- <input id="btn" type="hidden" name="answers" form="answer" onclick="return confirm('テストを終了してもよろしいですか？')" value="テスト終了"> -->
 			</div>
 		　</form>
 
@@ -170,7 +193,7 @@
 	<!-- タイマー機能の処理（jquery） -->
 	<script>
 
-	var to_timeup = 10; //講師の設定した時間をテーブルから持ってくる
+	var to_timeup = {{$test_time}}; //講師の設定した時間をテーブルから持ってくる
 			// var max = 10; //いらないかも
 			var intervalid;
 			var start_flag = false;
@@ -193,12 +216,11 @@
 				console.log("count_down");
 				var timer = document.getElementById("timer");
 				if(to_timeup===0){
-					count_stop();
-					// 次のページに行く様にするPHP使う
-					// 下に行きたいページ遷移をかく（if文で完了か次のページに移す）
-					window.location.href = '{{ url('/testend/') }}';
-					timer.innerHTML = 'Time up!'
-					timer.style.color="white";
+					// timer.innerHTML = 'Time up!'
+					// timer.style.color="white";
+					// alert('終了します。');
+					$('#btn').trigger('click');
+					// count_stop();
 				}   else {
 					to_timeup--;
 					padding();
