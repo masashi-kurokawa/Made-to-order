@@ -16,14 +16,16 @@ class TestcreateController extends Controller
         $posttest = $request->all();
         $test_title = $request->input('test_title');
         $test_status = $request->input('test_heory');
+        $test_time = $request->input('test_time');
         // DB::table('tests')->insert([
-        //   'title' => "$test_title", //SlackIDじゃないと入らない
-        //   'status' => "$test_status",
+        //   'title' => "$test_title", //SlackIDじゃないと入らない ok
+        //   'status' => "$test_status", //ok
+        //   'test_time' => "$test_status",//ok
         //   'created_at' => Carbon::now(), //時間が違う、場所の設定が違うのかも
         //   'updated_at' => Carbon::now()  //時間が違う、場所の設定が違うのかも
         // ]);
 
-        // dump($test_status);
+        // dump($test_time);
 
 
 
@@ -42,9 +44,9 @@ class TestcreateController extends Controller
         // dump($choice4[$i]);
 
         //問題の保存
-        $testno = DB::table('tests')->whereTitle("テスト2")->value('id'); //テストの番号　撮り方の選定があまい
+        $testno = DB::table('tests')->whereTitle("テスト1")->value('id'); //テストの番号　撮り方の選定があまい
         $surveyno = $request->input('id'); //問題数
-        dump($posttest);
+        dump($surveyno);
         for ($i=1; $i <= $surveyno; $i++) {
           $question_number[$i] = $i; //何問目か？
           $text1[$i] = $request->input("1text$i"); //１回答のテキスト
@@ -70,17 +72,17 @@ class TestcreateController extends Controller
           $answer_7[$i] = $request->input("8answer7_$i"); //１個目の答え
           $answer_8[$i] = $request->input("8answer8_$i"); //１個目の答え
 
-          // dump($text8[$i]);
-          if (!empty($text1[$i])) {
-            // dump($text1[$i]);
+          dump($text1[$i]);
+          if (!empty($text1[$i])) { //記述問題
+            // dump($question_number[$i]);
+            dump($i);
             // DB::table('write_tests')->insert([
             //   'test_id' => "$testno",
             //   'question' => "$text1[$i]",
-            //   'answer' => "answer", //あとでチェック判定して入れる
             //   'question_number' => "$question_number[$i]",
+            //   'role' => '1'  //ロール権限 記述問題 //ok
             //   'created_at' => Carbon::now(), //時間が違う、場所の設定が違うのかも
             //   'updated_at' => Carbon::now(),  //時間が違う、場所の設定が違うのかも
-            //   'role' => '3'  //ロール権限 記述問題
             // ]);
           } elseif ($text2[$i]) {
             // DB::table('hole_tests')->insert([

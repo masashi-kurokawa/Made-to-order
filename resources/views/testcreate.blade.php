@@ -95,6 +95,7 @@
               <input type="text" name="test_title"   placeholder="テストタイトルを入力してください。">
 							<label><input type="radio" name="status" value="1">使用</label>
 							<label><input type="radio" name="status" value="2">未使用</label>
+							<label><input type="number" name="test_time" value="">分</label>
               <!-- <textarea name="test_heory" rows="2" placeholder="ここにテキストを入れることができます。"></textarea> -->
             <!-- </div> -->
             <table>
@@ -289,7 +290,7 @@
 								$(document).on('click', '.plus', function() {
 									i++;
 									var n = i;
-									alert(n);
+									// alert(n);
 									if( n <= 9 ){
 										// $('#output').html(i);
 									} else {
@@ -313,14 +314,6 @@
         });
         </script>
 
-        <!-- <script>
-            $(document).on('click', '.plus', function() {
-                $('#output').html(function(i, val) { return val*1+1 });
-            });
-            $(document).on('click', '.remove', function() {
-                $('#output').html(function(i, val) { return val*1-1 });
-            });
-        </script> -->
         <a href="{{ url('/testlist/') }}" class="more icon-arrow-left3"> 戻る</a>
 			</div>
 		</div>
