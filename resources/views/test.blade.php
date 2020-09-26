@@ -183,16 +183,22 @@
 				 }
 			}
 
+			function count_stop(){
+                console.log(count_stop);
+                clearInterval(intervalid);
+                start_flag = false;
+      }
+
 			function count_down(){
 				console.log("count_down");
 				var timer = document.getElementById("timer");
 				if(to_timeup===0){
+					count_stop();
 					// 次のページに行く様にするPHP使う
 					// 下に行きたいページ遷移をかく（if文で完了か次のページに移す）
-					// window.location.href = '{{ url('/home/') }}';
+					window.location.href = '{{ url('/testend/') }}';
 					timer.innerHTML = 'Time up!'
 					timer.style.color="white";
-					count_stop();
 				}   else {
 					to_timeup--;
 					padding();

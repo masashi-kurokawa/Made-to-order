@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::group(['middleware' => 'auth'], function() {
+Route::group(['middleware' => 'auth'], function() {
 
 Route::get('/', function () {
     return view('welcome');
@@ -76,7 +76,7 @@ Route::get('/student/', 'StudentController@index');
 
 
 //生徒詳細
-Route::get('/student_details/', 'Student_detailsController@index');
+Route::get('/student_details/{name}', 'Student_detailsController@index')->name('student_details');
 
 
 //詳細
@@ -109,6 +109,6 @@ Route::resource('item', 'ItemController');
 //点数早見表（試し追加）
 Route::get('/score', 'ScoreController@index');
 
-// });
+});
 //
 Auth::routes(['register' => false]);
