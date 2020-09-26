@@ -90,9 +90,8 @@
 			<div class="fh5co-narrow-content">
 				<h2 class="fh5co-heading">テスト詳細・編集</h2>
         <div id="count" class="container animate-box" data-animate-effect="fadeInLeft">
-          <form action="{{ url('/testlist/') }}" method="post">
+          <form action="{{ url('/testedit/'.$test_id)}}" method="post">
 						@csrf
-				    @method('PUT')
             <div class="title-rap">
               <input type="text" name="text" value="{{$test->title}}">
 							<label><input type="radio" value="1" name="status" @if (old('status', $test->status) == 1) checked @endif>使用</label>
@@ -102,28 +101,49 @@
 
             <table>
               <tbody>
-								@foreach ($select_tests as $select_test)
-								<tr>
-									<td><textarea name="question" rows="5" cols="50" placeholder="ここに問題文を入力してください。">{{$select_test->question}}</textarea></td>
-									<td>
-										<input type="radio" name="Choice{{$select_test->question_number}}" @if (old('answer', $select_test->answer) == 1) checked @endif>
-										<input type="text" name="answer" placeholder="回答を入力してください。" value="{{$select_test->select_item1}}">
-										<input type="radio" name="Choice{{$select_test->question_number}}" @if (old('answer', $select_test->answer) == 2) checked @endif>
-										<input type="text" name="answer" placeholder="回答を入力してください。" value="{{$select_test->select_item2}}">
-										<input type="radio" name="Choice{{$select_test->question_number}}" @if (old('answer', $select_test->answer) == 3) checked @endif>
-										<input type="text" name="answer" placeholder="回答を入力してください。" value="{{$select_test->select_item3}}">
-										<input type="radio" name="Choice{{$select_test->question_number}}" @if (old('answer', $select_test->answer) == 4) checked @endif>
-										<input type="text" name="answer" placeholder="回答を入力してください。" value="{{$select_test->select_item4}}">
-									</td>
-									<td class="remove-center"><button class="remove">-</button></td>
-								</tr>
-								@endforeach
-								@foreach ($write_tests as $write_test)
-	              <tr>
-									<td><textarea name="question" rows="5" cols="50" placeholder="ここに問題文を入力してください。">{{$write_test->question}}</textarea></td>
-									<td><input type="text" name="text" placeholder="回答を入力してください。" value="{{$write_test->answer}}"></td>
-									<td class="remove-center"><button class="remove">-</button></td>
-								</tr>
+								@foreach ($sort as $value)
+									@if ($value->role == 1)
+										<tr>
+											<td><textarea name="question" rows="5" cols="50" placeholder="ここに問題文を入力してください。">{{$value->question}}</textarea></td>
+											<td class="remove-center"><button class="remove">-</button></td>
+										</tr>
+									@endif
+
+									@if ($value->role == 2)
+										<tr>
+											<td><textarea name="question" rows="5" cols="50" placeholder="ここに問題文を入力してください。">{{$value->question}}</textarea></td>
+											<td>
+												<input type="radio" name="Choice{{$value->question_number}}" @if (old('answer', $value->answer) == 1) checked @endif>
+												<input type="text" name="answer" placeholder="回答を入力してください。" value="{{$value->select_item1}}">
+												<input type="radio" name="Choice{{$value->question_number}}" @if (old('answer', $value->answer) == 2) checked @endif>
+												<input type="text" name="answer" placeholder="回答を入力してください。" value="{{$value->select_item2}}">
+												<input type="radio" name="Choice{{$value->question_number}}" @if (old('answer', $value->answer) == 3) checked @endif>
+												<input type="text" name="answer" placeholder="回答を入力してください。" value="{{$value->select_item3}}">
+												<input type="radio" name="Choice{{$value->question_number}}" @if (old('answer', $value->answer) == 4) checked @endif>
+												<input type="text" name="answer" placeholder="回答を入力してください。" value="{{$value->select_item4}}">
+												@if ($value->select_item5 != null)
+													<input type="radio" name="Choice{{$value->question_number}}" @if (old('answer', $value->answer) == 5) checked @endif>
+													<input type="text" name="answer" placeholder="回答を入力してください。" value="{{$value->select_item1}}">
+													<input type="radio" name="Choice{{$value->question_number}}" @if (old('answer', $value->answer) == 6) checked @endif>
+													<input type="text" name="answer" placeholder="回答を入力してください。" value="{{$value->select_item2}}">
+													<input type="radio" name="Choice{{$value->question_number}}" @if (old('answer', $value->answer) == 7) checked @endif>
+													<input type="text" name="answer" placeholder="回答を入力してください。" value="{{$value->select_item3}}">
+													<input type="radio" name="Choice{{$value->question_number}}" @if (old('answer', $value->answer) == 8) checked @endif>
+													<input type="text" name="answer" placeholder="回答を入力してください。" value="{{$value->select_item4}}">
+												@endif
+											</td>
+											<td class="remove-center"><button class="remove">-</button></td>
+										</tr>
+									@endif
+
+									@if ($value->role == 3)
+										<tr>
+											<td><textarea name="question" rows="5" cols="50" placeholder="ここに問題文を入力してください。">{{$value->question}}</textarea></td>
+											<td><input type="text" name="text" placeholder="回答を入力してください。" value="{{$value->answer1}}"></td>
+											<td><input type="text" name="text" placeholder="回答を入力してください。" value="{{$value->answer2}}"></td>
+											<td class="remove-center"><button class="remove">-</button></td>
+										</tr>
+									@endif
 								@endforeach
 							</tbody>
             </table>
@@ -131,7 +151,7 @@
             <input type="submit" value="保存">
           </form>
 
-          <p id="output">0</p>
+          <p id="output">{{$count_questions}}</p>
 
           <button id="addTest1" class="plus">+ 1回答問題追加</button>
           <button id="addTest2" class="plus">+ 2回答問題追加</button>
@@ -166,7 +186,7 @@
             // 4択問題追加
         		//追加ボタンがクリックされたら、function(){…}の処理を実行する
         		$('#addChoice4').click(function(){
-                var html = '<tr><td><textarea name="question" rows="5" cols="50" placeholder="ここに問題文を入力してください。"></textarea></td><td><input type="radio" name="Choice{{$select_test->question_number}}"><input type="text" name="answer" placeholder="回答を入力してください。"><input type="radio" name="Choice{{$select_test->question_number}}"><input type="text" name="answer" placeholder="回答を入力してください。"><input type="radio" name="Choice{{$select_test->question_number}}"><input type="text" name="answer" placeholder="回答を入力してください。"><input type="radio" name="Choice{{$select_test->question_number}}"><input type="text" name="answer" placeholder="回答を入力してください。"></td><td class="remove-center"><button class="remove">-</button></td></tr>';
+                var html = '<tr><td><textarea name="question" rows="5" cols="50" placeholder="ここに問題文を入力してください。"></textarea></td><td><input type="radio" name="Choice4"><input type="text" name="answer" placeholder="回答を入力してください。"><input type="radio" name="Choice4"><input type="text" name="answer" placeholder="回答を入力してください。"><input type="radio" name="Choice4"><input type="text" name="answer" placeholder="回答を入力してください。"><input type="radio" name="Choice4"><input type="text" name="answer" placeholder="回答を入力してください。"></td><td class="remove-center"><button class="remove">-</button></td></tr>';
         				//append()を使ってtbody内の一番最後にhtmlを追加する
         				$('tbody').append(html);
             });
@@ -174,7 +194,7 @@
             // 8択問題追加
         		//追加ボタンがクリックされたら、function(){…}の処理を実行する
         		$('#addChoice8').click(function(){
-                var html = '<tr><td><textarea name="question" rows="5" cols="50" placeholder="ここに問題文を入力してください。"></textarea></td><td><input type="radio" name="Choice{{$select_test->question_number}}"><input type="text" name="answer" placeholder="回答を入力してください。"><input type="radio" name="Choice{{$select_test->question_number}}"><input type="text" name="answer" placeholder="回答を入力してください。"><input type="radio" name="Choice{{$select_test->question_number}}"><input type="text" name="answer" placeholder="回答を入力してください。"><input type="radio" name="Choice{{$select_test->question_number}}"><input type="text" name="answer" placeholder="回答を入力してください。"><input type="radio" name="Choice{{$select_test->question_number}}"><input type="text" name="answer" placeholder="回答を入力してください。"><input type="radio" name="Choice{{$select_test->question_number}}"><input type="text" name="answer" placeholder="回答を入力してください。"><input type="radio" name="Choice{{$select_test->question_number}}"><input type="text" name="answer" placeholder="回答を入力してください。"><input type="radio" name="Choice{{$select_test->question_number}}"><input type="text" name="answer" placeholder="回答を入力してください。"></td><td class="remove-center"><button class="remove">-</button></td></tr>';
+                var html = '<tr><td><textarea name="question" rows="5" cols="50" placeholder="ここに問題文を入力してください。"></textarea></td><td><input type="radio" name="Choice4"><input type="text" name="answer" placeholder="回答を入力してください。"><input type="radio" name="Choice4"><input type="text" name="answer" placeholder="回答を入力してください。"><input type="radio" name="Choice4"><input type="text" name="answer" placeholder="回答を入力してください。"><input type="radio" name="Choice4"><input type="text" name="answer" placeholder="回答を入力してください。"><input type="radio" name="Choice4"><input type="text" name="answer" placeholder="回答を入力してください。"><input type="radio" name="Choice4"><input type="text" name="answer" placeholder="回答を入力してください。"><input type="radio" name="Choice4"><input type="text" name="answer" placeholder="回答を入力してください。"><input type="radio" name="Choice4"><input type="text" name="answer" placeholder="回答を入力してください。"></td><td class="remove-center"><button class="remove">-</button></td></tr>';
         				//append()を使ってtbody内の一番最後にhtmlを追加する
         				$('tbody').append(html);
             });
@@ -197,12 +217,14 @@
         });
         </script>
         <script>
-            $(document).on('click', '.plus', function() {
-                $('#output').html(function(i, val) { return val*1+1 });
-            });
-            $(document).on('click', '.remove', function() {
-                $('#output').html(function(i, val) { return val*1-1 });
-            });
+						window.onload = function() {
+		            $(document).on('click', '.plus', function() {
+		                $('#output').html(function(i, val) { return val*1+1 });
+		            });
+		            $(document).on('click', '.remove', function() {
+		                $('#output').html(function(i, val) { return val*1-1 });
+		            });
+						}
         </script>
         <a href="{{ url('/testlist/') }}" class="more icon-arrow-left3"> 戻る</a>
 			</div>

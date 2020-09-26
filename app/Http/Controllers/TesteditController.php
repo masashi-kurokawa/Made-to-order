@@ -10,42 +10,32 @@ use Illuminate\Support\Facades\DB;
 
 class TesteditController extends Controller
 {
-    // // 詳細・編集
-    // public function edit()
-    // {
-    //   $test = new test;
-    //   $dblist = $test
-    //   ->where('id', 2)
-    //   ->get();
-    //
-    //   // view(Testedit.blade.php)へ
-    //   return view('testedit', compact('dblist'));
-    // }
-
-    public function edit($id)
+    public function edit($id, Request $request)
     {
+
+      if ($request) {
+          dump($request);
+      }
+
       $test = Test::find($id);
       $selectitems = DB::table('select_tests')->whereTest_id("$id")->get()->toArray();
       $writeitems = DB::table('write_tests')->whereTest_id("$id")->get()->toArray();
+      $holeitems = DB::table('hole_tests')->whereTest_id("$id")->get()->toArray();
 
-      $sum = array_merge($selectitems, $writeitems);
+      $sum = array_merge($selectitems, $writeitems, $holeitems);
+
+      $count_questions = count($sum);
 
       $sort = collect($sum);
 
       $sort = $sort->sortBy('question_number')->all();
-
       dump($sort);
-
-      // $test = Test::find($id);
-      $write_test = Write_test::where('test_id', $id)->get();
-      $select_test = Select_test::where('test_id', $id)->get();
-
 
       return view('testedit',
         [
+          'count_questions' => $count_questions,
           'test' => $test,
-          'write_tests' => $write_test,
-          'select_tests' => $select_test,
+          'test_id' => $id,
         ], compact('sort'));
     }
 }
