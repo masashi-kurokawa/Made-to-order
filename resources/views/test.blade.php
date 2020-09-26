@@ -206,6 +206,12 @@
 				 }
 			}
 
+			function count_stop(){
+                console.log(count_stop);
+                clearInterval(intervalid);
+                start_flag = false;
+      }
+
 			function count_down(){
 				console.log("count_down");
 				var timer = document.getElementById("timer");
