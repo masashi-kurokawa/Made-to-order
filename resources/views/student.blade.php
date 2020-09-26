@@ -113,17 +113,15 @@
 				<div class="col-md-student col-sm-6 col-padding animate-box" data-animate-effect="fadeInLeft">
 						<div class="blog-entry">
 						<!--?＝id1で値を渡す-->
-							<a href="{{  url('/student_details/?name='.$user->name)}}" class="blog-img"><img src="" class="img-responsive" alt="#"></a>
+							<a href="{{ route('student_details', ['name' => $user->slack_name]) }}" class="blog-img"><img src="{{$user->slack_image}}" class="img-responsive" alt="#"></a>
 							<div class="desc">
-								<h3><a href="{{  url('/student_details/?name='.$user->name)}}">{{$user->name}}</a></h3>
+								<h3><a href="{{ route('student_details', ['name' => $user->slack_name]) }}">{{$user->slack_name}}</a></h3>
 								<span>カリキュラム</span>
-								<p>{{$user->id}}</p>
-								<a href="{{ url('/student_details/?name='.$user->name)}}" class="lead">生徒詳細<i class="icon-arrow-right3"></i></a>
+								<a href="{{ route('student_details', ['name' => $user->slack_name]) }}" class="lead">生徒詳細<i class="icon-arrow-right3"></i></a>
 							</div>
 						</div>
 					</div>
 					@endforeach
-
 
 				</div>
 			</div>

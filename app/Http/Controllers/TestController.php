@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Test;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 
 class TestController extends Controller
 {
@@ -26,7 +27,8 @@ class TestController extends Controller
 
        // user_idをとってくるSlackIDまでのつなぎ
        // $user_id = DB::table('users')->whereUser_id("1")->value('user_id');
-       $user_id = DB::table('users')->whereSlack_id("abc")->value('slack_id');
+       $user_id = DB::table('users')->whereId(Auth::id())->value('id');
+       dump($user_id);
 
        //配列を合わせる
        $str3 = array_merge($selectitems, $holeitems, $writeitems);
@@ -44,6 +46,7 @@ class TestController extends Controller
     // 　テストの答え格納　始まり
        //POSTされてきた情報
        $answers = $request->all(); //GETで送られてきたデータ
+       // dump($answers);
        // 何問あるか？
        $count = $sorted->count('question_number');
 
@@ -57,7 +60,7 @@ class TestController extends Controller
          }
 
          $testan = array_column($sorteds, "answer"); //答え
-         $testanswer1 = $testan["$i" - 1];; //答え
+         $testanswer1 = $testan["$i" - 1]; //答え
 
          $role = $request->input("question$i"); //問題判定選択、穴埋め、記述
          dump($testanswer[$i]);
@@ -75,7 +78,7 @@ class TestController extends Controller
         // dump($sum);
 
         // 回答の配列　if文で登録先変える
-        if ($role == 1) { //選択問題
+        if ($role == 2) { //選択問題
           if ($testanswer[$i] === "回答なし") {
             $testanswer[$i] = "22";
           }
@@ -90,7 +93,7 @@ class TestController extends Controller
           }
 
 
-          if ($role == 2) { //穴埋め問題
+          if ($role == 3) { //穴埋め問題
             DB::table('hole_answers')->insert([
               'user_id' => "$user_id", //SlackIDじゃないと入らない
               'test_id' => "$testnumber",
@@ -101,7 +104,7 @@ class TestController extends Controller
               'updated_at' => Carbon::now()]); //時間が違う、場所の設定が違うのかも
             }
 
-            if ($role == 3) { //記述問題
+            if ($role == 1) { //記述問題
               DB::table('write_answers')->insert([
                 'user_id' => "$user_id", //SlackIDじゃないと入らない
                 'test_id' => "$testnumber",
@@ -129,7 +132,7 @@ class TestController extends Controller
            'created_at' => Carbon::now(), //時間が違う、場所の設定が違うのかも
            'updated_at' => Carbon::now()]); //時間が違う、場所の設定が違うのかも
 
-         return view('testend'); //テスト完了画面に遷移
+         return redirect()->route('testend'); //テスト完了画面に遷移
        }
 
        // 　テストの答え格納　終わり
