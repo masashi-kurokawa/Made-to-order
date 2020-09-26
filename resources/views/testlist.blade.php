@@ -100,7 +100,7 @@
 							<div class="desc">
 								<h3><a href="{{ url('/test/') }}">{{$tests->title}}</a></h3>
 								<span><small>{{$tests->updated_at}}</small></span>
-								<p>ここにテキストを入れることができます。</p>
+								<!-- <p>ここにテキストを入れることができます。</p> -->
 								<div class="more-center">
 									<a href="{{ url('/test/') }}" class="lead more">テスト受講</a>
 									<a href="{{ url('/testedit/'.$tests->id)}}" class="lead more">詳細・編集</a>
