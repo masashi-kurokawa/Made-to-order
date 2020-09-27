@@ -55,6 +55,7 @@ class SurveyController extends Controller
     public function store(Request $request)
     {
 
+
         // 参考処理
         $survey = new Survey;
         $postsurvey = $request->all();
@@ -167,7 +168,7 @@ class SurveyController extends Controller
      */
     public function edit($id)
     {
-        // $survey = Survey::find($id);
+        $survey = Survey::find($id);
         $write_survey2 = Write_survey::where('survey_id', $id)->get()->toArray();
         $select_survey2 = Select_survey::where('survey_id', $id)->get()->toArray();
         $write_survey = Write_survey::where('survey_id', $id)->get();
@@ -177,13 +178,15 @@ class SurveyController extends Controller
         //配列を合わせる
         $str2 = array_merge($write_survey2, $select_survey2);
 
+        $count_questions = count($str2);
+
         // collect（数字化？）
         $sorted = collect($str2);
 
         // アンケートのソート
         $sorteds = $sorted->sortBy('question_number')->all();
         dump($sorteds);
-        dump(is_array ( $sorteds));
+        // dump(is_array ( $sorteds));
         // is_array ( $sorteds);
         // アンケート表示処理　終わり
 
@@ -191,14 +194,13 @@ class SurveyController extends Controller
         //確認用
         // dump($write_survey);
         // 初期記入方法
-        // return view('survey.edit',compact('survey', 'sorteds'));
-        return view('survey.edit',compact('sorteds'));
-        // return view('survey.edit', [
-        //       'survey' => $survey,
-        //       'write_surveys' => $write_survey,
-        //       'select_surveys' => $select_survey,
-        //       'sorteds' => $sorteds,
-        //     ]);
+        return view('survey.edit',
+          [
+            'survey' => $survey,
+            'write_surveys' => $write_survey,
+            'select_surveys' => $select_survey,
+          ],
+          compact('sorteds', 'count_questions'));
     }
 
 
@@ -211,25 +213,65 @@ class SurveyController extends Controller
      */
     public function update(Request $request, $id)
     {
-      dump($request);
-        // $survey = new Survey;
-        // $write_survey = new Write_survey;
-        // $select_survey = new Select_survey;
-        //
-        // // 削除処理
-        // $write_survey->where('survey_id', $id)->delete();
-        // $select_survey->where('survey_id', $id)->delete();
-        //
-        // // surveyテーブルの変更
-        // $survey_data = $survey->where('id', $id)->get();
-        // $survey_data->title = $request->title;
-        // $survey_data->status = $request->status;
-        // $survey_data->updated_at = Carbon::now();
-        // $survey_data->save();
+      $postak = $request->all();
+      dump($postak);
+        $survey = new Survey;
+        $write_survey = new Write_survey;
+        $select_survey = new Select_survey;
+
+        // 削除処理
+        $write_survey->where('survey_id', $id)->delete();
+        $select_survey->where('survey_id', $id)->delete();
+
+        // surveyテーブルの変更
+        $survey_data = $survey->where('id', $id)->first();
+        $surveysno = $survey->where('id', $id)->value('id');
+        $survey_data->title = $request->title;
+        $survey_data->status = $request->status;
+        $survey_data->updated_at = Carbon::now();
+        $survey_data->save();
         //
 
 
         // ここから下が変更
+        $surveyno = $request->input('id');
+        // dump($surveysno);
+        for ($i=1; $i <= $surveyno; $i++) {
+          $question_number[$i] = $i; //何問目か？
+          $choice_text[$i] = $request->input("choice_text$i");
+          $describing_text[$i] = $request->input("describing_text$i");
+          $role[$i] = $request->input("role$i");
+          $question_number[$i] = $i;
+          $yes_answer[$i] = $request->input("yes_answer$i");
+          $no_answer[$i] = $request->input("no_answer$i");
+          // dump($yes_answer[$i]);
+          // dump($surveysno);
+          if (!empty($choice_text[$i])) { //選択式アンケート2択　select　
+            DB::table('select_surveys')->insert([
+              'survey_id' => "$surveysno", //ok
+              'question' => "$choice_text[$i]", //ok
+              'question_number' => "$question_number[$i]", //ok
+              'role' => "$role[$i]", //ok
+              'select1' => "1", //ok
+              'select2' => "2", //ok
+              'select_item1' => "$yes_answer[$i]", //ok
+              'select_item2' => "$no_answer[$i]", //ok
+              // 'created_at' => Carbon::now(), //時間が違う、場所の設定が違うのかも
+              'updated_at' => Carbon::now()  //時間が違う、場所の設定が違うのかも
+            ]);
+          } else { //記述式アンケート登録　write ok
+            DB::table('write_surveys')->insert([
+              'survey_id' => "$surveysno", //ok
+              'question' => "$describing_text[$i]", //ok
+              'question_number' => "$question_number[$i]", //ok
+              'role' => "$role[$i]", //ok
+              // 'created_at' => Carbon::now(), //時間が違う、場所の設定が違うのかも
+              'updated_at' => Carbon::now()  //時間が違う、場所の設定が違うのかも
+            ]);
+          }
+        }
+
+        // 黒木さんが作った処理
         // foreach ($request->request as $key) {
         //     // $requestの'_token'以外を使う
         //     if ($key != '_token') {

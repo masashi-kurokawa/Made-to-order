@@ -91,33 +91,51 @@
 				<h2 class="fh5co-heading">アンケート詳細・編集</h2>
 
         <div class="container animate-box" data-animate-effect="fadeInLeft">
-					<form action="" method="POST">
+						<form action="{{ route('survey.update',$survey->id)}}" method="POST">
+					  @csrf
+					  @method('PUT')
+					  <div class="title-rap">
+					    <input type="text" name="title" value="{{ $survey->title }}">
+					    <label><input type="radio" value="1" name="status" @if (old('status', $survey->status) == 1) checked @endif>使用</label>
+					    <label><input type="radio" value="2" name="status" @if (old('status', $survey->status) == 2) checked @endif>未使用</label>
+					    <!-- <textarea name="text" rows="2" placeholder="ここにテキストを入れることができます。"></textarea> -->
+					  </div>
+					  <table>
+					    <tbody id="sortable">
+					      @foreach ($sorteds as $value)
+								@if ($value['role'] == 1) <!-- 記述アンケート -->
+								<tr id="tainer" class="">
+								<input type="hidden" class="id" value="">
+								<input type="hidden" class="role" value="1">
+									<td>
+									<textarea class="describing-text" name="" rows="5" cols="50" placeholder="ここに問題文を入力してください。" value="">{{$value['question']}}</textarea>
+									</td>
+									<td class="remove-center"><button class="remove">-</button></td>
+								</tr>
+								@endif
 
 
+								@if ($value['role'] == 2) <!-- 選択アンケート -->
+								<tr id="con">
+									<td>
+									<input type="hidden" class="id" value="">
+									<input type="hidden" class="role" value="2">
+									<textarea class="choice-text" name="" rows="5" cols="50" placeholder="ここに問題文を入力してください。">{{$value['question']}}</textarea>
+									</td>
+									<td><input type="text" class="yes-answer" name="" placeholder="回答を入力してください。" value="{{$value['select_item1']}}"></td>
+									<td><input type="text" class="no-answer" name="" placeholder="回答を入力してください。" value="{{$value['select_item2']}}"></td>
+									<td class="remove-center"><button class="remove">-</button></td>
+								</tr>
+								@endif
 
-
-
-          </form>
-					@foreach ($sorteds as $value)
-					<div class="animate-box" data-animate-effect="fadeInLeft">
-						<div class="row">
-							<div class="col-md-10">
-								<div class="space">
-									<h4>問題{{$value['question_number']}}</h4>
-										<p>{{$value['question']}}</p>
-								</div>
-								<div class="space">
-									<h5>回答</h5>
-								</div>
-								<div class="space">
-									<!-- nameタグの grade の後ろに問題番号の数字を入れることでradioボタンを他問題と分けることができる -->
-									<label class="labelspace correct"><input class="geomsize" type="radio" name="{{$value['question_number']}}" value="1" required>正解</label>
-									<label class="labelspace incorrect"><input class="geomsize" type="radio" name="{{$value['question_number']}}" value="2">不正解</label>
-								</div>
-							</div>
-						</div>
-					</div>
-					@endforeach
+					      @endforeach
+					    </tbody>
+					  </table>
+					  <input id="save" type="submit" value="保存">
+					  @if ($message = Session::get('success'))
+					  <p>{{ $message }}</p>
+					  @endif
+					</form>
 
           <p id="output">0</p>
 
@@ -176,7 +194,7 @@
 							// .describing-textの処理
 							$('#sortable .describing-text').each(function(i){
 								var value = $('.tainer' + (i+1)).attr("value");
-								alert(value);
+								// alert(value);
 								$(this).attr('name','describing_text' + (value));
 							});
 						});
@@ -188,7 +206,7 @@
             // 2択問題追加
         		//追加ボタンがクリックされたら、function(){…}の処理を実行する
         		$('#addChoice2').click(function(){
-                var html = '<tr id="con" class=""><input type="hidden" class="id" value=""><input type="hidden" class="role" value="1"><td><textarea class="choice-text" name="" rows="5" cols="50" placeholder="ここに質問を入力してください。" value=""></textarea></td><td><input type="text" class="yes-answer" name="" value="" placeholder="回答を入力してください。"><input type="text" class="no-answer" name="" value="" placeholder="回答を入力してください。"></td><td class="remove-center"><button class="remove">-</button></td></tr>';
+                var html = '<tr id="con" class=""><input type="hidden" class="id" value=""><input type="hidden" class="role" value="2"><td><textarea class="choice-text" name="" rows="5" cols="50" placeholder="ここに質問を入力してください。" value=""></textarea></td><td><input type="text" class="yes-answer" name="" value="" placeholder="回答を入力してください。"><input type="text" class="no-answer" name="" value="" placeholder="回答を入力してください。"></td><td class="remove-center"><button class="remove">-</button></td></tr>';
         				//append()を使ってtbody内の一番最後にhtmlを追加する
         				$('tbody').append(html);
             });
@@ -196,7 +214,7 @@
             // アンケート追加
         		//追加ボタンがクリックされたら、function(){…}の処理を実行する
         		$('#addText').click(function(){
-                var html ='<tr id="tainer" class=""><input type="hidden" class="id" value=""><input type="hidden" class="role" value="2"><td><textarea class="describing-text" name="" rows="5" cols="50" placeholder="ここに質問を入力してください。"></textarea></td><td class="remove-center"><button class="remove">-</button></td></tr>';
+                var html ='<tr id="tainer" class=""><input type="hidden" class="id" value=""><input type="hidden" class="role" value="1"><td><textarea class="describing-text" name="" rows="5" cols="50" placeholder="ここに質問を入力してください。"></textarea></td><td class="remove-center"><button class="remove">-</button></td></tr>';
         				//append()を使ってtbody内の一番最後にhtmlを追加する
         				$('tbody').append(html);
             });
@@ -221,7 +239,7 @@
 									}
 									i++;
 									var n = n + i;
-									// alert(n);
+									alert(n);
 									if( n <= 49 ){
 										// $('#output').html(i);
 									} else {

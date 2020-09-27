@@ -176,7 +176,7 @@
             // 2択問題追加
         		//追加ボタンがクリックされたら、function(){…}の処理を実行する
 						$('#addChoice2').click(function(){
-								var html = '<tr id="con" class=""><input type="hidden" class="id" value=""><input type="hidden" class="role" value="1"><td><textarea class="choice-text" name="" rows="5" cols="50" placeholder="ここに質問を入力してください。" value=""></textarea></td><td><input type="text" class="yes-answer" name="" value="" placeholder="回答を入力してください。"><input type="text" class="no-answer" name="" value="" placeholder="回答を入力してください。"></td><td class="remove-center"><button class="remove">-</button></td></tr>';
+								var html = '<tr id="con" class=""><input type="hidden" class="id" value=""><input type="hidden" class="role" value="2"><td><textarea class="choice-text" name="" rows="5" cols="50" placeholder="ここに質問を入力してください。" value=""></textarea></td><td><input type="text" class="yes-answer" name="" value="" placeholder="回答を入力してください。"><input type="text" class="no-answer" name="" value="" placeholder="回答を入力してください。"></td><td class="remove-center"><button class="remove">-</button></td></tr>';
 								//append()を使ってtbody内の一番最後にhtmlを追加する
 								$('tbody').append(html);
             });
@@ -185,7 +185,7 @@
 						//記述アンケート
         		//追加ボタンがクリックされたら、function(){…}の処理を実行する
         		$('#addText').click(function(){
-								var html ='<tr id="tainer" class=""><input type="hidden" class="id" value=""><input type="hidden" class="role" value="2"><td><textarea class="describing-text" name="" rows="5" cols="50" placeholder="ここに質問を入力してください。"></textarea></td><td class="remove-center"><button class="remove">-</button></td></tr>';
+								var html ='<tr id="tainer" class=""><input type="hidden" class="id" value=""><input type="hidden" class="role" value="1"><td><textarea class="describing-text" name="" rows="5" cols="50" placeholder="ここに質問を入力してください。"></textarea></td><td class="remove-center"><button class="remove">-</button></td></tr>';
 								//append()を使ってtbody内の一番最後にhtmlを追加する
         				$('tbody').append(html);
             });
