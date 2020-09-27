@@ -175,28 +175,6 @@
 								var value = $('.ta' + (i+1)).attr("value");
 								$(this).attr('name','2answer2_' + (value));
 							});
-							// .4text"の処理
-							$('#sortable .4text').each(function(i){
-								var value = $('.in' + (i+1)).attr("value");
-								$(this).attr('name','4text' + (value));
-							});
-
-							// .4answer[t]_"の処理
-							for (var t = 1; t <= 4; t++) {
-								$('#sortable .4answer'+t+'_').each(function(i){
-									var value = $('.in' + (i+1)).attr("value");
-									$(this).attr('name','4answer'+t+'_' + (value));
-								});
-						  }
-
-							// .4choice[t]_"のラジオボタン処理
-							for (var t = 1; t <= 4; t++) {
-								$('#sortable .4choice'+t+'_').each(function(i){
-									var value = $('.in' + (i+1)).attr("value");
-									$(this).attr('name','4choice'+t+'_' + (value));
-								});
-						  }
-
 
 							// .8text"の処理
 							$('#sortable .8text').each(function(i){
@@ -247,14 +225,6 @@
         				$('tbody').append(html);
             });
 
-            // 4択問題追加 いらない
-        		//追加ボタンがクリックされたら、function(){…}の処理を実行する
-        		$('#addChoice4').click(function(){
-					var html = '<tr><td><textarea name="text" rows="5" cols="50" placeholder="ここに問題文を入力してください。"></textarea></td><td><form><input type="radio" name="Choice4"><input type="text" name="answer" placeholder="回答を入力してください。"><input type="radio" name="Choice4"><input type="text" name="answer" placeholder="回答を入力してください。"><input type="radio" name="Choice4"><input type="text" name="answer" placeholder="回答を入力してください。"><input type="radio" name="Choice4"><input type="text" name="answer" placeholder="回答を入力してください。"></form></td><td class="remove-center"><button class="remove">-</button></td></tr>';
-        				//append()を使ってtbody内の一番最後にhtmlを追加する
-        				$('tbody').append(html);
-            });
-
             // 8択問題追加
         		//追加ボタンがクリックされたら、function(){…}の処理を実行する
         		$('#addChoice8').click(function(){
@@ -291,7 +261,6 @@
 								$(document).on('click', '.plus', function() {
 									i++;
 									var n = i;
-									// alert(n);
 									if( n <= 9 ){
 										// $('#output').html(i);
 									} else {

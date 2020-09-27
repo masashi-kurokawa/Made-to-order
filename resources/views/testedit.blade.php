@@ -96,81 +96,167 @@
               <input type="text" name="text" value="{{$test->title}}">
 							<label><input type="radio" value="1" name="status" @if (old('status', $test->status) == 1) checked @endif>使用</label>
 							<label><input type="radio" value="2" name="status" @if (old('status', $test->status) == 2) checked @endif>未使用</label>
-              <!-- <textarea name="text" rows="2" placeholder="ここにテキストを入れることができます。"></textarea> -->
             </div>
 
             <table>
-              <tbody>
+              <tbody id="sortable">
 								@foreach ($sort as $value)
 									@if ($value->role == 1)
-										<tr>
-											<td><textarea name="question" rows="5" cols="50" placeholder="ここに問題文を入力してください。">{{$value->question}}</textarea></td>
-											<td class="remove-center"><button class="remove">-</button></td>
-										</tr>
+									<tr id="con" class="">
+									<input type="hidden" class="id" value="">
+										<td>
+										<textarea class="1text" name="" rows="5" cols="50" placeholder="ここに問題文を入力してください。" value="">{{$value->question}}</textarea>
+										</td>
+										<td class="remove-center"><button class="remove">-</button></td>
+									</tr>
 									@endif
 
 									@if ($value->role == 2)
-										<tr>
-											<td><textarea name="question" rows="5" cols="50" placeholder="ここに問題文を入力してください。">{{$value->question}}</textarea></td>
-											<td>
-												<input type="radio" name="Choice{{$value->question_number}}" @if (old('answer', $value->answer) == 1) checked @endif>
-												<input type="text" name="answer" placeholder="回答を入力してください。" value="{{$value->select_item1}}">
-												<input type="radio" name="Choice{{$value->question_number}}" @if (old('answer', $value->answer) == 2) checked @endif>
-												<input type="text" name="answer" placeholder="回答を入力してください。" value="{{$value->select_item2}}">
-												<input type="radio" name="Choice{{$value->question_number}}" @if (old('answer', $value->answer) == 3) checked @endif>
-												<input type="text" name="answer" placeholder="回答を入力してください。" value="{{$value->select_item3}}">
-												<input type="radio" name="Choice{{$value->question_number}}" @if (old('answer', $value->answer) == 4) checked @endif>
-												<input type="text" name="answer" placeholder="回答を入力してください。" value="{{$value->select_item4}}">
-												@if ($value->select_item5 != null)
-													<input type="radio" name="Choice{{$value->question_number}}" @if (old('answer', $value->answer) == 5) checked @endif>
-													<input type="text" name="answer" placeholder="回答を入力してください。" value="{{$value->select_item1}}">
-													<input type="radio" name="Choice{{$value->question_number}}" @if (old('answer', $value->answer) == 6) checked @endif>
-													<input type="text" name="answer" placeholder="回答を入力してください。" value="{{$value->select_item2}}">
-													<input type="radio" name="Choice{{$value->question_number}}" @if (old('answer', $value->answer) == 7) checked @endif>
-													<input type="text" name="answer" placeholder="回答を入力してください。" value="{{$value->select_item3}}">
-													<input type="radio" name="Choice{{$value->question_number}}" @if (old('answer', $value->answer) == 8) checked @endif>
-													<input type="text" name="answer" placeholder="回答を入力してください。" value="{{$value->select_item4}}">
-												@endif
-											</td>
-											<td class="remove-center"><button class="remove">-</button></td>
-										</tr>
+									<tr id="er">
+									<input type="hidden" class="id" value="">
+										<td>
+										<textarea class="8text" name="" rows="5" cols="50" placeholder="ここに問題文を入力してください。">{{$value->question}}</textarea>
+										</td>
+										<td>
+											<input type="radio" class="8choice1_" @if (old('answer', $value->answer) == 1) checked @endif>
+											<input type="text" class="8answer1_" name="" placeholder="回答を入力してください。" value="{{$value->select_item1}}">
+											<input type="radio" class="8choice2_" @if (old('answer', $value->answer) == 2) checked @endif>
+											<input type="text" class="8answer2_" name="" placeholder="回答を入力してください。" value="{{$value->select_item2}}">
+											<input type="radio" class="8choice3_" @if (old('answer', $value->answer) == 3) checked @endif>
+											<input type="text" class="8answer3_" name="" placeholder="回答を入力してください。" value="{{$value->select_item3}}">
+											<input type="radio" class="8choice4_" @if (old('answer', $value->answer) == 4) checked @endif>
+											<input type="text" class="8answer4_" name="" placeholder="回答を入力してください。" value="{{$value->select_item4}}">
+
+											@if ($value->select_item5 != null)
+												<input type="radio" class="8choice5_" @if (old('answer', $value->answer) == 5) checked @endif>
+												<input type="text" class="8answer1_" name="" placeholder="回答を入力してください。" value="{{$value->select_item1}}">
+												<input type="radio" class="8choice6_" @if (old('answer', $value->answer) == 6) checked @endif>
+												<input type="text" class="8answer5_" name="" placeholder="回答を入力してください。" value="{{$value->select_item2}}">
+												<input type="radio" class="8choice7_" @if (old('answer', $value->answer) == 7) checked @endif>
+												<input type="text" class="8answer7_" name="" placeholder="回答を入力してください。" value="{{$value->select_item3}}">
+												<input type="radio" class="8choice8_" @if (old('answer', $value->answer) == 8) checked @endif>
+												<input type="text" class="8answer8_" name="" placeholder="回答を入力してください。" value="{{$value->select_item4}}">
+											@endif
+										</td>
+										<td class="remove-center"><button class="remove">-</button></td>
+									</tr>
 									@endif
 
 									@if ($value->role == 3)
-										<tr>
-											<td><textarea name="question" rows="5" cols="50" placeholder="ここに問題文を入力してください。">{{$value->question}}</textarea></td>
-											<td><input type="text" name="text" placeholder="回答を入力してください。" value="{{$value->answer1}}"></td>
-											<td><input type="text" name="text" placeholder="回答を入力してください。" value="{{$value->answer2}}"></td>
-											<td class="remove-center"><button class="remove">-</button></td>
-										</tr>
+									<tr id="ta">
+										<td>
+										<input type="hidden" class="id" value="">
+										<textarea class="2text" name="" rows="5" cols="50" placeholder="ここに問題文を入力してください。">{{$value->question}}</textarea>
+										</td>
+										<td><input type="text" class="2answer1_" name="" placeholder="回答を入力してください。" value="{{$value->answer1}}"></td>
+										<td><input type="text" class="2answer2_" name="" placeholder="回答を入力してください。" value="{{$value->answer2}}"></td>
+										<td class="remove-center"><button class="remove">-</button></td>
+									</tr>
 									@endif
 								@endforeach
 							</tbody>
             </table>
 
-            <input type="submit" value="保存">
+            <input id="save" type="submit" value="保存">
           </form>
 
           <p id="output">{{$count_questions}}</p>
 
           <button id="addTest1" class="plus">+ 1回答問題追加</button>
           <button id="addTest2" class="plus">+ 2回答問題追加</button>
-          <button id="addChoice4" class="plus">+ 4択問題追加</button>
           <button id="addChoice8" class="plus">+ 8択問題追加</button>
-          <!-- <button id="addText" class="plus">+ テキスト問題追加</button> -->
 
         </div>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
         <script>
         $(function(){
+
+					// テーブルの値を１行ずつ取得してjqueryにて連想配列を作る
+					// .idの処理
+					// $('#addChoice8').click(function(){
+						$('#save').click(function(){
+						// alert({{$test->title}});
+							// コンテナーにid振る
+							$('#sortable tr').each(function(i){
+								$(this).attr('value',(i+1));
+							});
+							$('#sortable #con').each(function(i){
+									$(this).attr('class','con' + (i+1));
+							});
+							$('#sortable #ta').each(function(i){
+								$(this).attr('class','ta' + (i+1));
+							});
+							$('#sortable #in').each(function(i){
+									$(this).attr('class','in' + (i+1));
+							});
+							$('#sortable #er').each(function(i){
+								$(this).attr('class','er' + (i+1));
+							});
+
+							$('#sortable .id').each(function(i){
+								$(this).attr('name','id');
+								$(this).attr('value',(i+1));
+							});
+
+							// .1textの処理
+							$('#sortable .1text').each(function(i){
+								var value = $('.con' + (i+1)).attr("value");
+								$(this).attr('name','1text' + (value));
+							});
+							// .1answer_の処理
+							$('#sortable .1answer_').each(function(i){
+								var value = $('.con' + (i+1)).attr("value");
+								$(this).attr('name','1answer_' + (value));
+							});
+							// .2textの処理
+							$('#sortable .2text').each(function(i){
+								var value = $('.ta' + (i+1)).attr("value");
+								$(this).attr('name','2text' + (value));
+							});
+							// .2answer1_"の処理
+							$('#sortable .2answer1_').each(function(i){
+								var value = $('.ta' + (i+1)).attr("value");
+								$(this).attr('name','2answer1_' + (value));
+							});
+							// .2answer2_"の処理
+							$('#sortable .2answer2_').each(function(i){
+								var value = $('.ta' + (i+1)).attr("value");
+								$(this).attr('name','2answer2_' + (value));
+							});
+
+							// .8text"の処理
+							$('#sortable .8text').each(function(i){
+								var value = $('.er' + (i+1)).attr("value");
+								$(this).attr('name','8text' + (value));
+							});
+
+						// .8answer[t]_"の処理
+						for (var t = 1; t <= 8; t++) {
+								$('#sortable .8answer'+t+'_').each(function(i){
+									var value = $('.er' + (i+1)).attr("value");
+									$(this).attr('name','8answer'+t+'_' + (value));
+								});
+						}
+
+						// .8choice[t]_"のラジオボタン処理
+						for (var t = 1; t <= 8; t++) {
+								$('#sortable .8choice'+t+'_').each(function(i){
+									var value = $('.er' + (i+1)).attr("value");
+									$(this).attr('name','8choice'+t+'_' + (value));
+									// alert('.8answer'+t+'_'(value));
+								});
+						}
+
+						});
+
             // 並び替え機能
             $('tbody').sortable();
 
-        		// 問題追加 1回答
+						// 問題追加 1回答
         		//追加ボタンがクリックされたら、function(){…}の処理を実行する
         		$('#addTest1').click(function(){
-                var html = '<tr><td><textarea name="question" rows="5" cols="50" placeholder="ここに問題文を入力してください。"></textarea></td><td><input type="text" name="text" placeholder="回答を入力してください。"></td><td class="remove-center"><button class="remove">-</button></td></tr>';
+					var html = '<tr id="con" class=""><input type="hidden" class="id" value=""><td><textarea class="1text" name="" rows="5" cols="50" placeholder="ここに問題文を入力してください。" value=""></textarea></td><td><input type="text" class="1answer_" name="" value="" placeholder="回答を入力してください。"></td><td class="remove-center"><button class="remove">-</button></td></tr>';
         				//append()を使ってtbody内の一番最後にhtmlを追加する
         				$('tbody').append(html);
             });
@@ -178,15 +264,7 @@
             // 問題追加 2回答
         		//追加ボタンがクリックされたら、function(){…}の処理を実行する
         		$('#addTest2').click(function(){
-                var html = '<tr><td><textarea name="question" rows="5" cols="50" placeholder="ここに問題文を入力してください。"></textarea></td><td><input type="text" name="text" placeholder="回答を入力してください。"><input type="text" name="text" placeholder="回答を入力してください。"></td><td class="remove-center"><button class="remove">-</button></td></tr>';
-        				//append()を使ってtbody内の一番最後にhtmlを追加する
-        				$('tbody').append(html);
-            });
-
-            // 4択問題追加
-        		//追加ボタンがクリックされたら、function(){…}の処理を実行する
-        		$('#addChoice4').click(function(){
-                var html = '<tr><td><textarea name="question" rows="5" cols="50" placeholder="ここに問題文を入力してください。"></textarea></td><td><input type="radio" name="Choice4"><input type="text" name="answer" placeholder="回答を入力してください。"><input type="radio" name="Choice4"><input type="text" name="answer" placeholder="回答を入力してください。"><input type="radio" name="Choice4"><input type="text" name="answer" placeholder="回答を入力してください。"><input type="radio" name="Choice4"><input type="text" name="answer" placeholder="回答を入力してください。"></td><td class="remove-center"><button class="remove">-</button></td></tr>';
+					var html = '<tr id="ta"><input type="hidden" class="id" value=""><td><textarea class="2text" name="" rows="5" cols="50" placeholder="ここに問題文を入力してください。" value=""></textarea></td><td><input type="text" class="2answer1_" name="" value="" placeholder="回答を入力してください。"><input type="text" class="2answer2_" name="" value="" placeholder="回答を入力してください。"></td><td class="remove-center"><button class="remove">-</button></td></tr>';
         				//append()を使ってtbody内の一番最後にhtmlを追加する
         				$('tbody').append(html);
             });
@@ -194,18 +272,10 @@
             // 8択問題追加
         		//追加ボタンがクリックされたら、function(){…}の処理を実行する
         		$('#addChoice8').click(function(){
-                var html = '<tr><td><textarea name="question" rows="5" cols="50" placeholder="ここに問題文を入力してください。"></textarea></td><td><input type="radio" name="Choice4"><input type="text" name="answer" placeholder="回答を入力してください。"><input type="radio" name="Choice4"><input type="text" name="answer" placeholder="回答を入力してください。"><input type="radio" name="Choice4"><input type="text" name="answer" placeholder="回答を入力してください。"><input type="radio" name="Choice4"><input type="text" name="answer" placeholder="回答を入力してください。"><input type="radio" name="Choice4"><input type="text" name="answer" placeholder="回答を入力してください。"><input type="radio" name="Choice4"><input type="text" name="answer" placeholder="回答を入力してください。"><input type="radio" name="Choice4"><input type="text" name="answer" placeholder="回答を入力してください。"><input type="radio" name="Choice4"><input type="text" name="answer" placeholder="回答を入力してください。"></td><td class="remove-center"><button class="remove">-</button></td></tr>';
+					var html = '<tr id="er"><input type="hidden" class="id" value=""><td><textarea class="8text" name="" rows="5" cols="50" placeholder="ここに問題文を入力してください。"></textarea></td><td><input type="radio" class="8choice1_"><input type="text" class="8answer1_" name="" value="" placeholder="回答を入力してください。"><input type="radio" class="8choice2_"><input type="text" class="8answer2_" name="" value="" placeholder="回答を入力してください。"><input type="radio" class="8choice3_"><input type="text" class="8answer3_" name="" value="" placeholder="回答を入力してください。"><input type="radio" class="8choice4_"><input type="text" class="8answer4_" name="" value="" placeholder="回答を入力してください。"><input type="radio" class="8choice5_"><input type="text" class="8answer5_" name="" value="" placeholder="回答を入力してください。"><input type="radio" class="8choice6_"><input type="text" class="8answer6_" name="" value="" placeholder="回答を入力してください。"><input type="radio" class="8choice7_"><input type="text" class="8answer7_" name="" value="" placeholder="回答を入力してください。"><input type="radio" class="8choice8_"><input type="text" class="8answer8_" name="" value="" placeholder="回答を入力してください。"></td><td class="remove-center"><button class="remove">-</button></td></tr>';
         				//append()を使ってtbody内の一番最後にhtmlを追加する
         				$('tbody').append(html);
             });
-
-            // テキスト問題追加
-        		//追加ボタンがクリックされたら、function(){…}の処理を実行する
-        		// $('#addText').click(function(){
-            //     var html = '<tr><td><textarea name="text" rows="5" cols="50" placeholder="ここに問題文を入力してください。"></textarea></td><td><textarea name="text" rows="5" cols="50" placeholder="回答を入力してください。"></textarea></td><td><button class="remove">-</button></td></tr>';
-        		// 		//append()を使ってtbody内の一番最後にhtmlを追加する
-        		// 		$('tbody').append(html);
-            // });
 
         		// 削除処理
         		//削除ボタンがクリックされたら、function(){…}の処理を実行する
@@ -214,17 +284,44 @@
                 $(this).parents('tr').remove();
             });
 
+						// 問題数上限カウント処理 //完成
+						$(function(){
+							var i = 0;
+								// 問題を追加するたび数字をプラスする
+								$(document).on('click', '.plus', function() {
+									if ((n === undefined)) {
+										var n = {{$count_questions}};
+									} else {
+										var n = n;
+									}
+									i++;
+									var n = n + i;
+									// alert(n);
+									if( n <= 9 ){
+										// $('#output').html(i);
+									} else {
+										// 問題追加ボタンを消す
+										$('.plus').hide();
+									}
+								});
+								// 問題を削除するたび数字をマイナスする
+								$(document).on('click', '.remove', function() {
+									if ((n === undefined)) {
+										var n = {{$count_questions}};
+									} else {
+										var n = n;
+									}
+									i--;
+									var n = n + i;
+									// $('#output').html(i);
+									if( n >= 9 ){
+										// 問題ボタンを復活させる
+										$('.plus').show();
+									}
+								});
+						});
+
         });
-        </script>
-        <script>
-						window.onload = function() {
-		            $(document).on('click', '.plus', function() {
-		                $('#output').html(function(i, val) { return val*1+1 });
-		            });
-		            $(document).on('click', '.remove', function() {
-		                $('#output').html(function(i, val) { return val*1-1 });
-		            });
-						}
         </script>
         <a href="{{ url('/testlist/') }}" class="more icon-arrow-left3"> 戻る</a>
 			</div>

@@ -31,14 +31,15 @@ class TesteditController extends Controller
       $sort = collect($sum);
 
       $sort = $sort->sortBy('question_number')->all();
-      dump($sort);
+      dump($test);
 
       return view('testedit',
         [
           'count_questions' => $count_questions,
           'test' => $test,
           'test_id' => $id,
-        ], compact('sort'));
+        ], compact('sort', 'count_questions'));
+
     }
 
     public function editRegister($id, Request $request)
@@ -47,6 +48,11 @@ class TesteditController extends Controller
         // $write_test = new Write_test;
         // $select_test = new Select_test;
         // $hole_test = new Hole_test;
+
+
+        $posttest = $request->all();
+        dump($posttest);
+
         //
         // // 削除処理
         // $write_test->where('test_id', $id)->delete();
@@ -104,5 +110,14 @@ class TesteditController extends Controller
         //         }
         //     }
         // }
+
+        // return view('testedit',
+        //   // [
+        //   //   // 'count_questions' => $count_questions,
+        //   //   // 'test' => $test,
+        //   //   // 'test_id' => $id,
+        //   // ], compact('sort', 'count_questions')
+        // );
+
     }
 }
