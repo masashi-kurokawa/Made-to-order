@@ -211,6 +211,7 @@ class SurveyController extends Controller
      */
     public function update(Request $request, $id)
     {
+        dump($request);
         // $survey = new Survey;
         // $write_survey = new Write_survey;
         // $select_survey = new Select_survey;
@@ -255,8 +256,8 @@ class SurveyController extends Controller
         //             $select_survey->save();
         //
         //         }
-            }
-        }
+        //     }
+        // }
         // $update = [
         //     'title' => $request->title,
         //     'status' =>$request->status
