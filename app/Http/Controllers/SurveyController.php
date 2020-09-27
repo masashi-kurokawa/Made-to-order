@@ -211,12 +211,58 @@ class SurveyController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $update = [
-            'title' => $request -> title,
-            'status' =>$request -> status
-        ];
-        Survey::where('id', $id) ->update($update);
-        return back()->with('success', '編集完了しました');
+        // $survey = new Survey;
+        // $write_survey = new Write_survey;
+        // $select_survey = new Select_survey;
+        //
+        // // 削除処理
+        // $write_survey->where('survey_id', $id)->delete();
+        // $select_survey->where('survey_id', $id)->delete();
+        //
+        // // surveyテーブルの変更
+        // $survey_data = $survey->where('id', $id)->get();
+        // $survey_data->title = $request->title;
+        // $survey_data->status = $request->status;
+        // $survey_data->updated_at = Carbon::now();
+        // $survey_data->save();
+        //
+        // foreach ($request->request as $key) {
+        //     // $requestの'_token'以外を使う
+        //     if ($key != '_token') {
+        //         // view側でroleの値も取得できるようにする
+        //         if ('role == 1') {
+        //             $write_survey->survey_id = $id;
+        //             $write_survey->question = $key->question;
+        //             $write_survey->question_number = $key->question_number;
+        //             $write_survey->save();
+        //
+        //         }elseif ('role == 2') {
+        //             $select_survey->test_id = $id;
+        //             $select_survey->question = $key->question;
+        //             $select_survey->answer = $key->answer;
+        //             $select_survey->select_item1 = $key->Choice1;
+        //             $select_survey->select_item2 = $key->Choice2;
+        //             $select_survey->select_item3 = $key->Choice3;
+        //             $select_survey->select_item4 = $key->Choice4;
+        //             // 8択問題だった時に追加する処理
+        //             if (array_key_exists( 'Choice5', $key )) {
+        //                 $select_survey->select_item5 = $key->Choice5;
+        //                 $select_survey->select_item6 = $key->Choice6;
+        //                 $select_survey->select_item7 = $key->Choice7;
+        //                 $select_survey->select_item8 = $key->Choice8;
+        //             }
+        //             $select_survey->question_number = $key->question_number;
+        //             $select_survey->save();
+        //
+        //         }
+            }
+        }
+        // $update = [
+        //     'title' => $request->title,
+        //     'status' =>$request->status
+        // ];
+        // Survey::where('id', $id) >update($update);
+        // return back()->with('success', '編集完了しました');
     }
 
     /**
