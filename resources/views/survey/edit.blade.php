@@ -129,13 +129,66 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
         <script>
         $(function(){
+					// テーブルの値を１行ずつ取得してjqueryにて連想配列を作る
+					// .idの処理
+					// $('#addText').click(function(){
+						$('#save').click(function(){
+							// trにvalue値入れる
+							$('#sortable tr').each(function(i){
+								$(this).attr('value',(i+1));
+								// alert(value);
+							});
+							// 選択問題の何問目か判定
+							$('#sortable #con').each(function(i){
+									$(this).attr('class','con' + (i+1));
+							});
+							// 記述問題の何問目か判定
+							$('#sortable #tainer').each(function(i){
+								$(this).attr('class','tainer' + (i+1));
+							});
+
+							// ロール判定つける
+							$('#sortable .role').each(function(i){
+								$(this).attr('name','role' + (i+1));
+							});
+
+							// 全体で何問目かの判定　nameにid振る
+							$('#sortable .id').each(function(i){
+								$(this).attr('name','id');
+								$(this).attr('value',(i+1));
+							});
+
+							// .choice-textの処理
+							$('#sortable .choice-text').each(function(i){
+								var value = $('.con' + (i+1)).attr("value");
+								$(this).attr('name','choice_text' + (value));
+							});
+							// .yes-answerの処理
+							$('#sortable .yes-answer').each(function(i){
+								var value = $('.con' + (i+1)).attr("value");
+								$(this).attr('name','yes_answer' + (value));
+							});
+							// .no-answerの処理
+							$('#sortable .no-answer').each(function(i){
+								var value = $('.con' + (i+1)).attr("value");
+								$(this).attr('name','no_answer' + (value));
+							});
+							// .describing-textの処理
+							$('#sortable .describing-text').each(function(i){
+								var value = $('.tainer' + (i+1)).attr("value");
+								alert(value);
+								$(this).attr('name','describing_text' + (value));
+							});
+						});
+
+
             // 並び替え機能
             $('tbody').sortable();
 
             // 2択問題追加
         		//追加ボタンがクリックされたら、function(){…}の処理を実行する
         		$('#addChoice2').click(function(){
-                var html = '<tr><td><textarea name="text" rows="5" cols="50" placeholder="ここに問題文を入力してください。"></textarea></td><td><form><input type="radio" name="Choice2"><input type="text" name="answer" placeholder="回答を入力してください。"><input type="radio" name="Choice2"><input type="text" name="answer" placeholder="回答を入力してください。"></form></td><td class="remove-center"><button class="remove">-</button></td></tr>';
+                var html = '<tr id="con" class=""><input type="hidden" class="id" value=""><input type="hidden" class="role" value="1"><td><textarea class="choice-text" name="" rows="5" cols="50" placeholder="ここに質問を入力してください。" value=""></textarea></td><td><input type="text" class="yes-answer" name="" value="" placeholder="回答を入力してください。"><input type="text" class="no-answer" name="" value="" placeholder="回答を入力してください。"></td><td class="remove-center"><button class="remove">-</button></td></tr>';
         				//append()を使ってtbody内の一番最後にhtmlを追加する
         				$('tbody').append(html);
             });
@@ -143,7 +196,7 @@
             // アンケート追加
         		//追加ボタンがクリックされたら、function(){…}の処理を実行する
         		$('#addText').click(function(){
-                var html = '<tr><td><textarea name="text" rows="5" cols="50" placeholder="ここに質問を入力してください。"></textarea></td><td><textarea name="text" rows="5" cols="50" placeholder="回答を入力してください。"></textarea></td><td class="remove-center"><button class="remove">-</button></td></tr>';
+                var html ='<tr id="tainer" class=""><input type="hidden" class="id" value=""><input type="hidden" class="role" value="2"><td><textarea class="describing-text" name="" rows="5" cols="50" placeholder="ここに質問を入力してください。"></textarea></td><td class="remove-center"><button class="remove">-</button></td></tr>';
         				//append()を使ってtbody内の一番最後にhtmlを追加する
         				$('tbody').append(html);
             });
@@ -155,15 +208,45 @@
                 $(this).parents('tr').remove();
             });
 
+
+						// 問題数上限カウント処理 //完成
+						$(function(){
+							var i = 0;
+								// 問題を追加するたび数字をプラスする
+								$(document).on('click', '.plus', function() {
+									if ((n === undefined)) {
+										var n = {{$count_questions}};
+									} else {
+										var n = n;
+									}
+									i++;
+									var n = n + i;
+									// alert(n);
+									if( n <= 49 ){
+										// $('#output').html(i);
+									} else {
+										// 問題追加ボタンを消す
+										$('.plus').hide();
+									}
+								});
+								// 問題を削除するたび数字をマイナスする
+								$(document).on('click', '.remove', function() {
+									if ((n === undefined)) {
+										var n = {{$count_questions}};
+									} else {
+										var n = n;
+									}
+									i--;
+									var n = n + i;
+									// $('#output').html(i);
+									if( n >= 49 ){
+										// 問題ボタンを復活させる
+										$('.plus').show();
+									}
+								});
+						});
+
         });
-        </script>
-        <script>
-            $(document).on('click', '.plus', function() {
-                $('#output').html(function(i, val) { return val*1+1 });
-            });
-            $(document).on('click', '.remove', function() {
-                $('#output').html(function(i, val) { return val*1-1 });
-            });
         </script>
 				<a href="{{ route('survey.index')}}" class="more icon-arrow-left3"> 戻る</a>
 			</div>
