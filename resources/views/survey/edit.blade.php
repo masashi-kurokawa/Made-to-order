@@ -98,12 +98,12 @@
 
 
 						<table>
-							<tbody>
-								@foreach ($sorteds as $key => $ak)
-								<td>{{$key}}</td>
-								@endforeach
-              </tbody>
-            </table>
+						  <tbody>
+						    @foreach ($sorteds as $value)
+						    <td><textarea name="text" rows="5" cols="50">{{$value}}</textarea></td>
+						    @endforeach
+						  </tbody>
+						</table>
             <input type="submit" value="保存">
 						@if ($message = Session::get('success'))
 						<p>{{ $message }}</p>
