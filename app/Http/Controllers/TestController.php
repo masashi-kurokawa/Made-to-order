@@ -27,13 +27,13 @@ class TestController extends Controller
 
 
        // user_idをとってくるSlackIDまでのつなぎ
-<<<<<<< HEAD
-       $user_id = DB::table('users')->whereSlack_id("abc")->value('id');
-=======
+// <<<<<<< HEAD
+       // $user_id = DB::table('users')->whereSlack_id("abc")->value('id');
+// =======
        // $user_id = DB::table('users')->whereUser_id("1")->value('user_id');
-       $user_id = DB::table('users')->whereId(Auth::id())->value('id');
-       dump($user_id);
->>>>>>> slackOauth
+       // $user_id = DB::table('users')->whereId(Auth::id(1))->value('id');
+       // dump($user_id);
+// >>>>>>> slackOauth
 
        //配列を合わせる
        $str3 = array_merge($selectitems, $holeitems, $writeitems);
@@ -51,7 +51,7 @@ class TestController extends Controller
     // 　テストの答え格納　始まり
        //POSTされてきた情報
        $answers = $request->all(); //GETで送られてきたデータ
-       // dump($answers);
+       dump($answers);
        // 何問あるか？
        $count = $sorted->count('question_number');
        // 記述問題用
@@ -160,26 +160,26 @@ class TestController extends Controller
        // 点数登録
        // if ( isset ( $correctcount ) ) {
          // dump($sum);
-<<<<<<< HEAD
+// <<<<<<< HEAD
          // DB::table('test_results')->insert([
          //   'user_name' => 'slackOauth', //とりあえず入れてる
          //   'test_id' => "$testnumber",
          //   'score' => "$correctcount",
          //   'created_at' => Carbon::now(), //時間が違う、場所の設定が違うのかも
          //   'updated_at' => Carbon::now()]); //時間が違う、場所の設定が違うのかも
-=======
-         DB::table('test_results')->insert([
-           'user_name' => 'slackOauth', //とりあえず入れてる
-           'test_id' => "$testnumber",
-           'score' => "$correctcount",
-           'created_at' => Carbon::now(), //時間が違う、場所の設定が違うのかも
-           'updated_at' => Carbon::now()]); //時間が違う、場所の設定が違うのかも
+// =======
+         // DB::table('test_results')->insert([
+         //   'user_name' => 'slackOauth', //とりあえず入れてる
+         //   'test_id' => "$testnumber",
+         //   'score' => "$correctcount",
+         //   'created_at' => Carbon::now(), //時間が違う、場所の設定が違うのかも
+         //   'updated_at' => Carbon::now()]); //時間が違う、場所の設定が違うのかも
 
-         return redirect()->route('testend'); //テスト完了画面に遷移
-       }
+         // return redirect()->route('testend'); //テスト完了画面に遷移
+       // }
 
        // 　テストの答え格納　終わり
->>>>>>> slackOauth
+// >>>>>>> slackOauth
 
          // return view('testend'); //テスト完了画面に遷移
        // }

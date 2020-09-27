@@ -95,6 +95,7 @@
               <input type="text" name="test_title"   placeholder="テストタイトルを入力してください。">
 							<label><input type="radio" name="status" value="1">使用</label>
 							<label><input type="radio" name="status" value="2">未使用</label>
+							<label><input type="number" name="test_time" value="">分</label>
               <!-- <textarea name="test_heory" rows="2" placeholder="ここにテキストを入れることができます。"></textarea> -->
             <!-- </div> -->
             <table>
@@ -103,14 +104,14 @@
               </tbody>
             </table>
 						{{ csrf_field() }}
-            <input type="submit" value="保存">
+            <input id="save" type="submit" value="保存">
           </form>
 
           <!-- <p id="output">0</p> -->
 
           <button id="addTest1" class="plus">+ 1回答問題追加</button>
           <button id="addTest2" class="plus">+ 2回答問題追加</button>
-          <button id="addChoice4" class="plus">+ 4択問題追加</button>
+          <!-- <button id="addChoice4" class="plus">+ 4択問題追加</button> -->
           <button id="addChoice8" class="plus">+ 8択問題追加</button>
           <!-- <button id="addText" class="plus">+ テキスト問題追加</button> -->
 
@@ -123,8 +124,8 @@
 
 					// テーブルの値を１行ずつ取得してjqueryにて連想配列を作る
 					// .idの処理
-					$('#addChoice8').click(function(){
-						// $('#save').click(function(){
+					// $('#addChoice8').click(function(){
+						$('#save').click(function(){
 							// コンテナーにid振る
 							$('#sortable tr').each(function(i){
 								$(this).attr('value',(i+1));
@@ -199,7 +200,7 @@
 
 							// .8text"の処理
 							$('#sortable .8text').each(function(i){
-								var value = $('.in' + (i+1)).attr("value");
+								var value = $('.er' + (i+1)).attr("value");
 								$(this).attr('name','8text' + (value));
 							});
 
@@ -216,8 +217,9 @@
 						for (var t = 1; t <= 8; t++) {
 								$('#sortable .8choice'+t+'_').each(function(i){
 									var value = $('.er' + (i+1)).attr("value");
+									// $(this).attr('name','8choice'+t+'_' + (value));
 									$(this).attr('name','8choice'+t+'_' + (value));
-									// alert('.8answer'+t+'_');
+									// alert('.8answer'+t+'_'(value));
 								});
 						}
 
@@ -232,7 +234,7 @@
         		// 問題追加 1回答
         		//追加ボタンがクリックされたら、function(){…}の処理を実行する
         		$('#addTest1').click(function(){
-					var html = '<tr><td><textarea name="text" rows="5" cols="50" placeholder="ここに問題文を入力してください。"></textarea></td><td><input type="text" name="text" placeholder="回答を入力してください。"></td><td class="remove-center"><button class="remove">-</button></td></tr>';
+					var html = '<tr id="con" class=""><input type="hidden" class="id" value=""><td><textarea class="1text" name="" rows="5" cols="50" placeholder="ここに問題文を入力してください。" value=""></textarea></td><td><input type="text" class="1answer_" name="" value="" placeholder="回答を入力してください。"></td><td class="remove-center"><button class="remove">-</button></td></tr>';
         				//append()を使ってtbody内の一番最後にhtmlを追加する
         				$('tbody').append(html);
             });
@@ -240,12 +242,12 @@
             // 問題追加 2回答
         		//追加ボタンがクリックされたら、function(){…}の処理を実行する
         		$('#addTest2').click(function(){
-					var html = '<tr><td><textarea name="text" rows="5" cols="50" placeholder="ここに問題文を入力してください。"></textarea></td><td><input type="text" name="text" placeholder="回答を入力してください。"><input type="text" name="text" placeholder="回答を入力してください。"></td><td class="remove-center"><button class="remove">-</button></td></tr>';
+					var html = '<tr id="ta"><input type="hidden" class="id" value=""><td><textarea class="2text" name="" rows="5" cols="50" placeholder="ここに問題文を入力してください。" value=""></textarea></td><td><input type="text" class="2answer1_" name="" value="" placeholder="回答を入力してください。"><input type="text" class="2answer2_" name="" value="" placeholder="回答を入力してください。"></td><td class="remove-center"><button class="remove">-</button></td></tr>';
         				//append()を使ってtbody内の一番最後にhtmlを追加する
         				$('tbody').append(html);
             });
 
-            // 4択問題追加
+            // 4択問題追加 いらない
         		//追加ボタンがクリックされたら、function(){…}の処理を実行する
         		$('#addChoice4').click(function(){
 					var html = '<tr><td><textarea name="text" rows="5" cols="50" placeholder="ここに問題文を入力してください。"></textarea></td><td><form><input type="radio" name="Choice4"><input type="text" name="answer" placeholder="回答を入力してください。"><input type="radio" name="Choice4"><input type="text" name="answer" placeholder="回答を入力してください。"><input type="radio" name="Choice4"><input type="text" name="answer" placeholder="回答を入力してください。"><input type="radio" name="Choice4"><input type="text" name="answer" placeholder="回答を入力してください。"></form></td><td class="remove-center"><button class="remove">-</button></td></tr>';
@@ -256,7 +258,7 @@
             // 8択問題追加
         		//追加ボタンがクリックされたら、function(){…}の処理を実行する
         		$('#addChoice8').click(function(){
-					var html = '<tr><td><textarea name="text" rows="5" cols="50" placeholder="ここに問題文を入力してください。"></textarea></td><td><form><input type="radio" name="Choice8"><input type="text" name="answer" placeholder="回答を入力してください。"><input type="radio" name="Choice8"><input type="text" name="answer" placeholder="回答を入力してください。"><input type="radio" name="Choice8"><input type="text" name="answer" placeholder="回答を入力してください。"><input type="radio" name="Choice8"><input type="text" name="answer" placeholder="回答を入力してください。"><input type="radio" name="Choice8"><input type="text" name="answer" placeholder="回答を入力してください。"><input type="radio" name="Choice8"><input type="text" name="answer" placeholder="回答を入力してください。"><input type="radio" name="Choice8"><input type="text" name="answer" placeholder="回答を入力してください。"><input type="radio" name="Choice8"><input type="text" name="answer" placeholder="回答を入力してください。"></form></td><td class="remove-center"><button class="remove">-</button></td></tr>';
+					var html = '<tr id="er"><input type="hidden" class="id" value=""><td><textarea class="8text" name="" rows="5" cols="50" placeholder="ここに問題文を入力してください。"></textarea></td><td><input type="radio" class="8choice1_"><input type="text" class="8answer1_" name="" value="" placeholder="回答を入力してください。"><input type="radio" class="8choice2_"><input type="text" class="8answer2_" name="" value="" placeholder="回答を入力してください。"><input type="radio" class="8choice3_"><input type="text" class="8answer3_" name="" value="" placeholder="回答を入力してください。"><input type="radio" class="8choice4_"><input type="text" class="8answer4_" name="" value="" placeholder="回答を入力してください。"><input type="radio" class="8choice5_"><input type="text" class="8answer5_" name="" value="" placeholder="回答を入力してください。"><input type="radio" class="8choice6_"><input type="text" class="8answer6_" name="" value="" placeholder="回答を入力してください。"><input type="radio" class="8choice7_"><input type="text" class="8answer7_" name="" value="" placeholder="回答を入力してください。"><input type="radio" class="8choice8_"><input type="text" class="8answer8_" name="" value="" placeholder="回答を入力してください。"></td><td class="remove-center"><button class="remove">-</button></td></tr>';
         				//append()を使ってtbody内の一番最後にhtmlを追加する
         				$('tbody').append(html);
             });
@@ -289,7 +291,7 @@
 								$(document).on('click', '.plus', function() {
 									i++;
 									var n = i;
-									alert(n);
+									// alert(n);
 									if( n <= 9 ){
 										// $('#output').html(i);
 									} else {
@@ -313,14 +315,6 @@
         });
         </script>
 
-        <!-- <script>
-            $(document).on('click', '.plus', function() {
-                $('#output').html(function(i, val) { return val*1+1 });
-            });
-            $(document).on('click', '.remove', function() {
-                $('#output').html(function(i, val) { return val*1-1 });
-            });
-        </script> -->
         <a href="{{ url('/testlist/') }}" class="more icon-arrow-left3"> 戻る</a>
 			</div>
 		</div>

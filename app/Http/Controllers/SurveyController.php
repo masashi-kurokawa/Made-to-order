@@ -55,17 +55,13 @@ class SurveyController extends Controller
     public function store(Request $request)
     {
 
-        // //既存登録処理
-        // Survey::create($request->all());
-        // Write_survey::create($request->all());
-
         // 参考処理
         $survey = new Survey;
         $postsurvey = $request->all();
         // アンケート登録してから問題の保存
         $surveyno = $request->input('ak_title');
         $surveystatus = $request->input('status');
-        dump($surveystatus);
+        // dump($surveyno);
         // dump($surveyno);
         // DB::table('surveys')->insert([
         //   'title' => "$surveyno", //SlackIDじゃないと入らない
@@ -84,23 +80,35 @@ class SurveyController extends Controller
           //survey_id　アンケート自体のID　登録完了してから入れる
           $choice_text[$i] = $request->input("choice_text$i");
           $describing_text[$i] = $request->input("describing_text$i");
+          $role[$i] = $request->input("role$i");
           $question_number[$i] = $i;
-          // dump($choice_text[$i]);
-          if (!empty($choice_text[$i])) {
-            // dump($choice_text[$i]);
+          $yes_answer[$i] = $request->input("yes_answer$i");
+          $no_answer[$i] = $request->input("no_answer$i");
+          // dump($yes_answer[$i]);
+          // dump($no_answer[$i]);
+          // dump($role[$i]);
+          // dump($surveysno);
+          if (!empty($choice_text[$i])) { //選択式アンケート2択　select　
+            // dump($yes_answer[$i]);
             // DB::table('select_surveys')->insert([
-            //   'survey_id' => "$surveysno",
-            //   'question' => "$choice_text[$i]",
-            //   'question_number' => "$question_number[$i]",
+            //   'survey_id' => "$surveysno", //ok
+            //   'question' => "$choice_text[$i]", //ok
+            //   'question_number' => "$question_number[$i]", //ok
+            //   'role' => "$role[$i]", //ok
+            //   'select1' => "1", //ok
+            //   'select2' => "2", //ok
+            //   'select_item1' => "$yes_answer[$i]", //ok
+            //   'select_item2' => "$no_answer[$i]", //ok
             //   'created_at' => Carbon::now(), //時間が違う、場所の設定が違うのかも
             //   'updated_at' => Carbon::now()  //時間が違う、場所の設定が違うのかも
             // ]);
-          } else {
-            // dump($describing_text[$i]);
+          } else { //記述式アンケート登録　write ok
+            // dump($question_number[$i]);
             // DB::table('write_surveys')->insert([
-            //   'survey_id' => "$surveysno",
-            //   'question' => "$describing_text[$i]",
-            //   'question_number' => "$question_number[$i]",
+            //   'survey_id' => "$surveysno", //ok
+            //   'question' => "$describing_text[$i]", //ok
+            //   'question_number' => "$question_number[$i]", //ok
+            //   'role' => "$role[$i]", //ok
             //   'created_at' => Carbon::now(), //時間が違う、場所の設定が違うのかも
             //   'updated_at' => Carbon::now()  //時間が違う、場所の設定が違うのかも
             // ]);

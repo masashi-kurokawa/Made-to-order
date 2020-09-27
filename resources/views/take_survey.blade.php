@@ -93,42 +93,50 @@
 
 			<!-- 問題表示 -->
 			<form class="form-inline" id="answer" action="" method="GET">
-			    @foreach ($sorteds as $key => $ak)
+						@foreach ($sorteds as $key => $ak)
 			      <div class="fh5co-narrow-content animate-box" data-animate-effect="fadeInLeft">
 			        <div class="row">
-			          <div class="col-md-4">
+			          <div class="col-md-6">
 			            <h4>問{{$ak->question_number}}</h4>
-			            <p>{{$ak->question}}</p>
+			            <p class="question-p">{{$ak->question}}</p>
 									<input type="hidden" class="form-control" name="text_question{{$ak->question_number}}" value="{{$ak->question}}">　<!-- 問題送る様 -->
 			          </div>
 			        </div>
 
-							<!-- テスト回答送信機能 -->
-			        <div class="row">　<!-- ここからテスト問題の回答 -->
-			          <!-- if文で選択、穴埋め、記述を切り分ける -->
-								@if ($ak->role === 1)　<!-- 記述アンケート -->
-								<div class="form-group">
-									<label for="content">回答記入欄</label>
-									<input type="text" class="form-control" name="answer{{$ak->question_number}}" value="">
-									<input type="hidden" class="form-control" name="role{{$ak->question_number}}" value="{{$ak->role}}">
-								</div>
-
-								@elseif ($ak->role === 2)　<!-- 選択アンケート -->
-								<div class="form-group">
-									<input type="radio" name="b_answer{{$ak->question_number}}" value="1">　<!-- ラジオボタン送信様 -->
-									<input type="hidden" class="form-control" name="question{{$ak->question_number}}" value="{{$ak->role}}">
-									<label for="content">{{$ak->select_item1}}</label>
-									<input type="radio" name="b_answer{{$ak->question_number}}" value="2">　<!-- ラジオボタン送信様 -->
-									<input type="hidden" class="form-control" name="question{{$ak->question_number}}" value="{{$ak->role}}">
-									<label for="content">{{$ak->select_item2}}</label>
-									<input type="hidden" class="form-control" name="role{{$ak->question_number}}" value="{{$ak->role}}">
+						<!-- ここからテスト問題の回答 -->
+						@if ($ak->role === 1)　<!-- 記述アンケート -->
+						<div class="row">
+							<div class="col-md-12">
+								<div class="row">
+									<div class="col-md-6">
+										<div class="form-group">
+											<label for="content">A.<input type="text" class="form-control question-input" name="answer{{$ak->question_number}}" placeholder="回答を入力"></label>
+											<input type="hidden" class="form-control" name="role{{$ak->question_number}}" value="{{$ak->role}}">
+										</div>
+									</div>
 								</div>
 							</div>
 						</div>
+
+						@elseif ($ak->role === 2)　<!-- 選択アンケート -->
+							<div class="row">
+								<div class="form-group">
+									<div class="col-md-12">
+										<div class="radio">
+											<label><input type="radio" name="b_answer{{$ak->question_number}}" value="1">　{{$ak->select_item1}}　</label>　<!-- ラジオボタン送信様 -->
+											<input type="hidden" class="form-control " name="question{{$ak->question_number}}" value="{{$ak->role}}">
+										</div>
+										<div class="radio">
+											<label><input type="radio" id="2" name="b_answer{{$ak->question_number}}" value="2">　{{$ak->select_item2}}　</label>　<!-- ラジオボタン送信様 -->
+											<input type="hidden" id="2" class="form-control" name="question{{$ak->question_number}}" value="{{$ak->role}}">
+										</div>
+									</div>
+									<input type="hidden" class="form-control" name="role{{$ak->question_number}}" value="{{$ak->role}}">
+								</div>
+							</div>
 						@endif
-
-			     @endforeach
-
+						</div>
+			     	@endforeach
 
 				<div class="test-btn">
 					<input type="submit" class="btn btn-primary btn-md" onclick="return confirm('アンケートを終了してもよろしいですか？')" onclick="location.href='{{ url('/surveyend/') }}'" value="アンケート終了">
@@ -137,6 +145,8 @@
 
 		</div>
 	</div>
+</div>
+
 
 	<!-- jQuery -->
 	<script src="js/jquery.min.js"></script>

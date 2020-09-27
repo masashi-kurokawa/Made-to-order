@@ -103,10 +103,9 @@
               <tbody id="sortable">
               <!-- ここに問題が追加されていきます。 -->
 
-
               </tbody>
             </table>
-            <input type="submit" id="save" value="保存"> <!-- 保存した時にアンケート順番で連番つける（jQuery） -->
+            <input type="submit" id="save" onclick="return confirm('アンケート作成を完了しますか？')" value="保存"> <!-- 保存した時にアンケート順番で連番つける（jQuery） -->
           </form>
 
           <!-- <p id="output">0</p> -->
@@ -122,20 +121,27 @@
 				// .idの処理
 				// $('#addText').click(function(){
 					$('#save').click(function(){
-						// コンテナーにid振る
+						// trにvalue値入れる
 						$('#sortable tr').each(function(i){
 							$(this).attr('value',(i+1));
 							// alert(value);
 						});
+						// 選択問題の何問目か判定
 						$('#sortable #con').each(function(i){
 								$(this).attr('class','con' + (i+1));
 						});
+						// 記述問題の何問目か判定
 						$('#sortable #tainer').each(function(i){
 							$(this).attr('class','tainer' + (i+1));
 						});
 
+						// ロール判定つける
+						$('#sortable .role').each(function(i){
+							$(this).attr('name','role' + (i+1));
+						});
+
+						// 全体で何問目かの判定　nameにid振る
 						$('#sortable .id').each(function(i){
-							// $(this).attr('name','id_' + (i+1));
 							$(this).attr('name','id');
 							$(this).attr('value',(i+1));
 						});
@@ -170,15 +176,16 @@
             // 2択問題追加
         		//追加ボタンがクリックされたら、function(){…}の処理を実行する
 						$('#addChoice2').click(function(){
-								var html = '<tr id="con" class=""><input type="hidden" class="id" value=""><td><textarea class="choice-text" name="" rows="5" cols="50" placeholder="ここに質問を入力してください。" value=""></textarea></td><td><input type="text" class="yes-answer" name="" value="" placeholder="回答を入力してください。"><input type="text" class="no-answer" name="" value="" placeholder="回答を入力してください。"></td><td class="remove-center"><button class="remove">-</button></td></tr>';
+								var html = '<tr id="con" class=""><input type="hidden" class="id" value=""><input type="hidden" class="role" value="1"><td><textarea class="choice-text" name="" rows="5" cols="50" placeholder="ここに質問を入力してください。" value=""></textarea></td><td><input type="text" class="yes-answer" name="" value="" placeholder="回答を入力してください。"><input type="text" class="no-answer" name="" value="" placeholder="回答を入力してください。"></td><td class="remove-center"><button class="remove">-</button></td></tr>';
 								//append()を使ってtbody内の一番最後にhtmlを追加する
 								$('tbody').append(html);
             });
 
             // アンケート追加
+						//記述アンケート
         		//追加ボタンがクリックされたら、function(){…}の処理を実行する
         		$('#addText').click(function(){
-								var html ='<tr id="tainer" class=""><input type="hidden" class="id" value=""><td><textarea class="describing-text" name="" rows="5" cols="50" placeholder="ここに質問を入力してください。"></textarea></td><td class="remove-center"><button class="remove">-</button></td></tr>';
+								var html ='<tr id="tainer" class=""><input type="hidden" class="id" value=""><input type="hidden" class="role" value="2"><td><textarea class="describing-text" name="" rows="5" cols="50" placeholder="ここに質問を入力してください。"></textarea></td><td class="remove-center"><button class="remove">-</button></td></tr>';
 								//append()を使ってtbody内の一番最後にhtmlを追加する
         				$('tbody').append(html);
             });
