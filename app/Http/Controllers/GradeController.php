@@ -28,8 +28,6 @@ class GradeController extends Controller
     {
         // 未採点の記述テスト取得
         $unscored_tests = $this->write_answerService->getUnscored();
-        dump($unscored_tests);
-        exit;
 
         $data = array();
         $i = 0;
