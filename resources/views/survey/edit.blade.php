@@ -97,18 +97,27 @@
 
 
 
-						<table>
-						  <tbody>
-						    @foreach ($sorteds as $value)
-						    <td><textarea name="text" rows="5" cols="50">{{$value}}</textarea></td>
-						    @endforeach
-						  </tbody>
-						</table>
-            <input type="submit" value="保存">
-						@if ($message = Session::get('success'))
-						<p>{{ $message }}</p>
-						@endif
           </form>
+					@foreach ($sorteds as $value)
+					<div class="animate-box" data-animate-effect="fadeInLeft">
+						<div class="row">
+							<div class="col-md-10">
+								<div class="space">
+									<h4>問題{{$value['question_number']}}</h4>
+										<p>{{$value['question']}}</p>
+								</div>
+								<div class="space">
+									<h5>回答</h5>
+								</div>
+								<div class="space">
+									<!-- nameタグの grade の後ろに問題番号の数字を入れることでradioボタンを他問題と分けることができる -->
+									<label class="labelspace correct"><input class="geomsize" type="radio" name="{{$value['question_number']}}" value="1" required>正解</label>
+									<label class="labelspace incorrect"><input class="geomsize" type="radio" name="{{$value['question_number']}}" value="2">不正解</label>
+								</div>
+							</div>
+						</div>
+					</div>
+					@endforeach
 
           <p id="output">0</p>
 
