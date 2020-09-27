@@ -6,7 +6,7 @@
 	<head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>タイトル &mdash; アンケート詳細・編集</title>
+	<title>タイトル &mdash; 回答確認</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="description" content="Free HTML5 Website Template by FreeHTML5.co" />
 	<meta name="keywords" content="free html5, free template, free bootstrap, free website template, html5, css3, mobile first, responsive" />
@@ -88,98 +88,63 @@
 
 		<div id="fh5co-main" class="animate-box" data-animate-effect="fadeInLeft">
 			<div class="fh5co-narrow-content">
-				<h2 class="fh5co-heading">アンケート詳細・編集</h2>
+				<h2 class="fh5co-heading">回答確認</h2>
 
-        <div class="container animate-box" data-animate-effect="fadeInLeft">
-					<form action="{{ route('survey.update',$survey->id)}}" method="POST">
-						@csrf
-				    @method('PUT')
-            <div class="title-rap">
-              <input type="text" name="title" value="{{ $survey->title }}">
-							<label><input type="radio" value="1" name="status" @if (old('status', $survey->status) == 1) checked @endif>使用</label>
-							<label><input type="radio" value="2" name="status" @if (old('status', $survey->status) == 2) checked @endif>未使用</label>
-              <!-- <textarea name="text" rows="2" placeholder="ここにテキストを入れることができます。"></textarea> -->
+					@csrf
+				  @method('PUT')
+          <div class="fh5co-narrow-content">
+            <h2 class="fh5co-heading animate-box" data-animate-effect="fadeInLeft">{{$survey->title}}</h2>
+
+            @foreach ($sort as $value)
+            <div class="fh5co-narrow-content animate-box" data-animate-effect="fadeInLeft">
+			        <div class="row">
+			          <div class="col-md-6">
+			            <h4>問{{$value->question_number}}</h4>
+			            <p class="question-p">{{$value->question}}</p>
+									<input type="hidden" class="form-control" name="text_question{{$value->question_number}}" value="{{$value->question}}">
+			          </div>
+			        </div>
+
+
+              <!-- ここからテスト問題の回答 -->
+              <!-- 記述アンケート -->
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label for="content">A.</label><p>ここにanswerを持ってくる</p>
+                        <input type="hidden" class="form-control" name="role{{$value->question_number}}" value="{{$value->role}}">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 選択アンケート -->
+              <div class="row">
+                <div class="form-group">
+                  <div class="col-md-12">
+                    <div class="radio">
+                      <input type="hidden" class="form-control " name="question{{$value->question_number}}" value="{{$value->role}}">
+                    </div>
+                    <div class="radio">
+                      <input type="hidden" id="2" class="form-control" name="question{{$value->question_number}}" value="{{$value->role}}">
+                    </div>
+                  </div>
+                  <input type="hidden" class="form-control" name="role{{$value->question_number}}" value="{{$value->role}}">
+                </div>
+              </div>
             </div>
-            <table>
-              <tbody>
-								@foreach ($write_surveys as $write_survey)
-								<tr>
-									<td><textarea name="question" rows="5" cols="50">{{$write_survey->question}}</textarea></td>
-									<td class="remove-center"><button class="remove">-</button></td>
-								</tr>
-								@endforeach
-								@foreach ($select_surveys as $select_survey)
-								<tr>
-									<td><textarea name="text" rows="5" cols="50">{{$select_survey->question}}</textarea></td>
-									<td>
-										<form>
-											<input type="radio" name="Choice2">
-											<input type="text" name="answer" placeholder="回答を入力してください。">
-											<input type="radio" name="Choice2">
-											<input type="text" name="answer" placeholder="回答を入力してください。">
-										</form>
-									</td>
-									<td class="remove-center"><button class="remove">-</button></td>
-								</tr>
-								@endforeach
-              </tbody>
-            </table>
-            <input type="submit" value="保存">
-						@if ($message = Session::get('success'))
-						<p>{{ $message }}</p>
-						@endif
-          </form>
+            @endforeach
 
-          <p id="output">0</p>
+          </div>
 
-          <button id="addChoice2" class="plus">+ 選択式ｱﾝｹｰﾄ追加</button>
-          <button id="addText" class="plus">+ 記述式ｱﾝｹｰﾄ追加</button>
-
-        </div>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-        <script>
-        $(function(){
-            // 並び替え機能
-            $('tbody').sortable();
-
-            // 2択問題追加
-        		//追加ボタンがクリックされたら、function(){…}の処理を実行する
-        		$('#addChoice2').click(function(){
-                var html = '<tr><td><textarea name="text" rows="5" cols="50" placeholder="ここに問題文を入力してください。"></textarea></td><td><form><input type="radio" name="Choice2"><input type="text" name="answer" placeholder="回答を入力してください。"><input type="radio" name="Choice2"><input type="text" name="answer" placeholder="回答を入力してください。"></form></td><td class="remove-center"><button class="remove">-</button></td></tr>';
-        				//append()を使ってtbody内の一番最後にhtmlを追加する
-        				$('tbody').append(html);
-            });
-
-            // アンケート追加
-        		//追加ボタンがクリックされたら、function(){…}の処理を実行する
-        		$('#addText').click(function(){
-                var html = '<tr><td><textarea name="text" rows="5" cols="50" placeholder="ここに質問を入力してください。"></textarea></td><td><textarea name="text" rows="5" cols="50" placeholder="回答を入力してください。"></textarea></td><td class="remove-center"><button class="remove">-</button></td></tr>';
-        				//append()を使ってtbody内の一番最後にhtmlを追加する
-        				$('tbody').append(html);
-            });
-
-        		// 削除処理
-        		//削除ボタンがクリックされたら、function(){…}の処理を実行する
-        		$(document).on('click', '.remove', function() {
-        				//クリックされた.removeの親要素trをremove（削除）する
-                $(this).parents('tr').remove();
-            });
-
-        });
-        </script>
-        <script>
-            $(document).on('click', '.plus', function() {
-                $('#output').html(function(i, val) { return val*1+1 });
-            });
-            $(document).on('click', '.remove', function() {
-                $('#output').html(function(i, val) { return val*1-1 });
-            });
-        </script>
-				<a href="{{ route('survey.index')}}" class="more icon-arrow-left3"> 戻る</a>
+        <p>戻るボタン先設定お願いします　route('student_details/ここにSlack_nameをとってきたい')</p>
+				<a href="" class="more icon-arrow-left3"> 戻る</a>
 			</div>
 		</div>
-		</div>
+  </div>
 
 	<!-- jQuery -->
 	<!-- <script src="js/jquery.min.js"></script> -->

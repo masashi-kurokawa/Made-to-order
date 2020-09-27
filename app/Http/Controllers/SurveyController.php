@@ -131,10 +131,32 @@ class SurveyController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id, Request $request)
     {
-        $survey = Survey::find($id);
-        return view('survey.show',compact('survey'));
+
+      // if ($request) {
+      //     dump($request);
+      // }
+
+      $survey = Survey::find($id);
+      $selectitems = DB::table('select_surveys')->whereSurvey_id("$id")->get()->toArray();
+      $writeitems = DB::table('write_surveys')->whereSurvey_id("$id")->get()->toArray();
+
+      $sum = array_merge($selectitems, $writeitems);
+
+      $count_questions = count($sum);
+
+      $sort = collect($sum);
+
+      $sort = $sort->sortBy('question_number')->all();
+      dump($sort);
+
+      return view('survey.show',
+        [
+          'count_questions' => $count_questions,
+          'survey' => $survey,
+          'survey_id' => $id,
+        ], compact('sort'));
     }
 
     /**
