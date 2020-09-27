@@ -13,11 +13,9 @@ form {
   color: #777;
 }
 
-.title-rap {
-  margin-bottom: 30px;
-}
-.title-rap textarea {
-  width: 60%;
+.time-rap {
+  display: block;
+  margin: 2% 1%;
 }
 
 .space {
@@ -91,7 +89,7 @@ input[type=submit] {
   color: #fff;
   width: 30%;
   height: 40px;
-  margin: 0 auto;
+  margin: 5% auto 3%;
   padding: 0;
   line-height: 2.6em;
   text-align: center;

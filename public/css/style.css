@@ -342,7 +342,8 @@ figure figcaption {
   transform: scaleX(1);
 }
 #fh5co-aside .fh5co-footer {
-  position: absolute;
+  /* position: absolute; */
+  margin-top: 70%;
   bottom: 40px;
   font-size: 14px;
   text-align: center;

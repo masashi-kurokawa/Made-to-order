@@ -76,10 +76,14 @@
 					<li><a href="{{ url('/survey/') }}">アンケート一覧</a></li>
 					<li><a href="{{ url('/student/') }}">生徒一覧</a></li>
 					<li><a href="{{ url('/score/') }}">点数早見表</a></li>
+					<li><a href="{{ url('/grade/') }}">未採点</a></li>
 				</ul>
 			</nav>
 
 			<div class="fh5co-footer">
+				<div class="logout-space">
+					<a href="{{ route('logout') }}" class="logout-btn">ログアウト</a>
+				</div>
 				<p><small>&copy; 2020 carecon. All Rights Reserved.</small></p>
 			</div>
 
