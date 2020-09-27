@@ -211,11 +211,7 @@ class SurveyController extends Controller
      */
     public function update(Request $request, $id)
     {
-<<<<<<< HEAD
         dump($request);
-=======
-      dump($request);
->>>>>>> feature/kurokawa
         // $survey = new Survey;
         // $write_survey = new Write_survey;
         // $select_survey = new Select_survey;
@@ -260,11 +256,11 @@ class SurveyController extends Controller
         //             $select_survey->save();
         //
         //         }
-<<<<<<< HEAD
+// <<<<<<< HEAD
         //     }
-=======
+// =======
             // }
->>>>>>> feature/kurokawa
+// >>>>>>> feature/kurokawa
         // }
         // $update = [
         //     'title' => $request->title,
