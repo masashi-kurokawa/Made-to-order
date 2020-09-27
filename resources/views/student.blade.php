@@ -116,7 +116,7 @@
 							<a href="{{ route('student_details', ['name' => $user->slack_name]) }}" class="blog-img"><img src="{{$user->slack_image}}" class="img-responsive" alt="#"></a>
 							<div class="desc">
 								<h3><a href="{{ route('student_details', ['name' => $user->slack_name]) }}">{{$user->slack_name}}</a></h3>
-								<span>カリキュラム</span>
+								<!-- <span>カリキュラム</span> -->
 								<a href="{{ route('student_details', ['name' => $user->slack_name]) }}" class="lead">生徒詳細<i class="icon-arrow-right3"></i></a>
 							</div>
 						</div>
