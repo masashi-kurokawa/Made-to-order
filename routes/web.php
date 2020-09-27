@@ -40,7 +40,7 @@ Route::get('/test', 'TestController@index');
 
 //テスト詳細・編集
 Route::get('/testedit/{id}', 'TesteditController@edit');
-Route::post('/testedit/{id}', 'TesteditController@edit');
+Route::post('/testedit/{id}', 'TesteditController@editRegister');
 
 //テスト削除
 Route::post('/testlist/delete/{id}', 'TestlistController@delete');
