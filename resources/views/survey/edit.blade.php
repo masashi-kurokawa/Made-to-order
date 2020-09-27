@@ -100,27 +100,10 @@
 							<label><input type="radio" value="2" name="status" @if (old('status', $survey->status) == 2) checked @endif>未使用</label>
               <!-- <textarea name="text" rows="2" placeholder="ここにテキストを入れることができます。"></textarea> -->
             </div>
-            <table>
-              <tbody>
-								@foreach ($write_surveys as $write_survey)
-								<tr>
-									<td><textarea name="question" rows="5" cols="50">{{$write_survey->question}}</textarea></td>
-									<td class="remove-center"><button class="remove">-</button></td>
-								</tr>
-								@endforeach
-								@foreach ($select_surveys as $select_survey)
-								<tr>
-									<td><textarea name="text" rows="5" cols="50">{{$select_survey->question}}</textarea></td>
-									<td>
-										<form>
-											<input type="radio" name="Choice2">
-											<input type="text" name="answer" placeholder="回答を入力してください。">
-											<input type="radio" name="Choice2">
-											<input type="text" name="answer" placeholder="回答を入力してください。">
-										</form>
-									</td>
-									<td class="remove-center"><button class="remove">-</button></td>
-								</tr>
+						<table>
+							<tbody>
+								@foreach ($sorteds as $key => $ak)
+								<td><textarea name="text" rows="5" cols="50">{{$ak}}</textarea></td>
 								@endforeach
               </tbody>
             </table>

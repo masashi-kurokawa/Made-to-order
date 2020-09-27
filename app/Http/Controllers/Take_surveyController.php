@@ -33,7 +33,7 @@ class Take_surveyController extends Controller
 
        // アンケートのソート
        $sorteds = $sorted->sortBy('question_number')->all();
-       // dump($sorteds);
+       dump($sorteds);
        // アンケート表示処理　終わり
 
 

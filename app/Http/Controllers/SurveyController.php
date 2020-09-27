@@ -146,17 +146,34 @@ class SurveyController extends Controller
     public function edit($id)
     {
         $survey = Survey::find($id);
+        $write_survey2 = Write_survey::where('survey_id', $id)->get()->toArray();
+        $select_survey2 = Select_survey::where('survey_id', $id)->get()->toArray();
         $write_survey = Write_survey::where('survey_id', $id)->get();
         $select_survey = Select_survey::where('survey_id', $id)->get();
+
+
+        //配列を合わせる
+        $str2 = array_merge($write_survey2, $select_survey2);
+
+        // collect（数字化？）
+        $sorted = collect($str2);
+
+        // アンケートのソート
+        $sorteds = $sorted->sortBy('question_number')->all();
+        dump($sorteds);
+        // アンケート表示処理　終わり
+
+
         //確認用
         // dump($write_survey);
         // 初期記入方法
-        // return view('survey.edit',compact('survey'));
-        return view('survey.edit', [
-              'survey' => $survey,
-              'write_surveys' => $write_survey,
-              'select_surveys' => $select_survey,
-            ]);
+        return view('survey.edit',compact('survey', 'sorteds'));
+        // return view('survey.edit', [
+        //       'survey' => $survey,
+        //       'write_surveys' => $write_survey,
+        //       'select_surveys' => $select_survey,
+        //       'sorteds' => $sorteds,
+        //     ]);
     }
 
 
