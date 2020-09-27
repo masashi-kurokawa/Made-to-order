@@ -161,6 +161,8 @@ class SurveyController extends Controller
         // アンケートのソート
         $sorteds = $sorted->sortBy('question_number')->all();
         dump($sorteds);
+        dump(is_array ( $sorteds));
+        // is_array ( $sorteds);
         // アンケート表示処理　終わり
 
 

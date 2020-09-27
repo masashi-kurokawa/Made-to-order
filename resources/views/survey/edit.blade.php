@@ -102,8 +102,8 @@
             </div>
 						<table>
 							<tbody>
-								@foreach ($sorteds as $key => $ak)
-								<td><textarea name="text" rows="5" cols="50">{{$key}}</textarea></td>
+								@foreach ($sorteds as $value)
+								<td><textarea name="text" rows="5" cols="50">{{$value}}</textarea></td>
 								@endforeach
               </tbody>
             </table>
