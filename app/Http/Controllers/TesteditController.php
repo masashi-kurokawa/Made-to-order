@@ -66,6 +66,8 @@ class TesteditController extends Controller
         // $test_data->updated_at = Carbon::now();
         // $test_data->save();
         //
+
+        // ここから下が変更
         // foreach ($request->request as $key) {
         //     // $requestの'_token'以外を使う
         //     if ($key != '_token') {

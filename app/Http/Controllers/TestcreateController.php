@@ -40,7 +40,7 @@ class TestcreateController extends Controller
         for ($i=1; $i <= $surveyno; $i++) {
           $question_number[$i] = $i; //何問目か？
           $text1[$i] = $request->input("1text$i"); //１回答のテキスト
-          $answer_1[$i] = $request->input("1answer_$i"); //１回答の答え
+          // $answer_1[$i] = $request->input("1answer_$i"); //１回答の答え
 
           $text2[$i] = $request->input("2text$i"); //穴埋めのテキスト
           $answer2_1[$i] = $request->input("2answer1_$i"); //穴埋めのテキスト
