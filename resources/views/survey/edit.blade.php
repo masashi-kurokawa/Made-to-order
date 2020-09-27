@@ -91,19 +91,16 @@
 				<h2 class="fh5co-heading">アンケート詳細・編集</h2>
 
         <div class="container animate-box" data-animate-effect="fadeInLeft">
-					<form action="{{ route('survey.update',$survey->id)}}" method="POST">
-						@csrf
-				    @method('PUT')
-            <div class="title-rap">
-              <input type="text" name="title" value="{{ $survey->title }}">
-							<label><input type="radio" value="1" name="status" @if (old('status', $survey->status) == 1) checked @endif>使用</label>
-							<label><input type="radio" value="2" name="status" @if (old('status', $survey->status) == 2) checked @endif>未使用</label>
-              <!-- <textarea name="text" rows="2" placeholder="ここにテキストを入れることができます。"></textarea> -->
-            </div>
+					<form action="" method="POST">
+
+
+
+
+
 						<table>
 							<tbody>
-								@foreach ($sorteds as $value)
-								<td><textarea name="text" rows="5" cols="50">{{$value}}</textarea></td>
+								@foreach ($sorteds as $key => $ak)
+								<td>{{$key}}</td>
 								@endforeach
               </tbody>
             </table>

@@ -145,7 +145,7 @@ class SurveyController extends Controller
      */
     public function edit($id)
     {
-        $survey = Survey::find($id);
+        // $survey = Survey::find($id);
         $write_survey2 = Write_survey::where('survey_id', $id)->get()->toArray();
         $select_survey2 = Select_survey::where('survey_id', $id)->get()->toArray();
         $write_survey = Write_survey::where('survey_id', $id)->get();
@@ -169,7 +169,8 @@ class SurveyController extends Controller
         //確認用
         // dump($write_survey);
         // 初期記入方法
-        return view('survey.edit',compact('survey', 'sorteds'));
+        // return view('survey.edit',compact('survey', 'sorteds'));
+        return view('survey.edit',compact('sorteds'));
         // return view('survey.edit', [
         //       'survey' => $survey,
         //       'write_surveys' => $write_survey,
