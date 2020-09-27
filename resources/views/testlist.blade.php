@@ -96,13 +96,11 @@
 					<input type="submit" class="btn btn-primary btn-md animate-box" data-animate-effect="fadeInLeft" onclick="location.href='{{ url('/testcreate/') }}'" value="新規作成">
 					<form action="{{ url('/testlist/') }}" method="POST">
 						@csrf
-						<div class="form-group-status">
-							<p class="fh5co-lead">表示テスト：</p>
-							<label class="use-status"><input type="radio" name="status" value="1" {{ $status == '1' ? 'checked' : '' }}> 使用中のテスト</label>
-							<label class="use-status"><input type="radio" name="status" value="2"	{{ $status == '2' ? 'checked' : '' }}> 未使用中のテスト</label>
-							<div class="form-submit">
-								<input type="submit" class="btn btn-primary btn-md" value="検索">
-							</div>
+						<div class="test-select animate-box" data-animate-effect="fadeInLeft">
+							<input type="submit" name="status" id="on" value="1" {{ $status == '1' ? 'checked' : '' }}>
+							<label for="on">使用中テスト表示</label>
+							<input type="submit" name="status" id="off" value="2"　{{ $status == '2' ? 'checked' : '' }}>
+							<label for="off">未使用テスト表示</label>
 						</div>
 					</form>
 				@endif
