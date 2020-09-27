@@ -255,8 +255,8 @@ class SurveyController extends Controller
         //             $select_survey->save();
         //
         //         }
-            }
-        }
+        //     }
+        // }
         // $update = [
         //     'title' => $request->title,
         //     'status' =>$request->status
