@@ -81,6 +81,9 @@
 			</nav>
 
 			<div class="fh5co-footer">
+				<div class="logout-space">
+					<a href="{{ route('logout') }}" class="logout-btn">ログアウト</a>
+				</div>
 				<p><small>&copy; 2020 carecon. All Rights Reserved.</small></p>
 			</div>
 
@@ -91,13 +94,13 @@
 				<h2 class="fh5co-heading">テスト新規作成</h2>
         <div id="count" class="container animate-box" data-animate-effect="fadeInLeft">
           <form action = "#" method="post">
-            <!-- <div class="title-rap"> -->
               <input type="text" name="test_title"   placeholder="テストタイトルを入力してください。">
 							<label><input type="radio" name="status" value="1">使用</label>
 							<label><input type="radio" name="status" value="2">未使用</label>
-							<label><input type="number" name="test_time" value="">分</label>
-              <!-- <textarea name="test_heory" rows="2" placeholder="ここにテキストを入れることができます。"></textarea> -->
-            <!-- </div> -->
+							<div class="time-rap">
+								<label>テストタイム　<input type="number" name="test_time" min="1" max="100" value="1"> 分</label>
+            	</div>
+							<!-- <textarea name="test_heory" rows="2" placeholder="ここにテキストを入れることができます。"></textarea> -->
             <table>
               <tbody id="sortable">
               <!-- ここに問題が追加されていきます。 -->
@@ -112,7 +115,7 @@
           <button id="addTest1" class="plus">+ 1回答問題追加</button>
           <button id="addTest2" class="plus">+ 2回答問題追加</button>
           <!-- <button id="addChoice4" class="plus">+ 4択問題追加</button> -->
-          <button id="addChoice8" class="plus">+ 8択問題追加</button>
+          <button id="addChoice8" class="plus">+ 択問題追加</button>
           <!-- <button id="addText" class="plus">+ テキスト問題追加</button> -->
 
         </div>

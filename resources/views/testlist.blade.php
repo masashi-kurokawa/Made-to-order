@@ -80,6 +80,9 @@
 			</nav>
 
 			<div class="fh5co-footer">
+				<div class="logout-space">
+					<a href="{{ route('logout') }}" class="logout-btn">ログアウト</a>
+				</div>
 				<p><small>&copy; 2020 carecon. All Rights Reserved.</small></p>
 			</div>
 
@@ -89,7 +92,20 @@
 			<div class="fh5co-narrow-content">
 				<h2 class="fh5co-heading animate-box" data-animate-effect="fadeInLeft">テスト一覧</h2>
 
-				<input type="submit" class="btn btn-primary btn-md animate-box" data-animate-effect="fadeInLeft" onclick="location.href='{{ url('/testcreate/') }}'" value="新規作成">
+				@if ($user_role == 2)
+					<input type="submit" class="btn btn-primary btn-md animate-box" data-animate-effect="fadeInLeft" onclick="location.href='{{ url('/testcreate/') }}'" value="新規作成">
+					<form action="{{ url('/testlist/') }}" method="POST">
+						@csrf
+						<div class="form-group-status">
+							<p class="fh5co-lead">表示テスト：</p>
+							<label class="use-status"><input type="radio" name="status" value="1" {{ $status == '1' ? 'checked' : '' }}> 使用中のテスト</label>
+							<label class="use-status"><input type="radio" name="status" value="2"	{{ $status == '2' ? 'checked' : '' }}> 未使用中のテスト</label>
+							<div class="form-submit">
+								<input type="submit" class="btn btn-primary btn-md" value="検索">
+							</div>
+						</div>
+					</form>
+				@endif
 
 				<div class="row row-bottom-padded-md">
 
@@ -103,12 +119,14 @@
 								<!-- <p>ここにテキストを入れることができます。</p> -->
 								<div class="more-center">
 									<a href="{{ url('/test/') }}" class="lead more">テスト受講</a>
-									<a href="{{ url('/testedit/'.$tests->id)}}" class="lead more">詳細・編集</a>
+									@if ($user_role == 2)
+										<a href="{{ url('/testedit/'.$tests->id)}}" class="lead more">詳細・編集</a>
 
-									<form action="/testlist/delete/{{$tests->id}}" method="POST">
-										{{ csrf_field() }}
-										<input class="lead more" type="submit" value="削除" onclick='return confirm("本当に削除しますか？");'>
-									</form>
+										<form action="/testlist/delete/{{$tests->id}}" method="POST">
+											{{ csrf_field() }}
+											<input class="lead more" type="submit" value="削除" onclick='return confirm("本当に削除しますか？");'>
+										</form>
+									@endif
 
 								</div>
 							</div>

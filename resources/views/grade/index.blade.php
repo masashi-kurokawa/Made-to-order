@@ -92,7 +92,7 @@
 			<div class="fh5co-narrow-content">
 				<h2 class="fh5co-heading animate-box" data-animate-effect="fadeInLeft">未採点</h2>
 
-				<form action="#" method="get">
+				<form class="animate-box" data-animate-effect="fadeInLeft" action="#" method="get">
 					<div class="row">
 						<div class="col-md-12">
 							<div class="row">

@@ -213,6 +213,7 @@ class SurveyController extends Controller
      */
     public function update(Request $request, $id)
     {
+<<<<<<< HEAD
       $postak = $request->all();
       dump($postak);
         $survey = new Survey;
@@ -230,6 +231,23 @@ class SurveyController extends Controller
         $survey_data->status = $request->status;
         $survey_data->updated_at = Carbon::now();
         $survey_data->save();
+=======
+        dump($request);
+        // $survey = new Survey;
+        // $write_survey = new Write_survey;
+        // $select_survey = new Select_survey;
+        //
+        // // 削除処理
+        // $write_survey->where('survey_id', $id)->delete();
+        // $select_survey->where('survey_id', $id)->delete();
+        //
+        // // surveyテーブルの変更
+        // $survey_data = $survey->where('id', $id)->get();
+        // $survey_data->title = $request->title;
+        // $survey_data->status = $request->status;
+        // $survey_data->updated_at = Carbon::now();
+        // $survey_data->save();
+>>>>>>> slackOauth
         //
 
 
@@ -301,7 +319,11 @@ class SurveyController extends Controller
         //             $select_survey->save();
         //
         //         }
+// <<<<<<< HEAD
+        //     }
+// =======
             // }
+// >>>>>>> feature/kurokawa
         // }
         // $update = [
         //     'title' => $request->title,
