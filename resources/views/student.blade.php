@@ -80,6 +80,9 @@
 			</nav>
 
 			<div class="fh5co-footer">
+				<div class="logout-space">
+					<a href="{{ route('logout') }}" class="logout-btn">ログアウト</a>
+				</div>
 				<p><small>&copy; 2020 carecon. All Rights Reserved.</small></p>
 			</div>
 
@@ -89,7 +92,7 @@
 			<div class="fh5co-narrow-content">
 				<h2 class="fh5co-heading animate-box" data-animate-effect="fadeInLeft">生徒一覧</h2>
 
-				<form action="#" method="get">
+				<form class="animate-box" data-animate-effect="fadeInLeft" action="#" method="get">
 					<div class="row">
 						<div class="col-md-12">
 							<div class="row">
