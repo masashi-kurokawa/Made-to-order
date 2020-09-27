@@ -93,9 +93,9 @@
 				<h2 class="fh5co-heading animate-box" data-animate-effect="fadeInLeft">テスト一覧</h2>
 
 				@if ($user_role == 2)
+					<input type="submit" class="btn btn-primary btn-md animate-box" data-animate-effect="fadeInLeft" onclick="location.href='{{ url('/testcreate/') }}'" value="新規作成">
 					<form action="{{ url('/testlist/') }}" method="POST">
 						@csrf
-						<input type="submit" class="btn btn-primary btn-md animate-box" data-animate-effect="fadeInLeft" onclick="location.href='{{ url('/testcreate/') }}'" value="新規作成">
 						<div class="form-group-status">
 							<p class="fh5co-lead">表示テスト：</p>
 							<label class="use-status"><input type="radio" name="status" value="1" {{ $status == '1' ? 'checked' : '' }}> 使用中のテスト</label>
