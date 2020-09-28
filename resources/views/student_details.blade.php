@@ -98,21 +98,23 @@
 
 				<div class="row row-bottom-padded-md">
 
-					<!-- テストの一覧から持ってきた DB出来次第動くと思う-->
+					<!-- ※テストの一覧から持ってきた DB出来次第動くと思う-->
+					<!-- テスト -->
 					@foreach ($users_db as $key => $test)
 						<div class="col-md-3 col-sm-6 col-padding animate-box" data-animate-effect="fadeInLeft">
 							<div class="blog-entry">
-								<a href="{{ url('/test/') }}" class="blog-img"><img src="" class="img-responsive" alt="#"></a>
+								<a href="#" class="blog-img"><img src="img-responsive" alt="#"></a>
 								<div class="desc">
-									<h3><a href="{{ url('/test/') }}">{{$test->title}}</a></h3>
-									<span><small>{{$test->updated}} </small></span>
+									<h3><a href="#">{{$test->title}}</a></h3>
+									<span><small>{{$test->updated_at->format('Y-m-d')}} </small></span>
 									<!-- <p>ここにテキストを入れることができます。</p> -->
-									<a href="{{ url('/test/') }}" class="lead">詳細・編集</a>
+									<a href="{{ route('testshow', $test->id)}}" class="lead more">回答確認</a>
 								</div>
 							</div>
 						</div>
-						@endforeach
+					@endforeach
 
+						<!-- アンケート -->
 						@foreach ($surveys_db as $survey)
 						<div class="col-md-3 col-sm-6 col-padding animate-box" data-animate-effect="fadeInLeft">
 							<div class="blog-entry">
@@ -134,7 +136,6 @@
 							</div>
 						</div>
 						@endforeach
-
 
 				</div>
 			</div>

@@ -213,6 +213,41 @@ figure figcaption {
   height: 40px;
 }
 
+.test-select {
+  display: inline-block;
+  margin: 0;
+}
+
+.test-select input {
+	display: none;
+}
+.test-select label{
+	display: inline-block;
+	cursor: pointer;
+	width: 150px;
+	margin: 20px 10px 10px 0;
+	padding: 10px;
+	background: #dfdfdf;
+	color: #777;
+	font-weight: normal;
+	text-align: center;
+	line-height: 1;
+	transition: .2s;
+}
+.test-select label:hover {
+  color: #fff;
+  background: #228896;
+}
+.test-select label:visited {
+  color: #fff;
+}
+.test-select label:first-of-type{
+	border-radius: 3px;
+}
+.test-select label:last-of-type{
+	border-radius: 3px;
+}
+
 #fh5co-page {
   width: 100%;
   overflow: hidden;

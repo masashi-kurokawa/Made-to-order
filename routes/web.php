@@ -80,6 +80,9 @@ Route::get('/student/', 'StudentController@index');
 //生徒詳細
 Route::get('/student_details/{name}', 'Student_detailsController@index')->name('student_details');
 
+// テスト回答確認
+Route::get('/testshow/{id}', 'TestshowController@show');
+//9/28 AM2:34現在、生徒一覧→生徒詳細→ の受講したテストが表示できていないため、一時的に post→get に変更中。
 
 //詳細
 Route::get('/details/', function () {
