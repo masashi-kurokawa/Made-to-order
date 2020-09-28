@@ -26,6 +26,8 @@ class SurveyController extends Controller
     // public function index()
     public function index(Request $request)
     {
+
+      $user_role = 2;
         $surveys = Survey::all();
         $postsurvey = $request->all();
         dump($surveys);
@@ -246,31 +248,31 @@ class SurveyController extends Controller
           // dump($yes_answer[$i]);
           // dump($surveysno);
           if (!empty($choice_text[$i])) { //選択式アンケート2択　select　
-            DB::table('select_surveys')->insert([
-              'survey_id' => "$surveysno", //ok
-              'question' => "$choice_text[$i]", //ok
-              'question_number' => "$question_number[$i]", //ok
-              'role' => "$role[$i]", //ok
-              'select1' => "1", //ok
-              'select2' => "2", //ok
-              'select_item1' => "$yes_answer[$i]", //ok
-              'select_item2' => "$no_answer[$i]", //ok
-              // 'created_at' => Carbon::now(), //時間が違う、場所の設定が違うのかも
-              'updated_at' => Carbon::now()  //時間が違う、場所の設定が違うのかも
-            ]);
+            // DB::table('select_surveys')->insert([
+            //   'survey_id' => "$surveysno", //ok
+            //   'question' => "$choice_text[$i]", //ok
+            //   'question_number' => "$question_number[$i]", //ok
+            //   'role' => "$role[$i]", //ok
+            //   'select1' => "1", //ok
+            //   'select2' => "2", //ok
+            //   'select_item1' => "$yes_answer[$i]", //ok
+            //   'select_item2' => "$no_answer[$i]", //ok
+            //   // 'created_at' => Carbon::now(), //時間が違う、場所の設定が違うのかも
+            //   'updated_at' => Carbon::now()  //時間が違う、場所の設定が違うのかも
+            // ]);
           } else { //記述式アンケート登録　write ok
-            DB::table('Write_surveys')->insert([
-              'survey_id' => "$surveysno", //ok
-              'question' => "$describing_text[$i]", //ok
-              'question_number' => "$question_number[$i]", //ok
-              'role' => "$role[$i]", //ok
-              // 'created_at' => Carbon::now(), //時間が違う、場所の設定が違うのかも
-              'updated_at' => Carbon::now()  //時間が違う、場所の設定が違うのかも
-            ]);
+            // DB::table('Write_surveys')->insert([
+            //   'survey_id' => "$surveysno", //ok
+            //   'question' => "$describing_text[$i]", //ok
+            //   'question_number' => "$question_number[$i]", //ok
+            //   'role' => "$role[$i]", //ok
+            //   // 'created_at' => Carbon::now(), //時間が違う、場所の設定が違うのかも
+            //   'updated_at' => Carbon::now()  //時間が違う、場所の設定が違うのかも
+            // ]);
           }
         }
 
-        // 黒木さんが作った処理
+        // 黒木さんが作った処理　一旦使っていない
         // foreach ($request->request as $key) {
         //     // $requestの'_token'以外を使う
         //     if ($key != '_token') {

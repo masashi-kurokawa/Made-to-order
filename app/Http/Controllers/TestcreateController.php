@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
+use Validator;
 
 class TestcreateController extends Controller
 {
@@ -26,6 +27,7 @@ class TestcreateController extends Controller
         //   'created_at' => Carbon::now(), //時間が違う、場所の設定が違うのかも
         //   'updated_at' => Carbon::now()  //時間が違う、場所の設定が違うのかも
         // ]);
+
 
         // dump($test_time);
         // var_dump($test_time);
@@ -101,7 +103,6 @@ class TestcreateController extends Controller
           //   }
           // }
 
-          dump($answer8_1[$i]);
           // dump($answer8_2[$i]);
           // dump($answer);
           if (!empty($text1[$i])) { //記述問題

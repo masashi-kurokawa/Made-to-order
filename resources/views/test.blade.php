@@ -168,7 +168,7 @@
 				onclick="location.href='{{ url('/testend/') }}'" value="テスト終了"> -->
 				<input type="submit" onclick="return confirm('テストを終了してもよろしいですか？')" class="btn btn-primary btn-md" value="テスト終了">
 				<!-- <input id="btn" type="hidden" name="answers" form="answer" onclick="return confirm('テストを終了を終了します。')" value="テスト終了"> -->
-				<input id="btn" type="submit" style="visibility: hidden;" name="answers" form="answer" onclick="" value="テスト終了">
+				<input id="btn" type="submit" style="visibility: hidden;" name="answers" form="answer" onclick="return confirm('テストを終了してもよろしいですか？')" value="テスト終了">
 				<!-- <input id="btn" type="hidden" name="answers" form="answer" onclick="return confirm('テストを終了してもよろしいですか？')" value="テスト終了"> -->
 			</div>
 		　</form>
@@ -219,6 +219,7 @@
 					// timer.innerHTML = 'Time up!'
 					// timer.style.color="white";
 					// alert('終了します。');
+					//一回きりの処理入れる
 					$('#btn').trigger('click');
 					// count_stop();
 				}   else {

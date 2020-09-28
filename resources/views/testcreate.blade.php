@@ -82,7 +82,7 @@
 
 			<div class="fh5co-footer">
 				<div class="logout-space">
-					<a href="{{ route('logout') }}" class="logout-btn">ログアウト</a>
+
 				</div>
 				<p><small>&copy; 2020 carecon. All Rights Reserved.</small></p>
 			</div>
@@ -92,6 +92,17 @@
 		<div id="fh5co-main" class="animate-box" data-animate-effect="fadeInLeft">
 			<div class="fh5co-narrow-content">
 				<h2 class="fh5co-heading">テスト新規作成</h2>
+				<!-- バリデーション -->
+				@if ($errors->any())
+				  <div class="errors">
+				    <ul>
+				      @foreach ($errors->all() as $error)
+				        <li>{{ $error }}</li>
+				      @endforeach
+				    </ul>
+				  </div>
+				@endif
+				<!-- バリデーション終わり -->
         <div id="count" class="container animate-box" data-animate-effect="fadeInLeft">
           <form action = "#" method="post">
               <input type="text" name="test_title"   placeholder="テストタイトルを入力してください。">
@@ -253,6 +264,7 @@
 
 						// 問題数上限カウント処理 //完成
 						$(function(){
+							$('#save').hide();
 							var i = 0;
 							if ((n === undefined)) {
 								var n = 0;
@@ -268,6 +280,8 @@
 									} else {
 										// 問題追加ボタンを消す
 										$('.plus').hide();
+										//保存ボタン出現
+										$('#save').show();
 									}
 								});
 								// 問題を削除するたび数字をマイナスする
@@ -279,6 +293,7 @@
 									if( n >= 9 ){
 										// 問題ボタンを復活させる
 										$('.plus').show();
+										$('#save').hide();
 									}
 								});
 						});
