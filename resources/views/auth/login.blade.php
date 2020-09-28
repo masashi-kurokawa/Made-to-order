@@ -106,12 +106,15 @@
 															<input type="submit" name="login" value="ログイン">
 														</form>
 													</div>
-													@if($errors->any())
+													@if($errors->any() || $error_msg)
 														<div class="alert alert-danger alert-form">
 															<ul>
 																@foreach($errors->all() as $message)
 																	<li>{{ $message }}</li>
 																@endforeach
+																@if ($error_msg != null)
+																	<li>{{ $error_msg }}</li>
+																@endif
 															</ul>
 														</div>
 													@endif
