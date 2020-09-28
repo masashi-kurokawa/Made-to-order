@@ -213,7 +213,6 @@ class SurveyController extends Controller
      */
     public function update(Request $request, $id)
     {
-<<<<<<< HEAD
       $postak = $request->all();
       dump($postak);
         $survey = new Survey;
@@ -231,24 +230,6 @@ class SurveyController extends Controller
         $survey_data->status = $request->status;
         $survey_data->updated_at = Carbon::now();
         $survey_data->save();
-=======
-        dump($request);
-        // $survey = new Survey;
-        // $write_survey = new Write_survey;
-        // $select_survey = new Select_survey;
-        //
-        // // 削除処理
-        // $write_survey->where('survey_id', $id)->delete();
-        // $select_survey->where('survey_id', $id)->delete();
-        //
-        // // surveyテーブルの変更
-        // $survey_data = $survey->where('id', $id)->get();
-        // $survey_data->title = $request->title;
-        // $survey_data->status = $request->status;
-        // $survey_data->updated_at = Carbon::now();
-        // $survey_data->save();
->>>>>>> slackOauth
-        //
 
 
         // ここから下が変更
@@ -278,7 +259,7 @@ class SurveyController extends Controller
               'updated_at' => Carbon::now()  //時間が違う、場所の設定が違うのかも
             ]);
           } else { //記述式アンケート登録　write ok
-            DB::table('write_surveys')->insert([
+            DB::table('Write_surveys')->insert([
               'survey_id' => "$surveysno", //ok
               'question' => "$describing_text[$i]", //ok
               'question_number' => "$question_number[$i]", //ok
@@ -319,11 +300,8 @@ class SurveyController extends Controller
         //             $select_survey->save();
         //
         //         }
-// <<<<<<< HEAD
         //     }
-// =======
             // }
-// >>>>>>> feature/kurokawa
         // }
         // $update = [
         //     'title' => $request->title,
