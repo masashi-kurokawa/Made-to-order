@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::group(['middleware' => 'auth'], function() {
+// Route::group(['middleware' => 'auth'], function() {
 
 Route::get('/', function () {
     return view('welcome');
@@ -24,12 +24,12 @@ Route::get('/home/', 'HomeController@index');
 
 //テスト一覧
 //app/http/testlist/testlistController中の@index関数
-Route::get('/testlist/', 'TestlistController@index');
+Route::get('/testlist/', 'TestlistController@index')->name('testlist');
 Route::post('/testlist/', 'TestlistController@index');
 
 //テスト新規作成
-Route::post('/testcreate/', 'TestcreateController@index');
 Route::get('/testcreate/', 'TestcreateController@index');
+Route::post('/testcreate/', 'TestcreateController@create');
 
 
 
@@ -105,6 +105,6 @@ Route::get('/logout',[
 //点数早見表（試し追加）
 Route::get('/score', 'ScoreController@index');
 
-});
-
-Auth::routes(['register' => false]);
+// });
+//
+// Auth::routes(['register' => false]);
