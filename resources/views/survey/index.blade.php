@@ -97,18 +97,7 @@
 				<h2 class="fh5co-heading animate-box" data-animate-effect="fadeInLeft">アンケート一覧</h2>
 
 				<!-- 使用中/未使用中アンケート選択ボタン追加　9/28 3:47現在、画面エラーのため未確認 -->
-				@if ($user_role == 2)
-					<input type="submit" class="btn btn-primary btn-md animate-box" data-animate-effect="fadeInLeft" onclick="location.href='{{ route('survey.create') }}'" value="新規作成">
-					<form action="{{ url('/survey/') }}" method="POST">
-						@csrf
-						<div class="test-select animate-box" data-animate-effect="fadeInLeft">
-							<input type="submit" name="status" id="on" value="1" {{ $status == '1' ? 'checked' : '' }}>
-							<label for="on">使用中アンケート表示</label>
-							<input type="submit" name="status" id="off" value="2"　{{ $status == '2' ? 'checked' : '' }}>
-							<label for="off">未使用アンケート表示</label>
-						</div>
-					</form>
-				@endif
+				<input type="submit" class="btn btn-primary btn-md animate-box" data-animate-effect="fadeInLeft" onclick="location.href='{{ route('survey.create') }}'" value="新規作成">
 
 				<div class="row row-bottom-padded-md">
 					@foreach ($surveys as $survey)

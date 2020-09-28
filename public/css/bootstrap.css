@@ -2516,6 +2516,7 @@ select[multiple].input-lg,
     /* width: auto; */
     width: 250px;
     vertical-align: middle;
+    text-transform: lowercase;
   }
   .form-inline .form-control-static {
     display: inline-block;
