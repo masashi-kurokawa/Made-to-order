@@ -91,10 +91,19 @@
 
 		<div id="fh5co-main" class="animate-box" data-animate-effect="fadeInLeft">
 			<div class="fh5co-narrow-content">
+				@if($errors->any())
+					<div class="alert alert-danger alert-form">
+						<ul>
+							@foreach($errors->all() as $message)
+								<li>{{ $message }}</li>
+							@endforeach
+						</ul>
+					</div>
+				@endif
 				<h2 class="fh5co-heading">テスト新規作成</h2>
         <div id="count" class="container animate-box" data-animate-effect="fadeInLeft">
-          <form action = "#" method="post">
-              <input type="text" name="test_title"   placeholder="テストタイトルを入力してください。">
+          <form action = "{{ url('/testcreate/') }}" method="post">
+              <input type="text" name="title"   placeholder="テストタイトルを入力してください。">
 							<label><input type="radio" name="status" value="1" checked>使用</label>
 							<label><input type="radio" name="status" value="2">未使用</label>
 							<div class="time-rap">

@@ -5,27 +5,45 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
+use App\Services\TestService;
+use App\Http\Requests\CreateTest;
 
 class TestcreateController extends Controller
 {
+
+    protected $testService;
+
+    public function __construct(TestService $testService)
+    {
+        $this->testService = $testService;
+    }
+
     //Request 引数でブレードで送ったものを取得して引数に入れる
     public function index(Request $request)
     {
 
+        if ( isset ( $surveyno ) ) {
+          // return view('testlist'); //テスト作成完了ごの画面に遷移
+        }
+
+
+
+       return view('testcreate');
+    }
+
+    public function create(CreateTest $request)
+    {
+        dump($request->test_title);
         // 参考処理
         $posttest = $request->all();
-        $test_title = $request->input('test_title');
+        $test_title = $request->input('title');
         $test_status = $request->input('status');
         $testus = (int)$test_status;
         $test_time = $request->input('test_time');
         $tes = (int)$test_time;
-        // DB::table('tests')->insert([
-        //   'title' => "$test_title", // ok
-        //   'status' => "$testus", //ok
-        //   'test_time' => "$tes",//ok
-        //   'created_at' => Carbon::now(), //時間が違う、場所の設定が違うのかも
-        //   'updated_at' => Carbon::now()  //時間が違う、場所の設定が違うのかも
-        // ]);
+
+        // テストテーブル登録処理
+        $this->testService->createTest($request);
 
         // dump($test_time);
         // var_dump($test_time);
@@ -155,12 +173,7 @@ class TestcreateController extends Controller
 
         }
 
-        if ( isset ( $surveyno ) ) {
-          // return view('testlist'); //テスト作成完了ごの画面に遷移
-        }
 
-
-
-       return view('testcreate');
+        return redirect()->route('testlist');
     }
 }

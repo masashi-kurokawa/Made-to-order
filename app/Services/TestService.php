@@ -17,4 +17,9 @@ class TestService extends Service
     {
         return $this->testModel->getTestUnscored($test_id);
     }
+
+		public function createTest($request)
+    {
+        return $this->testModel->createTest($request);
+    }
 }
