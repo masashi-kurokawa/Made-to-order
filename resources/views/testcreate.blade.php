@@ -95,7 +95,7 @@
         <div id="count" class="container animate-box" data-animate-effect="fadeInLeft">
           <form action = "#" method="post">
               <input type="text" name="test_title"   placeholder="テストタイトルを入力してください。">
-							<label><input type="radio" name="status" value="1">使用</label>
+							<label><input type="radio" name="status" value="1" checked>使用</label>
 							<label><input type="radio" name="status" value="2">未使用</label>
 							<div class="time-rap">
 								<label>テストタイム　<input type="number" name="test_time" min="1" max="100" value="1"> 分</label>
