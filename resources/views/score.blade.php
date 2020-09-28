@@ -183,7 +183,7 @@
               <td><p class="table-p"><?php echo $counter ?></p></td> <!-- テストナンバーに変える -->
               <td><p class="table-p">{{$tests->user_name}}</p></td>
 
-              <td><a href="{{ url('/test/') }}">{{$tests->score}}点</a></td>
+              <td><a href="{{ url('testshow', $tests->test_id)}}">{{$tests->score}}点</a></td>
               <?php $counter++;//カウントを増加 ?>
 
             </tr>

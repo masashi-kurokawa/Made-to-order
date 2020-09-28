@@ -107,4 +107,4 @@ Route::get('/score', 'ScoreController@index');
 
 // });
 //
-// Auth::routes(['register' => false]);
+Auth::routes(['register' => false]);
