@@ -69,7 +69,7 @@
 	  <a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle"><i></i></a>
 	  <aside id="fh5co-aside" role="complementary" class="border js-fullheight">
 
-	    <h1 id="fh5co-logo"><a href="index.html">タイトル</a></h1>
+	    <h1 id="fh5co-logo"><a href="{{ url('/home/') }}">タイトル</a></h1>
 	    <nav id="fh5co-main-menu" role="navigation">
 	      <ul>
 					<!-- アンケート回答中のため非表示 -->

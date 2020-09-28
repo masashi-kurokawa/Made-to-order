@@ -62,12 +62,6 @@ Route::get('/surveycreate/', function () {
     return view('surveycreate');
 });
 
-//アンケート詳細・編集
-// Route::get('/surveyedit/', 'SurveyeditController@index');
-// Route::get('/surveyedit/', function () {
-//     return view('surveyedit');
-// });
-
 //アンケート終了
 // Route::get('/surveyend/', function () {
 //     return view('surveyend');
@@ -107,9 +101,6 @@ Route::get('/logout',[
   'uses' => 'HomeController@getLogout',
   'as' => 'login'
 ]);
-
-// サンプル　2020/09/10 CRUD処理理解のため石田作成。プロジェクト終了後削除する。
-Route::resource('item', 'ItemController');
 
 //点数早見表（試し追加）
 Route::get('/score', 'ScoreController@index');
