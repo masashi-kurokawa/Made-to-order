@@ -97,8 +97,12 @@
 				<h2 class="fh5co-heading animate-box" data-animate-effect="fadeInLeft">アンケート一覧</h2>
 
 				<!-- 使用中/未使用中アンケート選択ボタン追加　9/28 3:47現在、画面エラーのため未確認 -->
+<<<<<<< HEAD
 
 				
+=======
+				<input type="submit" class="btn btn-primary btn-md animate-box" data-animate-effect="fadeInLeft" onclick="location.href='{{ route('survey.create') }}'" value="新規作成">
+>>>>>>> slackOauth
 
 				<div class="row row-bottom-padded-md">
 					@foreach ($surveys as $survey)

@@ -177,6 +177,7 @@ figure figcaption {
 
 .logout-space {
   margin: 15% 0;
+  text-align: center;
 }
 
 .logout-btn {
@@ -378,11 +379,15 @@ figure figcaption {
 }
 #fh5co-aside .fh5co-footer {
   /* position: absolute; */
-  margin-top: 70%;
-  bottom: 40px;
-  font-size: 14px;
   text-align: center;
-  width: 100%;
+  position: fixed;
+  bottom: 5%;
+  left: 2%;
+  margin-top: 70%;
+  /* bottom: 40px; */
+  font-size: 14px;
+  /* text-align: center; */
+  /* width: 100%; */
   font-weight: 400;
   color: rgba(0, 0, 0, 0.6);
   padding: 0 20px;
