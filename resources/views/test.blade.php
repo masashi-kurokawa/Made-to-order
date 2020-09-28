@@ -89,7 +89,8 @@
 
 	<div id="fh5co-main">
 		<div class="timerbox">
-			<h1 id="timer" class="hako box" style="visibility: hidden;"></h1>
+			<!-- <h1 id="timer" class="hako box" style="visibility: hidden;"></h1> -->
+			<h1 id="timer" class="hako box" style=""></h1>
 		</div>
 		<div class="fh5co-narrow-content">
 			<h2 class="fh5co-heading animate-box" data-animate-effect="fadeInLeft">テストタイトル</h2>
@@ -168,7 +169,7 @@
 				onclick="location.href='{{ url('/testend/') }}'" value="テスト終了"> -->
 				<input type="submit" onclick="return confirm('テストを終了してもよろしいですか？')" class="btn btn-primary btn-md" value="テスト終了">
 				<!-- <input id="btn" type="hidden" name="answers" form="answer" onclick="return confirm('テストを終了を終了します。')" value="テスト終了"> -->
-				<input id="btn" type="submit" style="visibility: hidden;" name="answers" form="answer" onclick="return confirm('テストを終了してもよろしいですか？')" value="テスト終了">
+				<input id="btn" type="submit" style="visibility: hidden;" name="answers" form="answer" onclick="" value="テスト終了">
 				<!-- <input id="btn" type="hidden" name="answers" form="answer" onclick="return confirm('テストを終了してもよろしいですか？')" value="テスト終了"> -->
 			</div>
 		　</form>
@@ -189,17 +190,28 @@
 	<!-- Google Map -->
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCefOgb1ZWqYtj7raVSmN4PL2WkTrc-KyA&sensor=false"></script>
 	<script src="js/google_map.js"></script>
+	<!-- <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script> -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
 
 	<!-- タイマー機能の処理（jquery） -->
 	<script>
 
-	var to_timeup = {{$test_time}}; //講師の設定した時間をテーブルから持ってくる
+	var to_timeup = {{$test_time}} *60; //講師の設定した時間をテーブルから持ってくる
 			// var max = 10; //いらないかも
 			var intervalid;
 			var start_flag = false;
 
+				if($.cookie('end')){
+		        var end = new Date($.cookie('end'));
+		     } else {
+					 var end = new Date();
+					 end.setMinutes(end.getMinutes() + {{$test_time}});
+					 $.cookie('end', end);
+					 var ended = $.cookie('end');
+	 				 console.log(ended);
+		     }
+
 			function count_start(){
-					console.log("count_start");
 				 if(start_flag===false){
 					intervalid = setInterval(count_down,1000);
 					start_flag = true;
@@ -207,18 +219,23 @@
 			}
 
 			function count_stop(){
-                console.log(count_stop);
                 clearInterval(intervalid);
                 start_flag = false;
       }
 
 			function count_down(){
-				console.log("count_down");
-				var timer = document.getElementById("timer");
-				if(to_timeup===0){
+
+				var now = new Date();
+				// var timer = document.getElementById("timer");
+				var count = Math.floor((end - now) / 1000);
+				// console.log(count);
+
+				// if(to_timeup===0){
+				if (count < 0) {
 					// timer.innerHTML = 'Time up!'
 					// timer.style.color="white";
 					// alert('終了します。');
+					$.removeCookie('end');
 					//一回きりの処理入れる
 					$('#btn').trigger('click');
 					// count_stop();
