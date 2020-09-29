@@ -82,6 +82,26 @@ figure figcaption {
   background: #228896;
 }
 
+.logout-space {
+  margin: 15% 0;
+  text-align: center;
+}
+
+.logout-btn {
+  color: #fff;
+  background-color: #aaa;
+  padding: 3% 6%;
+  margin: 10%;
+  border-radius: 3px;
+}
+.logout-btn:hover {
+  color: #fff;
+  background: #777;
+}
+.logout-btn:visited {
+  color: #fff;
+}
+
 #fh5co-page {
   width: 100%;
   overflow: hidden;
