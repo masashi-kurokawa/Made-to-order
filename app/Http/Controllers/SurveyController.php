@@ -27,12 +27,30 @@ class SurveyController extends Controller
     public function index(Request $request)
     {
 
-      $user_role = 2;
-        $surveys = Survey::all();
-        $postsurvey = $request->all();
-        dump($surveys);
+        $user_role = 3;
+        // $user_role = Auth::user()->role;
 
-        return view('survey.index' , compact('surveys'));
+        $surveys = new Survey;
+
+        if ($request->status == 2) {
+            $status = 2;
+            $dblist = $surveys
+            ->where('status',2)
+            ->get();
+        }else {
+            $status = 1;
+            $dblist = $surveys
+            ->where('status',1)
+            ->get();
+        }
+
+        return view('survey.index',[
+          'dblist' =>$dblist,
+          'status' => $status,
+          'surveys' => $surveys,
+          'user_role' => $user_role,
+        ]);
+
     }
 
     /**

@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::group(['middleware' => 'auth'], function() {
+// Route::group(['middleware' => 'auth'], function() {
 
 Route::get('/', function () {
     return view('welcome');
@@ -56,6 +56,10 @@ Route::resource('survey', 'SurveyController');
 
 // アンケート受講
 Route::get('/take_survey/', 'Take_surveyController@index');
+Route::get('/test/', 'TestController@index');
+
+Route::resource('survey', 'SurveyController');
+
 
 //アンケート新規作成
 Route::get('/surveycreate/', function () {
@@ -105,6 +109,6 @@ Route::get('/logout',[
 //点数早見表（試し追加）
 Route::get('/score', 'ScoreController@index');
 
-});
+// });
 //
 Auth::routes(['register' => false]);
