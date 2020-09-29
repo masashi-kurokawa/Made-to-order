@@ -152,14 +152,19 @@ class SurveyController extends Controller
       $survey = Survey::find($id);
       $selectitems = DB::table('select_surveys')->whereSurvey_id("$id")->get()->toArray();
       $writeitems = DB::table('write_surveys')->whereSurvey_id("$id")->get()->toArray();
+      $selectitemss = DB::table('select_survey_answers')->whereSurvey_id("$id")->get()->toArray();
+      $writeitemss = DB::table('write_survey_answers')->whereSurvey_id("$id")->get()->toArray();
 
       $sum = array_merge($selectitems, $writeitems);
+      $sums = array_merge($selectitemss, $writeitemss);
 
       $count_questions = count($sum);
 
       $sort = collect($sum);
+      $sorts = collect($sums);
 
       $sort = $sort->sortBy('question_number')->all();
+      $sorts = $sorts->sortBy('question_number')->all();
       dump($sort);
 
       return view('survey.show',
@@ -167,7 +172,7 @@ class SurveyController extends Controller
           'count_questions' => $count_questions,
           'survey' => $survey,
           'survey_id' => $id,
-        ], compact('sort'));
+        ], compact('sort', 'sorts'));
     }
 
     /**
