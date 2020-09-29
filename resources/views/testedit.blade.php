@@ -1,69 +1,48 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-	<head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>タイトル &mdash; テスト詳細・編集</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="description" content="Free HTML5 Website Template by FreeHTML5.co" />
-	<meta name="keywords" content="free html5, free template, free bootstrap, free website template, html5, css3, mobile first, responsive" />
-	<meta name="author" content="FreeHTML5.co" />
+<html class="no-js">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>タイトル &mdash; テスト詳細・編集</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Free HTML5 Website Template by FreeHTML5.co" />
+<meta name="keywords" content="free html5, free template, free bootstrap, free website template, html5, css3, mobile first, responsive" />
+<meta name="author" content="FreeHTML5.co" />
 
-  	<!--
-	//////////////////////////////////////////////////////
+<!-- Facebook and Twitter integration -->
+<meta property="og:title" content=""/>
+<meta property="og:image" content=""/>
+<meta property="og:url" content=""/>
+<meta property="og:site_name" content=""/>
+<meta property="og:description" content=""/>
+<meta name="twitter:title" content="" />
+<meta name="twitter:image" content="" />
+<meta name="twitter:url" content="" />
+<meta name="twitter:card" content="" />
 
-	FREE HTML5 TEMPLATE
-	DESIGNED & DEVELOPED by FreeHTML5.co
+<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+<link rel="shortcut icon" href="favicon.ico">
 
-	Website: 		http://freehtml5.co/
-	Email: 			info@freehtml5.co
-	Twitter: 		http://twitter.com/fh5co
-	Facebook: 		https://www.facebook.com/fh5co
+<link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700" rel="stylesheet">
 
-	//////////////////////////////////////////////////////
-	-->
+<!-- Animate.css -->
+<link rel="stylesheet" href="{{ asset('css/animate.css') }}">
+<!-- Icomoon Icon Fonts-->
+<link rel="stylesheet" href="{{ asset('css/icomoon.css') }}">
+<!-- Bootstrap  -->
+<link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
+<!-- Flexslider  -->
+<link rel="stylesheet" href="{{ asset('css/flexslider.css') }}">
+<!-- Theme style  -->
+<link rel="stylesheet" href="{{ asset('css/style.css') }}">
+<!-- score style  -->
+<link rel="stylesheet" href="{{ asset('css/home.css') }}">
 
-  	<!-- Facebook and Twitter integration -->
-	<meta property="og:title" content=""/>
-	<meta property="og:image" content=""/>
-	<meta property="og:url" content=""/>
-	<meta property="og:site_name" content=""/>
-	<meta property="og:description" content=""/>
-	<meta name="twitter:title" content="" />
-	<meta name="twitter:image" content="" />
-	<meta name="twitter:url" content="" />
-	<meta name="twitter:card" content="" />
+<!-- Modernizr JS -->
+<script src="js/modernizr-2.6.2.min.js"></script>
 
-	<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-	<link rel="shortcut icon" href="favicon.ico">
-
-	<link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700" rel="stylesheet">
-
-	<!-- Animate.css -->
-	<link rel="stylesheet" href="{{ asset('css/animate.css') }}">
-	<!-- Icomoon Icon Fonts-->
-	<link rel="stylesheet" href="{{ asset('css/icomoon.css') }}">
-	<!-- Bootstrap  -->
-	<link rel="stylesheet" href="{{ asset('css/bootstrap.css') }}">
-	<!-- Flexslider  -->
-	<link rel="stylesheet" href="{{ asset('css/flexslider.css') }}">
-	<!-- Theme style  -->
-	<link rel="stylesheet" href="{{ asset('css/style.css') }}">
-	<!-- score style  -->
-	<link rel="stylesheet" href="{{ asset('css/home.css') }}">
-
-	<!-- Modernizr JS -->
-	<script src="js/modernizr-2.6.2.min.js"></script>
-	<!-- FOR IE9 below -->
-	<!--[if lt IE 9]>
-	<script src="js/respond.min.js"></script>
-	<![endif]-->
-
-	</head>
-	<body>
+</head>
+<body>
 	<div id="fh5co-page">
 		<a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle"><i></i></a>
 		<aside id="fh5co-aside" role="complementary" class="border js-fullheight">
@@ -92,23 +71,23 @@
 		<div id="fh5co-main" class="animate-box" data-animate-effect="fadeInLeft">
 			<div class="fh5co-narrow-content">
 				<h2 class="fh5co-heading">テスト詳細・編集</h2>
-        <div id="count" class="container animate-box" data-animate-effect="fadeInLeft">
-          <form action="{{ url('/testedit/'.$test_id)}}" method="post">
+				<div id="count" class="container animate-box" data-animate-effect="fadeInLeft">
+					<form action="{{ url('/testedit/'.$test_id)}}" method="post">
 						@csrf
-            <div class="title-rap">
-              <input type="text" name="text" value="{{$test->title}}">
+	          <div class="title-rap">
+	            <input type="text" name="text" value="{{$test->title}}">
 							<label><input type="radio" value="1" name="status" @if (old('status', $test->status) == 1) checked @endif>使用</label>
 							<label><input type="radio" value="2" name="status" @if (old('status', $test->status) == 2) checked @endif>未使用</label>
-            </div>
+	          </div>
 
-            <table>
-              <tbody id="sortable">
+						<table>
+	          	<tbody id="sortable">
 								@foreach ($sort as $value)
 									@if ($value->role == 1)
 									<tr id="con" class="">
-									<input type="hidden" class="id" value="">
+										<input type="hidden" class="id" value="">
 										<td>
-										<textarea class="1text" name="" rows="5" cols="50" placeholder="ここに問題文を入力してください。" value="">{{$value->question}}</textarea>
+											<textarea class="1text" name="" rows="5" cols="50" placeholder="ここに問題文を入力してください。" value="">{{$value->question}}</textarea>
 										</td>
 										<td class="remove-center"><button class="remove">-</button></td>
 									</tr>
@@ -116,9 +95,9 @@
 
 									@if ($value->role == 2)
 									<tr id="er">
-									<input type="hidden" class="id" value="">
+										<input type="hidden" class="id" value="">
 										<td>
-										<textarea class="8text" name="" rows="5" cols="50" placeholder="ここに問題文を入力してください。">{{$value->question}}</textarea>
+											<textarea class="8text" name="" rows="5" cols="50" placeholder="ここに問題文を入力してください。">{{$value->question}}</textarea>
 										</td>
 										<td>
 											<input type="radio" class="8choice1_" @if (old('answer', $value->answer) == 1) checked @endif>
@@ -131,14 +110,14 @@
 											<input type="text" class="8answer4_" name="" placeholder="回答を入力してください。" value="{{$value->select_item4}}">
 
 											@if ($value->select_item5 != null)
-												<input type="radio" class="8choice5_" @if (old('answer', $value->answer) == 5) checked @endif>
-												<input type="text" class="8answer1_" name="" placeholder="回答を入力してください。" value="{{$value->select_item1}}">
-												<input type="radio" class="8choice6_" @if (old('answer', $value->answer) == 6) checked @endif>
-												<input type="text" class="8answer5_" name="" placeholder="回答を入力してください。" value="{{$value->select_item2}}">
-												<input type="radio" class="8choice7_" @if (old('answer', $value->answer) == 7) checked @endif>
-												<input type="text" class="8answer7_" name="" placeholder="回答を入力してください。" value="{{$value->select_item3}}">
-												<input type="radio" class="8choice8_" @if (old('answer', $value->answer) == 8) checked @endif>
-												<input type="text" class="8answer8_" name="" placeholder="回答を入力してください。" value="{{$value->select_item4}}">
+											<input type="radio" class="8choice5_" @if (old('answer', $value->answer) == 5) checked @endif>
+											<input type="text" class="8answer1_" name="" placeholder="回答を入力してください。" value="{{$value->select_item1}}">
+											<input type="radio" class="8choice6_" @if (old('answer', $value->answer) == 6) checked @endif>
+											<input type="text" class="8answer5_" name="" placeholder="回答を入力してください。" value="{{$value->select_item2}}">
+											<input type="radio" class="8choice7_" @if (old('answer', $value->answer) == 7) checked @endif>
+											<input type="text" class="8answer7_" name="" placeholder="回答を入力してください。" value="{{$value->select_item3}}">
+											<input type="radio" class="8choice8_" @if (old('answer', $value->answer) == 8) checked @endif>
+											<input type="text" class="8answer8_" name="" placeholder="回答を入力してください。" value="{{$value->select_item4}}">
 											@endif
 										</td>
 										<td class="remove-center"><button class="remove">-</button></td>
@@ -148,8 +127,8 @@
 									@if ($value->role == 3)
 									<tr id="ta">
 										<td>
-										<input type="hidden" class="id" value="">
-										<textarea class="2text" name="" rows="5" cols="50" placeholder="ここに問題文を入力してください。">{{$value->question}}</textarea>
+											<input type="hidden" class="id" value="">
+											<textarea class="2text" name="" rows="5" cols="50" placeholder="ここに問題文を入力してください。">{{$value->question}}</textarea>
 										</td>
 										<td><input type="text" class="2answer1_" name="" placeholder="回答を入力してください。" value="{{$value->answer1}}"></td>
 										<td><input type="text" class="2answer2_" name="" placeholder="回答を入力してください。" value="{{$value->answer2}}"></td>
@@ -158,20 +137,23 @@
 									@endif
 								@endforeach
 							</tbody>
-            </table>
+						</table>
 
-            <input id="save" type="submit" value="保存">
-          </form>
+	          <input id="save" type="submit" value="保存">
 
-          <p id="output">{{$count_questions}}</p>
+					</form>
 
-          <button id="addTest1" class="plus">+ 1回答問題追加</button>
-          <button id="addTest2" class="plus">+ 2回答問題追加</button>
-          <button id="addChoice8" class="plus">+ 8択問題追加</button>
+	        <p id="output">{{$count_questions}}</p>
 
-        </div>
+	        <button id="addTest1" class="plus">+ 1回答問題追加</button>
+	        <button id="addTest2" class="plus">+ 2回答問題追加</button>
+	        <button id="addChoice8" class="plus">+ 8択問題追加</button>
+
+				</div>
+
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+
         <script>
         $(function(){
 
@@ -257,33 +239,25 @@
             $('tbody').sortable();
 
 						// 問題追加 1回答
-        		//追加ボタンがクリックされたら、function(){…}の処理を実行する
         		$('#addTest1').click(function(){
 					var html = '<tr id="con" class=""><input type="hidden" class="id" value=""><td><textarea class="1text" name="" rows="5" cols="50" placeholder="ここに問題文を入力してください。" value=""></textarea></td><td><input type="text" class="1answer_" name="" value="" placeholder="回答を入力してください。"></td><td class="remove-center"><button class="remove">-</button></td></tr>';
-        				//append()を使ってtbody内の一番最後にhtmlを追加する
         				$('tbody').append(html);
             });
 
             // 問題追加 2回答
-        		//追加ボタンがクリックされたら、function(){…}の処理を実行する
         		$('#addTest2').click(function(){
 					var html = '<tr id="ta"><input type="hidden" class="id" value=""><td><textarea class="2text" name="" rows="5" cols="50" placeholder="ここに問題文を入力してください。" value=""></textarea></td><td><input type="text" class="2answer1_" name="" value="" placeholder="回答を入力してください。"><input type="text" class="2answer2_" name="" value="" placeholder="回答を入力してください。"></td><td class="remove-center"><button class="remove">-</button></td></tr>';
-        				//append()を使ってtbody内の一番最後にhtmlを追加する
         				$('tbody').append(html);
             });
 
             // 8択問題追加
-        		//追加ボタンがクリックされたら、function(){…}の処理を実行する
         		$('#addChoice8').click(function(){
 					var html = '<tr id="er"><input type="hidden" class="id" value=""><td><textarea class="8text" name="" rows="5" cols="50" placeholder="ここに問題文を入力してください。"></textarea></td><td><input type="radio" class="8choice1_"><input type="text" class="8answer1_" name="" value="" placeholder="回答を入力してください。"><input type="radio" class="8choice2_"><input type="text" class="8answer2_" name="" value="" placeholder="回答を入力してください。"><input type="radio" class="8choice3_"><input type="text" class="8answer3_" name="" value="" placeholder="回答を入力してください。"><input type="radio" class="8choice4_"><input type="text" class="8answer4_" name="" value="" placeholder="回答を入力してください。"><input type="radio" class="8choice5_"><input type="text" class="8answer5_" name="" value="" placeholder="回答を入力してください。"><input type="radio" class="8choice6_"><input type="text" class="8answer6_" name="" value="" placeholder="回答を入力してください。"><input type="radio" class="8choice7_"><input type="text" class="8answer7_" name="" value="" placeholder="回答を入力してください。"><input type="radio" class="8choice8_"><input type="text" class="8answer8_" name="" value="" placeholder="回答を入力してください。"></td><td class="remove-center"><button class="remove">-</button></td></tr>';
-        				//append()を使ってtbody内の一番最後にhtmlを追加する
         				$('tbody').append(html);
             });
 
         		// 削除処理
-        		//削除ボタンがクリックされたら、function(){…}の処理を実行する
         		$(document).on('click', '.remove', function() {
-        				//クリックされた.removeの親要素trをremove（削除）する
                 $(this).parents('tr').remove();
             });
 
@@ -329,22 +303,19 @@
         <a href="{{ url('/testlist/') }}" class="more icon-arrow-left3"> 戻る</a>
 			</div>
 		</div>
-		</div>
+	</div>
 
-	<!-- jQuery -->
-	<!-- <script src="js/jquery.min.js"></script> -->
-	<!-- jQuery Easing -->
-	<script src="js/jquery.easing.1.3.js"></script>
-	<!-- Bootstrap -->
-	<script src="js/bootstrap.min.js"></script>
-	<!-- Waypoints -->
-	<script src="js/jquery.waypoints.min.js"></script>
-	<!-- Flexslider -->
-	<script src="js/jquery.flexslider-min.js"></script>
+<!-- jQuery Easing -->
+<script src="js/jquery.easing.1.3.js"></script>
+<!-- Bootstrap -->
+<script src="js/bootstrap.min.js"></script>
+<!-- Waypoints -->
+<script src="js/jquery.waypoints.min.js"></script>
+<!-- Flexslider -->
+<script src="js/jquery.flexslider-min.js"></script>
 
+<!-- MAIN JS -->
+<script src="js/main.js"></script>
 
-	<!-- MAIN JS -->
-	<script src="js/main.js"></script>
-
-	</body>
+</body>
 </html>
