@@ -54,7 +54,6 @@ class GradeController extends Controller
                     }
                 }
             }
-            // dump($data);
         } else {
             foreach ($unscored_tests as $unscored_test) {
                 $i++;
