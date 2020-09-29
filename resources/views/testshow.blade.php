@@ -65,7 +65,7 @@
 
 			<div class="fh5co-footer">
 				<div class="logout-space">
-
+						<a href="{{ route('logout') }}" class="logout-btn">ログアウト</a>
 				</div>
 				<p><small>&copy; 2020 carecon. All Rights Reserved.</small></p>
 			</div>
