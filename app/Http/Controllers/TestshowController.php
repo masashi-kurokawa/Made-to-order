@@ -22,9 +22,12 @@ class TestshowController extends Controller
       $count_questions = count($sum);
 
       $sort = collect($sum);
+      // $product = collect($sum)->with('answer')->get();
+      // $product = collect($sum)->firstWhere('answer', 4);
 
       $sort = $sort->sortBy('question_number')->all();
-      dump($sort);
+      dump($product);
+
 
       return view('testshow',
         [
@@ -32,7 +35,6 @@ class TestshowController extends Controller
           'test' => $test,
           'test_id' => $id,
         ], compact('sort'));
-
 
 
        return view('testshow');

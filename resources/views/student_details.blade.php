@@ -80,7 +80,7 @@
 
 			<div class="fh5co-footer">
 				<div class="logout-space">
-					
+
 				</div>
 				<p><small>&copy; 2020 carecon. All Rights Reserved.</small></p>
 			</div>
@@ -108,7 +108,7 @@
 									<h3><a href="#">{{$test->title}}</a></h3>
 									<span><small>{{$test->updated_at->format('Y-m-d')}} </small></span>
 									<!-- <p>ここにテキストを入れることができます。</p> -->
-									<a href="{{ route('testshow', $test->id)}}" class="lead more">回答確認</a>
+									<a href="{{ url('testshow', $test->id)}}" class="lead more">回答確認</a>
 								</div>
 							</div>
 						</div>

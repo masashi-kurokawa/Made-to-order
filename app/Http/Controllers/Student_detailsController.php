@@ -23,21 +23,21 @@ class Student_detailsController extends Controller
     $Test = new Test;
     $write_survey_answer = new Write_survey_answer;
 
+
     //if文を書くと変数が無くなる
     $users_db=[];
     $surveys_db=[];
 
+
     //surveyじゃないときは全部出す
-    if($request->input('mode')!='survey'){
         $users_db = $test_result
         ->join('tests', 'tests.id', '=', 'test_results.test_id')
-        ->where('test_results.user_name', $request->input('name'))
+        // ->where('test_results.user_name', $request->input('name'))
+        ->where('test_results.user_name', $name)
         ->get();
 
-    }
-
     //testじゃないときは全部出す。
-    if($request->input('mode')!='test'){
+    // if($request->input('mode')!='test'){
       //nameをいったんデータベースで検索にわは何番か調べているでにわが一番
       $users_list = $user
       ->where('slack_name', $name)
@@ -64,11 +64,13 @@ class Student_detailsController extends Controller
       ->whereIn('id', $survey_id_list)
       ->get();
 
-    }
 
 
-    dump($test_result);
-    dump($surveys_db);
+    // }
+
+
+    // dump($test_result);
+    // dump($users_db);
     return view('student_details',compact('users_db','surveys_db'));
 
     }
