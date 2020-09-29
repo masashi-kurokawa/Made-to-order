@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::group(['middleware' => 'auth'], function() {
+Route::group(['middleware' => 'auth'], function() {
 
 Route::get('/', function () {
     return view('welcome');
@@ -105,6 +105,6 @@ Route::get('/logout',[
 //点数早見表（試し追加）
 Route::get('/score', 'ScoreController@index');
 
-// });
+});
 //
-// Auth::routes(['register' => false]);
+Auth::routes(['register' => false]);

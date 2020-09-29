@@ -91,15 +91,15 @@
 			<div class="fh5co-narrow-content">
 				<h2 class="fh5co-heading animate-box" data-animate-effect="fadeInLeft">受講履歴</h2>
 
-				<div class="test-btn animate-box" data-animate-effect="fadeInLeft">
+				<!-- <div class="test-btn animate-box" data-animate-effect="fadeInLeft">
 					<input type="submit" class="btn btn-primary btn-md" onclick="location.href=location.href+'&mode=test'" value="テストのみ">
 					<input type="submit" class="btn btn-primary btn-md" onclick="location.href=location.href+'&mode=survey'" value="アンケートのみ">
-				</div>
+				</div> -->
 
 				<div class="row row-bottom-padded-md">
 
 					<!-- ※テストの一覧から持ってきた DB出来次第動くと思う-->
-					<!-- テスト -->
+					<!-- テスト 講師のみ表示させる -->
 					@foreach ($users_db as $key => $test)
 						<div class="col-md-3 col-sm-6 col-padding animate-box" data-animate-effect="fadeInLeft">
 							<div class="blog-entry">
@@ -114,7 +114,7 @@
 						</div>
 					@endforeach
 
-						<!-- アンケート -->
+						<!-- アンケート 営業のみ表示させる -->
 						@foreach ($surveys_db as $survey)
 						<div class="col-md-3 col-sm-6 col-padding animate-box" data-animate-effect="fadeInLeft">
 							<div class="blog-entry">
@@ -138,8 +138,8 @@
 						@endforeach
 
 				</div>
+				<a href="{{ url('/student/') }}" class="more icon-arrow-left3"> 戻る</a>
 			</div>
-
 		</div>
 	</div>
 
