@@ -99,7 +99,7 @@
                   <div class="row">
                     <div class="col-md-6">
                       <div class="form-group">
-
+												<label for="content">A.</label><p></p>
                         <input type="hidden" class="form-control" name="role{{$value->question_number}}" value="{{$value->role}}">
                       </div>
                     </div>
@@ -107,14 +107,30 @@
                 </div>
               </div>
 
-              @elseif ($value->role === 2)　<!-- role　2　選択問題 --><!-- 選択テスト -->
+							@elseif ($value->role === 2)　<!-- role　1　選択テスト -->
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group">
+												<label for="content">A.</label><p>{{$value->answer}}</p>
+                        <input type="hidden" class="form-control" name="role{{$value->question_number}}" value="{{$value->role}}">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              @elseif ($value->role === 3)　<!-- role　3　穴埋め -->
               <div class="row">
                 <div class="form-group">
                   <div class="col-md-12">
                     <div class="radio">
+											<label for="content">A.</label><p>{{$value->answer1}}</p>
                       <input type="hidden" class="form-control " name="question{{$value->question_number}}" value="{{$value->role}}">
                     </div>
                     <div class="radio">
+											<label for="content">A.</label><p>{{$value->answer2}}</p>
                       <input type="hidden" id="2" class="form-control" name="question{{$value->question_number}}" value="{{$value->role}}">
                     </div>
                   </div>
