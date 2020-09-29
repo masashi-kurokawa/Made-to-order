@@ -27,12 +27,30 @@ class SurveyController extends Controller
     public function index(Request $request)
     {
 
-      $user_role = 2;
-        $surveys = Survey::all();
-        $postsurvey = $request->all();
-        dump($surveys);
+        $user_role = 3;
+        // $user_role = Auth::user()->role;
 
-        return view('survey.index' , compact('surveys'));
+        $surveys = new Survey;
+
+        if ($request->status == 2) {
+            $status = 2;
+            $dblist = $surveys
+            ->where('status',2)
+            ->get();
+        }else {
+            $status = 1;
+            $dblist = $surveys
+            ->where('status',1)
+            ->get();
+        }
+
+        return view('survey.index',[
+          'dblist' =>$dblist,
+          'status' => $status,
+          'surveys' => $surveys,
+          'user_role' => $user_role,
+        ]);
+
     }
 
     /**
@@ -64,8 +82,6 @@ class SurveyController extends Controller
         // アンケート登録してから問題の保存
         $surveyno = $request->input('ak_title');
         $surveystatus = $request->input('status');
-        // dump($surveyno);
-        // dump($surveyno);
         // DB::table('surveys')->insert([
         //   'title' => "$surveyno", //SlackIDじゃないと入らない
         //   'status' => "$surveystatus",
@@ -87,12 +103,7 @@ class SurveyController extends Controller
           $question_number[$i] = $i;
           $yes_answer[$i] = $request->input("yes_answer$i");
           $no_answer[$i] = $request->input("no_answer$i");
-          // dump($yes_answer[$i]);
-          // dump($no_answer[$i]);
-          // dump($role[$i]);
-          // dump($surveysno);
           if (!empty($choice_text[$i])) { //選択式アンケート2択　select　
-            // dump($yes_answer[$i]);
             // DB::table('select_surveys')->insert([
             //   'survey_id' => "$surveysno", //ok
             //   'question' => "$choice_text[$i]", //ok
@@ -106,7 +117,6 @@ class SurveyController extends Controller
             //   'updated_at' => Carbon::now()  //時間が違う、場所の設定が違うのかも
             // ]);
           } else { //記述式アンケート登録　write ok
-            // dump($question_number[$i]);
             // DB::table('write_surveys')->insert([
             //   'survey_id' => "$surveysno", //ok
             //   'question' => "$describing_text[$i]", //ok
@@ -123,8 +133,6 @@ class SurveyController extends Controller
 
 
         // route('survey.index')の列にあとで戻す
-        // return redirect()->route('survey.index')->with('success', 'データが登録されました');
-        // return redirect()->route('survey.create')->with('success', 'データが登録されました');
         return view('survey.create',compact('postsurvey'));
     }
 
@@ -144,14 +152,19 @@ class SurveyController extends Controller
       $survey = Survey::find($id);
       $selectitems = DB::table('select_surveys')->whereSurvey_id("$id")->get()->toArray();
       $writeitems = DB::table('write_surveys')->whereSurvey_id("$id")->get()->toArray();
+      $selectitemss = DB::table('select_survey_answers')->whereSurvey_id("$id")->get()->toArray();
+      $writeitemss = DB::table('write_survey_answers')->whereSurvey_id("$id")->get()->toArray();
 
       $sum = array_merge($selectitems, $writeitems);
+      $sums = array_merge($selectitemss, $writeitemss);
 
       $count_questions = count($sum);
 
       $sort = collect($sum);
+      $sorts = collect($sums);
 
       $sort = $sort->sortBy('question_number')->all();
+      $sorts = $sorts->sortBy('question_number')->all();
       dump($sort);
 
       return view('survey.show',
@@ -159,7 +172,7 @@ class SurveyController extends Controller
           'count_questions' => $count_questions,
           'survey' => $survey,
           'survey_id' => $id,
-        ], compact('sort'));
+        ], compact('sort', 'sorts'));
     }
 
     /**

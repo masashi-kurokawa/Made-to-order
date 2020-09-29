@@ -94,7 +94,6 @@ class Take_surveyController extends Controller
 
          if ($i == $count) {
            // return view('surveyend'); //アンケート完了画面に遷移
-           dump($count);
          }
 
      }

@@ -82,7 +82,7 @@
 
 			<div class="fh5co-footer">
 				<div class="logout-space">
-					<a href="{{ route('logout') }}" class="logout-btn">ログアウト</a>
+
 				</div>
 				<p><small>&copy; 2020 carecon. All Rights Reserved.</small></p>
 			</div>
@@ -111,6 +111,7 @@
 
               <!-- ここからテスト問題の回答 -->
               <!-- 記述アンケート -->
+							@if ($value->role === 1)　<!-- role　1　記述問題 -->
               <div class="row">
                 <div class="col-md-12">
                   <div class="row">
@@ -125,6 +126,7 @@
               </div>
 
               <!-- 選択アンケート -->
+							@elseif ($value->role === 2)　<!-- role　1　選択テスト -->
               <div class="row">
                 <div class="form-group">
                   <div class="col-md-12">
@@ -139,6 +141,8 @@
                 </div>
               </div>
             </div>
+						@endif
+
             @endforeach
 
           </div>
