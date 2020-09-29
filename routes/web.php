@@ -56,6 +56,10 @@ Route::resource('survey', 'SurveyController');
 
 // アンケート受講
 Route::get('/take_survey/', 'Take_surveyController@index');
+Route::get('/test/', 'TestController@index');
+
+Route::resource('survey', 'SurveyController');
+
 
 //アンケート新規作成
 Route::get('/surveycreate/', function () {
