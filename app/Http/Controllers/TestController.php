@@ -27,13 +27,9 @@ class TestController extends Controller
 
 
        // user_idをとってくるSlackIDまでのつなぎ
-// <<<<<<< HEAD
        // $user_id = DB::table('users')->whereSlack_id("abc")->value('id');
-// =======
        // $user_id = DB::table('users')->whereUser_id("1")->value('user_id');
        // $user_id = DB::table('users')->whereId(Auth::id(1))->value('id');
-       // dump($user_id);
-// >>>>>>> slackOauth
 
        //配列を合わせる
        $str3 = array_merge($selectitems, $holeitems, $writeitems);
@@ -43,7 +39,6 @@ class TestController extends Controller
 
        // テストのソート
        $sorteds = $sorted->sortBy('question_number')->all();
-       // dump($test_time);
     // テスト表示処理　終わり
 
 
@@ -104,10 +99,6 @@ class TestController extends Controller
 
 
          $role = $request->input("question$i"); //問題ロール判定選択、穴埋め、記述
-         // dump($h_answer3_[$i]);
-         // dump($question_answer2_[$i]);
-         // dump($answers);
-         // dump($sorteds);
 
             // 回答の配列　if文で登録先変える
             if ($role == 1) { //記述問題
@@ -137,7 +128,6 @@ class TestController extends Controller
             }
 
               if ($role == 3) { //穴埋め問題
-                // dump($b_judgment[$i]);
                 // DB::table('hole_answers')->insert([
                 //   'user_id' => "$user_id", //SlackIDじゃないと入らないok
                 //   'test_id' => "$testnumber", //ok
@@ -150,24 +140,21 @@ class TestController extends Controller
 
                 // 点数をだす
                   $sum = $sum + $scores;
-                  // dump($sum);
        };
        // 点数をだす
        $correctcount = $sum; //2問正解
-       // dump($correctcount);
        }
 
        // 点数登録
        // if ( isset ( $correctcount ) ) {
          // dump($sum);
-// <<<<<<< HEAD
          // DB::table('test_results')->insert([
          //   'user_name' => 'slackOauth', //とりあえず入れてる
          //   'test_id' => "$testnumber",
          //   'score' => "$correctcount",
          //   'created_at' => Carbon::now(), //時間が違う、場所の設定が違うのかも
          //   'updated_at' => Carbon::now()]); //時間が違う、場所の設定が違うのかも
-// =======
+         
          // DB::table('test_results')->insert([
          //   'user_name' => 'slackOauth', //とりあえず入れてる
          //   'test_id' => "$testnumber",

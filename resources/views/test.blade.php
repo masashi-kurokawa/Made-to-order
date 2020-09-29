@@ -170,8 +170,8 @@
 				onclick="location.href='{{ url('/testend/') }}'" value="テスト終了"> -->
 				<input type="submit" onclick="return confirm('テストを終了してもよろしいですか？')" class="btn btn-primary btn-md" value="テスト終了">
 				<!-- <input id="btn" type="hidden" name="answers" form="answer" onclick="return confirm('テストを終了を終了します。')" value="テスト終了"> -->
-				<input id="btn" type="submit" style="visibility: hidden;" name="answers" form="answer" onclick="" value="テスト終了">
-				<!-- <input id="btn" type="hidden" name="answers" form="answer" onclick="return confirm('テストを終了してもよろしいですか？')" value="テスト終了"> -->
+				<!-- <input id="btn" type="submit" style="visibility: hidden;" name="answers" form="answer" onclick="" value="テスト終了"> -->
+				<input id="btn" type="submit" style="visibility: hidden;" name="answers" form="answer" onclick="return alert('テストを終了を終了します。')" value="テスト終了">
 			</div>
 		　</form>
 
@@ -198,7 +198,6 @@
 	<script>
 
 	var to_timeup = {{$test_time}} *60; //講師の設定した時間をテーブルから持ってくる
-			// var max = 10; //いらないかも
 			var intervalid;
 			var start_flag = false;
 
@@ -207,10 +206,12 @@
 		     } else {
 					 var end = new Date();
 					 end.setMinutes(end.getMinutes() + {{$test_time}});
+					 // end.setMinutes(end.getMinutes() + 1);
 					 $.cookie('end', end);
 					 var ended = $.cookie('end');
 	 				 console.log(ended);
 		     }
+				 // $.removeCookie('end');
 
 			function count_start(){
 				 if(start_flag===false){
@@ -227,19 +228,12 @@
 			function count_down(){
 
 				var now = new Date();
-				// var timer = document.getElementById("timer");
 				var count = Math.floor((end - now) / 1000);
-				// console.log(count);
 
-				// if(to_timeup===0){
 				if (count < 0) {
-					// timer.innerHTML = 'Time up!'
-					// timer.style.color="white";
-					// alert('終了します。');
 					$.removeCookie('end');
-					//一回きりの処理入れる
 					$('#btn').trigger('click');
-					// count_stop();
+					count_stop();
 				}   else {
 					to_timeup--;
 					padding();

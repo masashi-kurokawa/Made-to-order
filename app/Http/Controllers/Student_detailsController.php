@@ -20,6 +20,7 @@ class Student_detailsController extends Controller
     $test_result = new Test_result;
     $user = new User;
     $survey = new Survey;
+    $Test = new Test;
     $write_survey_answer = new Write_survey_answer;
 
     //if文を書くと変数が無くなる

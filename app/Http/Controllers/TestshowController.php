@@ -13,10 +13,6 @@ class TestshowController extends Controller
     public function show($id, Request $request)
     {
 
-      // if ($request) {
-      //     dump($request);
-      // }
-
       $test = Test::find($id);
       $selectitems = DB::table('select_tests')->whereTest_id("$id")->get()->toArray();
       $writeitems = DB::table('write_tests')->whereTest_id("$id")->get()->toArray();

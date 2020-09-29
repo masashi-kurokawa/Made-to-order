@@ -7,19 +7,6 @@ use App\Models\Survey;
 
 class SurveyeditController extends Controller
 {
-    // // 元表示
-    // public function index()
-    // {
-    //
-    //
-    //   $survey = new survey;
-    //   $dblist = $survey
-    //   ->where('status',1)
-    //   ->get();
-    //
-    //    return view('surveyedit',compact('dblist'));
-    //
-    // }
 
     // 丹羽参考
     public function index(Request $request){

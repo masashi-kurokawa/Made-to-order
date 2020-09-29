@@ -17,10 +17,8 @@ class ScoreController extends Controller
              //デフォルト表示の時に使う
              $query = test::query();
              $db = $query->get();
-             // $id = test::select('id')->get();
              $it = DB::table('test_results')->get();
              $dfavg = $it->avg('score');
-             // dump($av);
 
 
              // ポストした内容を表示
@@ -28,7 +26,6 @@ class ScoreController extends Controller
              $status = $request->input('status');
              $sortstart = $request->input('sort-start');
              $sortend = $request->input('sort-end');
-             // dump($testss);
 
 
              $test = test::value('created_at');

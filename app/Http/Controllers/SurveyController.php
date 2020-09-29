@@ -64,8 +64,6 @@ class SurveyController extends Controller
         // アンケート登録してから問題の保存
         $surveyno = $request->input('ak_title');
         $surveystatus = $request->input('status');
-        // dump($surveyno);
-        // dump($surveyno);
         // DB::table('surveys')->insert([
         //   'title' => "$surveyno", //SlackIDじゃないと入らない
         //   'status' => "$surveystatus",
@@ -87,12 +85,7 @@ class SurveyController extends Controller
           $question_number[$i] = $i;
           $yes_answer[$i] = $request->input("yes_answer$i");
           $no_answer[$i] = $request->input("no_answer$i");
-          // dump($yes_answer[$i]);
-          // dump($no_answer[$i]);
-          // dump($role[$i]);
-          // dump($surveysno);
           if (!empty($choice_text[$i])) { //選択式アンケート2択　select　
-            // dump($yes_answer[$i]);
             // DB::table('select_surveys')->insert([
             //   'survey_id' => "$surveysno", //ok
             //   'question' => "$choice_text[$i]", //ok
@@ -106,7 +99,6 @@ class SurveyController extends Controller
             //   'updated_at' => Carbon::now()  //時間が違う、場所の設定が違うのかも
             // ]);
           } else { //記述式アンケート登録　write ok
-            // dump($question_number[$i]);
             // DB::table('write_surveys')->insert([
             //   'survey_id' => "$surveysno", //ok
             //   'question' => "$describing_text[$i]", //ok
@@ -123,8 +115,6 @@ class SurveyController extends Controller
 
 
         // route('survey.index')の列にあとで戻す
-        // return redirect()->route('survey.index')->with('success', 'データが登録されました');
-        // return redirect()->route('survey.create')->with('success', 'データが登録されました');
         return view('survey.create',compact('postsurvey'));
     }
 
