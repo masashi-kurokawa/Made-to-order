@@ -91,7 +91,7 @@ class SurveyController extends Controller
 
 
         //問題の保存
-        $surveysno = DB::table('surveys')->whereTitle("アンケート1")->value('id'); //テストの番号　撮り方の選定があまい
+        $surveysno = DB::table('surveys')->max('id');
 
         $surveyno = $request->input('id');
         // dump($surveysno);
@@ -104,27 +104,27 @@ class SurveyController extends Controller
           $yes_answer[$i] = $request->input("yes_answer$i");
           $no_answer[$i] = $request->input("no_answer$i");
           if (!empty($choice_text[$i])) { //選択式アンケート2択　select　
-            // DB::table('select_surveys')->insert([
-            //   'survey_id' => "$surveysno", //ok
-            //   'question' => "$choice_text[$i]", //ok
-            //   'question_number' => "$question_number[$i]", //ok
-            //   'role' => "$role[$i]", //ok
-            //   'select1' => "1", //ok
-            //   'select2' => "2", //ok
-            //   'select_item1' => "$yes_answer[$i]", //ok
-            //   'select_item2' => "$no_answer[$i]", //ok
-            //   'created_at' => Carbon::now(), //時間が違う、場所の設定が違うのかも
-            //   'updated_at' => Carbon::now()  //時間が違う、場所の設定が違うのかも
-            // ]);
+            DB::table('select_surveys')->insert([
+              'survey_id' => $surveysno + 1, //ok
+              'question' => "$choice_text[$i]", //ok
+              'question_number' => "$question_number[$i]", //ok
+              'role' => "$role[$i]", //ok
+              'select1' => "1", //ok
+              'select2' => "2", //ok
+              'select_item1' => "$yes_answer[$i]", //ok
+              'select_item2' => "$no_answer[$i]", //ok
+              'created_at' => Carbon::now(), //時間が違う、場所の設定が違うのかも
+              'updated_at' => Carbon::now()  //時間が違う、場所の設定が違うのかも
+            ]);
           } else { //記述式アンケート登録　write ok
-            // DB::table('write_surveys')->insert([
-            //   'survey_id' => "$surveysno", //ok
-            //   'question' => "$describing_text[$i]", //ok
-            //   'question_number' => "$question_number[$i]", //ok
-            //   'role' => "$role[$i]", //ok
-            //   'created_at' => Carbon::now(), //時間が違う、場所の設定が違うのかも
-            //   'updated_at' => Carbon::now()  //時間が違う、場所の設定が違うのかも
-            // ]);
+            DB::table('write_surveys')->insert([
+              'survey_id' => $surveysno + 1, //ok
+              'question' => "$describing_text[$i]", //ok
+              'question_number' => "$question_number[$i]", //ok
+              'role' => "$role[$i]", //ok
+              'created_at' => Carbon::now(), //時間が違う、場所の設定が違うのかも
+              'updated_at' => Carbon::now()  //時間が違う、場所の設定が違うのかも
+            ]);
           }
         }
 

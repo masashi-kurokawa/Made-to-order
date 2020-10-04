@@ -18,7 +18,7 @@ class Test extends Model
     public function createTest($request)
     {
       $test = new Test();
-      $test->title = $request->test_title;
+      $test->title = $request->title;
       $test->status = $request->status;
       $test->test_time = $request->test_time;
       $test->created_at = Carbon::now();

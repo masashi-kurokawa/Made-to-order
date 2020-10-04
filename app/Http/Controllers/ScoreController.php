@@ -34,7 +34,6 @@ class ScoreController extends Controller
              $testid = test::whereTitle("$testss")->value('id');
              $items = DB::table('test_results')->whereTest_id("$testid")->get();
              $avg = $items->avg('score');
-             dump($items);
 
              if (!empty($sortstart && $sortend)) {
                $query->whereBetween('created_at', ["$sortstart", "$sortend"]);

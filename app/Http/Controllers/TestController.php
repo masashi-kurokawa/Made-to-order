@@ -46,11 +46,11 @@ class TestController extends Controller
     // 　テストの答え格納　始まり
        //POSTされてきた情報
        $answers = $request->all(); //GETで送られてきたデータ
-       dump($answers);
+       // dump($answers);
        // 何問あるか？
        $count = $sorted->count('question_number');
        // 記述問題用
-       dump($answers);
+       // dump($answers);
 
        // 問題が正解か判定する
        if ( !empty($answers)) {
@@ -154,7 +154,7 @@ class TestController extends Controller
          //   'score' => "$correctcount",
          //   'created_at' => Carbon::now(), //時間が違う、場所の設定が違うのかも
          //   'updated_at' => Carbon::now()]); //時間が違う、場所の設定が違うのかも
-         
+
          // DB::table('test_results')->insert([
          //   'user_name' => 'slackOauth', //とりあえず入れてる
          //   'test_id' => "$testnumber",

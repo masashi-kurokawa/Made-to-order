@@ -21,7 +21,6 @@ class TestcreateController extends Controller
     //Request 引数でブレードで送ったものを取得して引数に入れる
     public function index(Request $request)
     {
-
         if ( isset ( $surveyno ) ) {
           // return view('testlist'); //テスト作成完了ごの画面に遷移
         }
@@ -33,7 +32,6 @@ class TestcreateController extends Controller
 
     public function create(CreateTest $request)
     {
-        dump($request->test_title);
         // 参考処理
         $posttest = $request->all();
         $test_title = $request->input('title');
@@ -47,7 +45,7 @@ class TestcreateController extends Controller
 
 
         //問題の保存
-        $testno = DB::table('tests')->whereTitle("テスト1")->value('id'); //テストの番号　撮り方の選定があまい
+        $testno = DB::table('tests')->max('id'); //テストの番号　撮り方の選定があまい
         $surveyno = $request->input('id'); //問題数
         // dump($testno);
         for ($i=1; $i <= $surveyno; $i++) {
@@ -116,51 +114,51 @@ class TestcreateController extends Controller
 
 
           if (!empty($text1[$i])) { //記述問題
-            // DB::table('write_tests')->insert([
-            //   'test_id' => "$testno",
-            //   'question' => "$text1[$i]",
-            //   'question_number' => "$question_number[$i]",
-            //   'role' => '1',  //ロール権限 記述問題
-            //   'created_at' => Carbon::now(),
-            //   'updated_at' => Carbon::now(),
-            // ]);
+            DB::table('write_tests')->insert([
+              'test_id' => $testno + 1,
+              'question' => "$text1[$i]",
+              'question_number' => "$question_number[$i]",
+              'role' => '1',  //ロール権限 記述問題
+              'created_at' => Carbon::now(),
+              'updated_at' => Carbon::now(),
+            ]);
           } elseif ($text2[$i]) { //2択問題
-            // DB::table('hole_tests')->insert([
-            //   'test_id' => "$testno",
-            //   'question' => "$text2[$i]",
-            //   'answer1' => "$answer2_1[$i]",
-            //   'answer2' => "$answer2_2[$i]",
-            //   'question_number' => "$question_number[$i]",
-            //   'role' => '3',  //ロール権限 穴埋め問題
-            //   'created_at' => Carbon::now(), //時間が違う、場所の設定が違うのかも
-            //   'updated_at' => Carbon::now(),  //時間が違う、場所の設定が違うのかも
-            // ]);
+            DB::table('hole_tests')->insert([
+              'test_id' => $testno + 1,
+              'question' => "$text2[$i]",
+              'answer1' => "$answer2_1[$i]",
+              'answer2' => "$answer2_2[$i]",
+              'question_number' => "$question_number[$i]",
+              'role' => '3',  //ロール権限 穴埋め問題
+              'created_at' => Carbon::now(), //時間が違う、場所の設定が違うのかも
+              'updated_at' => Carbon::now(),  //時間が違う、場所の設定が違うのかも
+            ]);
           } elseif ($text8[$i]) {
-            // DB::table('select_tests')->insert([
-            //   'test_id' => "$testno",
-            //   'question' => "$text8[$i]",
-            //   'answer' => "$answer",
-            //   'select1' => "1",
-            //   'select2' => "2",
-            //   'select3' => "3",
-            //   'select4' => "4",
-            //   'select5' => "5",
-            //   'select6' => "6",
-            //   'select7' => "7",
-            //   'select8' => "8",
-            //   'select_item1' => "$answer8_1[$i]",
-            //   'select_item2' => "$answer8_2[$i]",
-            //   'select_item3' => "$answer8_3[$i]",
-            //   'select_item4' => "$answer8_4[$i]",
-            //   'select_item5' => "$answer8_5[$i]",
-            //   'select_item6' => "$answer8_6[$i]",
-            //   'select_item7' => "$answer8_7[$i]",
-            //   'select_item8' => "$answer8_8[$i]",
-            //   'question_number' => "$question_number[$i]",
-            //   'role' => '1',  //ロール権限 洗濯問題
-            //   'created_at' => Carbon::now(),
-            //   'updated_at' => Carbon::now(),
-            // ]);
+            DB::table('select_tests')->insert([
+              'test_id' => $testno + 1,
+              'question' => "$text8[$i]",
+              'answer' => "$answer",
+              'select1' => "1",
+              'select2' => "2",
+              'select3' => "3",
+              'select4' => "4",
+              'select5' => "5",
+              'select6' => "6",
+              'select7' => "7",
+              'select8' => "8",
+              'select_item1' => "$answer8_1[$i]",
+              'select_item2' => "$answer8_2[$i]",
+              'select_item3' => "$answer8_3[$i]",
+              'select_item4' => "$answer8_4[$i]",
+              'select_item5' => "$answer8_5[$i]",
+              'select_item6' => "$answer8_6[$i]",
+              'select_item7' => "$answer8_7[$i]",
+              'select_item8' => "$answer8_8[$i]",
+              'question_number' => "$question_number[$i]",
+              'role' => '1',  //ロール権限 洗濯問題
+              'created_at' => Carbon::now(),
+              'updated_at' => Carbon::now(),
+            ]);
           }
 
         }

@@ -14,8 +14,7 @@ class TestlistController extends Controller
     {
         // ログインしているユーザーのロールを判断
         // 本来は Auth::user()->role の方を使う
-        // $user_role = Auth::user()->role;
-        $user_role = 2;
+        $user_role = Auth::user()->role;
 
         $test = new Test;
         if ($request->status == 2) {

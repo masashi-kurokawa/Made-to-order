@@ -215,7 +215,7 @@
 						$(document).on('click', '.plus', function() {
 							i++;
 							var n = i;
-							alert(n);
+							// alert(n);
 							if( n <= 49 ){
 								// $('#output').html(i);
 							} else {
