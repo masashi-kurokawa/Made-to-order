@@ -82,6 +82,173 @@ figure figcaption {
   background: #228896;
 }
 
+.space-bot {
+  margin-bottom: 20%;
+}
+
+.bg-rgba {
+  background-color:rgba(0,0,0,0.4);
+  padding: 15% 0;
+}
+
+.login-text {
+  font-size: 15px;
+  color: #fff;
+  margin: 4% 0 2%;
+}
+
+#login-menu input {
+  display: block;
+  margin: 2% auto;
+}
+
+#login-menu input::placeholder {
+  color: #aaa;
+}
+
+#login-menu input[type=text],input[type=email]{
+  color: #fff;
+    width: 250px;
+    height: 40px;
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.7);
+    border-radius: 2px;
+    color: #fff;
+    font-family: 'Exo', sans-serif;
+    font-size: 17px;
+    font-weight: 400;
+    padding: 10px;
+}
+
+#login-menu input[type=password]{
+    width: 250px;
+    height: 30px;
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.6);
+    border-radius: 2px;
+    color: #fff;
+    font-family: 'Exo', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    padding: 4px;
+    margin-top: 10px;
+}
+
+#login-menu input[type=submit]{
+    width: 250px;
+    height: 40px;
+    background: #fff;
+    border: 1px solid #fff;
+    cursor: pointer;
+    border-radius: 2px;
+    font-family: 'Exo', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    padding: 6px;
+    margin-top: 10px;
+}
+
+#login-menu input[type=submit]:hover{
+    opacity: 0.8;
+}
+
+#login-menu input[type=submit]:active{
+    opacity: 0.6;
+}
+
+#login-menu input[type=text]:focus{
+    outline: none;
+    border: 1px solid rgba(255,255,255,0.9);
+}
+
+#login-menu input[type=email]:focus{
+    outline: none;
+    border: 1px solid rgba(255,255,255,0.9);
+}
+
+#login-menu input[type=password]:focus{
+    outline: none;
+    border: 1px solid rgba(255,255,255,0.9);
+}
+
+#login-menu input[type=submit]:focus{
+    outline: none;
+}
+
+.logout-space {
+  margin: 15% 0;
+  text-align: center;
+}
+
+.logout-btn {
+  color: #fff;
+  background-color: #aaa;
+  padding: 3% 6%;
+  margin: 10%;
+  border-radius: 3px;
+}
+.logout-btn:hover {
+  color: #fff;
+  background: #777;
+}
+.logout-btn:visited {
+  color: #fff;
+}
+
+.alert-form {
+  width: 70%;
+  margin: 0 auto;
+}
+
+.alert-form ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.question-p {
+  margin: 0;
+}
+
+.question-input {
+  margin: 0 10px 10px;
+  height: 40px;
+}
+
+.test-select {
+  display: inline-block;
+  margin: 0;
+}
+
+.test-select input {
+	display: none;
+}
+.test-select label{
+	display: inline-block;
+	cursor: pointer;
+	width: 170px;
+	margin: 20px 10px 10px 0;
+	padding: 10px;
+	background: #dfdfdf;
+	color: #777;
+	font-weight: normal;
+	text-align: center;
+	line-height: 1;
+	transition: .2s;
+}
+.test-select label:hover {
+  color: #fff;
+  background: #228896;
+}
+.test-select label:visited {
+  color: #fff;
+}
+.test-select label:first-of-type{
+	border-radius: 3px;
+}
+.test-select label:last-of-type{
+	border-radius: 3px;
+}
+
 #fh5co-page {
   width: 100%;
   overflow: hidden;
@@ -211,11 +378,16 @@ figure figcaption {
   transform: scaleX(1);
 }
 #fh5co-aside .fh5co-footer {
-  position: absolute;
-  bottom: 40px;
-  font-size: 14px;
+  /* position: absolute; */
   text-align: center;
-  width: 100%;
+  position: fixed;
+  bottom: 5%;
+  left: 2%;
+  margin-top: 70%;
+  /* bottom: 40px; */
+  font-size: 14px;
+  /* text-align: center; */
+  /* width: 100%; */
   font-weight: 400;
   color: rgba(0, 0, 0, 0.6);
   padding: 0 20px;
@@ -250,12 +422,15 @@ figure figcaption {
   color: #228896;
 }
 
+/* タイマーの基準値入れてある */
 #fh5co-main {
   width: 80%;
   float: right;
   -webkit-transition: 0.5s;
   -o-transition: 0.5s;
   transition: 0.5s;
+  /* タイマー用の固定基準 */
+  /* position:relative; */
 }
 @media screen and (max-width: 1200px) {
   #fh5co-main {
@@ -271,7 +446,7 @@ figure figcaption {
   position: relative;
   width: 93%;
   margin: 0 auto;
-  padding: 4em 0;
+  padding: 5em 0;
   clear: both;
 }
 @media screen and (max-width: 768px) {
@@ -316,9 +491,10 @@ figure figcaption {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  min-height: 500px;
+  /* min-height: 500px; */
   position: relative;
 }
+
 #fh5co-hero .flexslider .flex-control-nav {
   bottom: 20px;
   z-index: 1000;
@@ -369,7 +545,7 @@ figure figcaption {
   font-family: "Roboto", Arial, sans-serif;
 }
 #fh5co-hero .flexslider .slider-text > .slider-text-inner h1 {
-  margin-bottom: 20px;
+  margin-bottom: 7%;
   font-size: 45px;
   line-height: 1.3;
   font-weight: 100;
@@ -409,12 +585,12 @@ figure figcaption {
 }
 #fh5co-hero .flexslider .slider-text > .slider-text-inner .btn {
   font-size: 12px;
-  text-transform: uppercase;
   letter-spacing: 2px;
   color: #fff;
   padding: 22px 30px !important;
   border: none;
   font-weight: 500;
+  border-radius: 2px;
 }
 #fh5co-hero .flexslider .slider-text > .slider-text-inner .btn.btn-learn {
   background: #fff;
@@ -522,13 +698,16 @@ body.offcanvas #fh5co-main, body.offcanvas .fh5co-nav-toggle {
 .blog-entry .desc span small i {
   color: #e6e6e6;
 }
+
 .blog-entry .desc .lead {
-  display: block;
+  /* 石田 block→inline-block 編集 */
+  display: inline-block;
   font-size: 11px;
   text-transform: uppercase;
   letter-spacing: 2px;
   color: #000;
 }
+
 .blog-entry:hover .blog-img img {
   -webkit-transform: scale(1);
   -moz-transform: scale(1);
@@ -611,8 +790,9 @@ body.offcanvas #fh5co-main, body.offcanvas .fh5co-nav-toggle {
 }
 
 .fh5co-lead {
-  font-size: 18px;
+  font-size: 15px;
   line-height: 1.5;
+  margin: 0;
 }
 
 .fh5co-heading-colored {
@@ -849,13 +1029,14 @@ body.offcanvas #fh5co-main, body.offcanvas .fh5co-nav-toggle {
   }
 }
 
+
+
 .btn {
   margin-right: 4px;
   margin-bottom: 4px;
   font-family: "Roboto", Arial, sans-serif;
   font-size: 18px;
   font-weight: 400;
-  text-transform: uppercase;
   letter-spacing: 1px;
   -webkit-border-radius: 0px;
   -moz-border-radius: 0px;
@@ -987,6 +1168,10 @@ body.offcanvas #fh5co-main, body.offcanvas .fh5co-nav-toggle {
   box-shadow: none;
 }
 
+.title-sort {
+  width: 95%;
+}
+
 .form-control {
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -994,14 +1179,19 @@ body.offcanvas #fh5co-main, body.offcanvas .fh5co-nav-toggle {
   box-shadow: none;
   background: transparent;
   border: 2px solid rgba(0, 0, 0, 0.1);
-  height: 54px;
-  font-size: 18px;
+  font-size: 15px;
   font-weight: 300;
   -webkit-border-radius: 7px;
   -moz-border-radius: 7px;
   -ms-border-radius: 7px;
   border-radius: 7px;
 }
+
+.form-sort {
+  display: inline-block;
+  width: 45%;
+}
+
 .form-control:active, .form-control:focus {
   outline: none;
   box-shadow: none;
@@ -1167,12 +1357,30 @@ body.offcanvas #fh5co-main, body.offcanvas .fh5co-nav-toggle {
 
 /* タイマー用のCSS */
 .box {
-     background-color: #F33;
-     font-weight: bold;
-     color: #FFF;
-     font-size: 72px;
-     border-radius: 20px;
-     padding: 20px;
+  background-color: #00CCFF;
+  font-weight: bold;
+  color: #FFF;
+  font-size: 72px;
+  border-radius: 20px;
+  padding: 20px;
+  width: 80%;
+  opacity: 0.9;
+}
+
+.hako {
+  width: auto;
+  border: 1px solid #CCC;
+  text-align: center;
+  margin: 30px;
+  position: fixed;
+  width: 60%;
+  top: 20px;
+  z-index: 10000;
+}
+
+/* 幅を持たせる為に入れている、画面次第では崩れるかも */
+.timerbox {
+  height: 200px;
 }
 
 /*# sourceMappingURL=style.css.map */

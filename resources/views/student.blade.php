@@ -72,13 +72,17 @@
 				<ul>
 					<li><a href="{{ url('/home/') }}">Home</a></li>
 					<li><a href="{{ url('/testlist/') }}">テスト一覧</a></li>
-					<li><a href="{{ url('/surveylist/') }}">アンケート一覧</a></li>
+					<li><a href="{{ url('/survey/') }}">アンケート一覧</a></li>
 					<li class="fh5co-active"><a href="{{ url('/student/') }}">生徒一覧</a></li>
 					<li><a href="{{ url('/score/') }}">点数早見表</a></li>
+					<li><a href="{{ url('/grade/') }}">未採点</a></li>
 				</ul>
 			</nav>
 
 			<div class="fh5co-footer">
+				<div class="logout-space">
+					<a href="{{ route('logout') }}" class="logout-btn">ログアウト</a>
+				</div>
 				<p><small>&copy; 2020 carecon. All Rights Reserved.</small></p>
 			</div>
 
@@ -88,13 +92,13 @@
 			<div class="fh5co-narrow-content">
 				<h2 class="fh5co-heading animate-box" data-animate-effect="fadeInLeft">生徒一覧</h2>
 
-				<form action="">
+				<form class="animate-box" data-animate-effect="fadeInLeft" action="#" method="get">
 					<div class="row">
 						<div class="col-md-12">
 							<div class="row">
 								<div class="col-md-6">
 									<div class="form-group">
-										<input type="text" class="form-control" placeholder="Name">
+										<input type="text" class="form-control" placeholder="Name"name="keyword" value="{{$inputlist['keyword']}}">
 									</div>
 								</div>
 								<div class="col-md-6">
@@ -108,24 +112,20 @@
 				</form>
 
 				<div class="row row-bottom-padded-md">
-					<div class="col-md-student col-sm-6 col-padding animate-box" data-animate-effect="fadeInLeft">
-						
-					@foreach ($dblist as $key => $user)
+				@foreach ($dblist as $key => $user)
+				<div class="col-md-student col-sm-6 col-padding animate-box" data-animate-effect="fadeInLeft">
 						<div class="blog-entry">
-							<a href="{{ url('/student-details/') }}" class="blog-img"><img src="{{$user->img}}" class="img-responsive" alt="#"></a>
+						<!--?＝id1で値を渡す-->
+							<a href="{{ route('student_details', ['name' => $user->slack_name]) }}" class="blog-img"><img src="{{$user->slack_image}}" class="img-responsive" alt="#"></a>
 							<div class="desc">
-								<h3><a href="{{ url('/student-details/') }}">{{$user->user_name}}</a></h3>
-								<span>カリキュラム</span>
-								<p>{{$user->user_id}}</p>
-								<a href="{{ url('/student-details/') }}" class="lead">生徒詳細<i class="icon-arrow-right3"></i></a>
+								<h3><a href="{{ route('student_details', ['name' => $user->slack_name]) }}">{{$user->slack_name}}</a></h3>
+								<!-- <span>カリキュラム</span> -->
+								<a href="{{ route('student_details', ['name' => $user->slack_name]) }}" class="lead">生徒詳細<i class="icon-arrow-right3"></i></a>
 							</div>
 						</div>
 					</div>
 					@endforeach
 
-
-
-					
 				</div>
 			</div>
 		</div>

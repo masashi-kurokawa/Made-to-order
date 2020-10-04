@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -72,13 +71,17 @@
 				<ul>
 					<li class="fh5co-active"><a href="{{ url('/home/') }}">Home</a></li>
 					<li><a href="{{ url('/testlist/') }}">テスト一覧</a></li>
-					<li><a href="{{ url('/surveylist/') }}">アンケート一覧</a></li>
+					<li><a href="{{ url('/survey/') }}">アンケート一覧</a></li>
 					<li><a href="{{ url('/student/') }}">生徒一覧</a></li>
 					<li><a href="{{ url('/score/') }}">点数早見表</a></li>
+					<li><a href="{{ url('/grade/') }}">未採点</a></li>
 				</ul>
 			</nav>
 
 			<div class="fh5co-footer">
+				<div class="logout-space">
+					<a href="{{ route('logout') }}" class="logout-btn">ログアウト</a>
+				</div>
 				<p><small>&copy; 2020 carecon. All Rights Reserved.</small></p>
 			</div>
 
@@ -88,18 +91,16 @@
 			<aside id="fh5co-hero" class="js-fullheight">
 				<div class="flexslider js-fullheight">
 					<ul class="slides">
-				   	<li style="background-image: url(images/img_bg_1.jpg);">
+				   	<li style="background-image: url(images/img_bg_1_2.jpg);">
 				   		<div class="overlay"></div>
 				   		<div class="container-fluid">
 				   			<div class="row">
 					   			<div class="col-md-8 col-md-offset-2 text-center js-fullheight slider-text">
 					   				<div class="slider-text-inner">
 					   					<h1>タイトル（未定）を入れる</h1>
-					   					<h2>Slack Log in</h2>
-											<p>
-												<a class="btn btn-primary btn-demo popup-vimeo" href="https://slack.com/oauth/authorize?client_id={{$slack_client_id}}&scope=identify&redirect_uri={{ url('/home/') }}">ログイン</a>
-												<a class="btn btn-primary btn-learn">ログアウト</a>
-											</p>
+
+											{{-- <img src="data:image/png;base64,{{$base64}}"> --}}
+
 					   				</div>
 					   			</div>
 					   		</div>

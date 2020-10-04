@@ -514,6 +514,7 @@ p {
 }
 
 .lead {
+  margin: 0 auto;
   margin-bottom: 20px;
   font-size: 16px;
   font-weight: 300;
@@ -2074,7 +2075,7 @@ output {
   width: 100%;
   height: 42px;
   padding: 10px 20px;
-  font-size: 14px;
+  font-size: 8px;
   line-height: 1.42857;
   color: #555555;
   background-color: #fff;
@@ -2087,6 +2088,7 @@ output {
   -o-transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
   transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
 }
+
 .form-control:focus {
   border-color: #66afe9;
   outline: 0;
@@ -2167,8 +2169,24 @@ input[type="search"] {
     line-height: 46px;
   }
 }
-.form-group {
+.form-group-date {
   margin-bottom: 15px;
+  margin-left: 10px;
+  display: block;
+  width: 45%;
+}
+
+.form-group-title {
+  margin-bottom: 15px;
+  margin-left: 10px;
+  display: inline-block;
+  width: 35%;
+}
+
+.form-group-status {
+  width: 15%;
+  display: inline-block;
+  margin-left: 10px;
 }
 
 .radio,
@@ -2495,8 +2513,10 @@ select[multiple].input-lg,
   }
   .form-inline .form-control {
     display: inline-block;
-    width: auto;
+    /* width: auto; */
+    width: 250px;
     vertical-align: middle;
+    text-transform: lowercase;
   }
   .form-inline .form-control-static {
     display: inline-block;
@@ -2582,7 +2602,6 @@ select[multiple].input-lg,
     padding-top: 6px;
     font-size: 12px;
   }
-}
 
 .btn {
   display: inline-block;
@@ -6255,6 +6274,19 @@ button.close {
   .hidden-print {
     display: none !important;
   }
+}
+
+.more-center{
+  text-align: center;
+}
+.more {
+  padding: 15px 30px;
+  border: 1px solid #dfe1e5;
+  border-radius: 100px;
+  color: #333;
+}
+.more:hover {
+  border-color: #228896;
 }
 
 /*# sourceMappingURL=bootstrap.css.map */

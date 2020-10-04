@@ -1,38 +1,22 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Services\SlackApi;
+use Illuminate\Support\Facades\Auth;
 
 
 class HomeController extends Controller
 {
-    //
+
     public function index()
     {
+      return view('home');
+    }
 
-      if (isset($_GET['code'])) {
-
-          $slack_api = new Slackapi;
-
-          $accesstoken = $slack_api->getAcsesstoken($_GET['code']);
-
-          if (isset($accesstoken)) {
-
-              $token = $accesstoken['access_token'];
-              $user_id = $accesstoken['user_id'];
-
-              $user_info = $slack_api->seachUserInfo($token, $user_id);
-              dump($user_info);
-          }
-
-      }
-
-      return view('home', [
-            'slack_client_id' => env('SLACK_CLIENT_ID'),
-            'slack_client_secret' => env('SLACK_CLIENT_SECRET'),
-            // 'user_info' => $user_info,
-        ]);
+    // ログアウト処理
+    public function getLogout()
+    {
+      Auth::logout();
+      return redirect()->route('login');
     }
 }
